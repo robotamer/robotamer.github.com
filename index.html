@@ -28,17 +28,13 @@
         <content>
             <div style="padding-right: 25em" ng-controller="MainCntl">
 <div ng-view>default content</div>
-<hr />
-<pre>$location.path() = {{$location.path()}}</pre>
-<pre>$route.current.template = {{$route.current.template}}</pre>
-<pre>$route.current.params = {{$route.current.params}}</pre>
-<pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
-<pre>$routeParams = {{$routeParams}}</pre>                <footer>
+                <footer>
+		    <hr />
                     Copyright &copy; 2012 RoboTamer
                 </footer>
             </div>
             <sidebar>
-		<a href="/">Lobby</a><br />
+		<a href="/#/Lobby">Lobby</a><br />
 		<a href="/#/Copyright">Copyright</a>
             </sidebar>
         </content>

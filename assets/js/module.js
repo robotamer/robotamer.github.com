@@ -7,6 +7,11 @@ angular.module('Module', [], function($routeProvider, $locationProvider) {
 	controller: LobbyCntl
     });
 
+    $routeProvider.when('/Lobby', {
+	templateUrl: '/assets/html/lobby.html', 
+	controller: LobbyCntl
+    });
+
     $routeProvider.when('/Copyright', {
 	templateUrl: '/assets/html/copyright.html', 
 	controller: CopyrightCntl
@@ -28,7 +33,8 @@ function LobbyCntl($scope, $route, $routeParams, $location) {
     $scope.$routeParams = $routeParams;
 }
      
-function CopyrightCntl($scope, $routeParams) {
-    $scope.name = "CopyrightCntl";
-    $scope.params = $routeParams;
+function CopyrightCntl($scope, $routeParams, $location) {
+    $scope.$route = $route;
+    $scope.$location = $location;
+    $scope.$routeParams = $routeParams;
 }
