@@ -10,10 +10,6 @@
         <meta name="description" content="" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/assets/css/robotamer.css" />
-	<script>
-	     // Append a trailing slash if necessary.
-	    if (!/\.html$|\/$/.test(location.pathname)) location.pathname += '/'
-	</script>
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -26,25 +22,24 @@
 	    <p>
 		<a href="/" title="Lobby">Lobby</a>
 		<a href="http://blog.robotamer.com" title="Blog">Blog</a>
+		<a href="http://wiki.robotamer.com" title="Blog">Wiki</a>
 	    </p>
 	</header>
-
         <content>
-            <div style="top:50px; bottom: 0; left:0; padding-right: 25em ">
-<div ng-view></div>
+            <div style="padding-right: 25em" ng-controller="MainCntl">
+<div ng-view>default content</div>
 <hr />
 <pre>$location.path() = {{$location.path()}}</pre>
 <pre>$route.current.template = {{$route.current.template}}</pre>
 <pre>$route.current.params = {{$route.current.params}}</pre>
 <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
 <pre>$routeParams = {{$routeParams}}</pre>                <footer>
-                    &copy; RoboTamer 2012
+                    Copyright &copy; 2012 RoboTamer
                 </footer>
-
             </div>
-
             <sidebar>
-		
+		<a href="/">Lobby</a><br />
+		<a href="/#/Copyright">Copyright</a>
             </sidebar>
         </content>
         <script src="/assets/js/angular/angular.min.js"></script>

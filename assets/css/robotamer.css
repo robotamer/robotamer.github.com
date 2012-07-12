@@ -42,7 +42,7 @@ message {
 content {
     position: absolute;
     z-index: 2;
-    top: 3em;
+    top: 1em;
     left: 0;
     right: 0;
     background-color: white;
@@ -56,12 +56,12 @@ content {
 sidebar {
     position: absolute;
     top: 0;
-    margin-top: 3em;
+    margin-top: 1em;
     padding: 1em;
     bottom: 0;
     right: 0;
     width: 20em;
-    background-color: #FFF0F4;
+    background-color: whitesmoke;
     color: black;
 }
 
