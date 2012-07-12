@@ -8,21 +8,24 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    height: 2.5em;
+    height: 1.5em;
     background-color: black;
     color: white;
 }
 
-.header a {
+header p {
+    margin-top: .25em;
+}
+    
+header a {
     text-decoration: none;
     color: white;
-    padding-top: 1em;
     margin-left: 1em;
 }
-.header a:hover {
+header a:hover {
     color: red;
 }
-.header a:active {
+header a:active {
     color: yellow
 }
 
