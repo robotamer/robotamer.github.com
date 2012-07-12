@@ -12,7 +12,10 @@
         <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
         <link rel="stylesheet" href="/assets/css/robotamer.css" />
         <link rel="stylesheet" href="css/app.css" />
-
+	<script>
+	     // Append a trailing slash if necessary.
+	    if (!/\.html$|\/$/.test(location.pathname)) location.pathname += '/'
+	</script>
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
