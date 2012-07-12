@@ -3,8 +3,8 @@
 angular.module('Module', ['Filters', 'Services']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-      when('/rentals/list', {templateUrl: 'html/list.html',   controller: ListCtrl}).
-      when('/rentals/item/:itemId', {templateUrl: 'html/detail.html', controller: DetailCtrl}).
+      when('/list', {templateUrl: 'html/list.html',   controller: ListCtrl}).
+      when('/item/:itemId', {templateUrl: 'html/detail.html', controller: DetailCtrl}).
       otherwise({redirectTo: '/list'});
 }]);
 
