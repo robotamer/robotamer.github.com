@@ -18,6 +18,7 @@ header {
     text-decoration: none;
     color: white;
     margin-left: 1em;
+    vertical-align: middle;
 }
 .header a:hover {
     color: red;
