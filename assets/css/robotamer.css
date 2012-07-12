@@ -8,17 +8,16 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    height: 1.5em;
+    height: 2.5em;
     background-color: black;
     color: white;
-    vertical-align: middle;
 }
 
 .header a {
     text-decoration: none;
     color: white;
     margin-left: 1em;
-    height: 1.5em;
+    height: 2.5em;
     vertical-align: middle;
 }
 .header a:hover {
