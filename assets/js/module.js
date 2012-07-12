@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('Module', ['Filters', 'Services']).
-  config(['$routeProvider', function($routeProvider) {
+angular.module('Module', []).
+  config(['$routeProvider', function($routeProvider, $locationProvider) {
   $routeProvider.
-      when('/lobby', {templateUrl: '/assets/html/lobby.html'}).
-      when('/copyright', {templateUrl: '/assets/html/copyright.html'}).
+      when('/lobby', {templateUrl: '/assets/html/lobby.html', controller: ChapterCntl}).
+      when('/copyright', {templateUrl: '/assets/html/copyright.html', controller: BookCntl}).
       otherwise({redirectTo: '/lobby'});
 }]);
 
-angular.module('Module', [], function($routeProvider, $locationProvider) {
+angular.module('Module2', [], function($routeProvider, $locationProvider) {
     $routeProvider.when('/lobby', {
     templateUrl: '/assets/html/lobby.html',
     controller: BookCntl
