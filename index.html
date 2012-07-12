@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en" ng-app="Module">
     <head>
         <title>RoboTamer</title>
         <meta name="rating"      content="General" />
@@ -28,7 +28,7 @@
 
         <content>
             <div style="top:50px; bottom: 0; left:0; padding-right: 25em ">
-		My conntent
+<div ng-view></div>
                 <footer>
                     &copy; RoboTamer 2012
                 </footer>
@@ -36,8 +36,10 @@
             </div>
 
             <sidebar>
-		Sidebar
+		
             </sidebar>
         </content>
+        <script src="/assets/js/angular/angular.min.js"></script>
+        <script src="/assets/js/module.js"></script>
     </body>
 </html>
