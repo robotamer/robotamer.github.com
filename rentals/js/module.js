@@ -3,15 +3,15 @@
 angular.module('Module', ['Filters', 'Services']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-      when('/list', {templateUrl: 'html/list.html',   controller: ListCtrl}).
-      when('/item/:itemId', {templateUrl: 'html/detail.html', controller: DetailCtrl}).
+      when('/rentals/list', {templateUrl: 'html/list.html',   controller: ListCtrl}).
+      when('/rentals/item/:itemId', {templateUrl: 'html/detail.html', controller: DetailCtrl}).
       otherwise({redirectTo: '/list'});
 }]);
 
 
 /* Services */
 angular.module('Services', ['ngResource']). factory('Item', function($resource){
-    return $resource('phones/:itemId.json', {}, {
+    return $resource('/rentals/phones/:itemId.json', {}, {
         query: {method:'GET', params:{itemId:'phones'}, isArray:true}
     });
 });
