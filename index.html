@@ -32,7 +32,12 @@
         <content>
             <div style="top:50px; bottom: 0; left:0; padding-right: 25em ">
 <div ng-view></div>
-                <footer>
+<hr />
+<pre>$location.path() = {{$location.path()}}</pre>
+<pre>$route.current.template = {{$route.current.template}}</pre>
+<pre>$route.current.params = {{$route.current.params}}</pre>
+<pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+<pre>$routeParams = {{$routeParams}}</pre>                <footer>
                     &copy; RoboTamer 2012
                 </footer>
 
