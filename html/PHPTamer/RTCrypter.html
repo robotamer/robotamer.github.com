@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+	<script language="javascript" type="text/javascript">
+		<!--
+		function url() {
+			var url = 'http://' + document.domain + '/';
+		}
+		// -->
+	</script>
+		    <title>RoboTamer</title>
+		    <meta name="description" />
+    <meta name="copyright" content="Copyright 1998 - 2012" />
+    <meta name="rating" content="General" />
+    <meta name="author" content="Dennis T Kaplan" />
+    <meta name="robots" content="index" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" />
+		    <link rel="stylesheet" href="http://robotamer.bitbucket.org/assets/css/robotamer.css" type="text/css" media="screen" />
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+		<header>
+	<p>
+		<a href="javascript:url()" title="Blog">Lobby</a>
+		<a href="javascript:url()/PHPTamer" title="Blog">PHP Tamer</a>
+		<a href="http://bitbucket.org/robotamer/phptamer/wiki" title="Wiki">Wiki</a>
+		<a href="http://bitbucket.org/robotamer/phptamer/issues" title="Code">Tickets</a>
+		<a href="http://bitbucket.org/robotamer/phptamer" title="Code">Code</a>
+		<a href="/admin" title="Admin">Admin</a>
+	</p>
+		</header>
+
+        <content>
+            <div style="padding-right: 25em">
+				<h1>RTCrypter</h1>
+
+<p>RTCrypter allows for encryption and decryption on the fly using a simple but effective method.</p>
+
+<p>RTCrypter does not require mcrypt, mhash or any other PHP extension, it uses only PHP.</p>
+
+<pre><code>$crypt = new RTCrypter();
+$crypt-&gt;setCharacters('#@|*-+.,!~`$%^&amp;&lt;&gt;{}[]()0/\123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz');
+$secretKey = $crypt-&gt;genKey();
+
+
+$crypt = new RTCrypter();
+$crypt-&gt;useBase64(FALSE); // TRUE is default
+$crypt-&gt;setCharacters('#@|*-+.,!~`$%^&amp;&lt;&gt;{}[]()0/\123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz');
+$crypt-&gt;setScramble($secretKey);
+</code></pre>
+                <footer><hr />Copyright &copy; 2012 RoboTamer</footer>
+            </div>
+            <sidebar>
+				            </sidebar>
+        </content>
+		    </body>
+</html>
