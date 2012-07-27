@@ -4,6 +4,22 @@
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
+if ($argc == 1 || in_array($argv[1], array('--help', '-help', '-h', 'h', '-?'))) {
+	help();
+}
+
+if (isset($argv[1]) && $argv[1] == '-m' && isset($argv[2])) {
+	$commit_message = $argv[2];
+}else{
+	$commit_message = promptUser('A commit message?', 'Just another commit');
+}
+
+$commit_message = trim($commit_message);
+if (preg_match('/[^-_@. 0-9A-Za-z]/', $commit_message)) {
+	echo PHP_EOL . "\tDon't get fancy, alnum char only.".PHP_EOL.PHP_EOL;
+	exit;
+}
+
 include __DIR__ . '/../lib/RoboTamer/boot.php';
 include_once "lib/markdown/markdown.php";
 loadFunc('a');
@@ -103,4 +119,45 @@ function rmhtml($path = 'html') {
 		unlink($file);
 	}
 }
+
+function help() {
+
+	$i = <<<EOT
+
+	php md2static.php <option> [arguments]
+
+	<-h>  Print this help
+	<-m> [message]   Use the given [message] as the git commit message.
+
+
+EOT;
+	echo $i;
+	exit ;
+}
+
+//#######################################################################
+//# Function: Prompt user and get user input, returns value input by user.
+//#           Or if return pressed returns a default if used e.g usage
+//# $name = promptUser("Enter your name");
+//# $serverName = promptUser("Enter your server name", "localhost");
+//# Note: Returned value requires validation 
+//#.......................................................................
+function promptUser($promptStr,$defaultVal=false){;
+
+  if($defaultVal) {                             // If a default set
+     echo $promptStr. "[". $defaultVal. "] : "; // print prompt and default
+  }
+  else {                                        // No default set
+     echo $promptStr. ": ";                     // print prompt only
+  } 
+  $name = chop(fgets(STDIN));                   // Read input. Remove CR
+  if(empty($name)) {                            // No value. Enter was pressed
+     return $defaultVal;                        // return default
+  }
+  else {                                        // Value entered
+     return $name;                              // return value
+  }
+}
+//========================================= End promptUser ============
+
 ?>
