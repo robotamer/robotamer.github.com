@@ -1,8 +1,5 @@
-Markdown to Static
-==================
-
-Features
---------
+Markdown to Static Features
+===========================
 
  * html and js, no server side scripts needed. Perfect for github and bidbucket hosting
  * Write in markdown, not html
