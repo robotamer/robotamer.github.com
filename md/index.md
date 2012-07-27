@@ -1,15 +1,14 @@
+﻿Welcome to my little coding site!
+========================
 
+Here you will find documentation for some of the things I have coded.
+Improvements and/or bug reports are encouraged.
+Go ahead feel right at home, at the top is the main menu poining to each project, and on the right you will find the project specific sub-menus with links to the download pages, wikis etc. 
 
-Welcome to RoboTamer's documentation!
-=====================================
+This website has been created with [Markdown To Static](/html/md2static/) a simple php script that converts markdown files to a complete website with menus and all.
 
-Facade
-======
-RoboTamer Facade is a component dependency substitution system, and will achieve component independentcy via the facade programming pattern.
+Unless otherwise specified within the code, most everything you can find here is MIT licensed.
 
-Facade's main focus is a to be a component dependency substitution system, and will achieve component interdependency via the facade programming pattern.
+ 
 
-With Facade you can build a cli or web framework by mixing components from <a href="http://pear.php.net">Pear</a>, <a href="http://zendframework.com/">Zend</a>, <a href="http://getcomposer.org/">Composer</a> or just standalone classes from <a href="http://www.phpclasses.org">PHPClasses</a>.
-
-Facade also includes a collection of libraries, and recommends tested components to help you get started.
 

@@ -17,6 +17,7 @@ Roadmap
 
  * Automate git add, commit and push
  * Check git and only make and remake new and modified files 
+ * Highlight code
  
  
  __Any help is welcome__
