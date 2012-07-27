@@ -19,7 +19,8 @@
     <body>
 		<header>
 	<p>
-		<a href="/html" title="Blog">Lobby</a>
+		<a href="/html" title="RoboTamer">Lobby</a>
+		<a href="/index.html" title="Blog">News</a>
 		<a href="/html/PHPTamer" title="PHP Tamer">PHP Tamer</a>
 		<a href="/html/md2static" title="Markdown to Static">md2static</a>
 	</p>

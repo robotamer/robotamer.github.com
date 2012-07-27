@@ -1,8 +1,5 @@
-Markdown to Static
-==================
-
-Menual
---------
+Markdown to Static Manual
+=========================
 
 There are two ways to use Markdown to Static
 

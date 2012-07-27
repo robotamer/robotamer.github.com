@@ -1,4 +1,4 @@
-The MIT License (MIT)
+The MIT License (MIT) for PHP Tamer
 ---------------------
 
 **[Copyright © 2012 RoboTamer](http://robotamer.bitbucket.org)**

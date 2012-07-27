@@ -1,8 +1,5 @@
-Markdown to Static
-==================
-
-Install
---------
+Markdown to Static Installation
+===============================
 
 Markdown to Static is component based, why keep reinnventing the wheel, right?
 

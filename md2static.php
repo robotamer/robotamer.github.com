@@ -108,8 +108,6 @@ foreach($htmlfile as $dir){
 ###########################################################
 #                      BLOG
 #----------------------------------------------------------
-print_r($modified);
-
 foreach($scan as $k => $file){
 	$i = getHeadline($file);
 	if( ! empty($i) ) $headline[$k] = $i;
@@ -117,13 +115,20 @@ foreach($scan as $k => $file){
 $blog = '';
 foreach($headline as $k => $file){
 	$name = pathinfo($file, PATHINFO_FILENAME);
-	$blog .= $k.' <a href="/'.$htmlfilelist[$k].'" title="'.$name.'">'.$name.'</a><hr />'. PHP_EOL;
+	$blog[$modified[$k]['time']]= $modified[$k]['RFC850'] .' <a href="/'.$htmlfilelist[$k].'" title="'.$name.'">'.$name.'</a><hr />'. PHP_EOL;
 }
+
+krsort($blog);
+$i='';
+foreach($blog as $v) $i .= $v;
+$blog = $i;
+unset($v,$k,$i,$e);
+
 S::V()->title()->set('RoboTamer Blog');
 S::V()->metas()->addName('description', 'News summery about RoboTamer PHP Code');
 S::V()->sidebar = '';
-S::V()->raw = $blog;
-file_put_contents('html/blog.html', S::V()->fetch('layout.php'));
+S::V()->raw = "<h1>RoboTamer Blog</h1>" . $blog;
+file_put_contents('index.html', S::V()->fetch('layout.php'));
 
 
 ###########################################################
