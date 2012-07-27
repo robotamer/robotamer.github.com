@@ -86,7 +86,11 @@ foreach($htmlfile as $dir){
 	$sidebar .= $menu;
 	unset($mdir);
 	foreach($dir as  $k => $item){
-		S::V()->sidebar = 'Last modified: '. $modified[$k]['date'];
+		if(isset($modified[$k])){
+			S::V()->sidebar = 'Last modified: '. $modified[$k]['date'];
+		}else{ // New file
+			S::V()->sidebar = 'Last modified: '. date ("Y-m-d" , time());
+		}
 		S::V()->sidebar .= '<hr />' . $sidebar;
 		S::V()->raw = Markdown(file_get_contents($scan[$k]));
 		file_put_contents($item, S::V()->fetch('layout.php'));
