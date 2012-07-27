@@ -14,3 +14,4 @@ Roaddmap
 --------
 
 1. Automate git add, commit and push
+2. Check git and only make and remake new and modified files 
