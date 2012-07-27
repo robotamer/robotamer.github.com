@@ -50,4 +50,22 @@ function rscandir($path = 'md', &$list = array()) {
 	return $list;
 }
 
+function gitModified(){
+
+	exec('git ls-tree -r --name-only HEAD md | while read filename; do echo "$(git log -1 --format="%at" -- $filename) $filename"; done', $m);
+
+	foreach($m as $v){
+		$modified[] = explode(' ', $v);
+	}
+	
+	foreach($modified as $k=>$v){
+		$modified[$k]['date']   = date ("Y-m-d" , $v[0]);
+		$modified[$k]['RFC850'] = date("D, d M Y H:i:s T" , $v[0]);
+		$modified[$k]['time'] = $v[0];
+		$modified[$k]['file'] = $v[1];
+		unset($modified[$k][0], $modified[$k][1]);
+	}
+	return $modified;
+}
+
 ?>

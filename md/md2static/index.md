@@ -3,15 +3,14 @@
 Welcome to the Markdown to Static documentation!
 ================================================
 
+While everybody is going high-tech, I am going low-tech. 
 Markdown to Static is a php script I created in an afternoon because I been frustrated with blogs and wikis.
 
 It takes markdown files and creates static html files according to a php layout file.  
 
 It is all done with connvention rather then configuration.
 
-The script lives in the root folder.
-
-Within the root folder you have following folders
+The script lives in a root document folder. Within that root folder you have following folders:
 
  * **md** The Markdown folder where you write your documents. You can have subfolders too.
  * **html** The html output that is created with the md2static php script

@@ -26,6 +26,17 @@ loadFunc('a');
 rmhtml();
 mkdirs();
 $scan = rscandir('md');
+$modified = gitModified();
+
+/**
+ * Matching up the keys for scan and modified
+ */
+foreach($modified as $v){
+	$k = array_search($v['file'], $scan);
+	if($k !== FALSE) $m[$k] = $v;
+}
+$modified = $m;
+unset($m);
 
 S::set(require PHPL . '/composer/vendor/Aura/View/scripts/instance.php', 'V');
 	S::V()->title()->set('RoboTamer ');
@@ -35,12 +46,11 @@ S::set(require PHPL . '/composer/vendor/Aura/View/scripts/instance.php', 'V');
 	S::V()->metas()->addName('author', 'Dennis T Kaplan');
 	S::V()->metas()->addName('robots', 'index');
 	S::V()->metas()->addName('viewport', 'width=device-width, initial-scale=1.0');
+	S::V()->metas()->addHttp('Window-Target', '_top');
 	S::V()->metas()->addHttp('Content-Type', 'text/html; charset=utf-8');
+	S::V()->metas()->addHttp('Content-Language', 'en-US');
 	S::V()->styles()->add('http://robotamer.bitbucket.org/assets/css/robotamer.css');
-	
-S::V()->title()->set('RoboTamer');
-S::V()->metas()->addName('description', '');
-S::V()->sidebar = '';
+	S::V()->sidebar = '';
 
 define('DS', DIRECTORY_SEPARATOR);
 foreach( $scan as $k=>$mdfile ){
@@ -66,7 +76,8 @@ foreach($htmlfile as $dir){
 	$sidebar .= $menu;
 	unset($mdir);
 	foreach($dir as  $k => $item){
-		S::V()->sidebar = $sidebar;
+		S::V()->sidebar = 'Last modified: '. $modified[$k]['date'];
+		S::V()->sidebar .= $sidebar;
 		S::V()->raw = Markdown(file_get_contents($scan[$k]));
 		file_put_contents($item, S::V()->fetch('layout.php'));
 	}
@@ -133,6 +144,24 @@ function help() {
 EOT;
 	echo $i;
 	exit ;
+}
+
+function gitModified(){
+
+	exec('git ls-tree -r --name-only HEAD md | while read filename; do echo "$(git log -1 --format="%at" -- $filename) $filename"; done', $m);
+
+	foreach($m as $v){
+		$modified[] = explode(' ', $v);
+	}
+	
+	foreach($modified as $k=>$v){
+		$modified[$k]['date']   = date ("Y-m-d" , $v[0]);
+		$modified[$k]['RFC850'] = date("D, d M Y H:i:s T" , $v[0]);
+		$modified[$k]['time'] = $v[0];
+		$modified[$k]['file'] = $v[1];
+		unset($modified[$k][0], $modified[$k][1]);
+	}
+	return $modified;
 }
 
 //#######################################################################

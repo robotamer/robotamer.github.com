@@ -1,0 +1,24 @@
+<root identifier="sciteproj project file">
+	<group name='md2staticdocs' expanded='FALSE'>
+		<file>./md/md2static/Features.md</file>
+		<file>./md/md2static/index.md</file>
+		<file>./md/md2static/License.md</file>
+		<file>./md/md2static/sidebar.html</file>
+	</group>
+	<group name='PHPTamer' expanded='FALSE'>
+		<file>./md/PHPTamer/Facade.md</file>
+		<file>./md/PHPTamer/index.md</file>
+		<file>./md/PHPTamer/License.md</file>
+		<file>./md/PHPTamer/RTCrypter.md</file>
+		<file>./md/PHPTamer/sidebar.html</file>
+	</group>
+	<group name='md2static' expanded='TRUE'>
+		<file>./md2static.php</file>
+		<file>./test.php</file>
+	</group>
+	<group name='General' expanded='FALSE'>
+		<file>./index.html</file>
+		<file>./layout.php</file>
+		<file>./README.md</file>
+	</group>
+</root>
