@@ -18,7 +18,8 @@ Roadmap
 --------
 
  * Highlight code
- * Check git and only make and remake new and modified files 
+ * Check git and only make and remake new and modified files
+ * Blog like index.html file that lists all the headlines in last modified order. 
  
  
  __Any help is welcome__

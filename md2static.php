@@ -3,6 +3,7 @@
 <?php
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
+ini_set('cli_server.color', TRUE);
 define('DS', DIRECTORY_SEPARATOR);
 $commit = FALSE;
 $commit_message = 'Just another commit';
@@ -71,6 +72,7 @@ foreach( $scan as $k=>$mdfile ){
 	$pathinfo = pathinfo($mdfile);
 	$newbase  = 'html'.strstr( $pathinfo['dirname'], '/');
 	if($pathinfo['extension'] = 'md' || $pathinfo['extension'] = 'php'){
+		$htmlfilelist[$k] = $newbase . DS . $pathinfo['filename'] . '.html';
 		$htmlfile[$pathinfo['dirname']][$k] = $newbase . DS . $pathinfo['filename'] . '.html';
 	}
 }
@@ -103,8 +105,30 @@ foreach($htmlfile as $dir){
 	}
 }
 
-echo PHP_EOL ."\tComiting to git ...". PHP_EOL;
+###########################################################
+#                      BLOG
+#----------------------------------------------------------
+print_r($modified);
 
+foreach($scan as $k => $file){
+	$i = getHeadline($file);
+	if( ! empty($i) ) $headline[$k] = $i;
+}
+$blog = '';
+foreach($headline as $k => $file){
+	$name = pathinfo($file, PATHINFO_FILENAME);
+	$blog .= $k.' <a href="/'.$htmlfilelist[$k].'" title="'.$name.'">'.$name.'</a><hr />'. PHP_EOL;
+}
+S::V()->title()->set('RoboTamer Blog');
+S::V()->metas()->addName('description', 'News summery about RoboTamer PHP Code');
+S::V()->sidebar = '';
+S::V()->raw = $blog;
+file_put_contents('html/blog.html', S::V()->fetch('layout.php'));
+
+
+###########################################################
+#                      GIT
+#----------------------------------------------------------
 if($commit === TRUE){
 	echo PHP_EOL ."\tComiting to git ...". PHP_EOL;
 	exec('git add .');
@@ -112,6 +136,13 @@ if($commit === TRUE){
 	exec("git push origin");
 }
 echo PHP_EOL . "\tAll done!".PHP_EOL.PHP_EOL;
+exit(0);
+
+
+###########################################################
+#                      Functions                          
+#----------------------------------------------------------
+
 
 function rscandir($path = 'md', &$list = array()) {
 	$path = empty($path) ? __DIR__ : $path;
@@ -189,6 +220,30 @@ function gitModified(){
 	return $modified;
 }
 
+/**
+ * Fun goto commend (I know, I know but it's fun)
+ */
+function getHeadline($file){
+	$line = ''; $i = 0;
+	$name = pathinfo($file, PATHINFO_FILENAME);
+	$i = substr($name, 0,1);
+	$e = strtoupper($i);
+	if($i == $e){
+		$handle = @fopen($file, "r");
+		if ($handle) {
+			a:
+			$i++;
+			$line = fgets($handle, 4096);
+			$line = trim($line);
+			if($i > 5) trigger_error("File $file seams empty.".PHP_EOL, E_USER_NOTICE);
+			if(empty($line)) goto a;
+			fclose($handle);
+		}
+		return $line;
+	}
+}
+
+
 //#######################################################################
 //# Function: Prompt user and get user input, returns value input by user.
 //#           Or if return pressed returns a default if used e.g usage
@@ -204,7 +259,7 @@ function promptUser($promptStr,$defaultVal=false){;
   else {                                        // No default set
      echo $promptStr. ": ";                     // print prompt only
   } 
-  $name = chop(fgets(STDIN));                   // Read input. Remove CR
+  $name = rtrim(fgets(STDIN));                  // Read input. Remove CR
   if(empty($name)) {                            // No value. Enter was pressed
      return $defaultVal;                        // return default
   }

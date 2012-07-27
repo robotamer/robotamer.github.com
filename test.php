@@ -19,20 +19,52 @@ foreach( $scan as $k=>$mdfile ){
 foreach($htmlfile as $dir){
 	$sidebar = '';
 	foreach($dir as $menuitem){
-		$infoinfo = pathinfo($dir);
+		$infoinfo = pathinfo($menuitem);
 		$name = $pathinfo['filename'];
 		$sidebar .= '<a href="/'.$menuitem.'" title="'.$name.'">'.$name.'</a><br />';		
 	}
 	foreach($dir as $k => $item){
-		$infoinfo = pathinfo($dir);
-		$f['get'][] = $scan[$k];
-		$f['put'][] = $item;
+		$infoinfo = pathinfo($item);
+		$f['get'][$k] = $scan[$k];
+		$f['put'][$k] = $item;
 	}
 }
 
-print_r($scan);
-print_r($htmlfile);
-print_r($f);
+//print_r($scan);
+//print_r($htmlfile);
+//print_r($f);
+
+
+echo PHP_EOL.PHP_EOL;
+foreach($f['get'] as $k => $file){
+	$headline = getHeadline($file);
+	$name = pathinfo($file, PATHINFO_FILENAME);
+	$headline = '<a href=/"'.$f['put'][$k].'" title="'.$name.'">'.$name.'</a><hr />';
+	echo $headline . PHP_EOL;
+}
+echo PHP_EOL.PHP_EOL.PHP_EOL;
+
+function getHeadline($file){
+	$line = ''; $i = 0;
+	$name = pathinfo($file, PATHINFO_FILENAME);
+	$i = substr($name, 0,1);
+	$e = strtoupper($i);
+	if($i == $e){
+		$handle = @fopen($file, "r");
+		if ($handle) {
+			a:
+			$i++;
+			$line = fgets($handle, 4096);
+			$line = trim($line);
+			if($i > 5) trigger_error("File $file seams empty.".PHP_EOL, E_USER_NOTICE);
+			if(empty($line)) goto a;
+			fclose($handle);
+		}
+	}
+	return $line;
+}
+
+
 function rscandir($path = 'md', &$list = array()) {
 	$path = empty($path) ? __DIR__ : $path;
 	$scan = @scandir($path);
