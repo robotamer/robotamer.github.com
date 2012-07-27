@@ -7,6 +7,8 @@ define('DS', DIRECTORY_SEPARATOR);
 $commit = FALSE;
 $commit_message = 'Just another commit';
 echo exec('clear');
+echo PHP_EOL ."\tMarkdown to Static". PHP_EOL;
+
 if (isset($argv[1]) && in_array($argv[1], array('--help', '-help', '-h', 'h', '-?'))) {
 	help();
 }
@@ -30,6 +32,8 @@ if (preg_match('/[^-_@. 0-9A-Za-z]/', $commit_message)) {
 	echo PHP_EOL . "\tDon't get fancy, alnum and ^-_@ char only.".PHP_EOL.PHP_EOL;
 	exit;
 }
+
+echo PHP_EOL ."\tScaning files ...". PHP_EOL;
 
 include __DIR__ . '/../lib/RoboTamer/boot.php';
 include_once "lib/markdown/markdown.php";
@@ -71,6 +75,8 @@ foreach( $scan as $k=>$mdfile ){
 	}
 }
 
+echo PHP_EOL ."\tCreating files ...". PHP_EOL;
+
 foreach($htmlfile as $dir){
 	$sidebar = $menu = '';
 	$mdir = $dir;
@@ -97,13 +103,15 @@ foreach($htmlfile as $dir){
 	}
 }
 
+echo PHP_EOL ."\tComiting to git ...". PHP_EOL;
+
 if($commit === TRUE){
+	echo PHP_EOL ."\tComiting to git ...". PHP_EOL;
 	exec('git add .');
 	exec("git commit -m 'Just another update'");
 	exec("git push origin");
-}else{
-	echo PHP_EOL . "\tAll done!".PHP_EOL.PHP_EOL;
 }
+echo PHP_EOL . "\tAll done!".PHP_EOL.PHP_EOL;
 
 function rscandir($path = 'md', &$list = array()) {
 	$path = empty($path) ? __DIR__ : $path;
