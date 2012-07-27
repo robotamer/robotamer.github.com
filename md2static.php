@@ -1,8 +1,11 @@
+#!/usr/bin/php
+
 <?php
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
 include __DIR__ . '/../lib/RoboTamer/boot.php';
+include_once "lib/markdown/markdown.php";
 loadFunc('a');
 rmhtml();
 mkdirs();
@@ -23,13 +26,34 @@ S::V()->title()->set('RoboTamer');
 S::V()->metas()->addName('description', '');
 S::V()->sidebar = '';
 
-include_once "php-markdown/markdown.php";
+define('DS', DIRECTORY_SEPARATOR);
+foreach( $scan as $k=>$mdfile ){
+	$pathinfo = pathinfo($mdfile);
+	$newbase  = 'html'.strstr( $pathinfo['dirname'], '/');
+	if($pathinfo['extension'] = 'md' || $pathinfo['extension'] = 'php'){
+		$htmlfile[$pathinfo['dirname']][$k] = $newbase . DS . $pathinfo['filename'] . '.html';
+	}
+}
 
-foreach( $scan as $mdfile ){
-	$htmlfile = strstr( 'html'.strstr( $mdfile, '/') , '.md', TRUE).'.html';
-
-	S::V()->raw = Markdown(file_get_contents($mdfile));
-	file_put_contents($htmlfile,S::V()->fetch('layout.php'));
+foreach($htmlfile as $dir){
+	$sidebar = $menu = '';
+	$mdir = $dir;
+	asort($mdir);
+	foreach($mdir as $k => $menuitem){
+		$name = pathinfo($menuitem, PATHINFO_FILENAME);
+		if($name == 'sidebar'){
+			$menu = file_get_contents($scan[$k]);
+		}elseif($name != 'index'){
+			$sidebar .= '<a href="/'.$menuitem.'" title="'.$name.'">'.$name.'</a><br />';
+		}
+	}
+	$sidebar .= $menu;
+	unset($mdir);
+	foreach($dir as  $k => $item){
+		S::V()->sidebar = $sidebar;
+		S::V()->raw = Markdown(file_get_contents($scan[$k]));
+		file_put_contents($item, S::V()->fetch('layout.php'));
+	}
 }
 
 function rscandir($path = 'md', &$list = array()) {
@@ -57,11 +81,11 @@ function mkdirs($path = 'md') {
 
 		if ($file == '.' || $file == '..' || $file == 'assets') continue;
 
-		if (is_dir($path . DIRECTORY_SEPARATOR . $file)) {
-			$dir = $path . DIRECTORY_SEPARATOR . $file;
-			$dir = 'html'.strstr( $dir, '/');
-			if(!is_dir($dir)) mkdir($dir, 0755); 
-			mkdirs($path . DIRECTORY_SEPARATOR . $file);
+		$mddir = $path . DIRECTORY_SEPARATOR . $file;
+		if (is_dir($mddir)) {
+			$htmldir = 'html'.strstr( $mddir, '/');
+			if(!is_dir($htmldir)) mkdir($htmldir, 0755); 
+			mkdirs($mddir);
 		}
 	}
 }

@@ -6,22 +6,33 @@ include __DIR__ . '/../lib/RoboTamer/boot.php';
 $scan = rscandir('md');
 //print_r($scan);
 define('DS', DIRECTORY_SEPARATOR);
-foreach( $scan as $mdfile ){
+foreach( $scan as $k=>$mdfile ){
 	$pathinfo = pathinfo($mdfile);
 	$newbase  = 'html'.strstr( $pathinfo['dirname'], '/');
-	if($pathinfo['extension'] = 'md'){
-		$htmlfile[$pathinfo['dirname']][] = $newbase . DS . $pathinfo['filename'] . '.html';
-	}elseif(strpos($mdfile, 'sidebar.html') > 0 ){
+	if($pathinfo['extension'] = 'md' || $pathinfo['extension'] = 'php'){
+		$htmlfile[$pathinfo['dirname']][$k] = $newbase . DS . $pathinfo['filename'] . '.html';
+	}elseif($pathinfo['filename'] == 'sidebar'){
 		$htmlfile[$pathinfo['dirname']]['sidebar'] = strstr( 'html'.strstr( $mdfile, '/') , '.html', TRUE).'.html';	
 	}
 }
 
 foreach($htmlfile as $dir){
-
+	$sidebar = '';
+	foreach($dir as $menuitem){
+		$infoinfo = pathinfo($dir);
+		$name = $pathinfo['filename'];
+		$sidebar .= '<a href="/'.$menuitem.'" title="'.$name.'">'.$name.'</a><br />';		
+	}
+	foreach($dir as $k => $item){
+		$infoinfo = pathinfo($dir);
+		$f['get'][] = $scan[$k];
+		$f['put'][] = $item;
+	}
 }
 
+print_r($scan);
 print_r($htmlfile);
-
+print_r($f);
 function rscandir($path = 'md', &$list = array()) {
 	$path = empty($path) ? __DIR__ : $path;
 	$scan = @scandir($path);

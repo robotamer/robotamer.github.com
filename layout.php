@@ -19,12 +19,9 @@
     <body>
 		<header>
 	<p>
-		<a href="javascript:url()" title="Blog">Lobby</a>
-		<a href="javascript:url()/PHPTamer" title="Blog">PHP Tamer</a>
-		<a href="http://bitbucket.org/robotamer/phptamer/wiki" title="Wiki">Wiki</a>
-		<a href="http://bitbucket.org/robotamer/phptamer/issues" title="Code">Tickets</a>
-		<a href="http://bitbucket.org/robotamer/phptamer" title="Code">Code</a>
-		<a href="/admin" title="Admin">Admin</a>
+		<a href="/html" title="Blog">Lobby</a>
+		<a href="/html/PHPTamer" title="PHP Tamer">PHP Tamer</a>
+		<a href="/html/md2static" title="Markdown to Static">md2static</a>
 	</p>
 		</header>
 
