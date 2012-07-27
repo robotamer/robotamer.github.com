@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+	<script language="javascript" type="text/javascript">
+		<!--
+		function url() {
+			var url = 'http://' + document.domain + '/';
+		}
+		// -->
+	</script>
+		    <title>RoboTamer </title>
+		    <meta name="description" content="RoboTamer PHP code" />
+    <meta name="copyright" content="Copyright 1998 - 2012" />
+    <meta name="rating" content="General" />
+    <meta name="author" content="Dennis T Kaplan" />
+    <meta name="robots" content="index" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Window-Target" content="_top" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-US" />
+		    <link rel="stylesheet" href="http://robotamer.bitbucket.org/assets/css/robotamer.css" type="text/css" media="screen" />
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+		<header>
+	<p>
+		<a href="/html" title="Blog">Lobby</a>
+		<a href="/html/PHPTamer" title="PHP Tamer">PHP Tamer</a>
+		<a href="/html/md2static" title="Markdown to Static">md2static</a>
+	</p>
+		</header>
+
+        <content>
+            <div style="padding-right: 25em">
+				<h1>Markdown to Static</h1>
+
+<h2>Menual</h2>
+
+<p>There are two ways to use Markdown to Static</p>
+
+<ul>
+<li>Giving a command and argument at the command line</li>
+<li>Interactive answering a couple of questions on the command line</li>
+</ul>
+
+<p>The options have to do with git, if you like to commit and what the commit message should be.</p>
+
+<h3>Interactive</h3>
+
+<pre><code>php md2static.php 
+</code></pre>
+
+<p>You will be asked:</p>
+
+<ol>
+<li>Do we commit to git?[Y] :</li>
+<li>Commit message?[Just another commit] :</li>
+</ol>
+
+<h3>Command line</h3>
+
+<p>To commit to git:</p>
+
+<pre><code>php md2static.php -m My commit message
+</code></pre>
+
+<p>Not to commit to git:</p>
+
+<pre><code>php md2static.php -s
+</code></pre>
+
+<p>Actually any command without an argument will just create and save the pages but not add, commit and push to git </p>
+
+<p>That is it, could it be any simpler?</p>
+                <footer><hr />Copyright &copy; 2012 RoboTamer</footer>
+            </div>
+            <sidebar>
+				Last modified: 2012-07-27<hr /><a href="/html/md2static/Features.html" title="Features">Features</a><br /><a href="/html/md2static/License.html" title="License">License</a><br /><a href="/html/md2static/Menual.html" title="Menual">Menual</a><br /><hr />
+<a href="https://bitbucket.org/robotamer/robotamer.bitbucket.org/issues" title="Issues, bugs etc">Tickets</a><br />
+            </sidebar>
+        </content>
+		<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33624274-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    </body>
+</html>
