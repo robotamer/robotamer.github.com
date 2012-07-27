@@ -9,15 +9,15 @@ Features
  * Simple short php script
  * git history
  * git push and distribute to as many remote hosts you like
+ * Automated git add, commit and push
  * Menus are automaticly created from files in each folder
  * You can have a sidebar file in each folder that gets added to the sidebar below the auto generated menu
 
 Roadmap
 --------
 
- * Automate git add, commit and push
- * Check git and only make and remake new and modified files 
  * Highlight code
+ * Check git and only make and remake new and modified files 
  
  
  __Any help is welcome__

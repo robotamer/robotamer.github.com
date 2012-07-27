@@ -58,7 +58,7 @@ foreach($htmlfile as $dir){
 
 exec('git add .');
 exec("git commit -m 'Just another update'");
-exec("git push -u bitbucket");
+exec("git push origin");
 
 
 function rscandir($path = 'md', &$list = array()) {
