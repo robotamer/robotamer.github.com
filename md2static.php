@@ -1,17 +1,25 @@
-#!/usr/bin/php
+#!/usr/bin/env php
 
 <?php
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
-
-if ($argc == 1 || in_array($argv[1], array('--help', '-help', '-h', 'h', '-?'))) {
+$commit = FALSE;
+$commit_message = 'Just another commit';
+echo exec('clear');
+if (isset($argv[1]) && in_array($argv[1], array('--help', '-help', '-h', 'h', '-?'))) {
 	help();
 }
 
 if (isset($argv[1]) && $argv[1] == '-m' && isset($argv[2])) {
+	$commit = TRUE;
 	$commit_message = $argv[2];
 }else{
-	$commit_message = promptUser('A commit message?', 'Just another commit');
+	$commit = promptUser('Do we commit to git?', 'Y');
+	$commit = trim($commit);
+	if($commit == 'Y'){
+		$commit = TRUE;
+		$commit_message = promptUser('Commit message?', $commit_message);
+	}
 }
 
 $commit_message = trim($commit_message);
@@ -76,17 +84,20 @@ foreach($htmlfile as $dir){
 	$sidebar .= $menu;
 	unset($mdir);
 	foreach($dir as  $k => $item){
-		S::V()->sidebar = 'Last modified: '. $modified[$k]['date'].'<hr />';
-		S::V()->sidebar .= $sidebar;
+		S::V()->sidebar = 'Last modified: '. $modified[$k]['date'];
+		S::V()->sidebar .= '<hr />' . $sidebar;
 		S::V()->raw = Markdown(file_get_contents($scan[$k]));
 		file_put_contents($item, S::V()->fetch('layout.php'));
 	}
 }
 
-exec('git add .');
-exec("git commit -m 'Just another update'");
-exec("git push origin");
-
+if($commit === TRUE){
+	exec('git add .');
+	exec("git commit -m 'Just another update'");
+	exec("git push origin");
+}else{
+	echo PHP_EOL . "\tAll done!".PHP_EOL.PHP_EOL;
+}
 
 function rscandir($path = 'md', &$list = array()) {
 	$path = empty($path) ? __DIR__ : $path;

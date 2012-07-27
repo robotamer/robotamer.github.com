@@ -12,6 +12,7 @@ Features
  * Automated git add, commit and push
  * Menus are automaticly created from files in each folder
  * You can have a sidebar file in each folder that gets added to the sidebar below the auto generated menu
+ * We have a last modified date on each page. This date is exracted from git for each file in the md folder 
 
 Roadmap
 --------

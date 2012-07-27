@@ -37,7 +37,7 @@
                 <footer><hr />Copyright &copy; 2012 RoboTamer</footer>
             </div>
             <sidebar>
-				<?= $this->__raw()->sidebar?>
+				<?= $this->__raw()->sidebar ?>
             </sidebar>
         </content>
 		<?= S::V()->scripts()->get()?>
