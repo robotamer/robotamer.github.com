@@ -1,6 +1,6 @@
 PHP Tamer
 =========
 
-PHP Tamer is a component based framework while aming for component independentcy.
+PHP Tamer is a component based framework while aiming for component interdependency.
 
-A system called PHPTamer Facade is in the works, Facade is a component dependency substitution system to achieve component independentcy via the facade programming pattern.
+A system called PHPTamer Facade is in the works, Facade is a component dependency substitution system to achieve component interdependency via the facade programming pattern.

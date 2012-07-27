@@ -8,7 +8,7 @@ Markdown to Static is a php script I created in an afternoon because I been frus
 
 It takes markdown files and creates static html files according to a php layout file.  
 
-It is all done with connvention rather then configuration.
+It is all done with convention rather then configuration.
 
 The script lives in a root document folder. Within that root folder you have following folders:
 
