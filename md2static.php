@@ -3,6 +3,7 @@
 <?php
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
+define('DS', DIRECTORY_SEPARATOR);
 $commit = FALSE;
 $commit_message = 'Just another commit';
 echo exec('clear');
@@ -13,6 +14,8 @@ if (isset($argv[1]) && in_array($argv[1], array('--help', '-help', '-h', 'h', '-
 if (isset($argv[1]) && $argv[1] == '-m' && isset($argv[2])) {
 	$commit = TRUE;
 	$commit_message = $argv[2];
+}elseif (isset($argv[1])) {
+	$commit = FALSE;
 }else{
 	$commit = promptUser('Do we commit to git?', 'Y');
 	$commit = trim($commit);
@@ -48,7 +51,7 @@ unset($m);
 
 S::set(require PHPL . '/composer/vendor/Aura/View/scripts/instance.php', 'V');
 	S::V()->title()->set('RoboTamer ');
-	S::V()->metas()->addName('description', '');
+	S::V()->metas()->addName('description', 'RoboTamer PHP code');
 	S::V()->metas()->addName('copyright', 'Copyright 1998 - 2012');
 	S::V()->metas()->addName('rating', 'General');
 	S::V()->metas()->addName('author', 'Dennis T Kaplan');
@@ -60,7 +63,6 @@ S::set(require PHPL . '/composer/vendor/Aura/View/scripts/instance.php', 'V');
 	S::V()->styles()->add('http://robotamer.bitbucket.org/assets/css/robotamer.css');
 	S::V()->sidebar = '';
 
-define('DS', DIRECTORY_SEPARATOR);
 foreach( $scan as $k=>$mdfile ){
 	$pathinfo = pathinfo($mdfile);
 	$newbase  = 'html'.strstr( $pathinfo['dirname'], '/');
