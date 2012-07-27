@@ -27,7 +27,7 @@ if (isset($argv[1]) && $argv[1] == '-m' && isset($argv[2])) {
 
 $commit_message = trim($commit_message);
 if (preg_match('/[^-_@. 0-9A-Za-z]/', $commit_message)) {
-	echo PHP_EOL . "\tDon't get fancy, alnum char only.".PHP_EOL.PHP_EOL;
+	echo PHP_EOL . "\tDon't get fancy, alnum and ^-_@ char only.".PHP_EOL.PHP_EOL;
 	exit;
 }
 
