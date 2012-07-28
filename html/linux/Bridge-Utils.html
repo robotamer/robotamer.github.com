@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+	<script language="javascript" type="text/javascript">
+		<!--
+		function url() {
+			var url = 'http://' + document.domain + '/';
+		}
+		// -->
+	</script>
+		    <title>RoboTamer </title>
+		    <meta name="description" content="RoboTamer PHP code" />
+    <meta name="copyright" content="Copyright 1998 - 2012" />
+    <meta name="rating" content="General" />
+    <meta name="author" content="Dennis T Kaplan" />
+    <meta name="robots" content="index" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Window-Target" content="_top" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-US" />
+		    <link rel="stylesheet" href="http://robotamer.bitbucket.org/assets/css/robotamer.css" type="text/css" media="screen" />
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+		<header>
+	<p>
+		<a href="/html" title="RoboTamer">Lobby</a>
+		<a href="/index.html" title="Blog">News</a>
+		<a href="/html/PHPTamer" title="PHP Tamer">PHP Tamer</a>
+		<a href="/html/md2static" title="Markdown to Static">md2static</a>
+	</p>
+		</header>
+
+        <content>
+            <div style="padding-right: 25em">
+				<h1>Bridge-Utils for LXC</h1>
+
+<h2>Bridging Network Connections</h2>
+
+<pre><code>apt-get install bridge-utils
+
+
+brctl addbr br0
+</code></pre>
+
+<p>Edit: 
+    /etc/network/interfaces
+    # The loopback network interface
+    auto lo
+    iface lo inet loopback</p>
+
+<pre><code># Bridge between eth0 and eth1
+auto br0
+
+# DHCP would look like this but we will use static
+# iface br0 inet dhcp
+
+iface br0 inet static
+address 192.168.1.100
+network 192.168.1.0
+gateway 192.168.1.1
+broadcast 192.168.1.255
+netmask 255.255.255.0
+dns-nameservers 192.168.1.1
+#dns-search example.com 
+
+  pre-up ip link set eth0 down
+  pre-up ip link set eth1 down
+  pre-up brctl addbr br0
+  pre-up brctl addif br0 eth0 eth1
+  pre-up ip addr flush dev eth0
+  pre-up ip addr flush dev eth1
+  post-down ip link set eth0 down
+  post-down ip link set eth1 down
+  post-down ip link set br0 down
+  post-down brctl delif br0 eth0 eth1
+  post-down brctl delbr br0
+</code></pre>
+
+<p>Restart network:</p>
+
+<pre><code>/etc/init.d/networking stop
+/etc/init.d/networking start
+</code></pre>
+
+<p>Turn on the bridge:<br />
+    ip link set br0 up</p>
+
+<p>Let's check:<br />
+    ifconfig</p>
+
+<pre><code>brctl show
+
+ip addr show
+</code></pre>
+
+<p>Bridge Notes:
+How to remove a bridge {bring down first then delete}</p>
+
+<pre><code>ip link set br0 down
+brctl delbr br0
+</code></pre>
+
+<h1>LXC Setup</h1>
+
+<pre><code>#cat /etc/network/interfaces
+auto lo
+iface lo inet loopback
+up route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+down route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+
+# device: eth0
+auto eth0
+iface eth0 inet manual
+
+auto br0
+iface br0 inet static
+       address 70.22.189.58
+       netmask 255.255.255.248
+       gateway 70.22.189.57
+       broadcast 70.22.189.63
+       bridge_ports eth0
+       bridge_fd 0
+       bridge_maxwait 0
+       bridge_stp off
+        post-up ip route add 70.22.189.59 dev br0
+        post-up ip route add 70.22.189.60 dev br0
+        post-up ip route add 70.22.189.61 dev br0
+        post-up ip route add 70.22.189.62 dev br0
+</code></pre>
+
+<p>More info at:
+http://www.shorewall.net/LXC.html</p>
+                <footer><hr />Copyright &copy; 2012 RoboTamer</footer>
+            </div>
+            <sidebar>
+				Last modified: 2012-07-27<hr /><a href="/html/linux/Bridge-Utils.html" title="Bridge-Utils">Bridge-Utils</a><br />            </sidebar>
+        </content>
+		<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33624274-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    </body>
+</html>

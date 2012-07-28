@@ -8,7 +8,7 @@ define('DS', DIRECTORY_SEPARATOR);
 $commit = FALSE;
 $commit_message = 'Just another commit';
 echo exec('clear');
-echo PHP_EOL ."\tMarkdown to Static". PHP_EOL;
+echo PHP_EOL ."\tMarkdown to Static". PHP_EOL. PHP_EOL;
 
 if (isset($argv[1]) && in_array($argv[1], array('--help', '-help', '-h', 'h', '-?'))) {
 	help();
@@ -39,20 +39,38 @@ echo PHP_EOL ."\tScaning files ...". PHP_EOL;
 include __DIR__ . '/../lib/RoboTamer/boot.php';
 include_once "lib/markdown/markdown.php";
 loadFunc('a');
+
+$get_file_list_array = rscandir('md');
+set_html_folder_structur();
+
+echo PHP_EOL ."\tRemoving old files ...". PHP_EOL;
 rmhtml();
+
+echo PHP_EOL ."\tCreating new folders ...". PHP_EOL;
 mkdirs();
-$scan = rscandir('md');
+
+echo PHP_EOL ."\tGetting last modified info ...". PHP_EOL;
 $modified = gitModified();
 
 /**
  * Matching up the keys for scan and modified
  */
 foreach($modified as $v){
-	$k = array_search($v['file'], $scan);
+	$k = array_search($v['file'], $get_file_list_array);
 	if($k !== FALSE) $m[$k] = $v;
 }
 $modified = $m;
 unset($m);
+
+$t = time();
+foreach($get_file_list_array as $k=>$v){
+	if(!isset($modified[$k])){
+		$modified[$k]['time']   = $t;
+		$modified[$k]['date']   = date ("Y-m-d" , $t);
+		$modified[$k]['RFC850'] = date("D, d M Y H:i:s T" , $t);
+		$modified[$k]['file']   = $v;
+	}
+}
 
 S::set(require PHPL . '/composer/vendor/Aura/View/scripts/instance.php', 'V');
 	S::V()->title()->set('RoboTamer ');
@@ -68,25 +86,16 @@ S::set(require PHPL . '/composer/vendor/Aura/View/scripts/instance.php', 'V');
 	S::V()->styles()->add('http://robotamer.bitbucket.org/assets/css/robotamer.css');
 	S::V()->sidebar = '';
 
-foreach( $scan as $k=>$mdfile ){
-	$pathinfo = pathinfo($mdfile);
-	$newbase  = 'html'.strstr( $pathinfo['dirname'], '/');
-	if($pathinfo['extension'] = 'md' || $pathinfo['extension'] = 'php'){
-		$htmlfilelist[$k] = $newbase . DS . $pathinfo['filename'] . '.html';
-		$htmlfile[$pathinfo['dirname']][$k] = $newbase . DS . $pathinfo['filename'] . '.html';
-	}
-}
-
 echo PHP_EOL ."\tCreating files ...". PHP_EOL;
 
-foreach($htmlfile as $dir){
+foreach($put_file_structure_array as $dir){
 	$sidebar = $menu = '';
 	$mdir = $dir;
 	asort($mdir);
 	foreach($mdir as $k => $menuitem){
 		$name = pathinfo($menuitem, PATHINFO_FILENAME);
 		if($name == 'sidebar'){
-			$menu = file_get_contents($scan[$k]);
+			$menu = file_get_contents($get_file_list_array[$k]);
 		}elseif($name != 'index'){
 			$sidebar .= '<a href="/'.$menuitem.'" title="'.$name.'">'.$name.'</a><br />';
 		}
@@ -94,13 +103,9 @@ foreach($htmlfile as $dir){
 	$sidebar .= $menu;
 	unset($mdir);
 	foreach($dir as  $k => $item){
-		if(isset($modified[$k])){
-			S::V()->sidebar = 'Last modified: '. $modified[$k]['date'];
-		}else{ // New file
-			S::V()->sidebar = 'Last modified: '. date ("Y-m-d" , time());
-		}
+		S::V()->sidebar = 'Last modified: '. $modified[$k]['date'];
 		S::V()->sidebar .= '<hr />' . $sidebar;
-		S::V()->raw = Markdown(file_get_contents($scan[$k]));
+		S::V()->raw = Markdown(file_get_contents($get_file_list_array[$k]));
 		file_put_contents($item, S::V()->fetch('layout.php'));
 	}
 }
@@ -108,14 +113,17 @@ foreach($htmlfile as $dir){
 ###########################################################
 #                      BLOG
 #----------------------------------------------------------
-foreach($scan as $k => $file){
+echo PHP_EOL ."\tCreating Blog ...". PHP_EOL;
+
+foreach($get_file_list_array as $k => $file){
 	$i = getHeadline($file);
 	if( ! empty($i) ) $headline[$k] = $i;
 }
 $blog = '';
+
 foreach($headline as $k => $file){
 	$name = pathinfo($file, PATHINFO_FILENAME);
-	$blog[$modified[$k]['time']]= $modified[$k]['RFC850'] .' <a href="/'.$htmlfilelist[$k].'" title="'.$name.'">'.$name.'</a><hr />'. PHP_EOL;
+	$blog[$modified[$k]['time']]= $modified[$k]['RFC850'] .' <a href="/'.$get_file_list_array[$k].'" title="'.$name.'">'.$name.'</a><hr />'. PHP_EOL;
 }
 
 krsort($blog);
@@ -166,22 +174,53 @@ function rscandir($path = 'md', &$list = array()) {
 	return $list;
 }
 
+function set_html_folder_structur($htmlfolder = 'html'){
 
-function mkdirs($path = 'md') {
+	$put_file_list_array = $put_file_structure_array = array();
+	
+	global $get_file_list_array, $put_file_list_array, $put_file_structure_array;
 
-	$scan = @scandir($path);
-	foreach ($scan as $file) {
+	foreach ($get_file_list_array as $k => $item) {
 
-		if ($file == '.' || $file == '..' || $file == 'assets') continue;
+		$pathinfo = pathinfo($item);
 
-		$mddir = $path . DIRECTORY_SEPARATOR . $file;
-		if (is_dir($mddir)) {
-			$htmldir = 'html'.strstr( $mddir, '/');
-			if(!is_dir($htmldir)) mkdir($htmldir, 0755); 
-			mkdirs($mddir);
-		}
+		if($pathinfo['extension'] = 'md' || $pathinfo['extension'] = 'php'){
+		
+			$newbase  = $htmlfolder.strstr( $pathinfo['dirname'], '/');
+
+			$put_file_list_array[$k] = $newbase . DS . $pathinfo['filename'] . '.html';
+			
+			$put_file_structure_array[$pathinfo['dirname']][$k] = $newbase . DS . $pathinfo['filename'] . '.html';
+		}	
 	}
 }
+
+
+function mkdirs($mdfolder = 'md', $htmlfolder = 'html') {
+
+	if ( ! is_dir($mdfolder)) {
+		trigger_error('Could not find md folder, are you running this file from your root doc folder?', E_USER_ERROR);
+		exit(1);	
+	}
+	if ( ! is_dir($htmlfolder)) {
+		 mkdir($htmlfolder, 0755); 
+	}
+
+        $scan = @scandir($mdfolder);
+        foreach ($scan as $item) {
+
+                if ($item == '.' || $item == '..' || $item == 'assets') continue;
+
+                $mddir = $mdfolder . DIRECTORY_SEPARATOR . $item;
+                if (is_dir($mddir)) {
+                        $htmldir = $htmlfolder.strstr( $mddir, '/');
+                        if(!is_dir($htmldir)) mkdir($htmldir, 0755); 
+                        mkdirs($mddir);
+                }
+        }
+}
+
+
 
 function rmhtml($path = 'html') {
 
