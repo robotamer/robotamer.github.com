@@ -123,7 +123,7 @@ $blog = '';
 
 foreach($headline as $k => $file){
 	$name = pathinfo($file, PATHINFO_FILENAME);
-	$blog[$modified[$k]['time']]= $modified[$k]['RFC850'] .' <a href="/'.$get_file_list_array[$k].'" title="'.$name.'">'.$name.'</a><hr />'. PHP_EOL;
+	$blog[$modified[$k]['time']]= $modified[$k]['RFC850'] .' <a href="/'.$put_file_list_array[$k].'" title="'.$name.'">'.$name.'</a><hr />'. PHP_EOL;
 }
 
 krsort($blog);
