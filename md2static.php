@@ -83,7 +83,7 @@ S::set(require PHPL . '/composer/vendor/Aura/View/scripts/instance.php', 'V');
 	S::V()->metas()->addHttp('Window-Target', '_top');
 	S::V()->metas()->addHttp('Content-Type', 'text/html; charset=utf-8');
 	S::V()->metas()->addHttp('Content-Language', 'en-US');
-	S::V()->styles()->add('http://robotamer.bitbucket.org/assets/css/robotamer.css');
+	S::V()->styles()->add('/assets/css/robotamer.css');
 	S::V()->sidebar = '';
 
 echo PHP_EOL ."\tCreating files ...". PHP_EOL;

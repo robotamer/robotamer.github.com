@@ -18,7 +18,7 @@
     <meta http-equiv="Window-Target" content="_top" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Language" content="en-US" />
-		    <link rel="stylesheet" href="http://robotamer.bitbucket.org/assets/css/robotamer.css" type="text/css" media="screen" />
+		    <link rel="stylesheet" href="/assets/css/robotamer.css" type="text/css" media="screen" />
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -46,13 +46,13 @@
 brctl addbr br0
 </code></pre>
 
-<p>Edit: 
-    /etc/network/interfaces
-    # The loopback network interface
-    auto lo
-    iface lo inet loopback</p>
+<p>Edit: /etc/network/interfaces</p>
 
-<pre><code># Bridge between eth0 and eth1
+<pre><code># The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Bridge between eth0 and eth1
 auto br0
 
 # DHCP would look like this but we will use static

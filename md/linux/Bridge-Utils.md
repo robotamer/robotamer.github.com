@@ -10,8 +10,8 @@ Bridging Network Connections
 
 	brctl addbr br0
 
-Edit: 
-	/etc/network/interfaces
+Edit: /etc/network/interfaces
+
 	# The loopback network interface
 	auto lo
 	iface lo inet loopback
