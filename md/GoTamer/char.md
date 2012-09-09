@@ -10,7 +10,7 @@ char
 
 
 Here is a little test program
-```go
+
 
 	package main
 
@@ -29,7 +29,15 @@ Here is a little test program
 		print(b, "\t", c, "\t", i, "\n")	
 	}
 
-```
+
+###Links
+ * [Pkg Documantation](http://go.pkgdoc.org/github.com/gotamer/char "GoTamer Pkg Documentation")
+ * [Repository](https://bitbucket.org/gotamer/char "GoTamer Repository")
+
+
+
+_________________________________________________________
+
 
 Copyright (c) 2012 The GoTamer Authors. All rights reserved.
 ============================================================
