@@ -1,5 +1,5 @@
 gotamer/mail
-############
+============
 
 Simple interface to Go SMTP package
 
@@ -38,8 +38,8 @@ The way I got around that is by using [CAcert][1]. [CAcert][1] provides FREE dig
 
 
 
-
- * [Pkg Documantation](http://go.pkgdoc.org/github.com/gotamer/mail "GoTamer Mail Repository")
+### Links
+ * [Pkg Documantation](http://go.pkgdoc.org/github.com/gotamer/mail "GoTamer Mail Pkg Documentation")
  * [Repository](https://bitbucket.org/gotamer/mail "GoTamer Mail Repository")
 
 

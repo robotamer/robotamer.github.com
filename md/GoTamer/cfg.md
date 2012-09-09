@@ -1,5 +1,5 @@
 gotamer/cfg
-###########
+===========
 
 gotamer/cfg is a json configuration package for Go
 You define your config items in your Go applications main package as a struct
@@ -34,15 +34,17 @@ definition in your main application, if it doesn't already exist.
 	}
 
 
-#Links
+###Links
  * [Pkg Documantation](http://go.pkgdoc.org/github.com/gotamer/cfg "GoTamer Pkg Documentation")
  * [Repository](https://bitbucket.org/gotamer/cfg "GoTamer Repository")
 
 
 
-#Note
+###Note
 Had some help creating this package, you can read all about it at 
 [Go Nuts](https://groups.google.com/forum/?fromgroups=#!topic/golang-nuts/3iYS3UNYJUo "Go Nuts")
+
+
 
 
 Copyright (c) 2012 The GoTamer Authors. All rights reserved.

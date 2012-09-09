@@ -16,7 +16,7 @@ gotamer/conv
 
 
 
- * [Pkg Documantation](http://go.pkgdoc.org/github.com/gotamer/conv "GoTamer Conversion Repository")
+ * [Pkg Documantation](http://go.pkgdoc.org/github.com/gotamer/conv "GoTamer Conversion Pkg Documentation")
  * [Repository](https://bitbucket.org/gotamer/conv "GoTamer Conversion Repository")
  
 
