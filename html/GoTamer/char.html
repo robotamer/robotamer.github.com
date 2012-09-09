@@ -37,21 +37,74 @@
 
         <content>
             <div style="padding-right: 25em">
-				<h1>RoboTamer Facade</h1>
+				<h1>char</h1>
 
-<p>Facade's main focus is a to be a component dependency substitution system, and will achieve component interdependency via the facade programming pattern.</p>
+<h4>Converts characters from</h4>
 
-<p>With Facade you can build a cli or web framework by mixing components from <a href="http://pear.php.net">Pear</a>, <a href="http://zendframework.com/">Zend</a>, <a href="http://getcomposer.org/">Composer</a> or just standalone classes from let's say
-<a href="http://www.phpclasses.org">PHPClasses</a>.</p>
+<ul>
+<li>string to byte </li>
+<li>string to int </li>
+<li>byte   to string </li>
+<li>byte   to int </li>
+</ul>
 
-<p>Facade is a sub component of PHPTamer, which includes a collection of libraries, and recommends tested components to help you get started.</p>
+<p>Here is a little test program
+```go</p>
+
+<pre><code>package main
+
+import "gotamer/char"
+
+func main() {
+
+    var b byte
+    var c string
+    var i int
+
+    a := char.NewString("h")
+    b  = a.GetByte()
+    c  = a.GetString()
+    i  = a.GetInt()
+    print(b, "\t", c, "\t", i, "\n")    
+}
+</code></pre>
+
+<p>```</p>
+
+<h1>Copyright (c) 2012 The GoTamer Authors. All rights reserved.</h1>
+
+<p>Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:</p>
+
+<ul>
+<li>Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.</li>
+<li>Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.</li>
+<li>Neither the name of GoTamer nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.</li>
+</ul>
+
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
                 <footer><hr />Copyright &copy; 2012 RoboTamer</footer>
             </div>
             <sidebar>
-				Last modified: 2012-07-27<hr /><a href="/html/PHPTamer/Facade.html" title="Facade">Facade</a><br /><a href="/html/PHPTamer/License.html" title="License">License</a><br /><a href="/html/PHPTamer/RTCrypter.html" title="RTCrypter">RTCrypter</a><br /><a href="/html/PHPTamer/RTSingleton.html" title="RTSingleton">RTSingleton</a><br /><hr />
-<a href="http://bitbucket.org/robotamer/phptamer/wiki" title="Wiki">Wiki</a><br />
-<a href="http://bitbucket.org/robotamer/phptamer/issues" title="Tickets">Tickets</a><br />
-<a href="http://bitbucket.org/robotamer/phptamer" title="Code">Code</a><br />
+				Last modified: 2012-09-09<hr /><a href="/html/GoTamer/cfg.html" title="cfg">cfg</a><br /><a href="/html/GoTamer/char.html" title="char">char</a><br /><a href="/html/GoTamer/conv.html" title="conv">conv</a><br /><a href="/html/GoTamer/mail.html" title="mail">mail</a><br /><hr />
+<a href="https://bitbucket.org/gotamer" title="Code">Code</a><br />
             </sidebar>
         </content>
 		    <script language="javascript" type="text/javascript" src="/assets/js/bitbucket_embed.js"></script>

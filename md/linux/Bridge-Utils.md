@@ -4,11 +4,15 @@ Bridge-Utils for LXC
 Bridging Network Connections
 ----------------------------
 
+Install
 
 	apt-get install bridge-utils
 
 
+Start the bridge:
+
 	brctl addbr br0
+
 
 Edit: /etc/network/interfaces
 
@@ -51,13 +55,14 @@ Restart network:
 
 
 Turn on the bridge:  
+
 	ip link set br0 up
 
-Let's check:  
+
+Let's check: 
+ 
 	ifconfig
-
 	brctl show
-
 	ip addr show
 
 
@@ -66,6 +71,7 @@ How to remove a bridge {bring down first then delete}
 
 	ip link set br0 down
 	brctl delbr br0
+
 
 
 LXC Setup
@@ -98,4 +104,4 @@ LXC Setup
 
 
 More info at:
-http://www.shorewall.net/LXC.html
+[shorewall.net](http://www.shorewall.net/LXC.html)

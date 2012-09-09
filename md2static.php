@@ -38,6 +38,7 @@ echo PHP_EOL ."\tScaning files ...". PHP_EOL;
 
 include __DIR__ . '/../lib/RoboTamer/boot.php';
 include_once "lib/markdown/markdown.php";
+//include 'lib/markdown-extra-extended/markdown_extended.php';
 loadFunc('a');
 
 $get_file_list_array = rscandir('md');
@@ -103,9 +104,17 @@ foreach($put_file_structure_array as $dir){
 	$sidebar .= $menu;
 	unset($mdir);
 	foreach($dir as  $k => $item){
+		$ext = pathinfo($item, PATHINFO_EXTENSION);
 		S::V()->sidebar = 'Last modified: '. $modified[$k]['date'];
 		S::V()->sidebar .= '<hr />' . $sidebar;
-		S::V()->raw = Markdown(file_get_contents($get_file_list_array[$k]));
+		if($ext = 'php'){
+			ob_start();
+			include $get_file_list_array[$k];
+			$i = ob_get_clean();
+			S::V()->raw = Markdown($i);		
+		}else{
+			S::V()->raw = Markdown(file_get_contents($get_file_list_array[$k]));
+		}
 		file_put_contents($item, S::V()->fetch('layout.php'));
 	}
 }

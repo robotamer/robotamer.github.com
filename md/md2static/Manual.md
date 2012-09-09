@@ -9,16 +9,13 @@ There are two ways to use Markdown to Static
 The options have to do with git, if you like to commit and what the commit message should be.
 
 ###Interactive
-
-    php md2static.php 
-	
 You will be asked:
 
-1. Do we commit to git?[Y] :
-2. Commit message?[Just another commit] :
+	php md2static.php
+	Do we commit to git?[Y] :
+	Commit message?[Just another commit] :
 
-###Command line
-
+###Single Command line
 To commit to git:
 
     php md2static.php -m My commit message
