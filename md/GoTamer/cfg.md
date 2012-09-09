@@ -45,6 +45,7 @@ Had some help creating this package, you can read all about it at
 [Go Nuts](https://groups.google.com/forum/?fromgroups=#!topic/golang-nuts/3iYS3UNYJUo "Go Nuts")
 
 
+_________________________________________________________
 
 
 Copyright (c) 2012 The GoTamer Authors. All rights reserved.
