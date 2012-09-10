@@ -36,7 +36,7 @@ Here is an example of how to use it:
 
 
 ### Links
- * [Pkg Documantation](http://go.pkgdoc.org/github.com/gotamer/cfg "GoTamer Pkg Documentation")
+ * [Pkg Documantation](http://go.pkgdoc.org/bitbucket.org/gotamer/cfg "GoTamer Pkg Documentation")
  * [Repository](https://bitbucket.org/gotamer/cfg "GoTamer Repository")
 
 _________________________________________________________

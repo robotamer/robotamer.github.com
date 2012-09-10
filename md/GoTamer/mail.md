@@ -39,7 +39,7 @@ The way I got around that is by using [CAcert][1]. [CAcert][1] provides FREE dig
 
 
 ### Links
- * [Pkg Documantation](http://go.pkgdoc.org/github.com/gotamer/mail "GoTamer Mail Pkg Documentation")
+ * [Pkg Documantation](http://go.pkgdoc.org/bitbucket.org/gotamer/mail "GoTamer Mail Pkg Documentation")
  * [Repository](https://bitbucket.org/gotamer/mail "GoTamer Mail Repository")
 
 

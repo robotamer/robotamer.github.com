@@ -31,7 +31,7 @@ Here is a little test program
 
 
 ###Links
- * [Pkg Documantation](http://go.pkgdoc.org/github.com/gotamer/char "GoTamer Pkg Documentation")
+ * [Pkg Documantation](http://go.pkgdoc.org/bitbucket.org/gotamer/char "GoTamer Pkg Documentation")
  * [Repository](https://bitbucket.org/gotamer/char "GoTamer Repository")
 
 
