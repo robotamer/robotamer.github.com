@@ -41,8 +41,8 @@
             </div>
             <sidebar>
 				<?= $this->__raw()->sidebar ?>
-            </sidebar>
 			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
+            </sidebar>
         </content>
 		<?= S::V()->scripts()->get()?>
     <script language="javascript" type="text/javascript" src="/assets/js/bitbucket_embed.js"></script>
