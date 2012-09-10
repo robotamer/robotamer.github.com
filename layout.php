@@ -37,11 +37,12 @@
 					echo $this->content;
 				}
 				?>
-                <footer><hr />Copyright &copy; 2012 RoboTamer</footer>
+                
             </div>
             <sidebar>
 				<?= $this->__raw()->sidebar ?>
             </sidebar>
+			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
         </content>
 		<?= S::V()->scripts()->get()?>
     <script language="javascript" type="text/javascript" src="/assets/js/bitbucket_embed.js"></script>
