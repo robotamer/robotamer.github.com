@@ -6,6 +6,7 @@ You define your config items in your Go applications main package as a struct
 gotamer/cfg creates a json template file for you, according to the struct 
 definition in your main application, if it doesn't already exist.
 
+Here is an example of how to use it:
 
 	package main
 
@@ -25,26 +26,24 @@ definition in your main application, if it doesn't already exist.
 	}
 
 	func main() {
-		err := cfg.Get(Cfg)
+		cfg.APPL = "cafemaker"
+		err := cfg.Get(&Cfg)
 		if err != nil {
-			println("Handle your errors: ", err)
+			println("CONFIG: ", err)
 			return
 		}
-		fmt.Printf("%s", Cfg)
 	}
 
 
-###Links
+### Links
  * [Pkg Documantation](http://go.pkgdoc.org/github.com/gotamer/cfg "GoTamer Pkg Documentation")
  * [Repository](https://bitbucket.org/gotamer/cfg "GoTamer Repository")
 
+_________________________________________________________
 
-
-###Note
+### Note & Credits
 Had some help creating this package, you can read all about it at 
 [Go Nuts](https://groups.google.com/forum/?fromgroups=#!topic/golang-nuts/3iYS3UNYJUo "Go Nuts")
-
-
 _________________________________________________________
 
 
