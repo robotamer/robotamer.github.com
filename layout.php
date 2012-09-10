@@ -40,6 +40,12 @@
                 
             </div>
             <sidebar>
+				<div style="text-align: center; ">
+                    <img width="90" height="110" border="0" src="/assets/img/robotamer.gif"/>
+                    <hr />
+                </div>
+			
+			
 				<?= $this->__raw()->sidebar ?>
 			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
             </sidebar>
