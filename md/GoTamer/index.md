@@ -1,5 +1,5 @@
 GoTamer
-=========
+=======
 
 GoTamer is a collection of libraries & applications for the [Go Programming Language][go].
 
