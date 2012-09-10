@@ -38,12 +38,59 @@
 
         <content>
             <div style="padding-right: 25em">
-				<p><hr />
-<a href="https://bitbucket.org/gotamer" title="Code">Code</a><br /></p>
+				<h1>gotamer/cfg</h1>
+
+<p>gotamer/cfg is a json configuration package for Go
+You define your config items in your Go applications main package as a struct
+gotamer/cfg creates a json template file for you, according to the struct 
+definition in your main application, if it doesn't already exist.</p>
+
+<p>Here is an example of how to use it:</p>
+
+<pre><code>package main
+
+import (
+    "gotamer/cfg" // Or bitbucket.org/gotamer/cfg
+    "fmt"
+)
+
+var Cfg JsonCfg
+
+type JsonCfg struct{
+    Appl       string
+    Hostname   string
+    ListenAddr string
+    IpAddr     string
+    Debug      uint
+}
+
+func main() {
+    cfg.APPL = "cafemaker"
+    err := cfg.Get(&amp;Cfg)
+    if err != nil {
+        println("CONFIG: ", err)
+        return
+    }
+}
+</code></pre>
+
+<h3>Links</h3>
+
+<ul>
+<li><a href="http://go.pkgdoc.org/bitbucket.org/gotamer/cfg" title="GoTamer Pkg Documentation">Pkg Documantation</a></li>
+<li><a href="https://bitbucket.org/gotamer/cfg" title="GoTamer Repository">Repository</a></li>
+</ul>
+
+<hr />
+
+<h3>Note &amp; Credits</h3>
+
+<p>Had some help creating this package, you can read all about it at 
+<a href="https://groups.google.com/forum/?fromgroups=#!topic/golang-nuts/3iYS3UNYJUo" title="Go Nuts">Go Nuts</a></p>
                 
             </div>
             <sidebar>
-				Last modified: 2012-09-09<hr /><a href="/html/GoTamer/Cfg.html" title="Cfg">Cfg</a><br /><a href="/html/GoTamer/Char.html" title="Char">Char</a><br /><a href="/html/GoTamer/Conv.html" title="Conv">Conv</a><br /><a href="/html/GoTamer/License.html" title="License">License</a><br /><a href="/html/GoTamer/Mail.html" title="Mail">Mail</a><br /><hr />
+				Last modified: 2012-09-10<hr /><a href="/html/GoTamer/Cfg.html" title="Cfg">Cfg</a><br /><a href="/html/GoTamer/Char.html" title="Char">Char</a><br /><a href="/html/GoTamer/Conv.html" title="Conv">Conv</a><br /><a href="/html/GoTamer/License.html" title="License">License</a><br /><a href="/html/GoTamer/Mail.html" title="Mail">Mail</a><br /><hr />
 <a href="https://bitbucket.org/gotamer" title="Code">Code</a><br />
 			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
             </sidebar>
