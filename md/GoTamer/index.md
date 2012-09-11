@@ -13,10 +13,8 @@ Say "Hello, world" in Go
 
 	package main
 
-	import "fmt"
-
 	func main() {
-		fmt.Println("Hello, world")
+		println("Hello, world")
 	}
 
 
