@@ -9,7 +9,7 @@ developed at Google, which compiles on all major platforms.
  > Go is an open source programming environment 
  > that makes it easy to build simple, reliable, and efficient software.
 
-Say "Hello, world" in Go 
+Say "Hello, world" in Go v1.0.2.
 
 	package main
 
