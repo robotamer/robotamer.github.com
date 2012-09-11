@@ -7,11 +7,13 @@ gotamer/tools
 
 
 Generates a random number between min and max   
+
 	func IRand(min, max int) int
 
 
 
 Generates a random strings between min and max   
+
 	func SRand(min, max int, readable bool) string
 
 
