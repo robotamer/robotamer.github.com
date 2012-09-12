@@ -74,8 +74,8 @@ foreach($get_file_list_array as $k=>$v){
 }
 
 S::set(require PHPL . '/composer/vendor/Aura/View/scripts/instance.php', 'V');
-	S::V()->title()->set('RoboTamer ');
-	S::V()->metas()->addName('description', 'RoboTamer PHP code');
+	S::V()->title()->set('RoboTamer - Coding and Linux');
+	S::V()->metas()->addName('description', 'Go Programming Language');
 	S::V()->metas()->addName('copyright', 'Copyright 1998 - 2012');
 	S::V()->metas()->addName('rating', 'General');
 	S::V()->metas()->addName('author', 'Dennis T Kaplan');

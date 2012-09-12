@@ -9,8 +9,8 @@
 		}
 		// -->
 	</script>
-		    <title>RoboTamer </title>
-		    <meta name="description" content="RoboTamer PHP code" />
+		    <title>RoboTamer - Coding and Linux</title>
+		    <meta name="description" content="Go Programming Language" />
     <meta name="copyright" content="Copyright 1998 - 2012" />
     <meta name="rating" content="General" />
     <meta name="author" content="Dennis T Kaplan" />
@@ -56,6 +56,49 @@ developed at Google, which compiles on all major platforms. </p>
 
 func main() {
     println("Hello, world")
+}
+</code></pre>
+
+<p>If you are just starting out with Go, head over to the <a href="http://play.golang.org/p/fjK_EoQDtR" title="Go Playground">Go Playground</a> and concentrate on figuring out how my little [go story<a href="http://play.golang.org/p/fjK_EoQDtR" title="Go Playground">play</a> works. 
+It's about a gopher, named Gophy who joint the gophers but lost his identity in the process.<br />
+Once you get how he gets his identity back you'll be golden.</p>
+
+<p>Here is the code:</p>
+
+<pre><code>package main
+
+import "fmt"
+
+type I interface{}
+
+var gophers map[uint]I = make(map[uint]I)
+
+type gopher struct {
+    Name string
+}
+
+func main() {
+
+    g := AddToGophers("Goghy")
+
+    fmt.Printf("Hello, %s\n", g.Name)
+    fmt.Printf("Now %s is a %T, %s\n", g.Name, gophers[1], gophers[1])
+
+    gg := GetGopher(1)
+    fmt.Printf("Bye, %s\n", gg.Name)
+}
+
+func GetGopher(i uint) *gopher {
+    g := gophers[i]
+    // I wont my gopher identity back
+    return g.(*gopher)
+}
+
+func AddToGophers(n string) gopher {
+    g := new(gopher)
+    g.Name = n
+    gophers[1] = g
+    return *g
 }
 </code></pre>
                 
