@@ -1,4 +1,4 @@
-gotamer/conv
+GoTamer Conv
 ============
 
 ####Converts from 

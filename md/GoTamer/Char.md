@@ -1,5 +1,7 @@
-gotamer/char
+GoTamer Char
 ============
+
+gotamer/char was my first Go package. One day I got to get in there in clean it up, but it works for the meantime 
 
 ####Converts characters from 
 
@@ -10,7 +12,6 @@ gotamer/char
 
 
 Here is a little test program
-
 
 	package main
 

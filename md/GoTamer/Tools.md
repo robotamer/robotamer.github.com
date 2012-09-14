@@ -1,7 +1,7 @@
-gotamer/tools
+GoTamer Tools
 =============
 
-####Your everyday Go Tools
+####Your Everyday Go Tools
 
 
 Generates a random number between min and max   

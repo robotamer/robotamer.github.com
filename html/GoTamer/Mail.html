@@ -38,9 +38,9 @@
 
         <content>
             <div style="padding-right: 25em">
-				<h1>gotamer/mail</h1>
+				<h1>GoTamer Mail</h1>
 
-<p>Simple interface to Go SMTP package</p>
+<p>GoTamer Mail is a simple interface to the Go SMTP package</p>
 
 <pre><code>package main
 
@@ -64,7 +64,7 @@ func main() {
 
 <p>As an alternative to <code>AddToAddr()</code> there is <code>SetToAddrs()</code>. With <code>SetToAddrs()</code> you can set one or more recipients as a list. </p>
 
-<p>A note on the host. The Go SMTP does not allow to send mail to servers with a self signed cert.
+<p>A note on the host. Go SMTP does not allow to connect to SMPT servers with a self signed certs.<br />
 You will get an error like following:</p>
 
 <pre><code>x509: certificate signed by unknown authority

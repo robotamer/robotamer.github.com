@@ -1,4 +1,4 @@
-gotamer/cfg
+GoTamer Cfg
 ===========
 
 gotamer/cfg is a json configuration package for Go

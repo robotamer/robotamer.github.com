@@ -1,9 +1,7 @@
-gotamer/mail
+GoTamer Mail
 ============
 
-Simple interface to Go SMTP package
-
-
+GoTamer Mail is a simple interface to the Go SMTP package
 
 	package main
 	
@@ -23,23 +21,19 @@ Simple interface to Go SMTP package
 			// Handle your errors here
 		}
 	}
-	
 
 As an alternative to `AddToAddr()` there is `SetToAddrs()`. With `SetToAddrs()` you can set one or more recipients as a list. 
 
-A note on the host. The Go SMTP does not allow to send mail to servers with a self signed cert.
+A note on the host. Go SMTP does not allow to connect to SMPT servers with a self signed certs.  
 You will get an error like following:
 
 	x509: certificate signed by unknown authority
 
 The way I got around that is by using [CAcert][1]. [CAcert][1] provides FREE digital certificates.
-[1]: http://www.cacert.org  "CA Cert"
-
-
-
 
 ### Links
  * [Pkg Documantation](http://go.pkgdoc.org/bitbucket.org/gotamer/mail "GoTamer Mail Pkg Documentation")
  * [Repository](https://bitbucket.org/gotamer/mail "GoTamer Mail Repository")
 
 
+[1]: http://www.cacert.org  "CA Cert"
