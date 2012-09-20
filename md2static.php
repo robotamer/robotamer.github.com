@@ -7,6 +7,7 @@ ini_set('cli_server.color', TRUE);
 define('DS', DIRECTORY_SEPARATOR);
 $commit = FALSE;
 $commit_message = 'Just another commit';
+$DOMAIN = 'http://www.robotamer.com';
 echo exec('clear');
 echo PHP_EOL ."\tMarkdown to Static". PHP_EOL. PHP_EOL;
 
@@ -98,7 +99,7 @@ foreach($put_file_structure_array as $dir){
 		if($name == 'sidebar'){
 			$menu = file_get_contents($get_file_list_array[$k]);
 		}elseif($name != 'index'){
-			$sidebar .= '<a href="/'.$menuitem.'" title="'.$name.'">'.$name.'</a><br />';
+			$sidebar .= '<a href="'.$DOMAIN.'/'.$menuitem.'" title="'.$name.'">'.$name.'</a><br />';
 		}
 	}
 	$sidebar .= $menu;
