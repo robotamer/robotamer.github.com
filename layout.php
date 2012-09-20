@@ -25,7 +25,17 @@
 					echo $this->content;
 				}
 				?>
-                
+
+<!-- START: Livefyre Embed -->
+<script type='text/javascript' src='http://zor.livefyre.com/wjs/v1.0/javascripts/livefyre_init.js'></script>
+<script type='text/javascript'>
+    var fyre = LF({
+        site_id: 312331
+    });
+</script>
+<!-- END: Livefyre Embed -->
+
+
             </div>
             <sidebar>
 				<div style="text-align: center; ">
@@ -38,15 +48,6 @@
 			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
             </sidebar>
         </content>
-		<?= S::V()->scripts()->get()?>
-<!-- START: Livefyre Embed -->
-<script type='text/javascript' src='http://zor.livefyre.com/wjs/v1.0/javascripts/livefyre_init.js'></script>
-<script type='text/javascript'>
-    var fyre = LF({
-        site_id: 312331
-    });
-</script>
-<!-- END: Livefyre Embed -->
-                    
+		<?= S::V()->scripts()->get()?>                    
     </body>
 </html>
