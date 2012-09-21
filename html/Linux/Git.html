@@ -27,36 +27,140 @@
 
         <content>
             <div style="padding-right: 25em">
-				<h1>ssh</h1>
+				<h1>Git</h1>
 
-<h4>key-based authorization with SSH</h4>
+<h4>Stop tracking a file but keep the file:</h4>
 
-<p>Create a public ssh key, if you haven’t one already. Look at ~/.ssh. If you see a file named id_dsa.pub then you obviously already have a public key. If not, simply create one.</p>
-
-<pre><code>ssh-keygen -t dsa
+<pre><code>git rm --cached filename
 </code></pre>
 
-<p>ItemMake sure your .ssh dir is 700:</p>
+<h1>Git Setup</h1>
 
-<pre><code>chmod 700 ~/.ssh
+<h4>Remote Server</h4>
+
+<p>Go to your web root directory</p>
+
+<pre><code>cd /var/www/
 </code></pre>
 
-<p>Get your public ssh key on the server you want to login automatically.</p>
+<p>identify your self to git</p>
 
-<pre><code>scp ~/.ssh/id_dsa.pub remoteuser@remoteserver.com:
+<pre><code>git config --global user.name "Dennis T Kaplan"
+
+git config --global user.email "alias@example.com"
 </code></pre>
 
-<p>Append the contents of your public key to the ~/.ssh/authorized_keys and remove it. Simply issue something like</p>
+<p>Create git</p>
 
-<pre><code>cat id_dsa.pub &gt;&gt; .ssh/authorized_keys
+<pre><code>git init
 </code></pre>
 
-<p>Remove your public key from the home directory on the server.<br />
-Done!</p>
+<p>Create a live branch</p>
 
-<p>You can now login without getting asked for a password.</p>
+<pre><code>git branch live
+</code></pre>
 
-<pre><code>ssh -l remoteuser remoteserver.com or ssh remoteuser@remoteserver.com
+<p>Make the live branch active</p>
+
+<pre><code>git checkout live
+</code></pre>
+
+<h4>Local</h4>
+
+<p>Go to your working directory</p>
+
+<pre><code>cd /var/www/
+</code></pre>
+
+<p>identify your self to git</p>
+
+<pre><code>git config --global user.name "Dennis T Kaplan"
+
+git config --global user.email "alias@example.com"
+</code></pre>
+
+<p>Create git</p>
+
+<pre><code>git init
+</code></pre>
+
+<p>create the ignore file</p>
+
+<pre><code>nano .gitignore
+</code></pre>
+
+<p>Place this in to your .gitignore file:</p>
+
+<pre><code># Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sqlite
+*.db3
+*/temp/*
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Backup files #
+######################
+*~
+*.orig
+*.bak
+test*
+</code></pre>
+
+<p>Add your files to git</p>
+
+<pre><code>git add .
+</code></pre>
+
+<p>Commit them</p>
+
+<pre><code>git commit -m 'init'
+</code></pre>
+
+<p>Add your remote git server</p>
+
+<pre><code>git remote add ssh://username@example.com/var/www/.git
+</code></pre>
+
+<p>send your data to the remote server</p>
+
+<pre><code>git push
+</code></pre>
+
+<h4>Remote Server</h4>
+
+<p>Checkout master branch so we can test the changes</p>
+
+<pre><code>git checkout master
+</code></pre>
+
+<p>see if it works and if it does go back to the live branch</p>
+
+<pre><code>git checkout live
+</code></pre>
+
+<p>pull in master to live</p>
+
+<pre><code>git merge master
 </code></pre>
 
 <!-- START: Livefyre Embed -->
