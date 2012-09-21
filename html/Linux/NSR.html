@@ -27,40 +27,89 @@
 
         <content>
             <div style="padding-right: 25em">
-				<h1>msmtp</h1>
+				<h1>Network Safety Restart Bash Script</h1>
 
-<pre><code># /etc/msmtprc
+<p>If you ever work on a remote server/computer specialty on the network settings then this script may safe you from having to call support, and waiting on them.</p>
 
-defaults
-maildomain      example.net
-syslog          LOG_MAIL
-aliases         /etc/aliases
+<p>When started/executed it</p>
 
+<ul>
+<li>Sleeps first for 1 hour</li>
+<li>Then it renames the ”/etc/network/interfaces” file by adding the current time stamp to the end of the file</li>
+<li>It renames a file called ”/etc/network/interfaces.org” to ”/etc/network/interfaces”</li>
+<li>And finally it restarts the server.</li>
+</ul>
 
-account         default
-host            mail.example.net
-port            587
-from            srv7@example.net
-auth            on
-user            user@example.net
-password        ********
-tls             on
-tls_starttls    on
-#tls_certcheck   off
-tls_fingerprint DB:A0:2A:07:00:F9:E3:23:7D:07:E7:52:3C:95:9D:E6:7E:12:54:3F
+<p>It also warns you a couple minutes before it does all that so you can terminate the program. Of course if you have been locked out you can't terminate it, and it will execute. Giving you a fresh start!</p>
+
+<p>To start</p>
+
+<pre><code>network_Safety_Restart.sh start &amp;
 </code></pre>
 
-<p>Your alias file</p>
+<p>To Stop</p>
 
-<pre><code># /etc/aliases 
-default: me@example.net
+<pre><code>network_Safety_Restart.sh stop
 </code></pre>
 
-<p>A php script to send mail</p>
+<p>network<em>Safety</em>Restart.sh</p>
 
-<pre><code>#!/usr/bin/php
+<pre><code>#! /bin/sh
 
-Your message was not accepted for delivery!
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+
+. /lib/lsb/init-functions
+
+export PIDFILESTART=/tmp/network-safty-restart-start.pid
+export PIDFILESTOP=/tmp/network-safty-restart-stop.pid
+export FILE=/etc/network/interfaces
+
+case "$1" in
+  start)  
+    if [ -f ${PIDFILESTART} ]; then
+            rm ${PIDFILESTART}
+    fi
+    if [ -f ${PIDFILESTOP} ]; then
+            rm ${PIDFILESTOP}
+    fi  
+    ps -fe | grep ${1} | head -n1 | cut -d" " -f 6 &gt; ${PIDFILESTART}
+
+        sleep 3600 
+
+        log_action_msg "WARNING: Will in 120 sec rename ${FILE} and then restart"
+        sleep 60
+        log_action_msg "WARNING: Will in 60 sec rename ${FILE} and then restart"
+        sleep 60
+
+    if ! [ -f ${PIDFILESTOP} ]; then
+        log_action_msg "Restarting NOW"
+            SUFFIX=$(date +%s)
+            cp ${FILE} ${FILE}.${SUFFIX}
+            sleep 1
+            cp ${FILE}.org ${FILE}
+            sleep 1
+            reboot -d -f -i
+    else
+        rm ${PIDFILESTOP}
+        log_action_msg "NOT Restaring as you wish"
+        fi
+        ;;
+  stop)
+    if [ -f ${PIDFILESTART} ]; then
+            rm ${PIDFILESTART}
+        touch ${PIDFILESTOP}
+        log_action_msg "Terminating restart script"
+
+    fi
+    log_action_msg "Terminated restart script"
+
+    exit 0
+        ;;
+  *)
+        echo "Usage: $0 start|stop" &gt;&amp;2
+        exit 3
+        ;;
+esac
 </code></pre>
 
 <!-- START: Livefyre Embed -->
