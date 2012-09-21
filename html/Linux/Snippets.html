@@ -27,60 +27,80 @@
 
         <content>
             <div style="padding-right: 25em">
-				<h1>Master Singleton Class</h1>
+				<h1>Linux Snippets</h1>
 
-<h4>Via the factory</h4>
+<h4>Find and chmod files or folders</h4>
 
-<pre><code>$l = RTSingleton::factory('Translate');
+<pre><code>find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;
 </code></pre>
 
-<h4>Directs call</h4>
+<h4>Find a directory and display on screen</h4>
 
-<pre><code>$view = RTSingleton::Template();
+<pre><code>find . -type d -name 'linux' 2&gt;/dev/null
 </code></pre>
 
-<h4>Class Alias</h4>
+<h4>Find/Grep for a string across multiple files with different extensions</h4>
 
-<pre><code>RTSingleton::alias(string $className, string $alias);
-
-RTSingleton::alias('Template', 'V');
+<pre><code>find . -name "*.php" | xargs grep -niP 'thingy'
+find \( -name "*js" -o -name "*jsp" -o -name "*jspf" \) | xargs grep -niP 'thingy'
 </code></pre>
 
-<h4>Aliased call <em>RTSingleton has an S alias by default</em></h4>
+<h4>Find and replace</h4>
 
-<pre><code>$view = S::V();
+<pre><code>find . -type f -name "*.php" -exec sed -i 's/numRows/rowCount/g' {} \;
 </code></pre>
 
-<h4>Set Object  <em>Not available in version 0.0.1</em></h4>
+<h4>running as background process</h4>
 
-<pre><code>RTSingleton::set(object $class [, string $alias = NULL ] );
-
-RTSingleton::set(new Aura\View\Template(), 'View');
+<pre><code>nohup scp &lt;params&gt; &amp; &gt; nohup.out 2 &gt; &amp;1
+nohup scp -r -p root@www.example.com:/var/www/ /var/www/ &amp; &gt;nohup.out 2&gt;&amp;1
+nohup scp -r -p root@www.example.com:/var/www/logs /var/www/ &amp; &gt;nohup.out 2&gt;&amp;1
 </code></pre>
 
-<h4>Actually:</h4>
+<h4>Copying an image file to USB</h4>
 
-<pre><code> RTSingleton::set(require __dir__ . '/../libs/composer/vendor/Aura/View/scripts/instance.php','V');
+<pre><code>cat file.iso &gt; /dev/sdb
+sync
 </code></pre>
 
-<h4>No need for global variables</h4>
+<h4>Killing</h4>
 
-<pre><code>S::V()-&gt;var = 'Master RTSingleton Class';
+<pre><code>killall -9 nginx
 </code></pre>
 
-<h4>Use original class or alias or switch back and forth</h4>
+<h4>Mounting an imge file</h4>
 
-<pre><code>echo RTSingleton::Template()-&gt;fetch(__dir__ .'/gui/layout.php');
-echo S::V()-&gt;fetch(__dir__ .'/gui/otherlayout.php');
+<pre><code>mount -o loop file.img /mnt/image
 </code></pre>
 
-<h4>See all the registered classes</h4>
+<h4>Creating a file stsyem</h4>
 
-<pre><code>print_r(S::getClasses());
+<pre><code>mkfs.ext2 /dev/sdb2
 </code></pre>
 
-<p><a class="embed" href="https://api.bitbucket.org/1.0/repositories/robotamer/phptamer/src/tip/RTSingleton.php?embed=t"></a>
-https://api.bitbucket.org/1.0/repositories/robotamer/phptamer/src/tip/RTSingleton.php</p>
+<h4>Labeling a file system</h4>
+
+<pre><code>e2label /dev/sdb2 RoboTamer
+</code></pre>
+
+<h4>Searing bash history</h4>
+
+<pre><code>history | grep -i "search term"
+</code></pre>
+
+<h2>Debian</h2>
+
+<h4>See what is installed</h4>
+
+<pre><code>dpkg -l |grep php5
+</code></pre>
+
+<h4>Start programs at boot time</h4>
+
+<pre><code>update-rc.d program_name defaults
+update-rc.d -f  program_name remove
+</code></pre>
 
 <!-- START: Livefyre Embed -->
 <script type='text/javascript' src='http://zor.livefyre.com/wjs/v1.0/javascripts/livefyre_init.js'></script>
@@ -100,10 +120,7 @@ https://api.bitbucket.org/1.0/repositories/robotamer/phptamer/src/tip/RTSingleto
                 </div>
 			
 			
-				Last modified: 2012-09-09<hr /><a href="http://www.robotamer.com/html/PHPTamer/Facade.html" title="Facade">Facade</a><br /><a href="http://www.robotamer.com/html/PHPTamer/License.html" title="License">License</a><br /><a href="http://www.robotamer.com/html/PHPTamer/RTCrypter.html" title="RTCrypter">RTCrypter</a><br /><a href="http://www.robotamer.com/html/PHPTamer/RTSingleton.html" title="RTSingleton">RTSingleton</a><br /><hr />
-<a href="http://bitbucket.org/robotamer/phptamer/issues" title="Tickets">Tickets</a><br />
-<a href="http://bitbucket.org/robotamer/phptamer" title="Code">Code</a><br />
-			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
+				Last modified: 2012-09-21<hr /><a href="http://www.robotamer.com/html/Linux/Bridge-Utils.html" title="Bridge-Utils">Bridge-Utils</a><br /><a href="http://www.robotamer.com/html/Linux/HowTo-Mail-Server-Fingerprint.html" title="HowTo-Mail-Server-Fingerprint">HowTo-Mail-Server-Fingerprint</a><br /><a href="http://www.robotamer.com/html/Linux/LXC.html" title="LXC">LXC</a><br /><a href="http://www.robotamer.com/html/Linux/Snippets.html" title="Snippets">Snippets</a><br />			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
             </sidebar>
         </content>
 		                    

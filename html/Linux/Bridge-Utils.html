@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+		    <title>RoboTamer - Coding and Linux</title>
+		    <meta name="description" content="Go Programming Language" />
+    <meta name="copyright" content="Copyright 1998 - 2012" />
+    <meta name="rating" content="General" />
+    <meta name="author" content="Dennis T Kaplan" />
+    <meta name="robots" content="index" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Window-Target" content="_top" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-US" />
+		    <link rel="stylesheet" href="/assets/css/robotamer.css" type="text/css" media="screen" />
+    </head>
+    <body>
+		<header>
+	<p>
+		<a href="http://www.robotamer.com/html" title="RoboTamer">Lobby</a>
+		<a href="http://www.robotamer.com/index.html" title="Blog">News</a>
+		<a href="http://www.robotamer.com/html/Linux" title="Linux">Linux</a>
+		<a href="http://www.robotamer.com/html/GoTamer" title="GoTamer">GoTamer</a>
+		<a href="http://www.robotamer.com/html/PHPTamer" title="PHP Tamer">PHPTamer</a>
+		<a href="http://www.robotamer.com/html/md2static" title="Markdown to Static">md2static</a>
+	</p>
+		</header>
+
+        <content>
+            <div style="padding-right: 25em">
+				<h1>Bridge-Utils for LXC</h1>
+
+<h2>Bridging Network Connections</h2>
+
+<p>Install</p>
+
+<pre><code>apt-get install bridge-utils
+</code></pre>
+
+<p>Start the bridge:</p>
+
+<pre><code>brctl addbr br0
+</code></pre>
+
+<p>Edit: /etc/network/interfaces</p>
+
+<pre><code># The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Bridge between eth0 and eth1
+auto br0
+
+# DHCP would look like this but we will use static
+# iface br0 inet dhcp
+
+iface br0 inet static
+address 192.168.1.100
+network 192.168.1.0
+gateway 192.168.1.1
+broadcast 192.168.1.255
+netmask 255.255.255.0
+dns-nameservers 192.168.1.1
+#dns-search example.com 
+
+  pre-up ip link set eth0 down
+  pre-up ip link set eth1 down
+  pre-up brctl addbr br0
+  pre-up brctl addif br0 eth0 eth1
+  pre-up ip addr flush dev eth0
+  pre-up ip addr flush dev eth1
+  post-down ip link set eth0 down
+  post-down ip link set eth1 down
+  post-down ip link set br0 down
+  post-down brctl delif br0 eth0 eth1
+  post-down brctl delbr br0
+</code></pre>
+
+<p>Restart network:</p>
+
+<pre><code>/etc/init.d/networking stop
+/etc/init.d/networking start
+</code></pre>
+
+<p>Turn on the bridge:  </p>
+
+<pre><code>ip link set br0 up
+</code></pre>
+
+<p>Let's check: </p>
+
+<pre><code>ifconfig
+brctl show
+ip addr show
+</code></pre>
+
+<p>Bridge Notes:
+How to remove a bridge {bring down first then delete}</p>
+
+<pre><code>ip link set br0 down
+brctl delbr br0
+</code></pre>
+
+<h1>LXC Setup</h1>
+
+<pre><code>#cat /etc/network/interfaces
+auto lo
+iface lo inet loopback
+up route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+down route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+
+# device: eth0
+auto eth0
+iface eth0 inet manual
+
+auto br0
+iface br0 inet static
+       address 70.22.189.58
+       netmask 255.255.255.248
+       gateway 70.22.189.57
+       broadcast 70.22.189.63
+       bridge_ports eth0
+       bridge_fd 0
+       bridge_maxwait 0
+       bridge_stp off
+        post-up ip route add 70.22.189.59 dev br0
+        post-up ip route add 70.22.189.60 dev br0
+        post-up ip route add 70.22.189.61 dev br0
+        post-up ip route add 70.22.189.62 dev br0
+</code></pre>
+
+<p>More info at:
+<a href="http://www.shorewall.net/LXC.html">shorewall.net</a></p>
+
+<!-- START: Livefyre Embed -->
+<script type='text/javascript' src='http://zor.livefyre.com/wjs/v1.0/javascripts/livefyre_init.js'></script>
+<script type='text/javascript'>
+    var fyre = LF({
+        site_id: 312331
+    });
+</script>
+<!-- END: Livefyre Embed -->
+
+
+            </div>
+            <sidebar>
+				<div style="text-align: center; ">
+                    <img width="90" height="110" border="0" src="/assets/img/robotamer.gif"/>
+                    <hr />
+                </div>
+			
+			
+				Last modified: 2012-09-21<hr /><a href="http://www.robotamer.com/html/Linux/Bridge-Utils.html" title="Bridge-Utils">Bridge-Utils</a><br /><a href="http://www.robotamer.com/html/Linux/HowTo-Mail-Server-Fingerprint.html" title="HowTo-Mail-Server-Fingerprint">HowTo-Mail-Server-Fingerprint</a><br /><a href="http://www.robotamer.com/html/Linux/LXC.html" title="LXC">LXC</a><br /><a href="http://www.robotamer.com/html/Linux/Snippets.html" title="Snippets">Snippets</a><br />			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
+            </sidebar>
+        </content>
+		                    
+    </body>
+</html>
