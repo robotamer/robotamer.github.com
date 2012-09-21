@@ -89,17 +89,31 @@ sync
 <pre><code>history | grep -i "search term"
 </code></pre>
 
-<h2>Debian</h2>
+<h2>Debian Specific</h2>
 
 <h4>See what is installed</h4>
 
-<pre><code>dpkg -l |grep php5
+<pre><code>dpkg -l | grep php5
 </code></pre>
 
-<h4>Start programs at boot time</h4>
+<h4>Start a program</h4>
 
-<pre><code>update-rc.d program_name defaults
-update-rc.d -f  program_name remove
+<pre><code>service program_name start
+</code></pre>
+
+<h4>Stop a program</h4>
+
+<pre><code>service program_name stop
+</code></pre>
+
+<h4>Start a programs at boot time</h4>
+
+<pre><code>insserv -d program_name
+</code></pre>
+
+<h4>Remove program from boot time</h4>
+
+<pre><code>insserv -r program_name
 </code></pre>
 
 <!-- START: Livefyre Embed -->

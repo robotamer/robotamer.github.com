@@ -41,12 +41,20 @@ Linux Snippets
 ####Searing bash history
  	history | grep -i "search term"
 
-Debian
--------
+Debian Specific
+---------------
 
-####See what is installed
-	dpkg -l |grep php5
+#### See what is installed
+	dpkg -l | grep php5
 
-####Start programs at boot time
-	update-rc.d program_name defaults
-	update-rc.d -f  program_name remove
+#### Start a program
+	service program_name start
+
+#### Stop a program
+	service program_name stop
+
+#### Start a programs at boot time
+	insserv -d program_name
+
+#### Remove program from boot time
+	insserv -r program_name
