@@ -27,22 +27,36 @@
 
         <content>
             <div style="padding-right: 25em">
-				<h1>HowTo Mail Server Fingerprint</h1>
+				<h1>ssh</h1>
 
-<h2>Fetching the SSL Cert from a remote mail server, and extracting the SHA1 Fingerprint</h2>
+<h4>key-based authorization with SSH</h4>
 
-<p>This is useful for let's say when you need the fingerprint to identify via TLS</p>
+<p>Create a public ssh key, if you haven’t one already. Look at ~/.ssh. If you see a file named id_dsa.pub then you obviously already have a public key. If not, simply create one.</p>
 
-<p>Get the raw certificate:</p>
-
-<pre><code>echo Q | openssl s_client -connect mail.example.com:443
+<pre><code>ssh-keygen -t dsa
 </code></pre>
 
-<p>Copy and paste the scribble from -----BEGIN CERTIFICATE----- to -----END CERTIFICATE----- to a file called cert.pem. Including -----BEGIN CERTIFICATE----- as first and -----END CERTIFICATE----- as last line.</p>
+<p>ItemMake sure your .ssh dir is 700:</p>
 
-<p>Generate the SHA1 fingerprint by issuing following command:</p>
+<pre><code>chmod 700 ~/.ssh
+</code></pre>
 
-<pre><code>openssl x509 -in cert.pem -sha1 -noout -fingerprint
+<p>Get your public ssh key on the server you want to login automatically.</p>
+
+<pre><code>scp ~/.ssh/id_dsa.pub remoteuser@remoteserver.com:
+</code></pre>
+
+<p>Append the contents of your public key to the ~/.ssh/authorized_keys and remove it. Simply issue something like</p>
+
+<pre><code>cat id_dsa.pub &gt;&gt; .ssh/authorized_keys
+</code></pre>
+
+<p>Remove your public key from the home directory on the server.<br />
+Done!</p>
+
+<p>You can now login without getting asked for a password.</p>
+
+<pre><code>ssh -l remoteuser remoteserver.com or ssh remoteuser@remoteserver.com
 </code></pre>
 
 <!-- START: Livefyre Embed -->

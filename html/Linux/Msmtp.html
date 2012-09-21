@@ -27,22 +27,40 @@
 
         <content>
             <div style="padding-right: 25em">
-				<h1>HowTo Mail Server Fingerprint</h1>
+				<h1>msmtp</h1>
 
-<h2>Fetching the SSL Cert from a remote mail server, and extracting the SHA1 Fingerprint</h2>
+<pre><code># /etc/msmtprc
 
-<p>This is useful for let's say when you need the fingerprint to identify via TLS</p>
+defaults
+maildomain      example.net
+syslog          LOG_MAIL
+aliases         /etc/aliases
 
-<p>Get the raw certificate:</p>
 
-<pre><code>echo Q | openssl s_client -connect mail.example.com:443
+account         default
+host            mail.example.net
+port            587
+from            srv7@example.net
+auth            on
+user            user@example.net
+password        ********
+tls             on
+tls_starttls    on
+#tls_certcheck   off
+tls_fingerprint DB:A0:2A:07:00:F9:E3:23:7D:07:E7:52:3C:95:9D:E6:7E:12:54:3F
 </code></pre>
 
-<p>Copy and paste the scribble from -----BEGIN CERTIFICATE----- to -----END CERTIFICATE----- to a file called cert.pem. Including -----BEGIN CERTIFICATE----- as first and -----END CERTIFICATE----- as last line.</p>
+<p>Your alias file</p>
 
-<p>Generate the SHA1 fingerprint by issuing following command:</p>
+<pre><code># /etc/aliases 
+default: me@example.net
+</code></pre>
 
-<pre><code>openssl x509 -in cert.pem -sha1 -noout -fingerprint
+<p>A php script to send mail</p>
+
+<pre><code>#!/usr/bin/php
+
+Your message was not accepted for delivery!
 </code></pre>
 
 <!-- START: Livefyre Embed -->
