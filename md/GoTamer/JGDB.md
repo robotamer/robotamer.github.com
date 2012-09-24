@@ -46,8 +46,8 @@ The strategy will differ by List or Object type database.
 For example the List type database will not have any update only insert and delete. 
 The insert operation will easily be resolved by git, when nodes do their pull, save, add, commit and push cycle.
 
-When it comes to the delete operation, every node will before deleting a record, add a file based lock system, each node will be able to lock a file at pull time.
-This means other nodes can still modify and commit all other files, just not then one locked by a node.
+When it comes to the delete operation, every node will before deleting a record, add a file based lock on the file it plans to modify. Each node will be able to lock a file at pull time.
+This means other nodes can still modify and commit all other files, just not the one locked by a node.
 The lock will have a time limit as it does only takes a short time to perform a full cycle of pull, save, add, commit and push with git. 
 
 
