@@ -31,11 +31,11 @@ Where as the *Object* type keeps each record in a separate file. The object type
 git is not the fastest distribution system
 
 ### Advantage:
-1) All data is kept in plain text/json
-2) Backups are incremental, I can't think of anything better then git to make backups.
-3) Distributed system. without the need for the master and slave concept.
-4) Every node is independent
-5) Database can get very big, bigger then what the memory can hold, and we will read less active data with io.Reader and bufio
+1. All data is kept in plain text/json
+2. Backups are incremental, I can't think of anything better then git to make backups.
+3. Distributed system. without the need for the master and slave concept.
+4. Every node is independent
+5. Database can get very big, bigger then what the memory can hold, and we will read less active data with io.Reader and bufio
 
 
 ### FAQ
