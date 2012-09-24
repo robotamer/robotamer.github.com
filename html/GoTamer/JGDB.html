@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+		    <title>RoboTamer - Coding and Linux</title>
+		    <meta name="description" content="Go Programming Language" />
+    <meta name="copyright" content="Copyright 1998 - 2012" />
+    <meta name="rating" content="General" />
+    <meta name="author" content="Dennis T Kaplan" />
+    <meta name="robots" content="index" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Window-Target" content="_top" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-US" />
+		    <link rel="stylesheet" href="/assets/css/robotamer.css" type="text/css" media="screen" />
+    </head>
+    <body>
+		<header>
+	<p>
+		<a href="http://www.robotamer.com/html" title="RoboTamer">Lobby</a>
+		<a href="http://www.robotamer.com/index.html" title="Blog">News</a>
+		<a href="http://www.robotamer.com/html/Linux" title="Linux">Linux</a>
+		<a href="http://www.robotamer.com/html/GoTamer" title="GoTamer">GoTamer</a>
+		<a href="http://www.robotamer.com/html/PHPTamer" title="PHP Tamer">PHPTamer</a>
+		<a href="http://www.robotamer.com/html/md2static" title="Markdown to Static">md2static</a>
+	</p>
+		</header>
+
+        <content>
+            <div style="padding-right: 25em">
+				<h1>GoTamer JGDB</h1>
+
+<h2>JGDB stands for Json Git Database</h2>
+
+<h2>This code is in Alpha state and only here for the good people from go-nuts who are helping to implement this</h2>
+
+<h2>About the implementation:</h2>
+
+<p>I am using a backend that supports stings as well as numbers as key, as well as as values.
+The backend is json.</p>
+
+<p>There are two types of backends the <em>List</em> and the <em>Object</em> type database.<br />
+The major distinction between those backends is that one, the <em>List type</em> uses a single file as backend with each record placed in one line.<br />
+Where as the <em>Object</em> type keeps each record in a separate file. The object type is/will keep track of these records with an index file, and also optionally with a strtree for fast in memory access. </p>
+
+<h3>How the List type works:</h3>
+
+<ol>
+<li>The user creates a struct to his/her needs</li>
+<li>The database inherits that struct via the <em>Struct Interface</em></li>
+<li>The database converts that struct to include the map id using <em>jsonListStruct</em></li>
+<li>jsonListStruct struct is used to Marshal the data in to a json file</li>
+</ol>
+
+<h3>What is planed so far:</h3>
+
+<ol>
+<li>Create a cache system with a user defined limit that keeps the most asked for items in memory.</li>
+<li>Create the git backup </li>
+<li>Distribute with git push and pull </li>
+</ol>
+
+<h3>Disadvantage:</h3>
+
+<p>git is not the fastest distribution system</p>
+
+<h3>Advantage:</h3>
+
+<p>1) All data is kept in plain text/json
+2) Backups are incremental, I can't think of anything better then git to make backups.
+3) Distributed system. without the need for the master and slave concept.
+4) Every node is independent
+5) Database can get very big, bigger then what the memory can hold, and we will read less active data with io.Reader and bufio</p>
+
+<h3>FAQ</h3>
+
+<blockquote>
+  <p>To get a proper distributed system you need a merge strategy for your git repositories. How would you solve conflicts?</p>
+</blockquote>
+
+<p>As with everything I am open to suggestions, meanwhile I am planing following:<br />
+The strategy will differ by List or Object type database.<br />
+For example the List type database will not have any update only insert and delete. 
+The insert operation will easily be resolved by git, when nodes do their pull, save, add, commit and push cycle.</p>
+
+<p>When it comes to the delete operation, every node will before deleting a record, add a file based lock system, each node will be able to lock a file at pull time.
+This means other nodes can still modify and commit all other files, just not then one locked by a node.
+The lock will have a time limit as it does only takes a short time to perform a full cycle of pull, save, add, commit and push with git. </p>
+
+<h3>What I need help with</h3>
+
+<ul>
+<li>I need a way to iterate and find items in the database. If you are inspecting the code, the implementation is in the List type database. <a href="https://bitbucket.org/gotamer/jgdb/src/c84756c2ff6b/list.go">list.go</a> The problem is that I need to keep the Struct interface, and need to implement the iteration without adding other interfaces. At leased I think that this is the problem. Help would be very welcome on this. There is something we have been playing with at <a href="http://play.golang.org/p/Bg7PrF5m53" title="Go Play">go play</a>. The disgusting about this is at <a href="https://groups.google.com/forum/?fromgroups=#!topic/golang-nuts/XuWuPBbT66g">Go Nuts</a></li>
+</ul>
+
+<h3>Links</h3>
+
+<ul>
+<li><a href="http://go.pkgdoc.org/bitbucket.org/gotamer/jgdb" title="GoTamer Pkg Documentation">Pkg Documantation</a></li>
+<li><a href="https://bitbucket.org/gotamer/jgdb" title="GoTamer Repository">Repository</a></li>
+</ul>
+
+<!-- START: Livefyre Embed -->
+<script type='text/javascript' src='http://zor.livefyre.com/wjs/v1.0/javascripts/livefyre_init.js'></script>
+<script type='text/javascript'>
+    var fyre = LF({
+        site_id: 312331
+    });
+</script>
+<!-- END: Livefyre Embed -->
+
+
+            </div>
+            <sidebar>
+				<div style="text-align: center; ">
+                    <img width="90" height="110" border="0" src="/assets/img/robotamer.gif"/>
+                    <hr />
+                </div>
+			
+			
+				Last modified: 2012-09-24<hr /><a href="http://www.robotamer.com/html/GoTamer/Cases.html" title="Cases">Cases</a><br /><a href="http://www.robotamer.com/html/GoTamer/Cfg.html" title="Cfg">Cfg</a><br /><a href="http://www.robotamer.com/html/GoTamer/Conv.html" title="Conv">Conv</a><br /><a href="http://www.robotamer.com/html/GoTamer/Crypt.html" title="Crypt">Crypt</a><br /><a href="http://www.robotamer.com/html/GoTamer/JGDB.html" title="JGDB">JGDB</a><br /><a href="http://www.robotamer.com/html/GoTamer/License.html" title="License">License</a><br /><a href="http://www.robotamer.com/html/GoTamer/Mail.html" title="Mail">Mail</a><br /><a href="http://www.robotamer.com/html/GoTamer/Tools.html" title="Tools">Tools</a><br /><hr />
+<a href="https://bitbucket.org/gotamer" title="Code">Code</a><br />
+			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
+            </sidebar>
+        </content>
+		                    
+    </body>
+</html>
