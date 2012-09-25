@@ -27,60 +27,27 @@
 
         <content>
             <div style="padding-right: 25em">
-				<h1>Master Singleton Class</h1>
+				<h1>GoTamer gowatch</h1>
 
-<h4>Via the factory</h4>
+<p>GoTamer gowatch is a fork of bitbucket.org/jzs/buildwatch with some enhancements</p>
 
-<pre><code>$l = RTSingleton::factory('Translate');
-</code></pre>
+<p>It watches your dev folder for modified files, and if a file changes it restarts the process.  </p>
 
-<h4>Directs call</h4>
+<ul>
+<li><code>gowatch -test</code> will run <code>go test</code> on the folder </li>
+<li><code>gowatch -build</code> will run <code>go build</code> on the folder </li>
+<li><code>gowatch -run [program_name]</code> will run <code>go build</code> and then it will execute [program_name] </li>
+</ul>
 
-<pre><code>$view = RTSingleton::Template();
-</code></pre>
+<p>If a file changes while running lets say <code>gowatch -run [program_name]</code> it will kill [program<em>name], run <code>gowatch -build</code> on the folder, and then restart [program</em>name]</p>
 
-<h4>Class Alias</h4>
+<h3>Links</h3>
 
-<pre><code>RTSingleton::alias(string $className, string $alias);
-
-RTSingleton::alias('Template', 'V');
-</code></pre>
-
-<h4>Aliased call <em>RTSingleton has an S alias by default</em></h4>
-
-<pre><code>$view = S::V();
-</code></pre>
-
-<h4>Set Object  <em>Not available in version 0.0.1</em></h4>
-
-<pre><code>RTSingleton::set(object $class [, string $alias = NULL ] );
-
-RTSingleton::set(new Aura\View\Template(), 'View');
-</code></pre>
-
-<h4>Actually:</h4>
-
-<pre><code> RTSingleton::set(require __dir__ . '/../libs/composer/vendor/Aura/View/scripts/instance.php','V');
-</code></pre>
-
-<h4>No need for global variables</h4>
-
-<pre><code>S::V()-&gt;var = 'Master RTSingleton Class';
-</code></pre>
-
-<h4>Use original class or alias or switch back and forth</h4>
-
-<pre><code>echo RTSingleton::Template()-&gt;fetch(__dir__ .'/gui/layout.php');
-echo S::V()-&gt;fetch(__dir__ .'/gui/otherlayout.php');
-</code></pre>
-
-<h4>See all the registered classes</h4>
-
-<pre><code>print_r(S::getClasses());
-</code></pre>
-
-<p><a class="embed" href="https://api.bitbucket.org/1.0/repositories/robotamer/phptamer/src/tip/RTSingleton.php?embed=t"></a>
-https://api.bitbucket.org/1.0/repositories/robotamer/phptamer/src/tip/RTSingleton.php</p>
+<ul>
+<li><a href="http://www.robotamer.com/html/GoTamer" title="GoTamer Website">Website</a></li>
+<li><a href="http://go.pkgdoc.org/bitbucket.org/gotamer/gowatch" title="Pkg Documentation">Pkg Documentationn</a></li>
+<li><a href="https://bitbucket.org/gotamer/gowatch" title="Repository">Repository</a></li>
+</ul>
 
 <!-- START: Livefyre Embed -->
 <script type='text/javascript' src='http://zor.livefyre.com/wjs/v1.0/javascripts/livefyre_init.js'></script>
@@ -100,9 +67,8 @@ https://api.bitbucket.org/1.0/repositories/robotamer/phptamer/src/tip/RTSingleto
                 </div>
 			
 			
-				Last modified: 2012-09-09<hr /><a href="http://www.robotamer.com/html/PHPTamer/Facade.html" title="Facade">Facade</a><br /><a href="http://www.robotamer.com/html/PHPTamer/License.html" title="License">License</a><br /><a href="http://www.robotamer.com/html/PHPTamer/RTCrypter.html" title="RTCrypter">RTCrypter</a><br /><a href="http://www.robotamer.com/html/PHPTamer/RTSingleton.html" title="RTSingleton">RTSingleton</a><br /><hr />
-<a href="http://bitbucket.org/robotamer/phptamer/issues" title="Tickets">Tickets</a><br />
-<a href="http://bitbucket.org/robotamer/phptamer" title="Code">Code</a><br />
+				Last modified: 2012-09-25<hr /><a href="http://www.robotamer.com/html/GoTamer/Cases.html" title="Cases">Cases</a><br /><a href="http://www.robotamer.com/html/GoTamer/Cfg.html" title="Cfg">Cfg</a><br /><a href="http://www.robotamer.com/html/GoTamer/Conv.html" title="Conv">Conv</a><br /><a href="http://www.robotamer.com/html/GoTamer/Crypt.html" title="Crypt">Crypt</a><br /><a href="http://www.robotamer.com/html/GoTamer/GoWatch.html" title="GoWatch">GoWatch</a><br /><a href="http://www.robotamer.com/html/GoTamer/JGDB.html" title="JGDB">JGDB</a><br /><a href="http://www.robotamer.com/html/GoTamer/License.html" title="License">License</a><br /><a href="http://www.robotamer.com/html/GoTamer/Mail.html" title="Mail">Mail</a><br /><a href="http://www.robotamer.com/html/GoTamer/Tools.html" title="Tools">Tools</a><br /><hr />
+<a href="https://bitbucket.org/gotamer" title="Code">Code</a><br />
 			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
             </sidebar>
         </content>
