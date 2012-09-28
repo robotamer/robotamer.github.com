@@ -32,22 +32,33 @@
 
 <h2>JGDB stands for Json Git Database</h2>
 
-<h2>This code is in Alpha state and only here for the good people from go-nuts who are helping to implement this</h2>
-
 <h2>About the implementation:</h2>
 
-<p>I am using a backend that supports stings as well as numbers as key, as well as as values.
-The backend is json.</p>
+<h3>Object Types</h3>
 
-<p>There are two types of backends the <em>List</em> and the <em>Object</em> type database.<br />
-The major distinction between those backends is that one, the <em>List type</em> uses a single file as backend with each record placed in one line.<br />
+<ul>
+<li>Tuple (In Memory Database) <em>Beta</em></li>
+<li>List (Single file persistent database) <em>Beta</em></li>
+<li>Object (Multi file persistent database) <em>Alpha</em></li>
+<li>Cache (Cache for Tuple) <em>Not yet implemented</em></li>
+</ul>
+
+<h3>Backends</h3>
+
+<ul>
+<li>Json <em>Beta</em></li>
+<li>Glob <em>Not yet implemented</em></li>
+<li>SQLite <em>Not yet implemented</em></li>
+</ul>
+
+<p>The major distinction between <em>List</em> and <em>Object</em> is that one, the <em>List type</em> uses a single file as backend with each record placed in one line.<br />
 Where as the <em>Object</em> type keeps each record in a separate file. The object type is/will keep track of these records with an index file, and also optionally with a strtree for fast in memory access. </p>
 
 <h3>How the List type works:</h3>
 
 <ol>
 <li>The user creates a struct to his/her needs</li>
-<li>The database inherits that struct via the <em>Struct Interface</em></li>
+<li>The database inherits that struct via an <em>Interface</em></li>
 <li>The database converts that struct to include the map id using <em>jsonListStruct</em></li>
 <li>jsonListStruct struct is used to Marshal the data in to a json file</li>
 </ol>
@@ -55,7 +66,7 @@ Where as the <em>Object</em> type keeps each record in a separate file. The obje
 <h3>What is planed so far:</h3>
 
 <ol>
-<li>Create a cache system with a user defined limit that keeps the most asked for items in memory.</li>
+<li>Create a cache system with a user defined limit that keeps the most asked for items in a Tuple.</li>
 <li>Create the git backup </li>
 <li>Distribute with git push and pull </li>
 </ol>
@@ -85,21 +96,18 @@ The strategy will differ by List or Object type database.<br />
 For example the List type database will not have any update only insert and delete. 
 The insert operation will easily be resolved by git, when nodes do their pull, save, add, commit and push cycle.</p>
 
-<p>When it comes to the delete operation, every node will before deleting a record, add a file based lock on the file it plans to modify. Each node will be able to lock a file at pull time.
+<p>When it comes to the delete operation, every node will before deleting a record, add lock on the file it plans to modify. Each node will be able to lock a file at pull time.
 This means other nodes can still modify and commit all other files, just not the one locked by a node.
 The lock will have a time limit as it does only takes a short time to perform a full cycle of pull, save, add, commit and push with git. </p>
-
-<h3>What I need help with</h3>
-
-<ul>
-<li>I need a way to iterate and find items in the database. If you are inspecting the code, the implementation is in the List type database. <a href="https://bitbucket.org/gotamer/jgdb/src/c84756c2ff6b/list.go">list.go</a> The problem is that I need to keep the Struct interface, and need to implement the iteration without adding other interfaces. At leased I think that this is the problem. Help would be very welcome on this. There is something we have been playing with at <a href="http://play.golang.org/p/Bg7PrF5m53" title="Go Play">go play</a>. The disgusting about this is at <a href="https://groups.google.com/forum/?fromgroups=#!topic/golang-nuts/XuWuPBbT66g">Go Nuts</a></li>
-</ul>
 
 <h3>Links</h3>
 
 <ul>
+<li><a href="http://www.robotamer.com/html/GoTamer/JGDB.html" title="GoTamer Website">Website</a></li>
+<li><a href="http://www.robotamer.com/forum.html" title="GoTamer Forum">Forum</a></li>
 <li><a href="http://go.pkgdoc.org/bitbucket.org/gotamer/jgdb" title="GoTamer Pkg Documentation">Pkg Documantation</a></li>
 <li><a href="https://bitbucket.org/gotamer/jgdb" title="GoTamer Repository">Repository</a></li>
+<li><a href="https://bitbucket.org/gotamer/jgdb/issues" title="Bug Tracking">Bug Tracking</a></li>
 </ul>
 
 <!-- START: Livefyre Embed -->
