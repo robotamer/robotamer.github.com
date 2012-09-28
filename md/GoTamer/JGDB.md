@@ -1,5 +1,5 @@
-GoTamer JGDB
-=============
+JGDB
+====
 
 JGDB stands for Json Git Database
 ---------------------------------
