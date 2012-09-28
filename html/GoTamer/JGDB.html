@@ -48,7 +48,6 @@
 <ul>
 <li>Json <em>Beta</em></li>
 <li>Glob <em>Not yet implemented</em></li>
-<li>SQLite <em>Not yet implemented</em></li>
 </ul>
 
 <p>The major distinction between <em>List</em> and <em>Object</em> is that one, the <em>List type</em> uses a single file as backend with each record placed in one line.<br />
@@ -66,22 +65,25 @@ Where as the <em>Object</em> type keeps each record in a separate file. The obje
 <h3>What is planed so far:</h3>
 
 <ol>
-<li>Create a cache system with a user defined limit that keeps the most asked for items in a Tuple.</li>
-<li>Create the git backup </li>
-<li>Distribute with git push and pull </li>
+<li>Create a cache system with a user defined limit that keeps the most asked for items in a Tuple, as of now all data is being imported in to a Tuple.</li>
+<li>Create the vcs (git) backup store for the json backend</li>
+<li>Distribute with git push and pull</li>
+<li>Keep an open line of communication with glob between nodes   </li>
 </ol>
 
 <h3>Disadvantage:</h3>
 
-<p>git is not the fastest distribution system</p>
+<ul>
+<li>git is not the fastest distribution system</li>
+</ul>
 
 <h3>Advantage:</h3>
 
 <ol>
 <li>All data is kept in plain text/json</li>
-<li>Backups are incremental, I can't think of anything better then git to make backups.</li>
+<li>Backups are incremental, distributed and under version control.</li>
 <li>Distributed system. without the need for the master and slave concept.</li>
-<li>Every node is independent</li>
+<li>Every node is independent of the overall system, and can function even if all others fail.</li>
 <li>Database can get very big, bigger then what the memory can hold, and we will read less active data with io.Reader and bufio</li>
 </ol>
 
@@ -128,7 +130,7 @@ The lock will have a time limit as it does only takes a short time to perform a 
                 </div>
 			
 			
-				Last modified: 2012-09-24<hr /><a href="http://www.robotamer.com/html/GoTamer/Cases.html" title="Cases">Cases</a><br /><a href="http://www.robotamer.com/html/GoTamer/Cfg.html" title="Cfg">Cfg</a><br /><a href="http://www.robotamer.com/html/GoTamer/Conv.html" title="Conv">Conv</a><br /><a href="http://www.robotamer.com/html/GoTamer/Crypt.html" title="Crypt">Crypt</a><br /><a href="http://www.robotamer.com/html/GoTamer/GoWatch.html" title="GoWatch">GoWatch</a><br /><a href="http://www.robotamer.com/html/GoTamer/JGDB.html" title="JGDB">JGDB</a><br /><a href="http://www.robotamer.com/html/GoTamer/License.html" title="License">License</a><br /><a href="http://www.robotamer.com/html/GoTamer/Mail.html" title="Mail">Mail</a><br /><a href="http://www.robotamer.com/html/GoTamer/Tools.html" title="Tools">Tools</a><br /><hr />
+				Last modified: 2012-09-28<hr /><a href="http://www.robotamer.com/html/GoTamer/Cases.html" title="Cases">Cases</a><br /><a href="http://www.robotamer.com/html/GoTamer/Cfg.html" title="Cfg">Cfg</a><br /><a href="http://www.robotamer.com/html/GoTamer/Conv.html" title="Conv">Conv</a><br /><a href="http://www.robotamer.com/html/GoTamer/Crypt.html" title="Crypt">Crypt</a><br /><a href="http://www.robotamer.com/html/GoTamer/GoWatch.html" title="GoWatch">GoWatch</a><br /><a href="http://www.robotamer.com/html/GoTamer/JGDB.html" title="JGDB">JGDB</a><br /><a href="http://www.robotamer.com/html/GoTamer/License.html" title="License">License</a><br /><a href="http://www.robotamer.com/html/GoTamer/Mail.html" title="Mail">Mail</a><br /><a href="http://www.robotamer.com/html/GoTamer/Tools.html" title="Tools">Tools</a><br /><hr />
 <a href="https://bitbucket.org/gotamer" title="Code">Code</a><br />
 			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
             </sidebar>

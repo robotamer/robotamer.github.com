@@ -18,7 +18,6 @@ About the implementation:
 
  * Json *Beta*
  * Glob *Not yet implemented*
- * SQLite *Not yet implemented*
 
 The major distinction between *List* and *Object* is that one, the *List type* uses a single file as backend with each record placed in one line.  
 Where as the *Object* type keeps each record in a separate file. The object type is/will keep track of these records with an index file, and also optionally with a strtree for fast in memory access. 
@@ -30,18 +29,19 @@ Where as the *Object* type keeps each record in a separate file. The object type
 4. jsonListStruct struct is used to Marshal the data in to a json file
 
 ### What is planed so far:
-1. Create a cache system with a user defined limit that keeps the most asked for items in a Tuple.
-2. Create the git backup 
-3. Distribute with git push and pull 
+1. Create a cache system with a user defined limit that keeps the most asked for items in a Tuple, as of now all data is being imported in to a Tuple.
+2. Create the vcs (git) backup store for the json backend
+3. Distribute with git push and pull
+4. Keep an open line of communication with glob between nodes   
 
 ### Disadvantage:
-git is not the fastest distribution system
+ * git is not the fastest distribution system
 
 ### Advantage:
 1. All data is kept in plain text/json
-2. Backups are incremental, I can't think of anything better then git to make backups.
+2. Backups are incremental, distributed and under version control.
 3. Distributed system. without the need for the master and slave concept.
-4. Every node is independent
+4. Every node is independent of the overall system, and can function even if all others fail.
 5. Database can get very big, bigger then what the memory can hold, and we will read less active data with io.Reader and bufio
 
 
