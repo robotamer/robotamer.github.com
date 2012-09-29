@@ -49,7 +49,9 @@
 				<?= $this->__raw()->sidebar ?>
 			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
 			<hr />
-			<script language="JavaScript1.1" src="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=22279&bid=1216050" type="text/javascript"></script>
+			<div style="text-align: right; ">
+				<script language="JavaScript1.1" src="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=22279&bid=1216050" type="text/javascript"></script>
+			</div>
             </sidebar>
         </content>
 		<?= S::V()->scripts()->get()?>
