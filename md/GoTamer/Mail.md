@@ -1,13 +1,14 @@
 GoTamer Mail
 ============
 
-GoTamer Mail is a simple interface to the Go SMTP package
+Simplifies the interface to the go smtp package, and creates a pipe for mail queuing. 
 
 	package main
 	
 	import "gotamer/mail" // bitbucket.org/gotamer/mail if you install with go get
 	
 	func main() {
+		defer mail.final()
 		s := new(Smtp)
 		s.SetHostname("smtp.gmail.com")
 		s.SetHostport(587)
@@ -22,7 +23,7 @@ GoTamer Mail is a simple interface to the Go SMTP package
 		}
 	}
 
-As an alternative to `AddToAddr()` there is `SetToAddrs()`. With `SetToAddrs()` you can set one or more recipients as a list. 
+As an alternative to `AddToAddr()` there is `SetToAddrs()`. With `SetToAddrs()` you can set one or more recipients as a comma separated list list. 
 
 A note on the host. Go SMTP does not allow to connect to SMPT servers with a self signed certs.  
 You will get an error like following:
