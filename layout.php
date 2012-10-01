@@ -52,7 +52,7 @@
             </sidebar>
         </content>
 		<?= S::V()->scripts()->get()?>
-<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
+		
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-27513756-1']);
