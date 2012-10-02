@@ -7,6 +7,7 @@ gotamer/cfg is a json configuration package for Go
  * You can save a json template of your struct
  * You can save runtime modifications to the config
 
+### Docs:
 
     import "gotamer/cfg"
 
