@@ -35,48 +35,63 @@ You define your config items in your Go applications main package as a struct
 gotamer/cfg creates a json template file for you, according to the struct 
 definition in your main application, if it doesn't already exist.</p>
 
-<p>Here is an example of how to use it:</p>
+<pre><code>    &lt;div id="short-nav"&gt;
+        &lt;dl&gt;
+        &lt;dd&gt;&lt;code&gt;import "/home/tamer/code/go/src/gotamer/cfg"&lt;/code&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+        &lt;dl&gt;
+        &lt;dd&gt;&lt;a href="#pkg-overview" class="overviewLink"&gt;Overview&lt;/a&gt;&lt;/dd&gt;
+        &lt;dd&gt;&lt;a href="#pkg-index"&gt;Index&lt;/a&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+    &lt;/div&gt;
+    &lt;!-- The package's Name is printed as title by the top-level template --&gt;
+    &lt;div id="pkg-overview" class="toggleVisible"&gt;
+        &lt;div class="collapsed"&gt;
+            &lt;h2 class="toggleButton" title="Click to show Overview section"&gt;Overview ▹&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class="expanded"&gt;
+            &lt;h2 class="toggleButton" title="Click to hide Overview section"&gt;Overview ▾&lt;/h2&gt;
+            &lt;p&gt;gotamer/cfg is a json configuration package&lt;/p&gt;
+</code></pre>
 
-<pre><code>package main
+<p><pre>* You define your config items in your application as a struct.
+* You can save a json template of your struct
+* You can save runtime modifications to the config
+</pre></p>
 
-import (
-    "gotamer/cfg" // Or bitbucket.org/gotamer/cfg
-    "fmt"
-)
+<pre><code>        &lt;/div&gt;
+    &lt;/div&gt;
 
-var Cfg JsonCfg
 
-type JsonCfg struct{
-    Appl       string
-    Hostname   string
-    ListenAddr string
-    IpAddr     string
-    Debug      uint
-}
+    &lt;h2 id="pkg-index"&gt;Index&lt;/h2&gt;
+    &lt;!-- Table of contents for API; must be named manual-nav to turn off auto nav. --&gt;
+    &lt;div id="manual-nav"&gt;
+        &lt;dl&gt;
+            &lt;dd&gt;&lt;a href="#Load"&gt;func Load(filename string, o interface{}) (err error)&lt;/a&gt;&lt;/dd&gt;
+            &lt;dd&gt;&lt;a href="#Save"&gt;func Save(filename string, o interface{}) (err error)&lt;/a&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+        &lt;h4&gt;Package files&lt;/h4&gt;
+        &lt;p&gt;
+        &lt;span style="font-size:90%"&gt;
 
-func main() {
-    cfg.APPL = "cafemaker"
-    err := cfg.Get(&amp;Cfg)
-    if err != nil {
-        println("CONFIG: ", err)
-        return
-    }
-}
+            &lt;a href="/target/cfg.go"&gt;cfg.go&lt;/a&gt;
+
+        &lt;/span&gt;
+        &lt;/p&gt;
+        &lt;h2 id="Load"&gt;func &lt;a href="/target/cfg.go?s=550:603#L7"&gt;Load&lt;/a&gt;&lt;/h2&gt;
+        &lt;pre&gt;func Load(filename string, o interface{}) (err error)&lt;/pre&gt;
+        &lt;p&gt;Load gets your config from the json file, and fills your struct with the option&lt;/p&gt;
+        &lt;h2 id="Save"&gt;func &lt;a href="/target/cfg.go?s=806:859#L16"&gt;Save&lt;/a&gt;&lt;/h2&gt;
+        &lt;pre&gt;func Save(filename string, o interface{}) (err error)&lt;/pre&gt;
+        &lt;p&gt;Save will save your struct to the given filename, this is a good way to create a json template&lt;/p&gt;
+    &lt;/div&gt;
 </code></pre>
 
 <h3>Links</h3>
 
 <ul>
-<li><a href="http://go.pkgdoc.org/bitbucket.org/gotamer/cfg" title="GoTamer Pkg Documentation">Pkg Documantation</a></li>
 <li><a href="https://bitbucket.org/gotamer/cfg" title="GoTamer Repository">Repository</a></li>
 </ul>
-
-<hr />
-
-<h3>Note &amp; Credits</h3>
-
-<p>Had some help creating this package, you can read all about it at 
-<a href="https://groups.google.com/forum/?fromgroups=#!topic/golang-nuts/3iYS3UNYJUo" title="Go Nuts">Go Nuts</a></p>
 
 <!-- START: Livefyre Embed -->
 <script type='text/javascript' src='http://zor.livefyre.com/wjs/v1.0/javascripts/livefyre_init.js'></script>
