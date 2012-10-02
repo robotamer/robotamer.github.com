@@ -53,7 +53,7 @@
 <p>The major distinction between <em>List</em> and <em>Object</em> is that one, the <em>List type</em> uses a single file as backend with each record placed in one line.<br />
 Where as the <em>Object</em> type keeps each record in a separate file. The object type is/will keep track of these records with an index file, and also optionally with a strtree for fast in memory access. </p>
 
-<h3>How the List type works:</h3>
+<h4>How the List type works:</h4>
 
 <ol>
 <li>The user creates a struct to his/her needs</li>
@@ -62,7 +62,7 @@ Where as the <em>Object</em> type keeps each record in a separate file. The obje
 <li>jsonListStruct struct is used to Marshal the data in to a json file</li>
 </ol>
 
-<h3>What is planed so far:</h3>
+<h4>What is planed so far:</h4>
 
 <ol>
 <li>Create a cache system with a user defined limit that keeps the most asked for items in a Tuple, as of now all data is being imported in to a Tuple.</li>
@@ -71,13 +71,13 @@ Where as the <em>Object</em> type keeps each record in a separate file. The obje
 <li>Keep an open line of communication with glob between nodes   </li>
 </ol>
 
-<h3>Disadvantage:</h3>
+<h4>Disadvantage:</h4>
 
 <ul>
 <li>git is not the fastest distribution system</li>
 </ul>
 
-<h3>Advantage:</h3>
+<h4>Advantage:</h4>
 
 <ol>
 <li>All data is kept in plain text/json</li>
