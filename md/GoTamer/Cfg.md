@@ -41,7 +41,7 @@ Save will save your struct to the given filename, this is a good way to create a
 		err := cfg.Load(cfgpath, Cfg)
 		if err != nil {
 			cfg.Save(cfgpath, Cfg)
-			fmt.Println("\n\tPlease edit your configuration at: ", os.Getenv(cfgpath, "\n")
+			fmt.Println("\n\tPlease edit your configuration at: ", cfgpath, "\n")
 			os.Exit(0)
 		}
 		fmt.Printf("%s", Cfg)
