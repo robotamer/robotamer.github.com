@@ -35,57 +35,28 @@ You define your config items in your Go applications main package as a struct
 gotamer/cfg creates a json template file for you, according to the struct 
 definition in your main application, if it doesn't already exist.</p>
 
-<pre><code>    &lt;div id="short-nav"&gt;
-        &lt;dl&gt;
-        &lt;dd&gt;&lt;code&gt;import "/home/tamer/code/go/src/gotamer/cfg"&lt;/code&gt;&lt;/dd&gt;
-        &lt;/dl&gt;
-        &lt;dl&gt;
-        &lt;dd&gt;&lt;a href="#pkg-overview" class="overviewLink"&gt;Overview&lt;/a&gt;&lt;/dd&gt;
-        &lt;dd&gt;&lt;a href="#pkg-index"&gt;Index&lt;/a&gt;&lt;/dd&gt;
-        &lt;/dl&gt;
-    &lt;/div&gt;
-    &lt;!-- The package's Name is printed as title by the top-level template --&gt;
-    &lt;div id="pkg-overview" class="toggleVisible"&gt;
-        &lt;div class="collapsed"&gt;
-            &lt;h2 class="toggleButton" title="Click to show Overview section"&gt;Overview ▹&lt;/h2&gt;
-        &lt;/div&gt;
-        &lt;div class="expanded"&gt;
-            &lt;h2 class="toggleButton" title="Click to hide Overview section"&gt;Overview ▾&lt;/h2&gt;
-            &lt;p&gt;gotamer/cfg is a json configuration package&lt;/p&gt;
+<p>package cfg
+    import "gotamer/cfg"</p>
+
+<p>gotamer/cfg is a json configuration package</p>
+
+<ul>
+<li>You define your config items in your application as a struct.</li>
+<li>You can save a json template of your struct</li>
+<li>You can save runtime modifications to the config</li>
+</ul>
+
+<h3>FUNCTIONS</h3>
+
+<pre><code>func Load(filename string, o interface{}) (err error)
 </code></pre>
 
-<p><pre>* You define your config items in your application as a struct.
-* You can save a json template of your struct
-* You can save runtime modifications to the config
-</pre></p>
+<p>Load gets your config from the json file, and fills your struct with the option</p>
 
-<pre><code>        &lt;/div&gt;
-    &lt;/div&gt;
-
-
-    &lt;h2 id="pkg-index"&gt;Index&lt;/h2&gt;
-    &lt;!-- Table of contents for API; must be named manual-nav to turn off auto nav. --&gt;
-    &lt;div id="manual-nav"&gt;
-        &lt;dl&gt;
-            &lt;dd&gt;&lt;a href="#Load"&gt;func Load(filename string, o interface{}) (err error)&lt;/a&gt;&lt;/dd&gt;
-            &lt;dd&gt;&lt;a href="#Save"&gt;func Save(filename string, o interface{}) (err error)&lt;/a&gt;&lt;/dd&gt;
-    &lt;/dl&gt;
-        &lt;h4&gt;Package files&lt;/h4&gt;
-        &lt;p&gt;
-        &lt;span style="font-size:90%"&gt;
-
-            &lt;a href="/target/cfg.go"&gt;cfg.go&lt;/a&gt;
-
-        &lt;/span&gt;
-        &lt;/p&gt;
-        &lt;h2 id="Load"&gt;func &lt;a href="/target/cfg.go?s=550:603#L7"&gt;Load&lt;/a&gt;&lt;/h2&gt;
-        &lt;pre&gt;func Load(filename string, o interface{}) (err error)&lt;/pre&gt;
-        &lt;p&gt;Load gets your config from the json file, and fills your struct with the option&lt;/p&gt;
-        &lt;h2 id="Save"&gt;func &lt;a href="/target/cfg.go?s=806:859#L16"&gt;Save&lt;/a&gt;&lt;/h2&gt;
-        &lt;pre&gt;func Save(filename string, o interface{}) (err error)&lt;/pre&gt;
-        &lt;p&gt;Save will save your struct to the given filename, this is a good way to create a json template&lt;/p&gt;
-    &lt;/div&gt;
+<pre><code>func Save(filename string, o interface{}) (err error)   
 </code></pre>
+
+<p>Save will save your struct to the given filename, this is a good way to create a json template</p>
 
 <h3>Links</h3>
 
@@ -111,7 +82,7 @@ definition in your main application, if it doesn't already exist.</p>
                 </div>
 			
 			
-				Last modified: 2012-09-14<hr /><a href="http://www.robotamer.com/html/GoTamer/Cases.html" title="Cases">Cases</a><br /><a href="http://www.robotamer.com/html/GoTamer/Cfg.html" title="Cfg">Cfg</a><br /><a href="http://www.robotamer.com/html/GoTamer/Conv.html" title="Conv">Conv</a><br /><a href="http://www.robotamer.com/html/GoTamer/Crypt.html" title="Crypt">Crypt</a><br /><a href="http://www.robotamer.com/html/GoTamer/GoWatch.html" title="GoWatch">GoWatch</a><br /><a href="http://www.robotamer.com/html/GoTamer/JGDB.html" title="JGDB">JGDB</a><br /><a href="http://www.robotamer.com/html/GoTamer/License.html" title="License">License</a><br /><a href="http://www.robotamer.com/html/GoTamer/Mail.html" title="Mail">Mail</a><br /><a href="http://www.robotamer.com/html/GoTamer/Tools.html" title="Tools">Tools</a><br /><hr />
+				Last modified: 2012-10-02<hr /><a href="http://www.robotamer.com/html/GoTamer/Cases.html" title="Cases">Cases</a><br /><a href="http://www.robotamer.com/html/GoTamer/Cfg.html" title="Cfg">Cfg</a><br /><a href="http://www.robotamer.com/html/GoTamer/Conv.html" title="Conv">Conv</a><br /><a href="http://www.robotamer.com/html/GoTamer/Crypt.html" title="Crypt">Crypt</a><br /><a href="http://www.robotamer.com/html/GoTamer/GoWatch.html" title="GoWatch">GoWatch</a><br /><a href="http://www.robotamer.com/html/GoTamer/JGDB.html" title="JGDB">JGDB</a><br /><a href="http://www.robotamer.com/html/GoTamer/License.html" title="License">License</a><br /><a href="http://www.robotamer.com/html/GoTamer/Mail.html" title="Mail">Mail</a><br /><a href="http://www.robotamer.com/html/GoTamer/Tools.html" title="Tools">Tools</a><br /><hr />
 <a href="https://bitbucket.org/gotamer" title="Code">Code</a><br />
 
 <a class="twitter-timeline" href="https://twitter.com/CodeTamer" data-widget-id="252549475527163904">@CodeTamer</a>
