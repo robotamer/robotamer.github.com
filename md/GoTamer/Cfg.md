@@ -27,17 +27,15 @@ Save will save your struct to the given filename, this is a good way to create a
 		"os"
 	)
 
-	var (
-		Cfg MainCfg
-	)
+	var Cfg *MainCfg
 
 	type MainCfg struct {
-		ROOT  string // Where we will keep the files
-		Alias string
+		Name  string
 	}
 
 	func main() {
-		cfgpath := os.Getenv("GOPATH")+"/etc/myappname.json"
+		Cfg = &MainCfg{"/tmp", "defaultAlias"}
+		cfgpath := os.Getenv("GOPATH") + "/etc/myappname.json"
 		err := cfg.Load(cfgpath, Cfg)
 		if err != nil {
 			cfg.Save(cfgpath, Cfg)
