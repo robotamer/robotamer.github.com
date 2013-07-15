@@ -34,7 +34,7 @@ Save will save your struct to the given filename, this is a good way to create a
 	}
 
 	func main() {
-		Cfg = &MainCfg{"/tmp", "defaultAlias"}
+		Cfg = &MainCfg{"defaultAlias"}
 		cfgpath := os.Getenv("GOPATH") + "/etc/myappname.json"
 		err := cfg.Load(cfgpath, Cfg)
 		if err != nil {
