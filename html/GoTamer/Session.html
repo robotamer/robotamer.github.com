@@ -28,64 +28,115 @@
 
         <content>
             <div style="padding-right: 25em">
-				<h1>GoTamer Cfg</h1>
+				<h1>SESSION</h1>
 
-<h3>gotamer/cfg is a json configuration package for Go</h3>
+<p>Session for go consists of a way to preserve certain data across subsequent accesses in network related applications. </p>
 
 <ul>
-<li>You define your config items in your application as a struct.</li>
-<li>You can save a json template of your struct</li>
-<li>You can save runtime modifications to the config</li>
+<li>Custom backends to store session data locally. </li>
+<li>Flash messages: session values that last until read. </li>
+<li>Low dependency and therefore versitile, for example, it does not depened on the go http pkg </li>
 </ul>
 
-<h3>Docs:</h3>
+<p>Built-in backends to store sessions locally: 
+ * storeMap => A in memory map[string]sessions store 
+ * storeLeveldb => Stores session data in a leveldb </p>
 
-<pre><code>import "bitbucket.org/gotamer/cfg"
+<p>Simple Sample code the uses the default storeMap backend: 
+```
+package main</p>
 
-func Load(filename string, o interface{}) (err error)
-</code></pre>
-
-<p>Load gets your config from the json file, and fills your struct with the option</p>
-
-<pre><code>func Save(filename string, o interface{}) (err error)   
-</code></pre>
-
-<p>Save will save your struct to the given filename, this is a good way to create a json template</p>
-
-<h3>Example:</h3>
-
-<pre><code>package main
-
-import (
+<p>import(
+    "bitbucket.org/gotamer/net/session"
     "fmt"
-    "bitbucket.org/gotamer/cfg"
-    "os"
-)
+)</p>
 
-var Cfg *MainCfg
+<p>func main(){
+    id := save()
+    load(id)
+}</p>
 
-type MainCfg struct {
-    Name  string
-}
+<p>func save() string {
+    sess := session.New()
+    sess.Set("Alias","GoTamer")
+    err := sess.Save()
+    Check(err)
+    fmt.Println("Session Saved", sess)
+    sid, err := sess.Id()
+    Check(err)
+    return sid
+}</p>
 
-func main() {
-    Cfg = &amp;MainCfg{"defaultAlias"}
-    cfgpath := os.Getenv("GOPATH") + "/etc/myappname.json"
-    err := cfg.Load(cfgpath, Cfg)
-    if err != nil {
-        cfg.Save(cfgpath, Cfg)
-        fmt.Println("\n\tPlease edit your configuration at: ", cfgpath, "\n")
-        os.Exit(0)
-    }
-    fmt.Printf("%s", Cfg)
-}
-</code></pre>
+<p>func load(sid string){
+    sess, err := session.Load(sid)
+    Check(err)
+    fmt.Println("Session Load: ", sess)
+}</p>
 
-<h3>Links</h3>
+<p>```</p>
 
-<ul>
-<li><a href="https://bitbucket.org/gotamer/cfg" title="GoTamer Repository">Repository</a></li>
-</ul>
+<p>Sample code the uses the leveldb backend: 
+```
+package main</p>
+
+<p>import(
+    "bitbucket.org/gotamer/net/session"
+    "fmt"
+)</p>
+
+<p>var path = "/tmp/sessions"</p>
+
+<p>func init(){
+    session.StoreLeveldb(path)<br />
+}</p>
+
+<p>func main(){
+    id := save()
+    load(id)
+}</p>
+
+<p>func save() string {
+    sess := session.New()
+    sess.Set("Alias","GoTamer")
+    err := sess.Save()
+    Check(err)
+    fmt.Println("Session Saved", sess)
+    sid, err := sess.Id()
+    Check(err)
+    return sid
+}</p>
+
+<p>func load(sid string){
+    sess, err := session.Load(sid)
+    Check(err)
+    fmt.Println("Session Load: ", sess)
+}</p>
+
+<p>```</p>
+
+<p>Additional backends can be created by simply implementing following interfaces: 
+<code>type Store interface {
+    Save(session *sessionObject) (err error)
+    Load(sid string) (session *sessionObject, err error)
+    Delete(sid string) (err error)
+}</code></p>
+
+<p>Some code has been borrowed from http://www.stathat.com/src/bingo witch is licensed also under MIT. </p>
+
+<p>Code is available at <a href="https://bitbucket.org/gotamer">https://bitbucket.org/gotamer</a> </p>
+
+<hr />
+
+<h4>The MIT License (MIT)</h4>
+
+<p>Copyright © 2013 Dennis T Kaplan <a href="http://www.robotamer.com">http://www.robotamer.com</a><br />
+Copyright (C) 2012 Numerotron Inc.  </p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 
 <!-- START: Livefyre Embed -->
 <script type='text/javascript' src='http://zor.livefyre.com/wjs/v1.0/javascripts/livefyre_init.js'></script>

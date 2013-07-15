@@ -28,18 +28,47 @@
 
         <content>
             <div style="padding-right: 25em">
-				<h1>GoTamer Cases</h1>
+				<h1>GoTamer sbs</h1>
 
-<h4>Case Manipulation</h4>
+<p>sbs stands for Struct to Byte slice and back to Struct</p>
 
-<p>Provides conversion and case manipulation, such as upper case word, upper case words, camel case, dash, underscore etc.</p>
+<p>sbs can encode a struct to a byte slice and back.</p>
 
-<p>I created this for a Wiki I been working on as a learning experience for Go</p>
+<p>This is useful if you need to save data in a key value database for example, such as the leveldb, because the leveldb only takes bytes as values.</p>
 
-<ul>
-<li><a href="http://go.pkgdoc.org/bitbucket.org/gotamer/cases" title="GoTamer Conversion Pkg Documentation">Pkg Documantation</a></li>
-<li><a href="https://bitbucket.org/gotamer/cases" title="GoTamer Conversion Repository">Repository</a></li>
-</ul>
+<p>sbs encodes your struct first to a Gob, then it convers it to a byte slice, and it reverses the process for encoding.</p>
+
+<h4>Example</h4>
+
+<p>```
+type Foo struct {
+    A int
+    B string
+}</p>
+
+<p>p := &amp;Foo{111,"A string"}</p>
+
+<p>byteslice, err := sbs.Enc(p)
+...</p>
+
+<p>foo := new(Foo)
+structobject, err := sbs.Dec(foo, byteslice)
+...
+```</p>
+
+<p>Code is available at <a href="https://bitbucket.org/gotamer/sbs">https://bitbucket.org/gotamer/sbs</a></p>
+
+<hr />
+
+<h4>The MIT License (MIT)</h4>
+
+<p>Copyright © 2013 Dennis T Kaplan <a href="http://www.robotamer.com">http://www.robotamer.com</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 
 <!-- START: Livefyre Embed -->
 <script type='text/javascript' src='http://zor.livefyre.com/wjs/v1.0/javascripts/livefyre_init.js'></script>
@@ -59,7 +88,7 @@
                 </div>
 			
 			
-				Last modified: 2012-09-21<hr /><a href="http://www.robotamer.com/html/GoTamer/Cases.html" title="Cases">Cases</a><br /><a href="http://www.robotamer.com/html/GoTamer/Cfg.html" title="Cfg">Cfg</a><br /><a href="http://www.robotamer.com/html/GoTamer/Conv.html" title="Conv">Conv</a><br /><a href="http://www.robotamer.com/html/GoTamer/Crypt.html" title="Crypt">Crypt</a><br /><a href="http://www.robotamer.com/html/GoTamer/GoWatch.html" title="GoWatch">GoWatch</a><br /><a href="http://www.robotamer.com/html/GoTamer/JGDB.html" title="JGDB">JGDB</a><br /><a href="http://www.robotamer.com/html/GoTamer/License.html" title="License">License</a><br /><a href="http://www.robotamer.com/html/GoTamer/Mail.html" title="Mail">Mail</a><br /><a href="http://www.robotamer.com/html/GoTamer/Ping.html" title="Ping">Ping</a><br /><a href="http://www.robotamer.com/html/GoTamer/Sbs.html" title="Sbs">Sbs</a><br /><a href="http://www.robotamer.com/html/GoTamer/Session.html" title="Session">Session</a><br /><a href="http://www.robotamer.com/html/GoTamer/Tools.html" title="Tools">Tools</a><br /><hr />
+				Last modified: 2013-07-15<hr /><a href="http://www.robotamer.com/html/GoTamer/Cases.html" title="Cases">Cases</a><br /><a href="http://www.robotamer.com/html/GoTamer/Cfg.html" title="Cfg">Cfg</a><br /><a href="http://www.robotamer.com/html/GoTamer/Conv.html" title="Conv">Conv</a><br /><a href="http://www.robotamer.com/html/GoTamer/Crypt.html" title="Crypt">Crypt</a><br /><a href="http://www.robotamer.com/html/GoTamer/GoWatch.html" title="GoWatch">GoWatch</a><br /><a href="http://www.robotamer.com/html/GoTamer/JGDB.html" title="JGDB">JGDB</a><br /><a href="http://www.robotamer.com/html/GoTamer/License.html" title="License">License</a><br /><a href="http://www.robotamer.com/html/GoTamer/Mail.html" title="Mail">Mail</a><br /><a href="http://www.robotamer.com/html/GoTamer/Ping.html" title="Ping">Ping</a><br /><a href="http://www.robotamer.com/html/GoTamer/Sbs.html" title="Sbs">Sbs</a><br /><a href="http://www.robotamer.com/html/GoTamer/Session.html" title="Session">Session</a><br /><a href="http://www.robotamer.com/html/GoTamer/Tools.html" title="Tools">Tools</a><br /><hr />
 <a href="https://bitbucket.org/gotamer" title="Code">Code</a><br />
 
 <a class="twitter-timeline" href="https://twitter.com/CodeTamer" data-widget-id="252549475527163904">@CodeTamer</a>
