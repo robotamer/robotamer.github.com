@@ -156,7 +156,7 @@ if($commit === TRUE){
 	echo PHP_EOL ."\tComiting to git ...". PHP_EOL;
 	exec('git add .');
 	exec("git commit -m 'Just another update'");
-	exec("git push origin");
+	exec("git push");
 }
 echo PHP_EOL . "\tAll done!".PHP_EOL.PHP_EOL;
 exit(0);
