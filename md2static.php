@@ -99,7 +99,8 @@ foreach($put_file_structure_array as $dir){
 		if($name == 'sidebar'){
 			$menu = file_get_contents($get_file_list_array[$k]);
 		}elseif($name != 'index'){
-			$sidebar .= '<a href="'.$DOMAIN.'/'.$menuitem.'" title="'.$name.'">'.$name.'</a><br />';
+			//$sidebar .= '<a href="'.$DOMAIN.'/'.$menuitem.'" title="'.$name.'">'.$name.'</a><br />';
+			$sidebar .= '<a href="/'.$menuitem.'" title="'.$name.'">'.$name.'</a><br />';
 		}
 	}
 	$sidebar .= $menu;
