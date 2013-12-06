@@ -1,0 +1,470 @@
+<!doctype html>
+<html>
+  <head>
+  <title>rtdb.py: Extension for dtuple.py</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="RoboTamer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link href="http://localhost:1313/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="http://localhost:1313/static/css/styles.css" rel="stylesheet"/>
+    <link href="http://localhost:1313/static/css/hugoicon.css" rel="stylesheet"/>
+
+
+  </head>
+  <body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="http://localhost:1313/"><img src="http://localhost:1313/static/img/robotamer82-100.png" alt="Logo" width="20" height="25">&nbsp; RoboTamer</a>
+  </div>
+
+  
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+    
+      <li><a href="http://localhost:1313/blog.html">&nbsp; Blog &nbsp;</a></li>
+      
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/blog/network-safety-restart/html"><a href="http://localhost:1313/blog/network-safety-restart/html"> Network Safety Restart </a> </li>
+            
+            <li hugo-nav="/blog/search-linux-bash-history-2/html"><a href="http://localhost:1313/blog/search-linux-bash-history-2/html"> Search linux bash history </a> </li>
+            
+            <li hugo-nav="/blog/search-linux-bash-history/html"><a href="http://localhost:1313/blog/search-linux-bash-history/html"> Search linux bash history </a> </li>
+            
+            <li hugo-nav="/blog/2010-03-07-9.html"><a href="http://localhost:1313/blog/2010-03-07-9.html"> Netbeans error </a> </li>
+            
+            <li hugo-nav="/linux/index.html"><a href="http://localhost:1313/linux/index.html"> Linux Index </a> </li>
+            
+            <li hugo-nav="/linux/snippets.html"><a href="http://localhost:1313/linux/snippets.html"> Linux Snippets </a> </li>
+            
+            <li hugo-nav="/linux/nsr.html"><a href="http://localhost:1313/linux/nsr.html"> Network Safety Restart Bash Script </a> </li>
+            
+            <li hugo-nav="/linux/ssh.html"><a href="http://localhost:1313/linux/ssh.html"> ssh </a> </li>
+            
+            <li hugo-nav="/linux/lxc.html"><a href="http://localhost:1313/linux/lxc.html"> Linux Containers </a> </li>
+            
+            <li hugo-nav="/linux/git.html"><a href="http://localhost:1313/linux/git.html"> Git Howto </a> </li>
+            
+            <li hugo-nav="/linux/mail-server-fingerprint.html"><a href="http://localhost:1313/linux/mail-server-fingerprint.html"> Mail Server Fingerprint </a> </li>
+            
+            <li hugo-nav="/linux/bridge-utils.html"><a href="http://localhost:1313/linux/bridge-utils.html"> Bridge-Utils for LXC </a> </li>
+            
+            <li hugo-nav="/linux/msmtp.html"><a href="http://localhost:1313/linux/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://localhost:1313/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+            <li hugo-nav="/linux/sendmail.html"><a href="http://localhost:1313/linux/sendmail.html"> Send mail with sendmail </a> </li>
+            
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/blog/sbs/html"><a href="http://localhost:1313/blog/sbs/html"> Saving structs in a leveldb </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/gowatch.html"><a href="http://localhost:1313/code/go/gotamer/gowatch.html"> GoWatch </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/index.html"><a href="http://localhost:1313/code/go/gotamer/index.html"> Gophy </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/jgdb.html"><a href="http://localhost:1313/code/go/gotamer/jgdb.html"> jgdb </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/mail.html"><a href="http://localhost:1313/code/go/gotamer/mail.html"> Smtp </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/ping.html"><a href="http://localhost:1313/code/go/gotamer/ping.html"> Ping </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/sbs.html"><a href="http://localhost:1313/code/go/gotamer/sbs.html"> sbs </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/tools.html"><a href="http://localhost:1313/code/go/gotamer/tools.html"> Tools </a> </li>
+            
+            <li hugo-nav="/code/go/index.html"><a href="http://localhost:1313/code/go/index.html"> ﻿Snippets </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/session.html"><a href="http://localhost:1313/code/go/gotamer/session.html"> Session </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/crypt.html"><a href="http://localhost:1313/code/go/gotamer/crypt.html"> Crypt </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cases.html"><a href="http://localhost:1313/code/go/gotamer/cases.html"> Cases </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cfg.html"><a href="http://localhost:1313/code/go/gotamer/cfg.html"> Cfg </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://localhost:1313/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">PHP <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/blog/get-php-files-in-dir-with-recursive-lambda-callback-function/html"><a href="http://localhost:1313/blog/get-php-files-in-dir-with-recursive-lambda-callback-function/html"> Get php files in dir with recursive lambda callback function </a> </li>
+            
+            <li hugo-nav="/blog/splclassloader-implementation/html"><a href="http://localhost:1313/blog/splclassloader-implementation/html"> SplClassLoader Implementation </a> </li>
+            
+            <li hugo-nav="/blog/messenger-laravel-framework/html"><a href="http://localhost:1313/blog/messenger-laravel-framework/html"> Messenger Laravel Framework </a> </li>
+            
+            <li hugo-nav="/blog/2010-03-18-7.html"><a href="http://localhost:1313/blog/2010-03-18-7.html"> Creating models for the Zend Framework from command line via phpcli. </a> </li>
+            
+            <li hugo-nav="/blog/2008-04-27-21.html"><a href="http://localhost:1313/blog/2008-04-27-21.html"> Tamer ACL </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/index.html"><a href="http://localhost:1313/code/php/phptamer/index.html"> PHPTamer </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtsingleton.html"><a href="http://localhost:1313/code/php/phptamer/rtsingleton.html"> Singleton </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtcrypter.html"><a href="http://localhost:1313/code/php/phptamer/rtcrypter.html"> Crypter </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/facade.html"><a href="http://localhost:1313/code/php/phptamer/facade.html"> Facade </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://localhost:1313/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+      </li>
+
+      <li><a href="http://localhost:1313/feeds.html">&nbsp; Feeds &nbsp;</a></li>
+
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meta <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/about.html"><a href="http://localhost:1313/about.html"> My little space on the net </a> </li>
+            
+            <li hugo-nav="/license.html"><a href="http://localhost:1313/license.html"> Copyright </a> </li>
+            
+        </ul>
+      </li>
+      <li><a href="http://bitbucket.org/robotamer"><i class="icon-octocat icon-2x"> </i></a></li>
+    </ul>
+  </div>
+</nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+  	<h2>rtdb.py: Extension for dtuple.py</h2>
+	<h4></h4>
+  </div>
+  <div class="panel-body">
+  <p>This is specific to sqlite but could easily be adopted to work with other databases.</p>
+
+<p>&lt;!&ndash; more &ndash;&gt;
+#</p>
+
+<h1>rtdb.py: Extension for dtuple.py</h1>
+
+<p>#</p>
+
+<h1>Written by Dennis T Kaplan . Public Domain.</h1>
+
+<h1>No Copyright, no Rights Reserved, and no Warranties.</h1>
+
+<p>class rtdb:</p>
+
+<p>def <strong>init</strong>(self, dbname, sql, one = True):
+self.one = one
+connection = sqlite3.connect(dbname)
+cursor = connection.cursor()
+cursor.execute(sql)
+if one == True:
+self._descriptor = dtuple.TupleDescriptor(cursor.description)
+self._rows = cursor.fetchone()
+else:
+self._descriptor = dtuple.TupleDescriptor([[f][0] for f in cursor.description])
+self._rows = cursor.fetchall()</p>
+
+<p>def <strong>getitem</strong>(self, index):
+if self.one == True:
+return dtuple.DatabaseTuple(self._descriptor, self._rows)
+else:
+return dtuple.DatabaseTuple(self._descriptor, self._rows[index])</p>
+
+<p>
+#</p>
+
+<h1>dtuple.py: Database Tuple handling</h1>
+
+<p>#</p>
+
+<h1>Written by Greg Stein. Public Domain.</h1>
+
+<h1>No Copyright, no Rights Reserved, and no Warranties.</h1>
+
+<p>#</p>
+
+<h1>This module is maintained by Greg and is available at:</h1>
+
+<h1><a href="http://www.lyra.org/greg/python/dtuple.py">http://www.lyra.org/greg/python/dtuple.py</a></h1>
+
+<p>#</p>
+
+<h1>Since this isn&rsquo;t in any Python distribution yet, we&rsquo;ll use the CVS ID for</h1>
+
+<h1>tracking:</h1>
+
+<h1>$Id: dtuple.py,v 1.1 2000/04/18 20:17:20 gstein Exp $</h1>
+
+<p>#</p>
+
+<p>class TupleDescriptor:
+&ldquo;&rdquo;&ldquo;Describes a return tuple from a DB-API fetch*() method.</p>
+
+<p>Instances of this class are used to describe database tuples (which are
+typically instances of DatabaseTuple or one of its derivative classes).
+These instances specify the column names, formats, lengths, and other
+relevant information about the items in a particular tuple. An instance
+is typically shared between many database tuples (such as those returned
+by a single query).</p>
+
+<p>Note: the term database tuple is rather specific; in actuality the tuple
+may have come from non-database sources and/or generated by a process
+wholly unrelated to databases.</p>
+
+<p>Note again: I&rsquo;m open for new names for this and the DatabaseTuple class
+and concept :-)
+&ldquo;&rdquo;&rdquo;</p>
+
+<p>def <strong>init</strong>(self, desc):
+&ldquo;&rdquo;&ldquo;TupleDescriptor constructor.</p>
+
+<p>An instance is created by passing a &ldquo;descriptor&rdquo; to fully specify the
+information about the related database tuple. This descriptor takes the
+form of a tuple or list where each element is a tuple. The first element
+of this tuple is the name of the column. The following elements of the
+tuple are used to describe the column (such as length, format,
+significant
+digits, etc).
+&ldquo;&rdquo;&rdquo;
+self.desc = tuple(desc)</p>
+
+<h3>validate the names?</h3>
+
+<p>self.names = map(lambda x: x[0], desc)
+self.namemap = { }
+for i in range(len(self.names)):
+self.namemap[self.names[i]] = i</p>
+
+<p>def <strong>len</strong>(self):
+&ldquo;&rdquo;&ldquo;Returns the number of elements in the data object.</p>
+
+<p>A tuple descriptor responds to <strong>len</strong> to simplify some processing by
+allowing the use of the len() builtin function.
+&ldquo;&rdquo;&rdquo;
+return len(self.names)</p>
+
+<p>def <strong>repr</strong>(self):
+return &lsquo;%s(%s)&rsquo; % (self.<strong>class</strong>.<strong>name</strong>, repr(self.desc))
+def <strong>str</strong>(self):
+return str(self.desc)</p>
+
+<p>class DatabaseTuple:
+&ldquo;&rdquo;&ldquo;Wraps the return data from a DB-API fetch*() method.</p>
+
+<p>Instances of this class are used to represent tuples of information,
+typically returned by a database query. A TupleDescriptor is used as
+a means of describing the information for a variety of access methods.
+The tuple&rsquo;s information can be accessed via simple indexing, slices,
+as a mapping where the keys are the column names (as defined by the
+descriptor), or via attribute-based access (where the attribute names
+are equivalent to the column names).</p>
+
+<p>This object acts as a tuple, a list, a mapping, and an instance. To
+retrieve &ldquo;pure&rdquo; tuples, lists, or mappings, the asTuple(), asList(),
+and asMapping() methods may be used, each returning a value equal to
+what this object pretends to be.</p>
+
+<p>There exists a potential ambiguity between attempting to act as a list
+or mapping and the attribute-based access to the data. In particular,
+if the column names are &lsquo;index&rsquo;, &lsquo;count&rsquo;, &lsquo;keys&rsquo;, &lsquo;items&rsquo;, &lsquo;values&rsquo;, or
+&lsquo;has_key&rsquo;, then the attribute-based access will have precedence over
+their related methods for lists and mappings. To actually use these
+methods, simply apply them to the result of the asList() or asMapping()
+methods.</p>
+
+<p>Note that column names with leading underscores may interfere with
+the implementation of this class, and as a result may not be accessible
+via the attribute-access scheme. Also, column names of asTuple, asList,
+and asMapping will be inaccessible via the attribute-access scheme
+since those will always represent the methods. To access these columns,
+the mapping interface can be used with the column name as the mapping
+key.</p>
+
+<p>Note that a database tuple acts as a tuple with respect to sub-scripted
+assignment. TypeError exceptions will be raised for several situations,
+and AttributeError may be raised for some methods that are intended
+to mutate the data (list&rsquo;s &lsquo;sort&rsquo; method) as these methods have not
+been implemented.
+&ldquo;&rdquo;&rdquo;</p>
+
+<p>def <strong>init</strong>(self, desc, data):
+&ldquo;&rdquo;&ldquo;DatabaseTuple constructor.</p>
+
+<p>A DatabaseTuple is initialized with a TupleDescriptor and a tuple or
+list specifying the data elements.
+&ldquo;&rdquo;&rdquo;
+if len(desc) != len(data):
+raise ValueError # descriptor does not seem to describe tuple
+if type(desc) == type(()) or type(desc) == type([]):
+desc = TupleDescriptor(desc)
+self.<strong>dict</strong>[&rsquo;<em>desc</em>&rsquo;] = desc
+self.<strong>dict</strong>[&rsquo;<em>data</em>&rsquo;] = tuple(data)</p>
+
+<p>def <strong>str</strong>(self):
+return str(self.<em>data</em>)
+def <strong>repr</strong>(self):
+return &lsquo;%s(%s,%s)&rsquo; % (self.<strong>class</strong>.<strong>name</strong>,
+repr(self.<em>desc</em>),
+repr(self.<em>data</em>))</p>
+
+<p>def <strong>cmp</strong>(self, other):
+if type(self.<em>data</em>) == type(other):
+return cmp(self.<em>data</em>, other)
+if type(self.<em>data</em>) == type( {} ):
+return cmp(self.asMapping(), other)
+if type(self.<em>data</em>) == type( () ):
+return cmp(self.asTuple(), other)
+if type(self) == type(other): ### fix this: need to verify equal classes
+return cmp(self.<em>data</em>, other.<em>data</em>)
+return cmp(self.<em>data</em>, other)</p>
+
+<p>def <strong>getattr</strong>(self, name):
+&lsquo;Simulate attribute-access via column names&rsquo;
+return self.<em>getvalue</em>(name)</p>
+
+<p>def <strong>setattr</strong>(self, name, value):
+&lsquo;Simulate attribute-access via column names&rsquo;</p>
+
+<h3>need to redirect into a db update</h3>
+
+<p>raise TypeError, &ldquo;can&rsquo;t assign to this subscripted object&rdquo;</p>
+
+<p>def <strong>getitem</strong>(self, key):
+&lsquo;Simulate indexed (tuple/list) and mapping-style access&rsquo;
+if type(key) == type(1):
+return self.<em>data</em>[key]
+return self.<em>getvalue</em>(key)</p>
+
+<p>def <strong>setitem</strong>(self, key, value):
+&lsquo;Simulate indexed (tuple/list) and mapping-style access&rsquo;
+if type(key) == type(1):</p>
+
+<h3>need to redirect into a db update of elem #key</h3>
+
+<p>raise TypeError, &ldquo;can&rsquo;t assign to this subscripted object&rdquo;</p>
+
+<h3>need to redirect into a db update of elem named key</h3>
+
+<p>raise TypeError, &ldquo;can&rsquo;t assign to this subscripted object&rdquo;</p>
+
+<p>def <strong>len</strong>(self):
+return len(self.<em>data</em>)</p>
+
+<p>def <strong>getslice</strong>(self, i, j):
+&lsquo;Simulate list/tuple slicing access&rsquo;
+return self.<em>data</em>[i:j]</p>
+
+<p>def <strong>setslice</strong>(self, i, j, list):
+&lsquo;Simulate list/tuple slicing access&rsquo;</p>
+
+<h3>need to redirect into a db update of elems</h3>
+
+<p>raise TypeError, &ldquo;can&rsquo;t assign to this subscripted object&rdquo;</p>
+
+<p>def <em>keys</em>(self):
+&ldquo;Simulate mapping&rsquo;s methods&rdquo;
+return self.<em>desc</em>.names</p>
+
+<p>def <em>has_key</em>(self, key):
+&ldquo;Simulate mapping&rsquo;s methods&rdquo;
+return key in self.<em>desc</em>.names</p>
+
+<p>def <em>items</em>(self):
+&ldquo;Simulate mapping&rsquo;s methods&rdquo;
+return self.asMapping().items()</p>
+
+<p>def <em>count</em>(self, item):
+&ldquo;Simulate list&rsquo;s methods&rdquo;
+return self.asList().count(item)</p>
+
+<p>def <em>index</em>(self, item):
+&ldquo;Simulate list&rsquo;s methods&rdquo;
+return self.asList().index(item)</p>
+
+<p>def <em>getvalue</em>(self,name):
+&lsquo;Internal method for named-based value retrieval&rsquo;
+if name not in self.<em>desc</em>.names:
+if name == &lsquo;keys&rsquo;:
+return self.<em>keys</em>
+if name == &lsquo;items&rsquo;:
+return self.<em>items</em>
+if name == &lsquo;values&rsquo;:
+return self.asList
+if name == &lsquo;has<em>key&rsquo;:
+return self._has_key</em>
+if name == &lsquo;count&rsquo;:
+return self.<em>count</em>
+if name == &lsquo;index&rsquo;:
+return self.<em>index</em>
+raise AttributeError
+return self.<em>data</em>[self.<em>desc</em>.namemap[name]]</p>
+
+<p>def asMapping(self):
+&lsquo;Return the &ldquo;tuple&rdquo; as a real mapping&rsquo;
+value = { }
+for name, idx in self.<em>desc</em>.namemap.items():
+value[name] = self.<em>data</em>[idx]
+return value</p>
+
+<p>def asTuple(self):
+&lsquo;Return the &ldquo;tuple&rdquo; as a real tuple&rsquo;
+return self.<em>data</em></p>
+
+<p>def asList(self):
+&lsquo;Return the &ldquo;list&rdquo; as a real mapping&rsquo;
+return map(None, self.<em>data</em>)</p>
+
+  </div>
+  <div class="panel-footer">
+    <div class="btn-group">
+      
+      <a href="http://localhost:1313/tags/python.html"><button type="button" class="btn btn-info btn-xs">python</button></a>	
+      
+    </div>  
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <hr>
+      <footer id="footer">Copyright &copy; 1998 - 2013 RoboTamer</footer>
+    </div>
+      <script src="http://localhost:1313/static/js/jquery.js"></script>
+      <script src="http://localhost:1313/static/js/bootstrap.min.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-33624274-1', 'robotamer.com');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+
+</html>

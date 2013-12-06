@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Function on RoboTamer </title>
+    <link>http://localhost:1313/tags/function.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2012-07-13 20:45:12 &#43;0000 &#43;0000</updated>
+    
+    <item>
+      <title>Get php files in dir with recursive lambda callback function</title>
+      <link>http://localhost:1313/blog/get-php-files-in-dir-with-recursive-lambda-callback-function/html</link>
+      <pubDate>Fri, 13 Jul 2012 20:45:12 &#43;0000</pubDate>
+      <author>Steve Francia</author>
+      <guid>http://localhost:1313/blog/get-php-files-in-dir-with-recursive-lambda-callback-function/html</guid>
+      <description>&lt;p&gt;Got it all already in the subject line.&lt;/p&gt;
+
+&lt;p&gt;Anyway this is a &lt;a href=&#34;http://en.wikipedia.org/wiki/Lambda_(programming&#34;&gt;Lambda&lt;/a&gt;) function also called anonymous function within a regular function that scans a given directory and it&amp;rsquo;s sub directories returning an array of all php files within.&lt;/p&gt;
+
+&lt;p&gt;Following is a snip output of the Zend files.
+&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;
+&lt;code&gt;
+[6] =&amp;gt; /usr/share/php/Zend/Captcha/ReCaptcha.php
+[7] =&amp;gt; /usr/share/php/Zend/Captcha/Base.php
+[8] =&amp;gt; /usr/share/php/Zend/Feed/Rss.php
+[9] =&amp;gt; /usr/share/php/Zend/Feed/Atom.php
+[52] =&amp;gt; /usr/share/php/Zend/Feed/Writer/Source.php
+[53] =&amp;gt; /usr/share/php/Zend/Feed/Pubsubhubbub.php
+[54] =&amp;gt; /usr/share/php/Zend/Feed/Element.php
+[55] =&amp;gt; /usr/share/php/Zend/Feed/Reader/Feed/Rss.php
+[90] =&amp;gt; /usr/share/php/Zend/Feed/Builder.php
+[91] =&amp;gt; /usr/share/php/Zend/Feed/Writer.php
+[92] =&amp;gt; /usr/share/php/Zend/Config.php
+[93] =&amp;gt; /usr/share/php/Zend/Json/Server.php
+[94] =&amp;gt; /usr/share/php/Zend/Json/Exception.php
+[95] =&amp;gt; /usr/share/php/Zend/Json/Encoder.php
+[865] =&amp;gt; /usr/share/php/Zend/View/Stream.php
+[866] =&amp;gt; /usr/share/php/Zend/View/Interface.php
+[867] =&amp;gt; /usr/share/php/Zend/View/Abstract.php
+[868] =&amp;gt; /usr/share/php/Zend/Search/Exception.php
+[869] =&amp;gt; /usr/share/php/Zend/Search/Lucene.php
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;[gist id=3107221]&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

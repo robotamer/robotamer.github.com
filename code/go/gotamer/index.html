@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Copyright</title>
-  <meta name="description" content="">
-  <meta name="keywords" content=", , , , , , , , , , RoboTamer">
+  <title>A Gopher named Gophy</title>
+  <meta name="description" content="Learn go with a little coding story">
+  <meta name="keywords" content="learn, howto, golang, pointer, interface, RoboTamer">
   <meta name="generator" content="Hugo">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -165,37 +165,61 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-  	<h2>Copyright</h2>
-	<h4></h4>
+  	<h2>A Gopher named Gophy</h2>
+	<h4>Learn go with a little coding story</h4>
   </div>
   <div class="panel-body">
-  <h2>Copyright &copy; 2012 The GoTamer Authors. All rights reserved.</h2>
+  <p>If you are just starting out with Go, head over to the <a href="http://play.golang.org/p/fjK_EoQDtR" title="Go Playground">Go Playground</a> and concentrate on
+figuring out how my little <a href="http://play.golang.org/p/fjK_EoQDtR" title="Go Playground">Go Story</a> works.
+It&rsquo;s about a Gopher, named Gophy who joint the Gophers but lost his identity in the process.<br />
+Once you get how he gets his identity back you&rsquo;ll be golden.</p>
 
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:</p>
+<p>Here is the code:</p>
 
-<ul>
-<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of GoTamer nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
-</ul>
+<pre><code>package main
 
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-&ldquo;AS IS&rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+import &quot;fmt&quot;
+
+type I interface{}
+
+var gophers map[uint]I = make(map[uint]I)
+
+type gopher struct {
+    Name string
+}
+
+func main() {
+
+    g := AddToGophers(&quot;Goghy&quot;)
+
+    fmt.Printf(&quot;Hello, %s\n&quot;, g.Name)
+    fmt.Printf(&quot;Now %s is a %T, %s\n&quot;, g.Name, gophers[1], gophers[1])
+
+    gg := GetGopher(1)
+    fmt.Printf(&quot;Bye, %s\n&quot;, gg.Name)
+}
+
+func GetGopher(i uint) *gopher {
+    g := gophers[i]
+    // I wont my gopher identity back
+    return g.(*gopher)
+}
+
+func AddToGophers(n string) gopher {
+    g := new(gopher)
+    g.Name = n
+    gophers[1] = g
+    return *g
+}
+</code></pre>
 
   </div>
   <div class="panel-footer">
     <div class="btn-group">
+      
+      <a href="http://www.robotamer.com/tags/code.html"><button type="button" class="btn btn-info btn-xs">code</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/go.html"><button type="button" class="btn btn-info btn-xs">go</button></a>	
       
     </div>  
   </div>

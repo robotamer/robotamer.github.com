@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Machines on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/machines.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2011-05-14 05:00:09 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Sliding-Headstock Machines</title>
+      <link>http://www.robotamer.com/blog/2011-05-14-sliding-headstock-machines.html</link>
+      <pubDate>Sat, 14 May 2011 05:00:09 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-05-14-sliding-headstock-machines.html</guid>
+      <description>&lt;p&gt;Sliding-Headstock Machines, also known as Swiss-Type or Swiss-Style Machines, are a special type of &lt;a href=&#34;http://en.wikipedia.org/wiki/Lathe&#34;&gt;Lathe&lt;/a&gt; / &lt;a href=&#34;http://en.wikipedia.org/wiki/Machine_tool&#34;&gt;Machine tool&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;All Sliding Headstock Machines use a &lt;a href=&#34;http://wiki.pzzazz.net/en/index.php?title=Barfeeder&amp;amp;action=edit&amp;amp;redlink=1&#34;&gt;Barfeeder&lt;/a&gt; or a &lt;a href=&#34;http://wiki.pzzazz.net/en/index.php?title=Barloader&amp;amp;action=edit&amp;amp;redlink=1&#34;&gt;Barloader&lt;/a&gt;, they machine usually round &lt;a href=&#34;http://en.wikipedia.org/wiki/Bar_stock&#34;&gt;bar stock&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In a Sliding-Headstock Machines, the &lt;a href=&#34;http://en.wikipedia.org/wiki/Cutting_tool&#34;&gt;cutting tools&lt;/a&gt; are close to the Guide Bushing, while a sliding headstock feeds rotating stock, from behind through a Guide Bushing. This system eliminating overhang and deflection of the material during the cutting process. This process is specially useful for small diameter, long metal parts. Parts where the diameter is only a fraction of the overall length of the part.&lt;/p&gt;
+
+&lt;p&gt;Initially Sliding-Headstock Machines wore handling material diameters of up to Ø8mm. In resent years manufacturers of Sliding-Headstock Machines manufactured machines that go up to Ø36 mm, most probably because of customer demand; smaller machine shops that can&amp;rsquo;t afford to buy multiple machines and needed the flexibility of machining both long and short parts from small and big diameter &lt;a href=&#34;http://en.wikipedia.org/wiki/Bar_stock&#34;&gt;bar stock&lt;/a&gt; material. Since big diameter machines really defeat the purpose of the concept, &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;Traub&lt;/a&gt; came up with a new solution. Their newest model TNL18 can be converted from a Sliding-Headstock machine to a Fixed-Headstock Machine. In other words it becomes a regular lathe, and the conversion takes only about 15 minutes.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://www.marucit.com/&#34;&gt;Citizen&lt;/a&gt; R07 is the best representation of a modern Sliding Headstock Machine, most closely preserving the principle behind the Sliding Headstock Machine in a modern concept. The strength of the R07 lies in the preciseness. The R07 is equipped with a glass scale feed back system. The machines &lt;a href=&#34;http://en.wikipedia.org/wiki/Computer_Numerical_Control&#34;&gt;Computer Numerical Control&lt;/a&gt; (&lt;a href=&#34;http://en.wikipedia.org/wiki/CNC&#34;&gt;CNC&lt;/a&gt;) gets feedback from the &lt;a href=&#34;http://en.wikipedia.org/wiki/Digital_read_out#Glass_scales&#34;&gt;Glass scale&lt;/a&gt; and corrects positioning information that changes with thermal distortion. Therefore correcting axis positioning information live as the machine positions the tool. This system makes the R07 highly accurate. &lt;a href=&#34;http://en.wikipedia.org/wiki/Digital_read_out#Glass_scales&#34;&gt;Glass scale&lt;/a&gt; positioning is known to be used in the most accurate &lt;a href=&#34;http://en.wikipedia.org/wiki/Quality_control&#34;&gt;Quality Control&lt;/a&gt; equipment, like in &lt;a href=&#34;http://en.wikipedia.org/wiki/Coordinate-measuring_machine&#34;&gt;CMM Machines&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The initially three Swiss companies Tornos, Pétermann und Bechler can be traced back to the 1880s, today called &lt;a href=&#34;http://www.tornos.com/&#34;&gt;Tornos Holding&lt;/a&gt; is the oldest Sliding-Headstock Machine manufacturer still in business. The modern &lt;a href=&#34;http://www.tornos.com/&#34;&gt;Tornos&lt;/a&gt; with the model Deco has made her self a name in the industry as being the fastest Sliding Headstock Machine. Initially the speed difference was mainly accomplished by using belt drives where other manufacturers used gear. Belt drives came at a price, but where speed is almost everything; accuracy comes first, that price was often worth paying. &lt;a href=&#34;http://www.tornos.com/&#34;&gt;Tornos&lt;/a&gt; also took the lead in offline programming. The advantage of offline programming was that the machine was in production while the programming took place on a desktop computer. The disadvantage used to be that minor changes to the programming had to go over the desktop and couldn&amp;rsquo;t be added easily on the machine.&lt;/p&gt;
+
+&lt;p&gt;Following the lead &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;Traub&lt;/a&gt; introduced an offline programming system, which is production ready since 2009 called WinFlex. &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;Traub&lt;/a&gt; makes the most versatile and technology advanced Sliding-Headstock Machines, the &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;Traub&lt;/a&gt; TNL12 and TNL26. With the TNL26 you can have 13 axis in motion, while 4 &lt;a href=&#34;http://en.wikipedia.org/wiki/Cutting_tool&#34;&gt;cutting tools&lt;/a&gt; are engaged in the material simultaneously producing &lt;a href=&#34;http://en.wikipedia.org/wiki/chips&#34;&gt;chips&lt;/a&gt;. &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;TRAUB Drehmaschinen&lt;/a&gt; is a German company that is owned and operated by &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;INDEX-Werke GmbH &amp;amp; Co. KG Hahn &amp;amp; Tessky&lt;/a&gt; since 1997.&lt;/p&gt;
+
+&lt;h2&gt;Manufacturers&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.index-werke.de/&#34;&gt;Traub / Index&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://us.dmg.com/&#34;&gt;Gildemeister&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.marucit.com/&#34;&gt;Citizen&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.tornos.com/&#34;&gt;Tornos&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.starcnc.com/&#34;&gt;Star&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.tsugami.co.jp/&#34;&gt;Tsugami&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;External links&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.jurabernois.ch/en/discoveries/museums.646/swiss-type-automatic-lathe-musem-moutier.1026.html&#34;&gt;Swiss-Type automatic lathe and history musem, Moutier&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.micromanufacturing.com/showthread.php?t=1091&#34;&gt;Tools, tactics and tips for productive Swiss-style Machining&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.todaysmachiningworld.com/how-it-works-%E2%80%93-why-swiss/&#34;&gt;How It Works – Why Swiss?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

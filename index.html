@@ -1,89 +1,299 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-		    <title>RoboTamer Blog</title>
-		    <meta name="description" content="Go Programming Language" />
-    <meta name="copyright" content="Copyright 1998 - 2012" />
-    <meta name="rating" content="General" />
-    <meta name="author" content="Dennis T Kaplan" />
-    <meta name="robots" content="index" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Window-Target" content="_top" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="Content-Language" content="en-US" />
-    <meta name="description" content="News summery about RoboTamer PHP Code" />
-		    <link rel="stylesheet" href="/assets/css/robotamer.css" type="text/css" media="screen" />
-    </head>
-    <body>
-		<header>
-	<p>
-		<a href="/html" title="RoboTamer">Lobby</a>
-		<a href="/index.html" title="Blog">News</a>
-		<a href="/forum.html" title="Forum">Forum</a>
-		<a href="/html/Linux" title="Linux">Linux</a>
-		<a href="/html/GoTamer" title="GoTamer">GoTamer</a>
-		<a href="/html/PHPTamer" title="PHP Tamer">PHPTamer</a>
-		<a href="/html/md2static" title="Markdown to Static">md2static</a>
-		<a href="/html/Turkish" title="Turkish">Turkish</a>
-	</p>
-		</header>
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>RoboTamer</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="RoboTamer">
+  <meta name="generator" content="Hugo">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta http-equiv="cache-control" content="public">
+  <meta http-equiv="content-language" content="en">
+  <meta charset="UTF-8">
+  <link rel="icon" href="http://www.robotamer.com/static/ico/favicon.ico" type="image/x-icon">
+    <link href="http://www.robotamer.com/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="http://www.robotamer.com/static/css/styles.css" rel="stylesheet"/>
+    <link href="http://www.robotamer.com/static/css/hugoicon.css" rel="stylesheet"/>
 
-        <content>
-            <div style="padding-right: 25em">
-				<h1>RoboTamer Blog</h1>Tue, 20 Aug 2013 10:36:47 UTC <a href="/html/Turkish/Turkiyede_garip_seyler_oluyor.html" title="Türkiye’de garip şeyler oluyor …">Türkiye’de garip şeyler oluyor …</a><hr />
-Mon, 15 Jul 2013 17:01:05 UTC <a href="/html/GoTamer/Session.html" title="SESSION">SESSION</a><hr />
-Mon, 15 Jul 2013 16:13:18 UTC <a href="/html/GoTamer/Cfg.html" title="GoTamer Cfg">GoTamer Cfg</a><hr />
-Wed, 03 Oct 2012 07:51:15 UTC <a href="/html/Go/Snippets.html" title="Go Snippets">Go Snippets</a><hr />
-Wed, 03 Oct 2012 07:27:18 UTC <a href="/html/GoTamer/Mail.html" title="GoTamer Mail">GoTamer Mail</a><hr />
-Tue, 02 Oct 2012 10:10:23 UTC <a href="/html/GoTamer/JGDB.html" title="JGDB">JGDB</a><hr />
-Thu, 27 Sep 2012 04:55:10 UTC <a href="/html/GoTamer/Crypt.html" title="GoTamer Crypt">GoTamer Crypt</a><hr />
-Tue, 25 Sep 2012 10:08:54 UTC <a href="/html/GoTamer/GoWatch.html" title="GoTamer gowatch">GoTamer gowatch</a><hr />
-Fri, 21 Sep 2012 12:37:41 UTC <a href="/html/Linux/Git.html" title="Git">Git</a><hr />
-Fri, 21 Sep 2012 12:05:38 UTC <a href="/html/Linux/NSR.html" title="Network Safety Restart Bash Script">Network Safety Restart Bash Script</a><hr />
-Fri, 21 Sep 2012 11:57:59 UTC <a href="/html/Linux/Ssh.html" title="ssh">ssh</a><hr />
-Fri, 21 Sep 2012 11:34:22 UTC <a href="/html/Linux/Snippets.html" title="Linux Snippets">Linux Snippets</a><hr />
-Fri, 21 Sep 2012 10:06:53 UTC <a href="/html/GoTamer/Cases.html" title="GoTamer Cases">GoTamer Cases</a><hr />
-Fri, 21 Sep 2012 09:22:51 UTC <a href="/html/Linux/LXC.html" title="LXC Linux Containers">LXC Linux Containers</a><hr />
-Fri, 14 Sep 2012 02:54:52 UTC <a href="/html/GoTamer/Tools.html" title="GoTamer Tools">GoTamer Tools</a><hr />
-Sun, 09 Sep 2012 22:47:03 UTC <a href="/html/md2static/Manual.html" title="Markdown to Static Manual">Markdown to Static Manual</a><hr />
-Fri, 27 Jul 2012 13:22:32 UTC <a href="/html/md2static/Install.html" title="Markdown to Static Installation">Markdown to Static Installation</a><hr />
-Fri, 27 Jul 2012 12:54:55 UTC <a href="/html/md2static/License.html" title="The MIT License (MIT) for Markdown To Static">The MIT License (MIT) for Markdown To Static</a><hr />
-Thu, 26 Jul 2012 23:19:43 UTC <a href="/html/PHPTamer/RTCrypter.html" title="RTCrypter">RTCrypter</a><hr />
 
-<!-- START: Livefyre Embed -->
-<script type='text/javascript' src='http://zor.livefyre.com/wjs/v1.0/javascripts/livefyre_init.js'></script>
-<script type='text/javascript'>
-    var fyre = LF({
-        site_id: 312331
-    });
+  </head>
+  <body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="http://www.robotamer.com/"><img src="/static/img/robotamer.gif" alt="Logo" width="20" height="25">&nbsp; ℝobo𝕋amer</a>
+  </div>
+
+  
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+    
+      <li><a href="http://www.robotamer.com/blog.html">&nbsp; Blog &nbsp;</a></li>
+      
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/linux/bash/history.html"><a href="http://www.robotamer.com/linux/bash/history.html"> History </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-nohub.html"><a href="http://www.robotamer.com/blog/2011-06-01-nohub.html"> nohub </a> </li>
+            
+            <li hugo-nav="/linux/index.html"><a href="http://www.robotamer.com/linux/index.html"> Linux Index </a> </li>
+            
+            <li hugo-nav="/linux/snippets.html"><a href="http://www.robotamer.com/linux/snippets.html"> Linux Snippets </a> </li>
+            
+            <li hugo-nav="/linux/nsr.html"><a href="http://www.robotamer.com/linux/nsr.html"> Network Safety Restart Bash Script </a> </li>
+            
+            <li hugo-nav="/code/md-syntax.html"><a href="http://www.robotamer.com/code/md-syntax.html"> Markdown Syntax </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ssh.html"><a href="http://www.robotamer.com/linux/openssl/ssh.html"> ssh authorization </a> </li>
+            
+            <li hugo-nav="/linux/lxc.html"><a href="http://www.robotamer.com/linux/lxc.html"> Linux Containers </a> </li>
+            
+            <li hugo-nav="/linux/git.html"><a href="http://www.robotamer.com/linux/git.html"> Git Howto </a> </li>
+            
+            <li hugo-nav="/linux/bridge-utils.html"><a href="http://www.robotamer.com/linux/bridge-utils.html"> Bridge-Utils for LXC </a> </li>
+            
+            <li hugo-nav="/linux/openssl/mail-server-fingerprint.html"><a href="http://www.robotamer.com/linux/openssl/mail-server-fingerprint.html"> Mail Server Fingerprint </a> </li>
+            
+            <li hugo-nav="/linux/logrotate.html"><a href="http://www.robotamer.com/linux/logrotate.html"> Log Rotate </a> </li>
+            
+            <li hugo-nav="/linux/mail/msmtp.html"><a href="http://www.robotamer.com/linux/mail/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ca-cert.html"><a href="http://www.robotamer.com/linux/openssl/ca-cert.html"> Self-Signed SSL Certificate </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ca-cert-cfg.html"><a href="http://www.robotamer.com/linux/openssl/ca-cert-cfg.html"> Self-Signed SSL Certificate with Config File </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+            <li hugo-nav="/linux/mail/sendmail.html"><a href="http://www.robotamer.com/linux/mail/sendmail.html"> Send mail with sendmail </a> </li>
+            
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/code/go/gotamer/mail.html"><a href="http://www.robotamer.com/code/go/gotamer/mail.html"> Smtp </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/ping.html"><a href="http://www.robotamer.com/code/go/gotamer/ping.html"> Ping </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/sbs.html"><a href="http://www.robotamer.com/code/go/gotamer/sbs.html"> sbs </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/session.html"><a href="http://www.robotamer.com/code/go/gotamer/session.html"> Session </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/tools.html"><a href="http://www.robotamer.com/code/go/gotamer/tools.html"> Tools </a> </li>
+            
+            <li hugo-nav="/code/go/index.html"><a href="http://www.robotamer.com/code/go/index.html"> ﻿Snippets </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/jgdb.html"><a href="http://www.robotamer.com/code/go/gotamer/jgdb.html"> jgdb </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/crypt.html"><a href="http://www.robotamer.com/code/go/gotamer/crypt.html"> Crypt </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cfg.html"><a href="http://www.robotamer.com/code/go/gotamer/cfg.html"> Cfg </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cases.html"><a href="http://www.robotamer.com/code/go/gotamer/cases.html"> Cases </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/gowatch.html"><a href="http://www.robotamer.com/code/go/gotamer/gowatch.html"> GoWatch </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/index.html"><a href="http://www.robotamer.com/code/go/gotamer/index.html"> Gophy </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">PHP <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/code/php/read-folder.html"><a href="http://www.robotamer.com/code/php/read-folder.html"> Read Folder </a> </li>
+            
+            <li hugo-nav="/code/php/autoload.html"><a href="http://www.robotamer.com/code/php/autoload.html"> Autoload </a> </li>
+            
+            <li hugo-nav="/blog/2012-06-27-messenger-laravel-framework.html"><a href="http://www.robotamer.com/blog/2012-06-27-messenger-laravel-framework.html"> Messenger </a> </li>
+            
+            <li hugo-nav="/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"><a href="http://www.robotamer.com/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"> Multiple PHP installations </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-echo.html"><a href="http://www.robotamer.com/blog/2011-06-01-echo.html"> e() for echo </a> </li>
+            
+            <li hugo-nav="/blog/2008-04-27-21.html"><a href="http://www.robotamer.com/blog/2008-04-27-21.html"> Zend ACL </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/index.html"><a href="http://www.robotamer.com/code/php/phptamer/index.html"> PHPTamer </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtsingleton.html"><a href="http://www.robotamer.com/code/php/phptamer/rtsingleton.html"> Singleton </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtcrypter.html"><a href="http://www.robotamer.com/code/php/phptamer/rtcrypter.html"> Crypter </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/facade.html"><a href="http://www.robotamer.com/code/php/phptamer/facade.html"> Facade </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+      </li>
+
+      <li><a href="http://www.robotamer.com/feeds.html">&nbsp; Feeds &nbsp;</a></li>
+
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meta <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/about.html"><a href="http://www.robotamer.com/about.html"> About </a> </li>
+            
+            <li hugo-nav="/license.html"><a href="http://www.robotamer.com/license.html"> Copyright </a> </li>
+            
+        </ul>
+      </li>
+      <li><a href="http://bitbucket.org/robotamer"><i class="icon-octocat icon-2x"> </i></a></li>
+
+    </ul>
+  </div>
+</nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+<section id="main">
+  <ul class="list-group">  
+    
+    <li class="list-group-item">
+    	<h4>Self-Signed SSL Certificate with Config File</h4>
+    	<p><sup>Thu, Dec 5, 2013</sup></p>
+    
+    	Creating Self-Signed SSL Certificate for Multiple Domains
+    
+		<br><a href="http://www.robotamer.com/linux/openssl/ca-cert-cfg.html">more ...</a>
+    </li>
+    
+    <li class="list-group-item">
+    	<h4>Self-Signed SSL Certificate</h4>
+    	<p><sup>Wed, Dec 4, 2013</sup></p>
+    
+    	How to create a self-signed SSL Certificate
+    
+		<br><a href="http://www.robotamer.com/linux/openssl/ca-cert.html">more ...</a>
+    </li>
+    
+    <li class="list-group-item">
+    	<h4>Log Rotate</h4>
+    	<p><sup>Mon, Dec 2, 2013</sup></p>
+    
+    	Simple log rotate bash script
+    
+		<br><a href="http://www.robotamer.com/linux/logrotate.html">more ...</a>
+    </li>
+    
+    <li class="list-group-item">
+    	<h4>﻿Hugo, a static website generator</h4>
+    	<p><sup>Sun, Dec 1, 2013</sup></p>
+    
+    	Hugo is a static website generator written in the Go programing language
+    
+		<br><a href="http://www.robotamer.com/blog/hugo.html">more ...</a>
+    </li>
+    
+    <li class="list-group-item">
+    	<h4>Go jkl</h4>
+    	<p><sup>Wed, Nov 27, 2013</sup></p>
+    
+    	Go JKL a static website generator
+    
+		<br><a href="http://www.robotamer.com/blog/2013-11-27-go_jkl.html">more ...</a>
+    </li>
+    
+    <li class="list-group-item">
+    	<h4>﻿Türkiye’de garip şeyler oluyor …</h4>
+    	<p><sup>Wed, Nov 20, 2013</sup></p>
+    
+        Türkiye’de garip şeyler oluyor ve burada yaşayan insanlar artık alışmış katlanıyorlar. Bir bakmışsın kanunlar değişiyor, yatınızı vergi ödemeden ithal edebiliyorsunuz. Ama yatının zaten sahibi olmanız gerekiyor, yani yatınız yabancı bayrak altında sizin ise Türkiye’ye sıfır vergiyle ithal edebiliyorsunuz. Bu kanun kısa süreli geçerli oluyor yararlandınız yararlandınız. Bu kanunun anamı ve sebebini kimse sorgulamıyor, haberi olan faydalanıyor diğerleri, evet diğerleri haksızlığa uğruyor ama kimse şikâyetçi olmuyor. Bu konuda haksızlına uğramış olan insanların sayısı az, bunlar bir araya gelip de derdini anlatamıyorlar, dinleyen olmuyor zaten.
+    
+		<br><a href="http://www.robotamer.com/blog/turkiyede_garip_seyler_oluyor.html">more ...</a>
+    </li>
+    
+    <li class="list-group-item">
+    	<h4>﻿Eş cinsel insanların evlenme haki</h4>
+    	<p><sup>Wed, Nov 20, 2013</sup></p>
+    
+        Dünyanın pek çok yerinde eş cinsel insanların evlenme konuşu uzun süredir gündeme girip çıkıyor. Bu Türkiye için henüz uzak bir konu olmasına rağmen, eh şu anda 20.08.2013 04:31 internetim yok, okumak için bir düzgün kitabim da olmadığı için ben yazmaya karar verdim ve ne yapayım akıla gelen konu da bu oldu. Bu konuya insanların çeşitly tepkileri oluyor, kimisi yüzünü ekşitiyor, başkası dini sebeplerden dolayı tepki gösteriyor. Fakat eş cinseller gayet mantıklı nedenler de ortaya sürüyor.
+    
+		<br><a href="http://www.robotamer.com/blog/2013-08-20-es_cinsellerin_evlenmesi.html">more ...</a>
+    </li>
+    
+    <li class="list-group-item">
+    	<h4>Read Folder</h4>
+    	<p><sup>Fri, Jul 13, 2012</sup></p>
+    
+    	Get php files in dir with recursive lambda callback function
+    
+		<br><a href="http://www.robotamer.com/code/php/read-folder.html">more ...</a>
+    </li>
+    
+    <li class="list-group-item">
+    	<h4>Autoload</h4>
+    	<p><sup>Sun, Jul 1, 2012</sup></p>
+    
+    	SplClassLoader Implementation
+    
+		<br><a href="http://www.robotamer.com/code/php/autoload.html">more ...</a>
+    </li>
+    
+    <li class="list-group-item">
+    	<h4>Messenger Laravel Framework</h4>
+    	<p><sup>Wed, Jun 27, 2012</sup></p>
+    
+    	A Messenger (error, info, ...) for the Laravel Framework
+    
+		<br><a href="http://www.robotamer.com/blog/2012-06-27-messenger-laravel-framework.html">more ...</a>
+    </li>
+    
+  </ul>
+</section>
+ 
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <hr>
+      <footer id="footer">
+        Copyright &copy; 1998 - 2013 RoboTamer
+        <span class="right">
+
+
+          <a href="http://www.robotamer.com/blog.xml" rel="alternate" type="application/rss+xml">
+            <img src="/static/ico/feed16x16.png" alt="" style="vertical-align:middle;border:0"/>
+          </a>&nbsp;
+
+          <a href="http://feedburner.google.com" target="_blank">
+            <img src="//feedburner.google.com/fb/images/pub/powered_by_fb.gif" alt="Powered by FeedBurner" style="border:0"/>
+          </a>
+
+        </span>
+
+      </footer>
+    </div>
+      <script src="/static/js/jquery.js"></script>
+      <script src="/static/js/bootstrap.min.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-33624274-1', 'robotamer.com');
+  ga('send', 'pageview');
 </script>
-<!-- END: Livefyre Embed -->
 
+  </body>
 
-            </div>
-            <sidebar>
-				<div style="text-align: center; ">
-                    <img width="90" height="110" border="0" src="/assets/img/robotamer.gif"/>
-                    <hr />
-                </div>
-			
-			
-				
-			<footer><hr />Copyright &copy; 2012 RoboTamer</footer>
-            </sidebar>
-        </content>
-				
-		<script type="text/javascript">
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-27513756-1']);
-		  _gaq.push(['_setDomainName', 'robotamer.com']);
-		  _gaq.push(['_trackPageview']);
-
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-		</script>
-    </body>
 </html>

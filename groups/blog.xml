@@ -1,0 +1,1715 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Blog on RoboTamer </title>
+    <link>http://www.robotamer.com/groups/blog.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2013-12-01 00:00:00 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>﻿Hugo, a static website generator</title>
+      <link>http://www.robotamer.com/blog/hugo.html</link>
+      <pubDate>Sun, 01 Dec 2013 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/hugo.html</guid>
+      <description>&lt;p&gt;Just a couple of days ago I posted about jkl, a static website generator written in Go, and based on Jekyll.&lt;/p&gt;
+
+&lt;p&gt;While setting up jkl, I stumbled over Hugo! I was impressed at first site with Hugo.
+Since then I have reconfigured my site to work with Hugo.
+I didn&amp;rsquo;t have to fiddle with the Hugo code, everything just works, and it really does most everything that comes to mind.
+This whole website thing has been bothering me for a long time; and finally I am a happy camper.&lt;/p&gt;
+
+&lt;p&gt;There are a few thinks I still have to setup, like the indexes are done but the links don&amp;rsquo;t seam to work as expected, or I am doing something wrong. However this is minor considering that I am glad that Hugo even has a link and menu generating system.&lt;/p&gt;
+
+&lt;p&gt;Also the rss feeds needs some work, but again Hugo has that build in, I just have to set it up right.&lt;/p&gt;
+
+&lt;p&gt;Hugo&amp;rsquo;s front matter can be defined with YAML, TOML, or JSON. Which one you like is up to you, you can even use a
+different one on each page.
+Here is the TOML for this page:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+++
+linktitle = &amp;quot;Huge&amp;quot;
+title = &amp;quot;﻿Hugo, a static website generator&amp;quot;
+description = &amp;quot;Hugo is a static website generator written in the Go programing language&amp;quot;
+keywords = [&amp;quot;code&amp;quot;,&amp;quot;go&amp;quot;, &amp;quot;golang&amp;quot;, &amp;quot;website&amp;quot;,&amp;quot;static&amp;quot;,&amp;quot;generator&amp;quot;]
+tags = [&amp;quot;code&amp;quot;,&amp;quot;go&amp;quot;,&amp;quot;website&amp;quot;]
+groups = [&amp;quot;blog&amp;quot;]
+language = &amp;quot;en&amp;quot;
+date = &amp;quot;2013-12-01&amp;quot;
++++
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;In short, I can highlly recommend &lt;a href=&#34;http://github.com/spf13/hugo&#34;&gt;Hugo&lt;/a&gt; to any coder!&lt;/h4&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Go jkl</title>
+      <link>http://www.robotamer.com/blog/2013-11-27-go_jkl.html</link>
+      <pubDate>Wed, 27 Nov 2013 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2013-11-27-go_jkl.html</guid>
+      <description>&lt;p&gt;I just dumped my home made php script md2html and switched to &lt;a href=&#34;https://github.com/gotamer/jkl&#34;&gt;jkl&lt;/a&gt;.&lt;br /&gt;
+This is basiclly my test post!&lt;br /&gt;
+jkl is a static site generator written in Go, based on Jekyll.&lt;/p&gt;
+
+&lt;p&gt;All I had to do was convert my template to &lt;a href=&#34;http://www.golang.org&#34;&gt;Go&lt;/a&gt; tempates, and add the YAML
+front matter to my markdown files.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;jkl is by far faster then md2html&lt;/li&gt;
+&lt;li&gt;provides a build in server&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&#34;http://www.golang.org&#34;&gt;Go&lt;/a&gt; templates are a bid easier to work with.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I still have to figure out a way to deploy my site, since &lt;a href=&#34;https://github.com/gotamer/jkl&#34;&gt;jkl&lt;/a&gt; only provides S3, but that shouldn&amp;rsquo;t be to hard; meanwhile rsync will do.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>﻿Türkiye’de garip şeyler oluyor …</title>
+      <link>http://www.robotamer.com/blog/turkiyede_garip_seyler_oluyor.html</link>
+      <pubDate>Wed, 20 Nov 2013 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/turkiyede_garip_seyler_oluyor.html</guid>
+      <description>&lt;p&gt;Türkiye’de garip şeyler oluyor ve burada yaşayan insanlar artık alışmış katlanıyorlar.&lt;br /&gt;
+Bir bakmışsın kanunlar değişiyor, yatınızı vergi ödemeden ithal edebiliyorsunuz. Ama yatının zaten sahibi olmanız gerekiyor, yani yatınız yabancı bayrak altında sizin ise Türkiye’ye sıfır vergiyle ithal edebiliyorsunuz. Bu kanun kısa süreli geçerli oluyor yararlandınız yararlandınız.&lt;br /&gt;
+Bu kanunun anamı ve sebebini kimse sorgulamıyor, haberi olan faydalanıyor diğerleri, evet diğerleri haksızlığa uğruyor ama kimse şikâyetçi olmuyor.&lt;/p&gt;
+
+&lt;p&gt;Bu konuda haksızlına uğramış olan insanların sayısı az, bunlar bir araya gelip de derdini anlatamıyorlar, dinleyen olmuyor zaten. Ama bunun gibi bir sürü garip şeyler oluyor Türkiye&amp;rsquo;de O yüzden herkes sürekli bir şekilde haksızlığa uğruyor, ama kimsenin sesi çıkmıyor.&lt;br /&gt;
+Düşünüyorum Türkler ecelden beri Kurtları sever, kurtlarla kıyaslanmak isterler, fakat günlük hayata anca koyun gibi yaşıyorlar.&lt;br /&gt;
+Bunun üzerine gecen gün balkonda izlediğim bir olay geldi aklıma.&lt;br /&gt;
+Biri karşıdan karşıya geçerken araba geldi kornaya bastı, adamın ödü patladı ve koştu. Eğer öbür taraftan da araba gelseydi kesin kaza olurdu. Ama bir ilginç şey daha, kornaya basan arabanın şoförü bütün bu sırada az bile olsun ayanı gazdan çekmeden devam etti yoluna.&lt;br /&gt;
+Çok saygısızız birbirimize, direksiyon arkasında ancak kurt kesiliyoruz. Bu arada yönetimin her bir şeyine katlanıyor, hata o kadar alışmışız ki fark bile etmiyoruz olanları.&lt;br /&gt;
+Saygı demiştim, yerine gelince olmayacak insanların elini ayaklarını öpüyoruz, aman büyüklerimiz, babamız, dedemiz, annemiz diye gösteriş yaparcasına saygı gösteriyoruz. Otobüste kalkıp yaşlılara utancımızdan, aman laf gelmesin diye yer veriyoruz. Ama gerçek yüzümüzü, yani bu sistem bizi ne hale getirdiğini toplu halde vapurdan inip binerken göre bilirsiniz, sıra numarası vermedikleri yerlerdeki davranışlarımızdan göre bilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Atatürk bizim bu halimizi görse &lt;strong&gt;&amp;ldquo;Ne mutlu Türküm diyene&amp;rdquo;&lt;/strong&gt; lafını kesin geri alırdı, eminim.&lt;/p&gt;
+
+&lt;p&gt;Dünyayı sayılarımızdan dolayı sömürüyoruz, resmen boğuyoruz. Ve bizim başbakan emeklilik sistemimizi koruya bilmek için hala 3 çocuk diye tutturuyor.&lt;br /&gt;
+İstanbul’daki insan sayısını düşürüp insanlarımızın Türkiye’nin dört bir yanında eşit yaşamasını sağlayacağına üçünü bir köprü yaparak İstanbulun daha da büyümesini planlıyor bizim başkan.&lt;br /&gt;
+Boğazlarımızdaki doğal su akıntısını kullanarak temiz sürdürülebilir enerji üreteceğine, Aliağa termik santral, yani yurt dışından ithal edilecek kömür yakmayı planlıyor.&lt;br /&gt;
+Eğer karşınızdaki takım elbise giyiyorsa kesin emin olunki bu sabah evden çıkarken güvenilir birine benzedim mi diye aynaya bir bakmıştır. Yani bir sigortacı ile bir politikacıya hiç ve hiç güvenemessınız. Bundan sonraki de bunun gibi olacak, problem insanlar değil, problem sistem. Bu sistem çökmeden de yeni bir sistem gelemeyeceğine göre. Tek yapa bileceğimiz, sistemi desteklememek yani mümkün olduğu kadar sistem dışında yaşamak.&lt;br /&gt;
+Sistem dışında nasıl yaşanır?
+Sistem dışında yaşamanın değişik boyutları var.&lt;br /&gt;
+Tamamıyla sistemin dışına çıkmak oldukça zor. Dağ başında veya acık denize bile atsanız kendinizi sistemden az da olsa zaman, zaman etkileneceksiniz.&lt;br /&gt;
+En basitinde kredi kartları kullanmamak, mümkün olduğunca az banka kullanmak, varlıklarınızı para olarak tutmamak. İhtiyacınızın dışındaki varlıklarınızı Altın, Gümüş gibi değerli madenlere yatırmak. Büyük şirketlerden alış veriş yapmamak.&lt;br /&gt;
+Bazen insanlara bunları söylediğim zaman, elimizden ne gelir, çocuklarımızın geleceği için katlanıyoruz gibi şeyler duyuyorum.&lt;br /&gt;
+Ne yazık ki çocuklarınızı düşünürken çocuklarınızı bu sistemin bir parçası yapıyorsunuz. Okullarda bu sistemin bir parçası olarak yetiştiriliyorlar. Onları düşünüyorsunuz ama aynı zamanda onları kurban ediyorsunuz. İnsani en çok yöneten duygu korku imiş. Korkunuzu bir kenera bırakıp sevgi ile hareket etseniz. Çocuklarınızı bu yönetimin eğitim sistemine kurban olarak yollamasınız.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>﻿Eş cinsel insanların evlenme haki</title>
+      <link>http://www.robotamer.com/blog/2013-08-20-es_cinsellerin_evlenmesi.html</link>
+      <pubDate>Wed, 20 Nov 2013 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2013-08-20-es_cinsellerin_evlenmesi.html</guid>
+      <description>&lt;p&gt;Dünyanın pek çok yerinde eş cinsel insanların evlenme konuşu uzun süredir gündeme girip çıkıyor.
+Bu Türkiye için henüz uzak bir konu olmasına rağmen, eh şu anda 20.08.2013 04:31 internetim yok, okumak için bir düzgün kitabim da olmadığı için ben yazmaya karar verdim ve ne yapayım akıla gelen konu da bu oldu.&lt;/p&gt;
+
+&lt;p&gt;Bu konuya insanların çeşitly tepkileri oluyor, kimisi yüzünü ekşitiyor, başkası dini sebeplerden dolayı tepki gösteriyor.
+Fakat eş cinseller gayet mantıklı nedenler de ortaya sürüyor.
+Bizde vergi ödeyenler olarak, vergi indirimlerden faydalanabilmeliyiz, hastalık ve ölümlü dünyada haklarımızı kanuni yolardan savuna bilmeliyiz gibi.&lt;/p&gt;
+
+&lt;p&gt;Ben insanların başka varlıklara zarar vermedikleri sürece istedikleri gibi hayatlarını sürdüre bilmelerini gerektiğini inanan biri olarak. Hata bu kural her ülkenin ana yasasında olması gerektiğini düşünen biri olarak.&lt;br /&gt;
+Kim kimi sevmiş, yatak odalarında kim ne yapıyor gibi konular değil hukuk, dedi kodu konusu bile olmamalı bence. Fakat evlenme konusuna gelince, eş cinselleri desteklemiyorum, evet doğru duydunuz desteklemiyorum.&lt;br /&gt;
+Çünkü eğer ki iki erkek veya iki kadın kanuni evli olarak kabul edilirse o zaman otomatikman çocuk evlat etme hakkına da kavuşmuş oluyorlar. Vergi indirimlerinden yararlansınlar tabiî ki ama bir daha eş cinsel olup olmadığı beli olmayan bir bebeğin hayatını bu kadar derin bir şekilde etkilemeye hakları olmamaları gerektiğini düşünüyorum. Özellikle ergenlik cağına gelen gençlerin hayatları zaten zor. Okulda ve arkadaş çevresine birde böyle bir etken eklememesi çocuğun zihni sağlına zararlı olacağını, veya en azından zararlı olma ihtimali yüksek olduğunu düşünüyorum.&lt;br /&gt;
+Bugün dünyanın birçok yerinde, eş cinseller evlene biliyor. ABD kanunlar buna izin vermediği halde, San Francisco belediyesi izin veriyor. Yeni Zeylanda da, deniz ve uçak kaptanları evlendiriyor.&lt;br /&gt;
+Bence bu konunun böyle aheste gelişmesine izin vermemek lazım. Basit bir şekilde onlara vergi indirim gibi hakları vermek lazım ki biran önce bu konu kapansın ve gündemden kalksın.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Messenger Laravel Framework</title>
+      <link>http://www.robotamer.com/blog/2012-06-27-messenger-laravel-framework.html</link>
+      <pubDate>Wed, 27 Jun 2012 23:27:29 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2012-06-27-messenger-laravel-framework.html</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://blog.robotamer.com/wp-content/uploads/2012/06/laravel.png&#34; alt=&#34;Laravel Framework&#34; /&gt;
+ This is a fork and upgrade of the &lt;a href=&#34;http://forums.laravel.com/profile.php?id=583&#34;&gt;davzie&lt;/a&gt; message class.
+A info, error etc messenger class that allows you to add validation errors, statuses etc to flash data and then retrieve them in a nicely formatted way in your front-end. Automates the process a little when you&amp;rsquo;re adding and retrieving messages, especially in a CRUD type environment. The formatting integrates well with Twitter&amp;rsquo;s Bootstrap Alert formatting.&lt;/p&gt;
+
+&lt;p&gt;This upgraded version works smoothly with the Laravel validation class&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/robotamer/3007511#file-msg-php&#34;&gt;gist id=3007511&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;&amp;lt;?php
+
+class Msg {
+
+     public static $msgss = array();
+
+     /**
+      * Add a message to the message array (adds to the user&#39;s session)
+      * @param string  $type    You can have several types of messages, these are class names for Bootstrap&#39;s messaging classes, usually, info, error, success, warning
+      * @param string $message  The message you want to add to the list
+      */
+     public static function add($type = &#39;info&#39;, $message = FALSE){
+         if(!$message) return FALSE;
+         if(is_array($message)){
+             foreach($message as $msg){
+                 static::$msgss[$type][] = $msg;
+             }
+         }else{
+             static::$msgss[$type][] = $message;
+         }
+         Session::flash(&#39;messages&#39;, static::$msgss);
+     }
+
+     /**
+      * Pull back those messages from the session
+      * @return array
+      */
+     public static function get(){
+         return (Session::has(&#39;messages&#39;)) ? Session::get(&#39;messages&#39;) : FALSE;
+     }
+    
+     /**
+      * Gets all the messages from the session and formats them accordingly for Twitter bootstrap.
+      * @return string
+      */
+     public static function getHtml(){
+         $output = FALSE;
+         if (Session::has(&#39;messages&#39;)){
+             $messages = Session::get(&#39;messages&#39;);
+             foreach($messages as $type =&amp;gt; $msgs){
+                 if(is_integer($type)) $type = &#39;error&#39;;
+                 $output .= &#39;&amp;lt;div class=&amp;quot;alert alert-&#39;.$type.&#39;&amp;quot;&amp;gt;&amp;lt;a class=&amp;quot;close&amp;quot; data-dismiss=&amp;quot;alert&amp;quot;&amp;gt;×&amp;lt;/a&amp;gt;&#39;;
+                 if(is_array($msgs)){
+                 foreach($msgs as $msg) $output .= &#39;&amp;lt;p&amp;gt;&#39;.$msg.&#39;&amp;lt;/p&amp;gt;&#39;;
+                 }else{
+                      $output .= &#39;&amp;lt;p&amp;gt;&#39;.$msgs.&#39;&amp;lt;/p&amp;gt;&#39;;
+                 }
+                 $output .= &#39;&amp;lt;/div&amp;gt;&#39;;
+             }
+         }
+         return $output;
+     }
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Google, the most dangerous monopoly ever</title>
+      <link>http://www.robotamer.com/blog/2011-07-08-google-the-most-dangerous-monopoly-ever.html</link>
+      <pubDate>Fri, 08 Jul 2011 22:00:25 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-07-08-google-the-most-dangerous-monopoly-ever.html</guid>
+      <description>&lt;p&gt;I use almost all Google services ranging from search engine, over Gmail, Calendar, Android and Google Voice all the way to Webmaster Tools and Google Analytics.&lt;/p&gt;
+
+&lt;p&gt;If you combine all that data, I think that Google may know me better then I know my self, and that is starting to make me nerves.&lt;/p&gt;
+
+&lt;p&gt;Don&amp;rsquo;t get me wrong, I think that Google is a great company, the services provided are excellent, and I don&amp;rsquo;t have a reason to believe that my data has been compromised. I just feel uncomfortable with one single entity having so much information about me.&lt;/p&gt;
+
+&lt;p&gt;Based on my own experience, I believe that Google is starting to become a dangers monopoly, by far more dangerous then Microsoft ever was. The world has never seen anything like it. Therefore I ask my self where is this heading and what are the possible consequence?&lt;/p&gt;
+
+&lt;p&gt;For now, I am researching alternative services I can use. The hub that brings most of the Google services together appears to be Google Contacts.&lt;/p&gt;
+
+&lt;p&gt;It links Gmail, Google Calendar, Google Voice, Android etc and it appears to be the center of it all.&lt;/p&gt;
+
+&lt;p&gt;The first application I will be testing is called &lt;a href=&#34;http://www.voxmobili.com/products/phonebook20/index.html&#34;&gt;Phonebook&lt;/a&gt;. The reason why Phonebook is the most promising I have found so far is, because it uses &lt;a href=&#34;http://en.wikipedia.org/wiki/SyncML&#34;&gt;SyncML&lt;/a&gt;. SyncML is a platform independent information synchronization standard. That means I can sync my phonebook with all my other devices without being dependent on one single company.&lt;/p&gt;
+
+&lt;p&gt;Stay tuned for my report and future steps.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Live without pretending ...</title>
+      <link>http://www.robotamer.com/blog/2011-06-29-live-without-pretending.html</link>
+      <pubDate>Wed, 29 Jun 2011 07:52:39 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-29-live-without-pretending.html</guid>
+      <description>&lt;pre&gt;&lt;code&gt;    Live   without pretending .......
+    Love   without depending  .......
+    Listen without defending  .......
+    Speak  without offending  .......
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;by &lt;a href=&#34;http://twitter.com/#!/drakkardnoir&#34;&gt;Drake&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Need PHP 5.3 Hosting Recommendations – Who Hosts Yours?</title>
+      <link>http://www.robotamer.com/blog/2011-06-27-need-hosting-recommendations-who-hosts-yours.html</link>
+      <pubDate>Mon, 27 Jun 2011 23:38:12 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-27-need-hosting-recommendations-who-hosts-yours.html</guid>
+      <description>&lt;p&gt;I have been looking for a host that offers php 5.3 hosting, however all those hosting compare sites don&amp;rsquo;t seam to be quite as honest as one would expect. I would also need ssh access, so if you have a recommendation you could share with me, I would appreciate it.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>msmtp install, config and test</title>
+      <link>http://www.robotamer.com/blog/2011-06-26-msmtp-install-config-and-test.html</link>
+      <pubDate>Sun, 26 Jun 2011 10:24:08 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-26-msmtp-install-config-and-test.html</guid>
+      <description>&lt;p&gt;Why have more then one mail server? Or why even have a mail server at all, if you can use gmail?
+Well there are many reasons to have at leased one mail server, but having one on each server doesn&amp;rsquo;t make sense at all.
+I tried both ssmtp and msmtp, and decided on msmtp.
+&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
+
+&lt;h3&gt;msmtp is an SMTP client.&lt;/h3&gt;
+
+&lt;p&gt;In the default mode, it transmits a mail to an SMTP server, which takes care of further delivery.
+To use this program with your mail user agent (MUA), create a configuration  file with your mail account(s) and tell your MUA to call msmtp instead of  /usr/sbin/sendmail.
+&lt;strong&gt;Features include:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Sendmail compatible interface (command line options and exit codes).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;TLS/SSL support, including client certificates.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Authentication methods PLAIN, LOGIN, CRAM-MD5, EXTERNAL, GSSAPI, SCRAM-SHA-1, DIGEST-MD5, and NTLM.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;PIPELINING support for increased transmission speed.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;DSN (Delivery Status Notification) support.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;RMQS (Remote Message Queue Starting) support (ETRN keyword).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;IPv6 support.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;LMTP support.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Support for multiple accounts.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;msmtp is &lt;a href=&#34;http://www.gnu.org/philosophy/free-sw.html&#34;&gt;free software&lt;/a&gt;; you can redistribute it and/or modify it under the terms of the  &lt;a href=&#34;http://www.gnu.org/licenses/gpl.html&#34;&gt;GNU General Public License&lt;/a&gt; as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3&gt;Requirements&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Platforms&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;msmtp runs on a wide variety of platforms. It needs little more than an ANSI C  compiler and Berkeley-style sockets.
+&lt;strong&gt;Libraries&lt;/strong&gt;
+msmtp does not need any additional libraries, but it can use the following to enhance its feature set:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.gnu.org/software/gnutls/&#34;&gt;GnuTLS&lt;/a&gt; (&amp;gt;=1.2.0)
+The GnuTLS library provides TLS/SSL support. It is highly recommended.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.openssl.org/&#34;&gt;OpenSSL&lt;/a&gt; (&amp;gt;=0.9.6)
+OpenSSL is supported as an alternative to GnuTLS.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://josefsson.org/libgsasl/&#34;&gt;GNU SASL&lt;/a&gt; (&amp;gt;=0.2.4)
+Using the GNU SASL library adds support for the GSSAPI, DIGEST-MD5, SCRAM-SHA-1, and NTLM  authentication methods. (The methods PLAIN, LOGIN, and CRAM-MD5  are always supported).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.gnu.org/software/libidn/&#34;&gt;GNU Libidn&lt;/a&gt;
+Support for Internationalized Domain Names (IDN) is available if you have GNU  Libidn installed.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;install&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install msmtp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;configure&lt;/h3&gt;
+
+&lt;p&gt;Below you will see that I commented out tls_trust_file and went with tls_fingerprint.
+You can not use both at the same time, and I figure that tls_fingerprint is faster, however the gmail finger print may change over the years so going with tls_trust_file is probably safer.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# /etc/msmtprc
+defaults
+logfile         ~/.msmtp.log
+#tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+account         default
+host            smtp.gmail.com
+port            587
+from            xxxxx@gmail.com
+auth            on
+user            xxxxx@gmail.com
+password        *******
+tls             on
+tls_starttls    on
+tls_fingerprint DB:A0:2A:07:00:F9:E3:23:7D:07:E7:52:3C:95:9D:E6:7E:12:54:3F
+logfile         /var/log/msmtp.log
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Test&lt;/h3&gt;
+
+&lt;p&gt;Send out a test mail:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo -e &amp;quot;Subject: msmtp test mailnThis is a test mail from msmtp&amp;quot; | msmtp --debug --from=default -t xxxxx@gmail.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://msmtp.sourceforge.net/&#34;&gt;Link to developer site&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>It is not the critic who counts</title>
+      <link>http://www.robotamer.com/blog/2011-06-18-it-is-not-the-critic-who-counts-by-theodore-roosevelt.html</link>
+      <pubDate>Sat, 18 Jun 2011 22:10:45 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-18-it-is-not-the-critic-who-counts-by-theodore-roosevelt.html</guid>
+      <description>&lt;p&gt;&lt;em&gt;It is not the critic who counts; not the man who points out how the strong man stumbled, or where the doer of deeds could have done better. The credit belong to the man who is actually in the arena; whose face is marred by dust and sweat and blood; who strives valiantly; who errs and comes short again and again. Who knows the great enthusiasms, the great devotions, and spends himself in a worthy cause. Who at the best knows in the end the triumph of high achievement; and who at the worst, if he fails, at least fails while daring greatly. So that his place shall never be with those cold and timid souls who know neither victory nor defeat.&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Theodore Roosevelt&lt;br /&gt;
+26th President (1858-1919)&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>fixing php&#39;s gettype function</title>
+      <link>http://www.robotamer.com/blog/2011-06-17-fixing-phps-gettype-function.html</link>
+      <pubDate>Fri, 17 Jun 2011 10:10:09 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-17-fixing-phps-gettype-function.html</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;&amp;lt;?php    
+
+public static function getType($value, $max_length = 50){
+
+    $type = gettype($value);
+
+    if($type == &#39;NULL&#39;
+            || $type == &#39;boolean&#39;
+            || $type == &#39;integer&#39;
+            || $type == &#39;double&#39;
+            || $type == &#39;object&#39;
+            || $type == &#39;resource&#39;
+            || $type == &#39;array&#39;
+        )
+        return array(&#39;type&#39;=&amp;gt;$type,&#39;value&#39;=&amp;gt;$value);
+
+    if($type == &#39;string&#39; &amp;amp;&amp;amp; empty($value))
+        return array(&#39;type&#39;=&amp;gt;&#39;NULL&#39;,&#39;value&#39;=&amp;gt;$value);
+
+    if($type == &#39;string&#39; &amp;amp;&amp;amp; strlen($value) &amp;gt; $max_length)
+        return array(&#39;type&#39;=&amp;gt;&#39;blob&#39;,&#39;value&#39;=&amp;gt;$value);
+
+    if($type == &#39;string&#39; &amp;amp;&amp;amp; substr($value, 0,1) === &#39;0&#39;)
+        return array(&#39;type&#39;=&amp;gt;&#39;string&#39;,&#39;value&#39;=&amp;gt;$value);
+
+    if($type == &#39;string&#39; &amp;amp;&amp;amp; is_numeric($value)){
+        $int   = (int) $value;
+        $float = (float) $value;
+
+        if($int == $value){
+            $value = $int;
+            $type = &#39;integer&#39;;
+        }elseif($float == $value){
+            $value = $float;
+            $type = &#39;double&#39;;
+        }
+    }elseif($type == &#39;string&#39;){
+        $type = &#39;string&#39;;
+    }else{
+        $type = &#39;blob&#39;;
+    }
+    return array(&#39;type&#39;=&amp;gt;$type,&#39;value&#39;=&amp;gt;$value);
+}
+    
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>HTC Kaiser / TyTN II Android Froyo Rom</title>
+      <link>http://www.robotamer.com/blog/2011-06-15-kaiser-rom.html</link>
+      <pubDate>Wed, 15 Jun 2011 03:48:33 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-15-kaiser-rom.html</guid>
+      <description>&lt;p&gt;This is a Kernel and a Rom to convert your HTC Kaiser from Microsoft to Android Froyo&lt;/p&gt;
+
+&lt;p&gt;Everything seems to be working, except the camera is blurry, but that seams to be the norm.&lt;/p&gt;
+
+&lt;p&gt;Included is the rom, radio and kernel&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ROM: 2.2.1&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Kernel: 2.6.25&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Radio: KAISER 1.70.19.09&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Panel: 2&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Key Map: US Normal&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Resolution: 240x320&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Storage: Nand &amp;amp; Nand&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most everything is installed in userspace and can be uninstalled or upgraded.&lt;/p&gt;
+
+&lt;p&gt;Oh got GO Launcher EX installed (Also in user space)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credits:&lt;/strong&gt;
+I stole ideas from, and used following tools:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Makers of &lt;a href=&#34;http://sourceforge.net/projects/androidhtc/files/AtoolsRelease/&#34;&gt;atools&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Makers of NBH creator&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;HTC Flasher&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://forum.xda-developers.com/member.php?u=2426812&#34;&gt;kallt_kaffe&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://forum.xda-developers.com/member.php?u=1638018&#34;&gt;Krazy-Killa&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dzo (dzo&amp;rsquo;s posts wore a big help. just wish he would answer his own questions after he found the solution)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://forum.xda-developers.com/member.php?u=895681&#34;&gt;n2rjt&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;and many more.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;@todo&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Resize NAND partitions to the smaller system size&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Download Links:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://pzzazz.net/htc/Gruessle_HTC_Kaiser.tar.bz2&#34;&gt;You can download it from here as bz2&lt;/a&gt;
+OR
+&lt;a href=&#34;http://pzzazz.net/htc/Gruessle_HTC_Kaiser.tar.bz2&#34;&gt;from here same thing as 7z&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Forum&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;There is a forum post of mine at &lt;a href=&#34;http://forum.xda-developers.com/showthread.php?t=1123355&#34;&gt;xda-developers&lt;/a&gt; to get help:&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>num_row with PDO</title>
+      <link>http://www.robotamer.com/blog/2011-06-10-num_row-with-pdo.html</link>
+      <pubDate>Fri, 10 Jun 2011 06:33:51 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-10-num_row-with-pdo.html</guid>
+      <description>&lt;p&gt;There is no num_row() function for PHP PDO&lt;/p&gt;
+
+&lt;p&gt;Here are my two solutions:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;One with prepare &amp;amp; execute&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db-&amp;gt;prepare($sql);
+$sth-&amp;gt;execute(array($key));
+$rows = $sth-&amp;gt;fetch(PDO::FETCH_NUM);
+echo $rows[0];
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;One with query:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db-&amp;gt;query($sql);
+$row = $result-&amp;gt;fetch(PDO::FETCH_NUM);
+echo $row[0];
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Load functions and array&#39;s</title>
+      <link>http://www.robotamer.com/blog/2011-06-03-load-functions-and-arrays.html</link>
+      <pubDate>Fri, 03 Jun 2011 07:50:58 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-03-load-functions-and-arrays.html</guid>
+      <description>&lt;p&gt;This class is used to load functions and array&amp;rsquo;s. It also can copy functions and array&amp;rsquo;s to the linux memory drive and load them from there to speed thinks up.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php if(!defined(&#39;DROOT&#39;)) trigger_error(&amp;quot;Please define data location (DROOT)&amp;quot;);
+
+/**
+ *
+ * This class loads stuff
+ *
+ * 1) Functions
+ * 2) Array&#39;s
+ *
+ * @todo        Load array&#39;s
+ * @category    Data
+ * @package     TaMeR
+ * @copyright   Copyright (c) 2010 - 2011 Dennis T Kaplan
+ * @license     http://www.gnu.org/licenses/gpl.txt
+ * @author      Dennis T Kaplan
+ **/
+class Load
+{
+    protected $type;
+    protected $path;
+
+    public function __construct(){}
+    public function __destruct(){}
+
+    public static function a($array_name) {
+        if( ! is_string($array_name)){
+            trigger_error(&amp;quot;Array name must be a string!&amp;quot;.BR, E_USER_WARNING);
+            exit;
+        }
+        if(isset($$array_name) &amp;amp;&amp;amp; is_array($$array_name))
+            return $$array_name;
+
+        $dfile = DROOT.&#39;array/&#39;.$array_name.&#39;.php&#39;;
+        $mfile = FALSE;
+        if( defined(&#39;MROOT&#39;) &amp;amp;&amp;amp; MROOT != FALSE)
+            $mfile = MROOT.&#39;array/&#39;.$array_name.&#39;.php&#39;;
+        return self::inc($dfile,$mfile,$array_name);
+    }
+
+    public function aSave($var)
+    {
+        $array_name = array_search($var, $GLOBALS);
+
+        $dfile = DROOT.&#39;array/&#39;.$array_name.&#39;.php&#39;;
+
+        $string = var_export($var,true);
+        file_put_contents($dfile,
+            &#39;&#39;);
+
+        $mfile = FALSE;
+        if( defined(&#39;MROOT&#39;) &amp;amp;&amp;amp; MROOT !== FALSE){
+            $mfile = MROOT.&#39;array/&#39;.$array_name.&#39;.php&#39;;
+            file_put_contents($mfile, self::stripComments($dfile));
+        }
+
+    }//end save()
+
+    public static function f($str) {
+        if( ! is_string($str))
+            trigger_error(&amp;quot;Argument for load must be string!&amp;quot;, E_USER_WARNING);
+
+        $array = self::prepArgs($str);
+        $mfile = FALSE;
+        foreach($array as $func_name){
+            if ( function_exists($func_name)) continue;
+            $dfile = FROOT.$func_name.&#39;.php&#39;;
+            if( defined(&#39;MROOT&#39;) &amp;amp;&amp;amp; MROOT != FALSE)
+                $mfile = MROOT.&#39;func/&#39;.$func_name.&#39;.php&#39;;
+            self::inc($dfile,$mfile);
+        }
+    }
+
+    /**
+     * Description load function
+     * if availabe load from memory folder; else
+     *  if a memory folder is availabe, copy to memory then load; else
+     *   load from file
+     *
+     * @package     TaMeR
+     * @category    File
+     * @author      Dennis T Kaplan
+     * @copyright  (C) 2009-2011 Dennis T Kaplan
+     *
+     * @param  string $dfile Disk File
+     * @param  string $mfile Memory File
+     * @param  string $array
+     * @return mixed
+     */
+    protected static function inc($dfile,$mfile = FALSE,$array = FALSE)
+    {
+        if($mfile !== FALSE){
+            if(file_exists($mfile)){
+                 include $mfile;
+            }elseif(self::hasMRoot()){
+                file_put_contents($mfile, self::stripComments($dfile));
+                chmod($mfile, 00644);
+                include $mfile;
+            }else{
+                // Fail Safe
+                include $dfile;
+            }
+        }else{
+            include $dfile;
+        }
+        if($array !== FALSE) return $$array;
+    }
+
+    /**
+     * Name stripComments
+     *
+     * Description Strip php comments from php file
+     *
+     * @package     TaMeR
+     * @category    File
+     * @type        Function
+     * @author      Ionuț G. Stan
+     *
+     * @param  string $file
+     * @param  mixed  $file_desc &#39;/var/www/somefile.php&#39;
+     * @return string
+     */
+    public static function stripComments($file) {
+        $fileStr = file_get_contents($file);
+        $newStr  = &#39;&#39;;
+
+        $commentTokens = array(T_COMMENT);
+
+        if (defined(&#39;T_DOC_COMMENT&#39;))
+            $commentTokens[] = T_DOC_COMMENT; // PHP 5
+        if (defined(&#39;T_ML_COMMENT&#39;))
+            $commentTokens[] = T_ML_COMMENT;  // PHP 4
+
+        $tokens = token_get_all($fileStr);
+
+        foreach ($tokens as $token) {
+            if (is_array($token)) {
+                if (in_array($token[0], $commentTokens))
+                        continue;
+
+                $token = $token[1];
+            }
+
+            $newStr .= $token;
+        }
+        /**
+         * Replace all s t n with one space and trim
+         * @todo replave with preg_replace()
+         */ 
+        $newStr = trim(preg_replace(&#39;/s+/&#39;, &#39; &#39;, $newStr));
+        $newStr = str_replace(&#39;, &#39;,&#39;,&#39;,$newStr);
+        $newStr = str_replace(&#39; =&amp;gt; &#39;,&#39;=&amp;gt;&#39;,$newStr);
+        $newStr = str_replace(&#39; (&#39;,&#39;(&#39;,$newStr);
+        $newStr = str_replace(&#39;( &#39;,&#39;(&#39;,$newStr);
+        $newStr = str_replace(&#39;) &#39;,&#39;)&#39;,$newStr);
+        $newStr = str_replace(&#39; )&#39;,&#39;)&#39;,$newStr);
+        $newStr = str_replace(&#39; = &#39;,&#39;=&#39;,$newStr);
+        $newStr = str_replace(&#39; }&#39;,&#39;}&#39;,$newStr);
+        $newStr = str_replace(&#39;{ &#39;,&#39;{&#39;,$newStr);
+        return $newStr;
+    }
+
+    public static function prepArgs($args) {
+        $args = preg_replace(&#39;/ss+/&#39;, &#39; &#39;, trim($args));
+        return explode(&#39; &#39;,$args);
+    }
+
+    protected static function hasMRoot() {
+    /**
+     * Checks if the memory directory is available on the file system
+     * and creates the directory structure if the memory folder is
+     * available but the directory structure has not been created.
+     */
+        if( defined(&#39;MROOT&#39;) &amp;amp;&amp;amp; MROOT != FALSE){
+            if(file_exists(MROOT)){
+                return TRUE;
+            }else{
+                mkdir(MROOT, 0777);
+                mkdir(MROOT.&#39;class&#39;,  0777);
+                mkdir(MROOT.&#39;func&#39; ,  0777);
+                mkdir(MROOT.&#39;array&#39;,  0777);
+                return TRUE;
+            }
+        }else{
+            return FALSE;
+        }
+    }
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux backround process</title>
+      <link>http://www.robotamer.com/blog/2011-06-01-nohub.html</link>
+      <pubDate>Wed, 01 Jun 2011 09:24:12 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-01-nohub.html</guid>
+      <description>&lt;p&gt;Running as background process with &lt;em&gt;nohub&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nohup scp  &amp;amp; &amp;gt; nohup.out 2 &amp;gt; &amp;amp;1
+
+nohup scp -r -p root@www.example.com:/var/www/ /var/www/ &amp;amp; &amp;gt;nohup.out 2&amp;gt;&amp;amp;1
+
+nohup scp -r -p root@www.example.com:/var/www/logs /var/www/ &amp;amp; &amp;gt;nohup.out 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux find &amp; replace HowTo</title>
+      <link>http://www.robotamer.com/blog/2011-06-01-linux-find-replace-howto.html</link>
+      <pubDate>Wed, 01 Jun 2011 09:20:26 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-01-linux-find-replace-howto.html</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Find and chmod files or folders&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;find . -type d -exec chmod 755 {} ;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;find . -name &amp;quot;*.php&amp;quot; | xargs grep -niP &#39;thingy&#39;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Find a directory and display on screen&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;find . -type d -name &#39;linux&#39; 2&amp;gt;/dev/null&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Find/Grep for a string across multiple files with different extensions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;find ( -name &amp;quot;*js&amp;quot; -o -name &amp;quot;*jsp&amp;quot; -o -name &amp;quot;*jspf&amp;quot; ) | xargs grep -niP &#39;thingy&#39;&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>e() for echo</title>
+      <link>http://www.robotamer.com/blog/2011-06-01-echo.html</link>
+      <pubDate>Wed, 01 Jun 2011 02:01:27 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-01-echo.html</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s really annoying having to thing of html stuff like pre &amp;amp; br everytime you need to display something.&lt;/p&gt;
+
+&lt;p&gt;And it&amp;rsquo;s even worst if you like me test your code in cli and cgi.&lt;/p&gt;
+
+&lt;p&gt;So I wrote this little method to take care of it all. It&amp;rsquo;s nothing complicated but sure useful.&lt;/p&gt;
+
+&lt;p&gt;It detects cgi and cli, and formats everything accordingly.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;    
+&amp;lt;?php
+/**
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see http://www.gnu.org/licenses/
+**/
+
+/**
+ * e() --- Prints human-readable information about a variable
+ *
+ * string e ( mixed $expression[, string $name [, bool $return = false ]] )
+ *
+ * Replacement for php echo, print, print_r(), var_export() etc
+ */
+
+/**
+ * @category    TaMeR
+ * @copyright   Copyright (c) 2008 - 2011 Dennis T Kaplan
+ * @license     http://www.gnu.org/licenses/gpl.txt
+ * @link        http://github.com/pzzazz/TaMeR
+ * @author      Dennis T Kaplan
+ * @date        May 1, 2011
+ * @version     1.0
+ * @access      public
+ * @param       mixed   $var
+ * @param       string  $name
+ * @param       boolean $return
+ * @return      string
+ **/
+function e($var, $name = FALSE, $return = FALSE) {
+    $preO = $preC = &#39;&#39;; $br = PHP_EOL;
+    if( ! isset($_SERVER[&#39;argv&#39;])){
+        $preO = &#39;
+
+&#39;; $preC = &#39;&#39;;
+        $h1O = &#39;&amp;lt;h1&amp;gt;&#39;;   $h1C = &#39;&amp;lt;/h1&amp;gt;&#39;;
+        $br = &#39;&amp;lt;br&amp;gt;&amp;lt;/br&amp;gt;&#39;.PHP_EOL;
+    }
+    if(!is_array($var) &amp;amp;&amp;amp; !is_object($var))
+    {
+        if ($name !== FALSE) echo $br.$name.&#39;: &#39;;
+        echo (isset($_SERVER[&#39;argv&#39;]))
+                  ? $var.$br
+                  : htmlspecialchars($var).$br;
+    }else{
+        if($return === FALSE) {
+            if ($name !== FALSE) echo $br.$h1O.$name.&#39;: &#39;.$h1C;
+            echo $preO.print_r($var, TRUE).$preC.$br;
+        }else{
+            if ($name !== FALSE){
+                return &#39;&#39;;
+            }else{
+                return $br.$preO.var_export($var, TRUE).$preC.$br;
+            }
+        }
+    }
+}
+?&amp;gt;
+    
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sliding-Headstock Machines</title>
+      <link>http://www.robotamer.com/blog/2011-05-14-sliding-headstock-machines.html</link>
+      <pubDate>Sat, 14 May 2011 05:00:09 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-05-14-sliding-headstock-machines.html</guid>
+      <description>&lt;p&gt;Sliding-Headstock Machines, also known as Swiss-Type or Swiss-Style Machines, are a special type of &lt;a href=&#34;http://en.wikipedia.org/wiki/Lathe&#34;&gt;Lathe&lt;/a&gt; / &lt;a href=&#34;http://en.wikipedia.org/wiki/Machine_tool&#34;&gt;Machine tool&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;All Sliding Headstock Machines use a &lt;a href=&#34;http://wiki.pzzazz.net/en/index.php?title=Barfeeder&amp;amp;action=edit&amp;amp;redlink=1&#34;&gt;Barfeeder&lt;/a&gt; or a &lt;a href=&#34;http://wiki.pzzazz.net/en/index.php?title=Barloader&amp;amp;action=edit&amp;amp;redlink=1&#34;&gt;Barloader&lt;/a&gt;, they machine usually round &lt;a href=&#34;http://en.wikipedia.org/wiki/Bar_stock&#34;&gt;bar stock&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In a Sliding-Headstock Machines, the &lt;a href=&#34;http://en.wikipedia.org/wiki/Cutting_tool&#34;&gt;cutting tools&lt;/a&gt; are close to the Guide Bushing, while a sliding headstock feeds rotating stock, from behind through a Guide Bushing. This system eliminating overhang and deflection of the material during the cutting process. This process is specially useful for small diameter, long metal parts. Parts where the diameter is only a fraction of the overall length of the part.&lt;/p&gt;
+
+&lt;p&gt;Initially Sliding-Headstock Machines wore handling material diameters of up to Ø8mm. In resent years manufacturers of Sliding-Headstock Machines manufactured machines that go up to Ø36 mm, most probably because of customer demand; smaller machine shops that can&amp;rsquo;t afford to buy multiple machines and needed the flexibility of machining both long and short parts from small and big diameter &lt;a href=&#34;http://en.wikipedia.org/wiki/Bar_stock&#34;&gt;bar stock&lt;/a&gt; material. Since big diameter machines really defeat the purpose of the concept, &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;Traub&lt;/a&gt; came up with a new solution. Their newest model TNL18 can be converted from a Sliding-Headstock machine to a Fixed-Headstock Machine. In other words it becomes a regular lathe, and the conversion takes only about 15 minutes.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://www.marucit.com/&#34;&gt;Citizen&lt;/a&gt; R07 is the best representation of a modern Sliding Headstock Machine, most closely preserving the principle behind the Sliding Headstock Machine in a modern concept. The strength of the R07 lies in the preciseness. The R07 is equipped with a glass scale feed back system. The machines &lt;a href=&#34;http://en.wikipedia.org/wiki/Computer_Numerical_Control&#34;&gt;Computer Numerical Control&lt;/a&gt; (&lt;a href=&#34;http://en.wikipedia.org/wiki/CNC&#34;&gt;CNC&lt;/a&gt;) gets feedback from the &lt;a href=&#34;http://en.wikipedia.org/wiki/Digital_read_out#Glass_scales&#34;&gt;Glass scale&lt;/a&gt; and corrects positioning information that changes with thermal distortion. Therefore correcting axis positioning information live as the machine positions the tool. This system makes the R07 highly accurate. &lt;a href=&#34;http://en.wikipedia.org/wiki/Digital_read_out#Glass_scales&#34;&gt;Glass scale&lt;/a&gt; positioning is known to be used in the most accurate &lt;a href=&#34;http://en.wikipedia.org/wiki/Quality_control&#34;&gt;Quality Control&lt;/a&gt; equipment, like in &lt;a href=&#34;http://en.wikipedia.org/wiki/Coordinate-measuring_machine&#34;&gt;CMM Machines&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The initially three Swiss companies Tornos, Pétermann und Bechler can be traced back to the 1880s, today called &lt;a href=&#34;http://www.tornos.com/&#34;&gt;Tornos Holding&lt;/a&gt; is the oldest Sliding-Headstock Machine manufacturer still in business. The modern &lt;a href=&#34;http://www.tornos.com/&#34;&gt;Tornos&lt;/a&gt; with the model Deco has made her self a name in the industry as being the fastest Sliding Headstock Machine. Initially the speed difference was mainly accomplished by using belt drives where other manufacturers used gear. Belt drives came at a price, but where speed is almost everything; accuracy comes first, that price was often worth paying. &lt;a href=&#34;http://www.tornos.com/&#34;&gt;Tornos&lt;/a&gt; also took the lead in offline programming. The advantage of offline programming was that the machine was in production while the programming took place on a desktop computer. The disadvantage used to be that minor changes to the programming had to go over the desktop and couldn&amp;rsquo;t be added easily on the machine.&lt;/p&gt;
+
+&lt;p&gt;Following the lead &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;Traub&lt;/a&gt; introduced an offline programming system, which is production ready since 2009 called WinFlex. &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;Traub&lt;/a&gt; makes the most versatile and technology advanced Sliding-Headstock Machines, the &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;Traub&lt;/a&gt; TNL12 and TNL26. With the TNL26 you can have 13 axis in motion, while 4 &lt;a href=&#34;http://en.wikipedia.org/wiki/Cutting_tool&#34;&gt;cutting tools&lt;/a&gt; are engaged in the material simultaneously producing &lt;a href=&#34;http://en.wikipedia.org/wiki/chips&#34;&gt;chips&lt;/a&gt;. &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;TRAUB Drehmaschinen&lt;/a&gt; is a German company that is owned and operated by &lt;a href=&#34;http://www.index-werke.de/&#34;&gt;INDEX-Werke GmbH &amp;amp; Co. KG Hahn &amp;amp; Tessky&lt;/a&gt; since 1997.&lt;/p&gt;
+
+&lt;h2&gt;Manufacturers&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.index-werke.de/&#34;&gt;Traub / Index&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://us.dmg.com/&#34;&gt;Gildemeister&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.marucit.com/&#34;&gt;Citizen&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.tornos.com/&#34;&gt;Tornos&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.starcnc.com/&#34;&gt;Star&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.tsugami.co.jp/&#34;&gt;Tsugami&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;External links&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.jurabernois.ch/en/discoveries/museums.646/swiss-type-automatic-lathe-musem-moutier.1026.html&#34;&gt;Swiss-Type automatic lathe and history musem, Moutier&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.micromanufacturing.com/showthread.php?t=1091&#34;&gt;Tools, tactics and tips for productive Swiss-style Machining&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.todaysmachiningworld.com/how-it-works-%E2%80%93-why-swiss/&#34;&gt;How It Works – Why Swiss?&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Justice isn&#39;t justifiable</title>
+      <link>http://www.robotamer.com/blog/2010-06-03-justice-isnt-justifiable.html</link>
+      <pubDate>Thu, 03 Jun 2010 00:13:05 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2010-06-03-justice-isnt-justifiable.html</guid>
+      <description>&lt;p&gt;&lt;em&gt;The time, effort and money it takes to get justice isn&amp;rsquo;t justifiable!&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Dennis T Kaplan (June 2nd, 2010)&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating models for the Zend Framework from command line via phpcli</title>
+      <link>http://www.robotamer.com/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html</link>
+      <pubDate>Thu, 18 Mar 2010 22:07:15 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html</guid>
+      <description>&lt;p&gt;This is a php cli script that will create a database model from the database provided&lt;/p&gt;
+
+&lt;p&gt;Download via git from &lt;a href=&#34;http://github.com/pzzazz/phpcli&#34;&gt;github -&amp;gt; phpcli&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;php zend/model.php -h
+
+This is a command line PHP script.
+
+Set table
+
+Options:
+-path=[ ]
+-table=[ ]
+
+Usage:
+php zend/model.php -arg=value
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Database Structure:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE TABLE users (
+      Alias TEXT UNIQUE,
+      Password TEXT,
+      eMail TEXT,
+      Avatar TEXT,
+      Timezone TEXT,
+      IP TEXT,
+      count INTEGER,
+      cookie TEXT,
+      vars TEXT,
+      status INTEGER DEFAULT 1,
+      added date,
+      updated datetime,
+      PRIMARY KEY(Alias)
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Sample Output:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ php zend/model.php -path=/var/www/TaMeR/data/tmp.db3 -table=users
+
+
+
+
+
+
+class _Model_users
+{
+    protected $_Alias;
+    protected $_Password;
+    protected $_eMail;
+    protected $_Avatar;
+    protected $_Timezone;
+    protected $_IP;
+    protected $_count;
+    protected $_cookie;
+    protected $_vars;
+    protected $_status;
+    protected $_added;
+    protected $_updated;
+
+
+    public function setAlias($Alias){
+        $this-&amp;gt;_Alias = (string) $Alias;
+        return $this;
+    }
+
+    public function getAlias($Alias){
+        return $this-&amp;gt;_Alias;
+    }
+
+    public function setPassword($Password){
+        $this-&amp;gt;_Password = (string) $Password;
+        return $this;
+    }
+
+    public function getPassword($Password){
+        return $this-&amp;gt;_Password;
+    }
+
+    public function seteMail($eMail){
+        $this-&amp;gt;_eMail = (string) $eMail;
+        return $this;
+    }
+
+    public function geteMail($eMail){
+        return $this-&amp;gt;_eMail;
+    }
+
+    public function setAvatar($Avatar){
+        $this-&amp;gt;_Avatar = (string) $Avatar;
+        return $this;
+    }
+
+    public function getAvatar($Avatar){
+        return $this-&amp;gt;_Avatar;
+    }
+
+    public function setTimezone($Timezone){
+        $this-&amp;gt;_Timezone = (string) $Timezone;
+        return $this;
+    }
+
+    public function getTimezone($Timezone){
+        return $this-&amp;gt;_Timezone;
+    }
+
+    public function setIP($IP){
+        $this-&amp;gt;_IP = (string) $IP;
+        return $this;
+    }
+
+    public function getIP($IP){
+        return $this-&amp;gt;_IP;
+    }
+
+    public function setcount($count){
+        $this-&amp;gt;_count = (int) $count;
+        return $this;
+    }
+
+    public function getcount($count){
+        return $this-&amp;gt;_count;
+    }
+
+    public function setcookie($cookie){
+        $this-&amp;gt;_cookie = (string) $cookie;
+        return $this;
+    }
+
+    public function getcookie($cookie){
+        return $this-&amp;gt;_cookie;
+    }
+
+    public function setvars($vars){
+        $this-&amp;gt;_vars = (string) $vars;
+        return $this;
+    }
+
+    public function getvars($vars){
+        return $this-&amp;gt;_vars;
+    }
+
+    public function setstatus($status){
+        $this-&amp;gt;_status = (int) $status;
+        return $this;
+    }
+
+    public function getstatus($status){
+        return $this-&amp;gt;_status;
+    }
+
+    public function setadded($added){
+        $this-&amp;gt;_added = (string) $added;
+        return $this;
+    }
+
+    public function getadded($added){
+        return $this-&amp;gt;_added;
+    }
+
+    public function setupdated($updated){
+        $this-&amp;gt;_updated = (string) $updated;
+        return $this;
+    }
+
+    public function getupdated($updated){
+        return $this-&amp;gt;_updated;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating models for the Zend Framework from command line via phpcli.</title>
+      <link>http://www.robotamer.com/blog/2010-03-18-7.html</link>
+      <pubDate>Thu, 18 Mar 2010 20:20:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2010-03-18-7.html</guid>
+      <description>&lt;p&gt;Creating models for the Zend Framework from command line via phpcli.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;php zend/model.php -h&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a command line PHP script.&lt;/p&gt;
+
+&lt;p&gt;Set table&lt;/p&gt;
+
+&lt;p&gt;Options:
+    -path=[ ]
+    -table=[ ]&lt;/p&gt;
+
+&lt;p&gt;Usage:
+php zend/model.php -arg=value&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;~/phpcli$ php zend/model.php -path=/var/www/TaMeR/data/tmp.db3 -table=users&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Sample Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Database Structure:
+    CREATE TABLE users (
+    Alias TEXT UNIQUE,
+    Password TEXT,
+    eMail TEXT,
+    Avatar TEXT,
+    Timezone TEXT,
+    IP TEXT,
+    count INTEGER,
+    cookie TEXT,
+    vars TEXT,
+    status INTEGER DEFAULT 1,
+    added date,
+    updated datetime,
+    PRIMARY KEY(Alias)
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;~/phpcli$ php zend/model.php -path=/var/www/TaMeR/data/tmp.db3 -table=user
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;-
+    class _Model_users
+    {
+    protected $_Alias;
+    protected $_Password;
+    protected $_eMail;
+    protected $_Avatar;
+    protected $_Timezone;
+    protected $_IP;
+    protected $_count;
+    protected $_cookie;
+    protected $_vars;
+    protected $_status;
+    protected $_added;
+    protected $_updated;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public function setAlias($Alias){
+    $this-&amp;gt;_Alias = (string) $Alias;
+    return $this;
+}
+
+public function getAlias($Alias){
+    return $this-&amp;gt;_Alias;
+}
+
+public function setPassword($Password){
+    $this-&amp;gt;_Password = (string) $Password;
+    return $this;
+}
+
+public function getPassword($Password){
+    return $this-&amp;gt;_Password;
+}
+
+public function seteMail($eMail){
+    $this-&amp;gt;_eMail = (string) $eMail;
+    return $this;
+}
+
+public function geteMail($eMail){
+    return $this-&amp;gt;_eMail;
+}
+
+public function setAvatar($Avatar){
+    $this-&amp;gt;_Avatar = (string) $Avatar;
+    return $this;
+}
+
+public function getAvatar($Avatar){
+    return $this-&amp;gt;_Avatar;
+}
+
+public function setTimezone($Timezone){
+    $this-&amp;gt;_Timezone = (string) $Timezone;
+    return $this;
+}
+
+public function getTimezone($Timezone){
+    return $this-&amp;gt;_Timezone;
+}
+
+public function setIP($IP){
+    $this-&amp;gt;_IP = (string) $IP;
+    return $this;
+}
+
+public function getIP($IP){
+    return $this-&amp;gt;_IP;
+}
+
+public function setcount($count){
+    $this-&amp;gt;_count = (int) $count;
+    return $this;
+}
+
+public function getcount($count){
+    return $this-&amp;gt;_count;
+}
+
+public function setcookie($cookie){
+    $this-&amp;gt;_cookie = (string) $cookie;
+    return $this;
+}
+
+public function getcookie($cookie){
+    return $this-&amp;gt;_cookie;
+}
+
+public function setvars($vars){
+    $this-&amp;gt;_vars = (string) $vars;
+    return $this;
+}
+
+public function getvars($vars){
+    return $this-&amp;gt;_vars;
+}
+
+public function setstatus($status){
+    $this-&amp;gt;_status = (int) $status;
+    return $this;
+}
+
+public function getstatus($status){
+    return $this-&amp;gt;_status;
+}
+
+public function setadded($added){
+    $this-&amp;gt;_added = (string) $added;
+    return $this;
+}
+
+public function getadded($added){
+    return $this-&amp;gt;_added;
+}
+
+public function setupdated($updated){
+    $this-&amp;gt;_updated = (string) $updated;
+    return $this;
+}
+
+public function getupdated($updated){
+    return $this-&amp;gt;_updated;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PHP goto statement</title>
+      <link>http://www.robotamer.com/blog/php-goto.html</link>
+      <pubDate>Sat, 13 Mar 2010 16:15:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/php-goto.html</guid>
+      <description>&lt;p&gt;I just discovered that the &lt;a href=&#34;http://www.php.net/manual/en/control-structures.goto.php&#34;&gt;goto statement&lt;/a&gt;
+is available since php 5.3&lt;br /&gt;
+I love the guys from php for that.&lt;br /&gt;
+I am a hobby programmer and unlike the processionals, I learned OOP via php, which is great but
+having &lt;a href=&#34;http://www.php.net/manual/en/control-structures.goto.php&#34;&gt;goto&lt;/a&gt; available like back in the Amiga days made my day.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Netbeans error</title>
+      <link>http://www.robotamer.com/blog/2010-03-07-9.html</link>
+      <pubDate>Sun, 07 Mar 2010 19:21:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2010-03-07-9.html</guid>
+      <description>&lt;p&gt;I been using Netbeans and following solved the problem:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;manticore:/etc/sysctl.d# telnet ::ffff:192.168.1.1
+Trying ::ffff:192.168.1.1...
+telnet: Unable to connect to remote host: Network is unreachable
+manticore:/etc/sysctl.d# sysctl net.ipv6.bindv6only
+net.ipv6.bindv6only = 1
+manticore:/etc/sysctl.d# sysctl net.ipv6.bindv6only=0
+net.ipv6.bindv6only = 0
+manticore:/etc/sysctl.d# telnet ::ffff:192.168.1.1
+Trying ::ffff:192.168.1.1...
+Connected to ::ffff:192.168.1.1.
+Escape character is &#39;^]&#39;.
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Zend ACL</title>
+      <link>http://www.robotamer.com/blog/2008-04-27-21.html</link>
+      <pubDate>Sun, 27 Apr 2008 19:50:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2008-04-27-21.html</guid>
+      <description>&lt;p&gt;Tamer_ACL is a simple Zend Framework ACL plugin that uses the sqlite backend to store all the data.&lt;/p&gt;
+
+&lt;h4&gt;How To Inatall&lt;/h4&gt;
+
+&lt;p&gt;Make sure you have a table called &lt;strong&gt;role&lt;/strong&gt; in your authentication table and a table called &lt;strong&gt;alias&lt;/strong&gt; you may change that to username if you like. The sql code is below.&lt;br /&gt;
+Below are the files.&lt;br /&gt;
+Before each file you will find installation instructions that should work even for the most novice Linux / Zend Framework developer.&lt;/p&gt;
+
+&lt;h4&gt;Resources&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.phpclasses.org/browse/package/4100.html&#34;&gt;phpclasses.org&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/p/tamer&#34;&gt;Google code / REPO&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Todo&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Admin Backend&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h4&gt;ZEND_ROOT/backstrap.php&lt;/h4&gt;
+
+&lt;p&gt;Create acl object&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;include_once &amp;quot;Tamer/Acl.php&amp;quot;;
+$acl = new Tamer_Acl();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add the Tamer_Plugin_Auth to the Zend Front Controller&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;$front-&amp;gt;setControllerDirectory(APPS . &#39;/default/controllers&#39;)
+        -&amp;gt;setBaseUrl($cfg-&amp;gt;baseUrl)
+        -&amp;gt;registerPlugin(new Tamer_Plugin_Auth($auth, $acl))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;ZEND_ROOT/library/Tamer/Acl.php&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;
+&amp;lt;?php
+require_once &#39;Zend/Acl.php&#39;;
+require_once &#39;Zend/Acl/Role.php&#39;;
+require_once &#39;Zend/Acl/Resource.php&#39;;
+require_once &#39;Zend/Db/Adapter/Pdo/Sqlite.php&#39;;
+
+class Tamer_ACL extends Zend_ACL 
+{
+        public $alias;
+        public $role;
+        
+        public function __construct($alias, $role)
+        {       
+                $this-&amp;gt;alias = $alias;
+                $this-&amp;gt;role = $role;
+                $sqlite = new TamerLiteACL($alias, $role);
+                $result = $sqlite-&amp;gt;getAclRows();
+                foreach($result[&#39;roles&#39;] as $v){
+                        $this-&amp;gt;addRoles($v);
+                }
+                $this-&amp;gt;addResources($result[&#39;resources&#39;]);
+                $this-&amp;gt;addAccess($result[&#39;access&#39;]);
+        }
+        
+        private function addRoles($rows)
+        {
+                foreach($rows as $v){
+                        if($v[&#39;parent&#39;] == &#39;&#39;){
+                                $this-&amp;gt;addRole(new Zend_Acl_Role($v[&#39;role&#39;]));
+                        }else{
+                                $this-&amp;gt;addRole(new Zend_Acl_Role($v[&#39;role&#39;]), $v[&#39;parent&#39;]);
+                        }
+                }
+        }
+        
+        private function addResources($rows)
+        {
+                foreach($rows as $v){
+                        if($v[&#39;parent&#39;] == &#39;&#39;){
+                                $this-&amp;gt;add(new Zend_Acl_Resource($v[&#39;resource&#39;]));
+                        }else{
+                                $this-&amp;gt;add(new Zend_Acl_Resource($v[&#39;resource&#39;]), $v[&#39;parent&#39;]);
+                        }
+                }
+        }
+
+        private function addAccess($rows)
+        {
+                foreach($rows as $v){
+                        if($v[&#39;allow&#39;] == 1){
+                                $this-&amp;gt;allow($v[&#39;role&#39;], $v[&#39;resource&#39;], $v[&#39;privilege&#39;]);
+                        }else{
+                                $this-&amp;gt;deny($v[&#39;role&#39;], $v[&#39;resource&#39;], $v[&#39;privilege&#39;]);
+                        }
+                }
+        }
+}
+
+
+class TamerLiteACL 
+{
+        private $_sqlite_name = &#39;/db/config.db&#39;;
+        private $_alias;
+        private $_role;
+        private $_result;
+        
+        public function __construct($alias, $role)
+        {       
+                $this-&amp;gt;_alias = $alias;
+                $this-&amp;gt;_role = $role;
+                
+                try{
+                        $this-&amp;gt;_sqliteAdapter = new Zend_Db_Adapter_Pdo_Sqlite(array(&#39;dbname&#39; =&amp;gt; ROOT.$this-&amp;gt;_sqlite_name));
+                        $this-&amp;gt;_sqliteAdapter-&amp;gt;getConnection();
+                } catch (Zend_Db_Adapter_Exception $e) {
+                        echo &#39;adapter&amp;lt;pre&amp;gt;&#39;.$e-&amp;gt;getMessage().&#39;&amp;lt;/pre&amp;gt;&#39;;
+                } catch (Zend_Exception $e) {
+                        echo &#39;adapter&amp;lt;pre&amp;gt;&#39;.$e-&amp;gt;getMessage().&#39;&amp;lt;/pre&amp;gt;&#39;;
+                }
+                $this-&amp;gt;_sqliteAdapter-&amp;gt;getProfiler()-&amp;gt;setEnabled(true);
+
+                $select = $this-&amp;gt;_sqliteAdapter-&amp;gt;select()
+                                        -&amp;gt;from(&#39;acl_roles&#39;, array(&#39;role&#39;, &#39;parent&#39;))
+                                        -&amp;gt;where(&#39;type = ?&#39;, 1);
+                
+                $stmt = $this-&amp;gt;_sqliteAdapter-&amp;gt;query($select);
+                $this-&amp;gt;_result[&#39;roles&#39;][&#39;system&#39;] = $stmt-&amp;gt;fetchAll();
+                
+                $select = $this-&amp;gt;_sqliteAdapter-&amp;gt;select()
+                                        -&amp;gt;from(&#39;acl_roles&#39;, array(&#39;role&#39;, &#39;parent&#39;))
+                                        -&amp;gt;where(&#39;role = ?&#39;, $this-&amp;gt;_alias)
+                                        -&amp;gt;orwhere(&#39;parent = ?&#39;, $this-&amp;gt;_alias);
+                
+                $stmt = $this-&amp;gt;_sqliteAdapter-&amp;gt;query($select);
+                $this-&amp;gt;_result[&#39;roles&#39;][&#39;alias&#39;] = $stmt-&amp;gt;fetchAll();
+                
+                $stmt = $this-&amp;gt;_sqliteAdapter-&amp;gt;query(
+                &amp;quot;SELECT resource, parent FROM acl_resources WHERE owner = &#39;system&#39; OR owner = ?&amp;quot;, $this-&amp;gt;_alias);
+                $this-&amp;gt;_result[&#39;resources&#39;] = $rows = $stmt-&amp;gt;fetchAll();
+                
+                $stmt = $this-&amp;gt;_sqliteAdapter-&amp;gt;query(&#39;SELECT allow, role, resource, privilege FROM acl_access WHERE type = 1 ORDER BY chain&#39;);
+                $this-&amp;gt;_result[&#39;access&#39;] = $rows = $stmt-&amp;gt;fetchAll();
+
+                $this-&amp;gt;_sqliteAdapter-&amp;gt;closeConnection();
+        }
+        
+        public function getAclRows()
+        {
+                return $this-&amp;gt;_result;
+        }
+}
+
+
+
+
+class aclCreate extends Zend_ACL 
+{
+        public function __construct()
+        {
+                $this-&amp;gt;add(new Zend_Acl_Resource(&#39;index&#39;));
+                $this-&amp;gt;add(new Zend_Acl_Resource(&#39;safe&#39;));
+                $this-&amp;gt;add(new Zend_Acl_Resource(&#39;login&#39;), &#39;safe&#39;);
+                $this-&amp;gt;add(new Zend_Acl_Resource(&#39;registration&#39;), &#39;safe&#39;);
+                $this-&amp;gt;add(new Zend_Acl_Resource(&#39;password&#39;), &#39;safe&#39;);
+                
+                $this-&amp;gt;addRole(new Zend_Acl_Role(&#39;guest&#39;));
+                $this-&amp;gt;deny(&#39;guest&#39;, &#39;safe&#39;, NULL);
+                $this-&amp;gt;allow(&#39;guest&#39;, &#39;registration&#39;);
+                $this-&amp;gt;allow(&#39;guest&#39;, &#39;login&#39;);
+                $this-&amp;gt;deny(&#39;guest&#39;, &#39;password&#39;);
+                $this-&amp;gt;allow(&#39;guest&#39;,&#39;index&#39;);
+                
+                $this-&amp;gt;addRole(new Zend_Acl_Role(&#39;member&#39;));
+                $this-&amp;gt;allow(&#39;member&#39;, &#39;safe&#39;, NULL);
+                
+                $this-&amp;gt;addRole(new Zend_Acl_Role(&#39;admin&#39;));
+                $this-&amp;gt;allow(&#39;admin&#39;);
+        }
+
+}
+
+class TamerFile_ACL
+{
+        /*
+        @ Call like this from bootstrap
+                include_once &amp;quot;Tamer/Acl.php&amp;quot;;
+                $acl = new Tamer_Acl();
+                $acl = new aclCreate();
+                $acl = $acl-&amp;gt;aclCheck();
+        */
+        protected $aclCfg;
+        
+        private $_sqlite_name = &#39;/db/config.db&#39;;
+        private $_sqliteAdapter;
+        private $_table; //Sqlite Table
+        
+        public $old = FALSE;
+
+        public function __construct()
+        {
+                $this-&amp;gt;aclCfg = ROOT.&#39;/library/Tamer/Acl.php&#39;;
+
+                try{
+                        $this-&amp;gt;_sqliteAdapter = new Zend_Db_Adapter_Pdo_Sqlite(array(&#39;dbname&#39; =&amp;gt; ROOT.$this-&amp;gt;_sqlite_name));
+                        $this-&amp;gt;_sqliteAdapter-&amp;gt;getConnection();
+                } catch (Zend_Db_Adapter_Exception $e) {
+                        echo &#39;adapter&amp;lt;pre&amp;gt;&#39;.$e-&amp;gt;getMessage().&#39;&amp;lt;/pre&amp;gt;&#39;;
+                } catch (Zend_Exception $e) {
+                        echo &#39;adapter&amp;lt;pre&amp;gt;&#39;.$e-&amp;gt;getMessage().&#39;&amp;lt;/pre&amp;gt;&#39;;
+                }
+                //$this-&amp;gt;dropTable();
+                //$this-&amp;gt;makeTable();
+                //$this-&amp;gt;aclCheck();
+        }
+        
+        public function aclCheck()
+        {
+                $ftime = filemtime($this-&amp;gt;aclCfg);
+                $sql = &#39;SELECT time FROM acl_array WHERE time = ?&#39;;
+                if($this-&amp;gt;_result = $this-&amp;gt;_sqliteAdapter-&amp;gt;fetchRow($sql, $ftime)){     
+                        return  $this-&amp;gt;aclGet();
+                }else{
+                        $acl = new aclCreate();
+                        $this-&amp;gt;aclDelete();
+                        $this-&amp;gt;aclSave($acl);
+                        return $acl;
+                }
+        }
+
+        public function aclGet()
+        {
+                $sql = &#39;SELECT acl FROM acl_array WHERE time = ?&#39;;
+                $ftime = filemtime($this-&amp;gt;aclCfg);
+                $this-&amp;gt;_result = $this-&amp;gt;_sqliteAdapter-&amp;gt;fetchRow($sql, $ftime);
+                $this-&amp;gt;_sqliteAdapter-&amp;gt;closeConnection();
+                
+                return unserialize($this-&amp;gt;_result[&#39;acl&#39;]);
+        }
+        
+        public function aclSave($array)
+        {
+                $filemtime = filemtime($this-&amp;gt;aclCfg);
+                $array = serialize($array);
+                $data = array(&#39;time&#39;=&amp;gt;$filemtime,&#39;acl&#39;=&amp;gt;$array);
+                $this-&amp;gt;_sqliteAdapter-&amp;gt;insert(&#39;acl_array&#39;, $data);
+                $this-&amp;gt;_sqliteAdapter-&amp;gt;closeConnection();
+        }
+
+        public function aclDelete()
+        {
+                $this-&amp;gt;_sqliteAdapter-&amp;gt;delete(&#39;acl_array&#39;);
+                $this-&amp;gt;_sqliteAdapter-&amp;gt;closeConnection();
+        }
+
+        
+        /**
+         * creates the db table
+         *
+         * @param array $fields
+         */
+        public function dropTable()
+        {
+            $this-&amp;gt;_result = $this-&amp;gt;_sqliteAdapter-&amp;gt;getConnection()-&amp;gt;exec(&#39;DROP TABLE acl_array&#39;);
+                $this-&amp;gt;_sqliteAdapter-&amp;gt;closeConnection();
+        }
+        
+        /**
+         * creates the db table
+         *
+         * @param array $fields
+         */
+        public function makeTable()
+        {
+                $sql[] = &#39;CREATE TABLE IF NOT EXISTS acl_roles (role TEXT(50) NOT NULL,parent TEXT(50) default NULL)&#39;;
+                $sql[] = &#39;CREATE TABLE IF NOT EXISTS acl_resources (resource TEXT(50) NOT NULL,parent TEXT(50) default NULL)&#39;;
+                $sql[] = &#39;CREATE TABLE IF NOT EXISTS acl_access (role TEXT(50) NOT NULL,resource  Text(50) NOT NULL,privilege Text(50),allow Boolean NOT NULL DEFAULT 0)&#39;;
+                $sql[] = &#39;CREATE table IF NOT EXISTS acl_array(time INTEGER PRIMARY KEY, acl TEXT)&#39;;
+                foreach($sql as $v){
+                        $this-&amp;gt;_sqliteAdapter-&amp;gt;query($v);
+                }
+                $this-&amp;gt;_table = true;
+                $this-&amp;gt;_sqliteAdapter-&amp;gt;closeConnection();
+        }       
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;ZEND_ROOT/library/Tamer/Plugin/Auth.php&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;&amp;lt;?php
+
+class Tamer_Plugin_Auth extends Zend_Controller_Plugin_Abstract
+{
+        private $_auth;
+        private $_acl;
+        
+        private $_noauth = array(&#39;module&#39; =&amp;gt; &#39;safe&#39;,
+                                                        &#39;controller&#39; =&amp;gt; &#39;login&#39;,
+                                                        &#39;action&#39; =&amp;gt; &#39;index&#39;);
+        
+        private $_noacl = array(&#39;module&#39; =&amp;gt; &#39;default&#39;,
+                                                        &#39;controller&#39; =&amp;gt; &#39;error&#39;,
+                                                        &#39;action&#39; =&amp;gt; &#39;privileges&#39;);
+        
+        public function __construct($auth, $acl)
+        {
+                $this-&amp;gt;_auth = $auth;
+                $this-&amp;gt;_acl = $acl;
+        }
+        
+        public function preDispatch(Zend_Controller_Request_Abstract $request)
+        {
+                if ($this-&amp;gt;_auth-&amp;gt;hasIdentity()) {
+                        $role = $this-&amp;gt;_auth-&amp;gt;getIdentity()-&amp;gt;role;
+                } else {
+                        $role = &#39;guest&#39;;
+                }
+
+                $controller = $request-&amp;gt;controller;
+                $action         = $request-&amp;gt;action;
+                $module         = $request-&amp;gt;module;
+                $resource       = $controller;
+                
+                if (!$this-&amp;gt;_acl-&amp;gt;has($resource)) {
+                        $resource = null;
+                }
+                
+                if (!$this-&amp;gt;_acl-&amp;gt;isAllowed($role, $resource, $action)) {
+                        if (!$this-&amp;gt;_auth-&amp;gt;hasIdentity()) {
+                                $module = $this-&amp;gt;_noauth[&#39;module&#39;];
+                                $controller = $this-&amp;gt;_noauth[&#39;controller&#39;];
+                                $action = $this-&amp;gt;_noauth[&#39;action&#39;];
+                        } else {
+                                $module = $this-&amp;gt;_noacl[&#39;module&#39;];
+                                $controller = $this-&amp;gt;_noacl[&#39;controller&#39;];
+                                $action = $this-&amp;gt;_noacl[&#39;action&#39;];
+                        }
+                }
+                
+                $request-&amp;gt;setModuleName($module);
+                $request-&amp;gt;setControllerName($controller);
+                $request-&amp;gt;setActionName($action);
+        }
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;ZEND_ROOT/db/config.sql&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;sql&#34;&gt;DROP TABLE IF EXISTS acl_array;
+DROP TABLE IF EXISTS acl_roles;
+DROP TABLE IF EXISTS acl_resources;
+DROP TABLE IF EXISTS acl_access;
+DROP TRIGGER IF EXISTS update_acl_roles;
+DROP TRIGGER IF EXISTS update_acl_roles_access;
+DROP TRIGGER IF EXISTS update_acl_roles_parent;
+DROP TRIGGER IF EXISTS update_acl_resources_owner;
+DROP TRIGGER IF EXISTS update_acl_access_role;
+
+PRAGMA auto_vacuum = 1;
+PRAGMA encoding = &amp;quot;UTF-8&amp;quot;;
+
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS acl_roles (role TEXT(50) NOT NULL,parent TEXT(50) default NULL, type Boolean DEFAULT NULL);
+
+CREATE TABLE IF NOT EXISTS acl_resources (owner TEXT(50) NOT NULL,
+resource TEXT(50) NOT NULL,parent TEXT(50) default NULL);
+
+CREATE TABLE IF NOT EXISTS acl_access (role TEXT(50) NOT NULL,
+resource TEXT(50) DEFAULT NULL, privilege Text(50) DEFAULT NULL, 
+allow Boolean DEFAULT NULL, chain INTEGER DEFAULT NULL, type Boolean DEFAULT NULL);
+
+CREATE TRIGGER update_acl_roles_parent UPDATE OF parent ON acl_roles 
+        BEGIN UPDATE acl_roles SET parent = new.role WHERE parent = old.role;
+        END;
+CREATE TRIGGER update_acl_resources_owner UPDATE OF owner ON acl_resources 
+        BEGIN UPDATE acl_resources SET owner = new.role WHERE owner = old.role; 
+        END;
+CREATE TRIGGER update_acl_access_role UPDATE OF role ON acl_access 
+        BEGIN UPDATE acl_access SET role = new.role WHERE role = old.role; 
+        END;
+
+
+INSERT INTO &amp;quot;acl_roles&amp;quot; VALUES (&#39;admin&#39;,NULL,1);
+INSERT INTO &amp;quot;acl_roles&amp;quot; VALUES (&#39;guest&#39;,NULL,1);
+INSERT INTO &amp;quot;acl_roles&amp;quot; VALUES (&#39;member&#39;,NULL,1);
+INSERT INTO &amp;quot;acl_roles&amp;quot; VALUES (&#39;developer&#39;,&#39;member&#39;,1);
+
+INSERT INTO &amp;quot;acl_resources&amp;quot; VALUES (&#39;system&#39;,&#39;index&#39;,NULL);
+INSERT INTO &amp;quot;acl_resources&amp;quot; VALUES (&#39;system&#39;,&#39;safe&#39;,NULL);
+INSERT INTO &amp;quot;acl_resources&amp;quot; VALUES (&#39;system&#39;,&#39;login&#39;,&#39;safe&#39;);
+INSERT INTO &amp;quot;acl_resources&amp;quot; VALUES (&#39;system&#39;,&#39;registration&#39;,&#39;safe&#39;);
+INSERT INTO &amp;quot;acl_resources&amp;quot; VALUES (&#39;system&#39;,&#39;admin&#39;,&#39;safe&#39;);
+
+INSERT INTO &amp;quot;acl_access&amp;quot; VALUES (&#39;admin&#39;,NULL,NULL,1,NULL,1);
+INSERT INTO &amp;quot;acl_access&amp;quot; VALUES (&#39;guest&#39;,&#39;index&#39;,NULL,1,1,1);
+INSERT INTO &amp;quot;acl_access&amp;quot; VALUES (&#39;guest&#39;,&#39;safe&#39;,NULL,NULL,2,1);
+INSERT INTO &amp;quot;acl_access&amp;quot; VALUES (&#39;guest&#39;,&#39;login&#39;,NULL,1,3,1);
+INSERT INTO &amp;quot;acl_access&amp;quot; VALUES (&#39;guest&#39;,&#39;registration&#39;,NULL,1,4,1);
+INSERT INTO &amp;quot;acl_access&amp;quot; VALUES (&#39;member&#39;,&#39;safe&#39;,NULL,1,1,1);
+INSERT INTO &amp;quot;acl_access&amp;quot; VALUES (&#39;member&#39;,&#39;login&#39;,NULL,NULL,2,1);
+INSERT INTO &amp;quot;acl_access&amp;quot; VALUES (&#39;member&#39;,&#39;registration&#39;,NULL,NULL,3,1);
+COMMIT;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

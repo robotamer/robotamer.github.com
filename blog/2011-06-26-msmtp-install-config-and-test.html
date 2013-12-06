@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Copyright</title>
+  <title>msmtp install, config and test</title>
   <meta name="description" content="">
-  <meta name="keywords" content=", , , , , , , , , , RoboTamer">
+  <meta name="keywords" content="RoboTamer">
   <meta name="generator" content="Hugo">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -16,6 +16,7 @@
     <link href="http://www.robotamer.com/static/css/hugoicon.css" rel="stylesheet"/>
 
 
+  <link rel="alternate" type="application/rss+xml" title="RoboTamer (RSS 2.0)" href="http://www.robotamer.com/blog.xml">
   </head>
   <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -163,44 +164,121 @@
       <div class="row">
         <div class="col-md-12">
 
+
+
+
 <div class="panel panel-default">
   <div class="panel-heading">
-  	<h2>Copyright</h2>
+  	<h2>msmtp install, config and test</h2>
 	<h4></h4>
+	<h5>Sun, Jun 26, 2011</h5>
   </div>
   <div class="panel-body">
-  <h2>Copyright &copy; 2012 The GoTamer Authors. All rights reserved.</h2>
+	<p>Why have more then one mail server? Or why even have a mail server at all, if you can use gmail?
+Well there are many reasons to have at leased one mail server, but having one on each server doesn&rsquo;t make sense at all.
+I tried both ssmtp and msmtp, and decided on msmtp.
+&lt;!&ndash; more &ndash;&gt;</p>
 
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:</p>
+<h3>msmtp is an SMTP client.</h3>
+
+<p>In the default mode, it transmits a mail to an SMTP server, which takes care of further delivery.
+To use this program with your mail user agent (MUA), create a configuration  file with your mail account(s) and tell your MUA to call msmtp instead of  /usr/sbin/sendmail.
+<strong>Features include:</strong></p>
 
 <ul>
-<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of GoTamer nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
+<li><p>Sendmail compatible interface (command line options and exit codes).</p></li>
+
+<li><p>TLS/SSL support, including client certificates.</p></li>
+
+<li><p>Authentication methods PLAIN, LOGIN, CRAM-MD5, EXTERNAL, GSSAPI, SCRAM-SHA-1, DIGEST-MD5, and NTLM.</p></li>
+
+<li><p>PIPELINING support for increased transmission speed.</p></li>
+
+<li><p>DSN (Delivery Status Notification) support.</p></li>
+
+<li><p>RMQS (Remote Message Queue Starting) support (ETRN keyword).</p></li>
+
+<li><p>IPv6 support.</p></li>
+
+<li><p>LMTP support.</p></li>
+
+<li><p>Support for multiple accounts.</p></li>
 </ul>
 
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-&ldquo;AS IS&rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<p>msmtp is <a href="http://www.gnu.org/philosophy/free-sw.html">free software</a>; you can redistribute it and/or modify it under the terms of the  <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a> as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+
+<hr />
+
+<h3>Requirements</h3>
+
+<p><strong>Platforms</strong></p>
+
+<p>msmtp runs on a wide variety of platforms. It needs little more than an ANSI C  compiler and Berkeley-style sockets.
+<strong>Libraries</strong>
+msmtp does not need any additional libraries, but it can use the following to enhance its feature set:</p>
+
+<ul>
+<li><p><a href="http://www.gnu.org/software/gnutls/">GnuTLS</a> (&gt;=1.2.0)
+The GnuTLS library provides TLS/SSL support. It is highly recommended.</p></li>
+
+<li><p><a href="http://www.openssl.org/">OpenSSL</a> (&gt;=0.9.6)
+OpenSSL is supported as an alternative to GnuTLS.</p></li>
+
+<li><p><a href="http://josefsson.org/libgsasl/">GNU SASL</a> (&gt;=0.2.4)
+Using the GNU SASL library adds support for the GSSAPI, DIGEST-MD5, SCRAM-SHA-1, and NTLM  authentication methods. (The methods PLAIN, LOGIN, and CRAM-MD5  are always supported).</p></li>
+
+<li><p><a href="http://www.gnu.org/software/libidn/">GNU Libidn</a>
+Support for Internationalized Domain Names (IDN) is available if you have GNU  Libidn installed.</p></li>
+</ul>
+
+<h3>install</h3>
+
+<pre><code>apt-get install msmtp
+</code></pre>
+
+<h3>configure</h3>
+
+<p>Below you will see that I commented out tls_trust_file and went with tls_fingerprint.
+You can not use both at the same time, and I figure that tls_fingerprint is faster, however the gmail finger print may change over the years so going with tls_trust_file is probably safer.</p>
+
+<pre><code># /etc/msmtprc
+defaults
+logfile         ~/.msmtp.log
+#tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+account         default
+host            smtp.gmail.com
+port            587
+from            xxxxx@gmail.com
+auth            on
+user            xxxxx@gmail.com
+password        *******
+tls             on
+tls_starttls    on
+tls_fingerprint DB:A0:2A:07:00:F9:E3:23:7D:07:E7:52:3C:95:9D:E6:7E:12:54:3F
+logfile         /var/log/msmtp.log
+</code></pre>
+
+<h3>Test</h3>
+
+<p>Send out a test mail:</p>
+
+<pre><code>echo -e &quot;Subject: msmtp test mailnThis is a test mail from msmtp&quot; | msmtp --debug --from=default -t xxxxx@gmail.com
+</code></pre>
+
+<p><a href="http://msmtp.sourceforge.net/">Link to developer site</a></p>
 
   </div>
   <div class="panel-footer">
     <div class="btn-group">
       
+      <a href="http://www.robotamer.com/tags/server.html"><button type="button" class="btn btn-info btn-xs">server</button></a>	
+      
     </div>  
   </div>
 </div>
- 
+
+
         </div>
       </div>
     </div>
@@ -239,3 +317,4 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
   </body>
 
 </html>
+

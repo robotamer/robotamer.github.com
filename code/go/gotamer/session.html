@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Copyright</title>
-  <meta name="description" content="">
-  <meta name="keywords" content=", , , , , , , , , , RoboTamer">
+  <title>Session</title>
+  <meta name="description" content="Session for go consists of a way to preserve data across subsequent accesses in network related applications.">
+  <meta name="keywords" content="code, go, gotamer, network, session, cookie, RoboTamer">
   <meta name="generator" content="Hugo">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -165,37 +165,117 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-  	<h2>Copyright</h2>
-	<h4></h4>
+  	<h2>Session</h2>
+	<h4>Session for go consists of a way to preserve data across subsequent accesses in network related applications.</h4>
   </div>
   <div class="panel-body">
-  <h2>Copyright &copy; 2012 The GoTamer Authors. All rights reserved.</h2>
-
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:</p>
+  <p>Feutures:</p>
 
 <ul>
-<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of GoTamer nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
+<li>Custom backends to store session data locally.</li>
+<li>Flash messages: session values that last until read.</li>
+<li>Low dependency and therefore versitile, for example, it does not depened on the go http pkg</li>
 </ul>
 
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-&ldquo;AS IS&rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<p>Built-in backends to store sessions locally:</p>
+
+<ul>
+<li>storeMap ⬄ A in memory map[string]sessions store</li>
+<li>storeLeveldb ⬄ Stores session data in a leveldb</li>
+</ul>
+
+<p>Simple Sample code the uses the default storeMap backend:</p>
+
+<pre><code class="go">package main
+
+import(
+    &quot;bitbucket.org/gotamer/net/session&quot;
+    &quot;fmt&quot;
+)
+
+func main(){
+    id := save()
+    load(id)
+}
+
+func save() string {
+    sess := session.New()
+    sess.Set(&quot;Alias&quot;,&quot;GoTamer&quot;)
+    err := sess.Save()
+    Check(err)
+    fmt.Println(&quot;Session Saved&quot;, sess)
+    sid, err := sess.Id()
+    Check(err)
+    return sid
+}
+
+func load(sid string){
+    sess, err := session.Load(sid)
+    Check(err)
+    fmt.Println(&quot;Session Load: &quot;, sess)
+}
+
+</code></pre>
+
+<p>Sample code the uses the leveldb backend:</p>
+
+<pre><code class="go">package main
+
+import(
+    &quot;bitbucket.org/gotamer/net/session&quot;
+    &quot;fmt&quot;
+)
+
+var path = &quot;/tmp/sessions&quot;
+
+func init(){
+    session.StoreLeveldb(path)  
+}
+
+func main(){
+    id := save()
+    load(id)
+}
+
+func save() string {
+    sess := session.New()
+    sess.Set(&quot;Alias&quot;,&quot;GoTamer&quot;)
+    err := sess.Save()
+    Check(err)
+    fmt.Println(&quot;Session Saved&quot;, sess)
+    sid, err := sess.Id()
+    Check(err)
+    return sid
+}
+
+func load(sid string){
+    sess, err := session.Load(sid)
+    Check(err)
+    fmt.Println(&quot;Session Load: &quot;, sess)
+}
+
+</code></pre>
+
+<p>Additional backends can be created by simply implementing following interfaces:</p>
+
+<pre><code class="go">type Store interface {
+    Save(session *sessionObject) (err error)
+    Load(sid string) (session *sessionObject, err error)
+    Delete(sid string) (err error)
+}
+</code></pre>
+
+<p>Some code has been borrowed from <a href="http://www.stathat.com/src/bingo">http://www.stathat.com/src/bingo</a> witch is licensed also under MIT.</p>
+
+<p>Code is available at <a href="https://bitbucket.org/gotamer">https://bitbucket.org/gotamer</a></p>
 
   </div>
   <div class="panel-footer">
     <div class="btn-group">
+      
+      <a href="http://www.robotamer.com/tags/gotamer.html"><button type="button" class="btn btn-info btn-xs">gotamer</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/network.html"><button type="button" class="btn btn-info btn-xs">network</button></a>	
       
     </div>  
   </div>

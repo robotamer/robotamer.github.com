@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Android on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/android.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2011-06-15 03:48:33 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>HTC Kaiser / TyTN II Android Froyo Rom</title>
+      <link>http://www.robotamer.com/blog/2011-06-15-kaiser-rom.html</link>
+      <pubDate>Wed, 15 Jun 2011 03:48:33 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-15-kaiser-rom.html</guid>
+      <description>&lt;p&gt;This is a Kernel and a Rom to convert your HTC Kaiser from Microsoft to Android Froyo&lt;/p&gt;
+
+&lt;p&gt;Everything seems to be working, except the camera is blurry, but that seams to be the norm.&lt;/p&gt;
+
+&lt;p&gt;Included is the rom, radio and kernel&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ROM: 2.2.1&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Kernel: 2.6.25&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Radio: KAISER 1.70.19.09&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Panel: 2&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Key Map: US Normal&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Resolution: 240x320&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Storage: Nand &amp;amp; Nand&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most everything is installed in userspace and can be uninstalled or upgraded.&lt;/p&gt;
+
+&lt;p&gt;Oh got GO Launcher EX installed (Also in user space)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credits:&lt;/strong&gt;
+I stole ideas from, and used following tools:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Makers of &lt;a href=&#34;http://sourceforge.net/projects/androidhtc/files/AtoolsRelease/&#34;&gt;atools&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Makers of NBH creator&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;HTC Flasher&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://forum.xda-developers.com/member.php?u=2426812&#34;&gt;kallt_kaffe&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://forum.xda-developers.com/member.php?u=1638018&#34;&gt;Krazy-Killa&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dzo (dzo&amp;rsquo;s posts wore a big help. just wish he would answer his own questions after he found the solution)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://forum.xda-developers.com/member.php?u=895681&#34;&gt;n2rjt&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;and many more.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;@todo&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Resize NAND partitions to the smaller system size&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Download Links:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://pzzazz.net/htc/Gruessle_HTC_Kaiser.tar.bz2&#34;&gt;You can download it from here as bz2&lt;/a&gt;
+OR
+&lt;a href=&#34;http://pzzazz.net/htc/Gruessle_HTC_Kaiser.tar.bz2&#34;&gt;from here same thing as 7z&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Forum&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;There is a forum post of mine at &lt;a href=&#34;http://forum.xda-developers.com/showthread.php?t=1123355&#34;&gt;xda-developers&lt;/a&gt; to get help:&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

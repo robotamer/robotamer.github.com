@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Copyright</title>
+  <title>num_row with PDO</title>
   <meta name="description" content="">
-  <meta name="keywords" content=", , , , , , , , , , RoboTamer">
+  <meta name="keywords" content="RoboTamer">
   <meta name="generator" content="Hugo">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -16,6 +16,7 @@
     <link href="http://www.robotamer.com/static/css/hugoicon.css" rel="stylesheet"/>
 
 
+  <link rel="alternate" type="application/rss+xml" title="RoboTamer (RSS 2.0)" href="http://www.robotamer.com/blog.xml">
   </head>
   <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -163,44 +164,54 @@
       <div class="row">
         <div class="col-md-12">
 
+
+
+
 <div class="panel panel-default">
   <div class="panel-heading">
-  	<h2>Copyright</h2>
+  	<h2>num_row with PDO</h2>
 	<h4></h4>
+	<h5>Fri, Jun 10, 2011</h5>
   </div>
   <div class="panel-body">
-  <h2>Copyright &copy; 2012 The GoTamer Authors. All rights reserved.</h2>
+	<p>There is no num_row() function for PHP PDO</p>
 
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:</p>
+<p>Here are my two solutions:</p>
 
-<ul>
-<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of GoTamer nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
-</ul>
+<p><strong>One with prepare &amp; execute</strong>:</p>
 
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-&ldquo;AS IS&rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<pre><code>db-&gt;prepare($sql);
+$sth-&gt;execute(array($key));
+$rows = $sth-&gt;fetch(PDO::FETCH_NUM);
+echo $rows[0];
+?&gt;
+</code></pre>
+
+<p><strong>One with query:</strong></p>
+
+<pre><code>db-&gt;query($sql);
+$row = $result-&gt;fetch(PDO::FETCH_NUM);
+echo $row[0];
+?&gt;
+</code></pre>
 
   </div>
   <div class="panel-footer">
     <div class="btn-group">
       
+      <a href="http://www.robotamer.com/tags/code.html"><button type="button" class="btn btn-info btn-xs">code</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/pdo.html"><button type="button" class="btn btn-info btn-xs">pdo</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/php.html"><button type="button" class="btn btn-info btn-xs">php</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/sql.html"><button type="button" class="btn btn-info btn-xs">sql</button></a>	
+      
     </div>  
   </div>
 </div>
- 
+
+
         </div>
       </div>
     </div>
@@ -239,3 +250,4 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
   </body>
 
 </html>
+

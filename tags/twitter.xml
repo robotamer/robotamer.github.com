@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Twitter on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/twitter.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2012-06-27 23:27:29 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Messenger Laravel Framework</title>
+      <link>http://www.robotamer.com/blog/2012-06-27-messenger-laravel-framework.html</link>
+      <pubDate>Wed, 27 Jun 2012 23:27:29 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2012-06-27-messenger-laravel-framework.html</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://blog.robotamer.com/wp-content/uploads/2012/06/laravel.png&#34; alt=&#34;Laravel Framework&#34; /&gt;
+ This is a fork and upgrade of the &lt;a href=&#34;http://forums.laravel.com/profile.php?id=583&#34;&gt;davzie&lt;/a&gt; message class.
+A info, error etc messenger class that allows you to add validation errors, statuses etc to flash data and then retrieve them in a nicely formatted way in your front-end. Automates the process a little when you&amp;rsquo;re adding and retrieving messages, especially in a CRUD type environment. The formatting integrates well with Twitter&amp;rsquo;s Bootstrap Alert formatting.&lt;/p&gt;
+
+&lt;p&gt;This upgraded version works smoothly with the Laravel validation class&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/robotamer/3007511#file-msg-php&#34;&gt;gist id=3007511&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;&amp;lt;?php
+
+class Msg {
+
+     public static $msgss = array();
+
+     /**
+      * Add a message to the message array (adds to the user&#39;s session)
+      * @param string  $type    You can have several types of messages, these are class names for Bootstrap&#39;s messaging classes, usually, info, error, success, warning
+      * @param string $message  The message you want to add to the list
+      */
+     public static function add($type = &#39;info&#39;, $message = FALSE){
+         if(!$message) return FALSE;
+         if(is_array($message)){
+             foreach($message as $msg){
+                 static::$msgss[$type][] = $msg;
+             }
+         }else{
+             static::$msgss[$type][] = $message;
+         }
+         Session::flash(&#39;messages&#39;, static::$msgss);
+     }
+
+     /**
+      * Pull back those messages from the session
+      * @return array
+      */
+     public static function get(){
+         return (Session::has(&#39;messages&#39;)) ? Session::get(&#39;messages&#39;) : FALSE;
+     }
+    
+     /**
+      * Gets all the messages from the session and formats them accordingly for Twitter bootstrap.
+      * @return string
+      */
+     public static function getHtml(){
+         $output = FALSE;
+         if (Session::has(&#39;messages&#39;)){
+             $messages = Session::get(&#39;messages&#39;);
+             foreach($messages as $type =&amp;gt; $msgs){
+                 if(is_integer($type)) $type = &#39;error&#39;;
+                 $output .= &#39;&amp;lt;div class=&amp;quot;alert alert-&#39;.$type.&#39;&amp;quot;&amp;gt;&amp;lt;a class=&amp;quot;close&amp;quot; data-dismiss=&amp;quot;alert&amp;quot;&amp;gt;×&amp;lt;/a&amp;gt;&#39;;
+                 if(is_array($msgs)){
+                 foreach($msgs as $msg) $output .= &#39;&amp;lt;p&amp;gt;&#39;.$msg.&#39;&amp;lt;/p&amp;gt;&#39;;
+                 }else{
+                      $output .= &#39;&amp;lt;p&amp;gt;&#39;.$msgs.&#39;&amp;lt;/p&amp;gt;&#39;;
+                 }
+                 $output .= &#39;&amp;lt;/div&amp;gt;&#39;;
+             }
+         }
+         return $output;
+     }
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

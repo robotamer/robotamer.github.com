@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Website on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/website.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2013-12-01 00:00:00 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>﻿Hugo, a static website generator</title>
+      <link>http://www.robotamer.com/blog/hugo.html</link>
+      <pubDate>Sun, 01 Dec 2013 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/hugo.html</guid>
+      <description>&lt;p&gt;Just a couple of days ago I posted about jkl, a static website generator written in Go, and based on Jekyll.&lt;/p&gt;
+
+&lt;p&gt;While setting up jkl, I stumbled over Hugo! I was impressed at first site with Hugo.
+Since then I have reconfigured my site to work with Hugo.
+I didn&amp;rsquo;t have to fiddle with the Hugo code, everything just works, and it really does most everything that comes to mind.
+This whole website thing has been bothering me for a long time; and finally I am a happy camper.&lt;/p&gt;
+
+&lt;p&gt;There are a few thinks I still have to setup, like the indexes are done but the links don&amp;rsquo;t seam to work as expected, or I am doing something wrong. However this is minor considering that I am glad that Hugo even has a link and menu generating system.&lt;/p&gt;
+
+&lt;p&gt;Also the rss feeds needs some work, but again Hugo has that build in, I just have to set it up right.&lt;/p&gt;
+
+&lt;p&gt;Hugo&amp;rsquo;s front matter can be defined with YAML, TOML, or JSON. Which one you like is up to you, you can even use a
+different one on each page.
+Here is the TOML for this page:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+++
+linktitle = &amp;quot;Huge&amp;quot;
+title = &amp;quot;﻿Hugo, a static website generator&amp;quot;
+description = &amp;quot;Hugo is a static website generator written in the Go programing language&amp;quot;
+keywords = [&amp;quot;code&amp;quot;,&amp;quot;go&amp;quot;, &amp;quot;golang&amp;quot;, &amp;quot;website&amp;quot;,&amp;quot;static&amp;quot;,&amp;quot;generator&amp;quot;]
+tags = [&amp;quot;code&amp;quot;,&amp;quot;go&amp;quot;,&amp;quot;website&amp;quot;]
+groups = [&amp;quot;blog&amp;quot;]
+language = &amp;quot;en&amp;quot;
+date = &amp;quot;2013-12-01&amp;quot;
++++
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;In short, I can highlly recommend &lt;a href=&#34;http://github.com/spf13/hugo&#34;&gt;Hugo&lt;/a&gt; to any coder!&lt;/h4&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

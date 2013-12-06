@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Phptamers on RoboTamer </title>
+    <link>http://www.robotamer.com/phptamer.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2008-01-01 00:00:00 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Facade</title>
+      <link>http://www.robotamer.com/code/php/phptamer/facade.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/phptamer/facade.html</guid>
+      <description>&lt;p&gt;Facade&amp;rsquo;s main focus is a to be a component dependency substitution system,
+and will achieve component interdependency via the facade programming pattern.&lt;/p&gt;
+
+&lt;p&gt;With Facade you can build a cli or web framework by mixing components from
+&lt;a href=&#34;http://pear.php.net&#34;&gt;Pear&lt;/a&gt;,
+&lt;a href=&#34;http://zendframework.com/&#34;&gt;Zend&lt;/a&gt;,
+&lt;a href=&#34;http://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;
+or just standalone classes from let&amp;rsquo;s say
+&lt;a href=&#34;http://www.phpclasses.org&#34;&gt;PHPClasses&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Facade is a sub component of PHPTamer, which includes a collection of libraries,
+and recommends tested components to help you get started.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PHPTamer</title>
+      <link>http://www.robotamer.com/code/php/phptamer/index.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/phptamer/index.html</guid>
+      <description>&lt;p&gt;A system called PHPTamer Facade is in the works, Facade is a component dependency substitution system to achieve component interdependency via the facade programming pattern.&lt;/p&gt;
+
+&lt;h2&gt;Predefined Variables&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;BR = &lt;br /&gt; or \n when in cli mode&lt;/li&gt;
+&lt;li&gt;HR = Horizontal Rules&lt;/li&gt;
+&lt;li&gt;DS = DIRECTORY_SEPARATOR&lt;/li&gt;
+&lt;li&gt;HOSTNAME&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RTCrypter</title>
+      <link>http://www.robotamer.com/code/php/phptamer/rtcrypter.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/phptamer/rtcrypter.html</guid>
+      <description>&lt;p&gt;RTCrypter does not require mcrypt, mhash or any other PHP extension, it uses only PHP.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$crypt = new RTCrypter();
+$crypt-&amp;gt;setCharacters(&#39;#@|*-+.,!~`$%^&amp;amp;&amp;lt;&amp;gt;{}[]()0/\123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#39;);
+$secretKey = $crypt-&amp;gt;genKey();
+
+
+$crypt = new RTCrypter();
+$crypt-&amp;gt;useBase64(FALSE); // TRUE is default
+$crypt-&amp;gt;setCharacters(&#39;#@|*-+.,!~`$%^&amp;amp;&amp;lt;&amp;gt;{}[]()0/\123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#39;);
+$crypt-&amp;gt;setScramble($secretKey);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Master Singleton Class</title>
+      <link>http://www.robotamer.com/code/php/phptamer/rtsingleton.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/phptamer/rtsingleton.html</guid>
+      <description>&lt;h4&gt;Via the factory&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$l = RTSingleton::factory(&#39;Translate&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Directs call&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$view = RTSingleton::Template();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Class Alias&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;RTSingleton::alias(string $className, string $alias);
+
+RTSingleton::alias(&#39;Template&#39;, &#39;V&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Aliased call &lt;em&gt;RTSingleton has an S alias by default&lt;/em&gt;&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$view = S::V();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Set Object  &lt;em&gt;Not available in version 0.0.1&lt;/em&gt;&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;RTSingleton::set(object $class [, string $alias = NULL ] );
+
+RTSingleton::set(new Aura\View\Template(), &#39;View&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Actually:&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt; RTSingleton::set(require __dir__ . &#39;/../libs/composer/vendor/Aura/View/scripts/instance.php&#39;,&#39;V&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;No need for global variables&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;S::V()-&amp;gt;var = &#39;Master RTSingleton Class&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Use original class or alias or switch back and forth&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;echo RTSingleton::Template()-&amp;gt;fetch(__dir__ .&#39;/gui/layout.php&#39;);
+echo S::V()-&amp;gt;fetch(__dir__ .&#39;/gui/otherlayout.php&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;See all the registered classes&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;print_r(S::getClasses());
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

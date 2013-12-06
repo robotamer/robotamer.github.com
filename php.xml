@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Phps on RoboTamer </title>
+    <link>http://www.robotamer.com/php.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2012-07-13 20:45:12 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Read Folder</title>
+      <link>http://www.robotamer.com/code/php/read-folder.html</link>
+      <pubDate>Fri, 13 Jul 2012 20:45:12 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/read-folder.html</guid>
+      <description>&lt;p&gt;This is a &lt;em&gt;Lambda&lt;/em&gt; function also called anonymous function within a regular function that scans a given directory and it&amp;rsquo;s sub directories returning an array of all php files within.&lt;/p&gt;
+
+&lt;p&gt;Following is a snip output of the Zend files.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[6] =&amp;gt; /usr/share/php/Zend/Captcha/ReCaptcha.php
+[7] =&amp;gt; /usr/share/php/Zend/Captcha/Base.php
+[8] =&amp;gt; /usr/share/php/Zend/Feed/Rss.php
+[9] =&amp;gt; /usr/share/php/Zend/Feed/Atom.php
+[52] =&amp;gt; /usr/share/php/Zend/Feed/Writer/Source.php
+[53] =&amp;gt; /usr/share/php/Zend/Feed/Pubsubhubbub.php
+[54] =&amp;gt; /usr/share/php/Zend/Feed/Element.php
+[55] =&amp;gt; /usr/share/php/Zend/Feed/Reader/Feed/Rss.php
+[90] =&amp;gt; /usr/share/php/Zend/Feed/Builder.php
+[91] =&amp;gt; /usr/share/php/Zend/Feed/Writer.php
+[92] =&amp;gt; /usr/share/php/Zend/Config.php
+[93] =&amp;gt; /usr/share/php/Zend/Json/Server.php
+[94] =&amp;gt; /usr/share/php/Zend/Json/Exception.php
+[95] =&amp;gt; /usr/share/php/Zend/Json/Encoder.php
+[865] =&amp;gt; /usr/share/php/Zend/View/Stream.php
+[866] =&amp;gt; /usr/share/php/Zend/View/Interface.php
+[867] =&amp;gt; /usr/share/php/Zend/View/Abstract.php
+[868] =&amp;gt; /usr/share/php/Zend/Search/Exception.php
+[869] =&amp;gt; /usr/share/php/Zend/Search/Lucene.php
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;&amp;lt;?php
+
+/**
+ *
+ * @param string $dir
+ * @return array 
+ */
+function get_php_files_in_dir($dir)
+{
+    $bin = array ();
+    $run = function(&amp;amp;$run, $dir, &amp;amp;$bin) {
+        if ($handle = opendir($dir)) {
+            while (false !== ($file = readdir($handle))) {
+                if ($file != &amp;quot;.&amp;quot; &amp;amp;&amp;amp; $file != &amp;quot;..&amp;quot;) {
+                    if (strpos($file, &#39;.php&#39;) &amp;gt; 0) {
+                        $bin[] = $dir . &#39;/&#39; . $file;
+                    } elseif (is_dir($dir . &#39;/&#39; . $file)) {
+                        $run($run, $dir . &#39;/&#39; . $file, $bin);
+                    }
+                }
+            }
+        }
+        closedir($handle);
+    };
+    $run($run, $dir, $bin);
+    return $bin;
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/robotamer/3107221#file-get_php_files_in_dir-php&#34;&gt;gist id=3107221&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Autoload</title>
+      <link>http://www.robotamer.com/code/php/autoload.html</link>
+      <pubDate>Sun, 01 Jul 2012 07:37:41 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/autoload.html</guid>
+      <description>&lt;p&gt;I have been looking around for some good examples to use the new PHP autoloader interoperability standard according to the PHP Standards Recommendation #0 (PSR-0).&lt;/p&gt;
+
+&lt;p&gt;And since I could find anything good, I had to figure it out by my self, here is the result.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/robotamer/3027247&#34;&gt;gist id=3027247&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;HowTo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;    &amp;lt;?php
+    # Adds your library to the beginning of the php include path
+    addInclude(&#39;~/code/libs&#39;, FALSE);
+
+    $loader = new SplClassLoader();
+
+    # adds the php include path to the class
+    $loader-&amp;gt;setIncludePathLookup(true);
+
+    $loader-&amp;gt;add(&#39;Zend&#39;);
+    $loader-&amp;gt;add(&#39;PEAR&#39;);
+
+    # Give the path if it isn&#39;t in the php include path like this
+    $loader-&amp;gt;add(&#39;Symfony&#39;, &#39;/path/to/symfony&#39;);
+
+    $loader -&amp;gt; register();
+    ?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;&amp;lt;?php
+/**
+ * SplClassLoader implementation that implements the technical interoperability
+ * standards for PHP 5.3 namespaces and class names.
+ *
+ * https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+ *
+ * Example usage:
+ *
+ *     $classLoader = new \SplClassLoader();
+ *
+ *     // Configure the SplClassLoader to act normally or silently
+ *     $classLoader-&amp;gt;setMode(\SplClassLoader::MODE_NORMAL);
+ *
+ *     // Add a namespace of classes
+ *     $classLoader-&amp;gt;add(&#39;Doctrine&#39;, array(
+ *         &#39;/path/to/doctrine-common&#39;, &#39;/path/to/doctrine-dbal&#39;, &#39;/path/to/doctrine-orm&#39;
+ *     ));
+ *
+ *     // Add a prefix
+ *     $classLoader-&amp;gt;add(&#39;Swift&#39;, &#39;/path/to/swift&#39;);
+ *
+ *     // Add a prefix through PEAR1 convention, requiring include_path lookup
+ *     $classLoader-&amp;gt;add(&#39;PEAR&#39;);
+ *
+ *     // Allow to PHP use the include_path for file path lookup
+ *     $classLoader-&amp;gt;setIncludePathLookup(true);
+ *
+ *     // Possibility to change the default php file extension
+ *     $classLoader-&amp;gt;setFileExtension(&#39;.php&#39;);
+ *
+ *     // Register the autoloader, prepending it in the stack
+ *     $classLoader-&amp;gt;register(true);
+ *
+ * @author Guilherme Blanco &amp;lt;guilhermeblanco@php.net&amp;gt;
+ * @author Jonathan H. Wage &amp;lt;jonwage@gmail.com&amp;gt;
+ * @author Roman S. Borschel &amp;lt;roman@code-factory.org&amp;gt;
+ * @author Matthew Weier O&#39;Phinney &amp;lt;matthew@zend.com&amp;gt;
+ * @author Kris Wallsmith &amp;lt;kris.wallsmith@gmail.com&amp;gt;
+ * @author Fabien Potencier &amp;lt;fabien.potencier@symfony-project.org&amp;gt;
+ */
+ 
+include &#39;SplAutoloader.php&#39;;
+class SplClassLoader implements SplAutoloader
+{
+    /**
+     * @var string
+     */
+    private $fileExtension = &#39;.php&#39;;
+ 
+    /**
+     * @var boolean
+     */
+    private $includePathLookup = false;
+ 
+    /**
+     * @var array
+     */
+    private $resources = array();
+ 
+    /**
+     * @var integer
+     */
+    private $mode = self::MODE_NORMAL;
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function setMode($mode)
+    {
+        if ($mode &amp;amp; self::MODE_SILENT &amp;amp;&amp;amp; $mode &amp;amp; self::MODE_NORMAL) {
+            throw new \InvalidArgumentException(
+                sprintf(&#39;Cannot have %s working normally and silently at the same time!&#39;, __CLASS__)
+            );
+        }
+ 
+        $this-&amp;gt;mode = $mode;
+    }
+ 
+    /**
+     * Define the file extension of resource files in the path of this class loader.
+     *
+     * @param string $fileExtension
+     */
+    public function setFileExtension($fileExtension)
+    {
+        $this-&amp;gt;fileExtension = $fileExtension;
+    }
+ 
+    /**
+     * Retrieve the file extension of resource files in the path of this class loader.
+     *
+     * @return string
+     */
+    public function getFileExtension()
+    {
+        return $this-&amp;gt;fileExtension;
+    }
+ 
+    /**
+     * Turns on searching the include for class files. Allows easy loading installed PEAR packages.
+     *
+     * @param boolean $includePathLookup
+     */
+    public function setIncludePathLookup($includePathLookup)
+    {
+        $this-&amp;gt;includePathLookup = $includePathLookup;
+    }
+ 
+    /**
+     * Gets the base include path for all class files in the namespace of this class loader.
+     *
+     * @return boolean
+     */
+    public function getIncludePathLookup()
+    {
+        return $this-&amp;gt;includePathLookup;
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function register($prepend = false)
+    {
+        spl_autoload_register(array($this, &#39;load&#39;), true, $prepend);
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function unregister()
+    {
+        spl_autoload_unregister(array($this, &#39;load&#39;));
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function add($resource, $resourcePath = null)
+    {
+        $this-&amp;gt;resources[$resource] = (array) $resourcePath;
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function load($resourceName)
+    {
+        $resourceAbsolutePath = $this-&amp;gt;getResourceAbsolutePath($resourceName);
+ 
+        switch (true) {
+            case ($this-&amp;gt;mode &amp;amp; self::MODE_SILENT):
+                if ($resourceAbsolutePath !== false) {
+                    require $resourceAbsolutePath;
+                }
+                break;
+ 
+            case ($this-&amp;gt;mode &amp;amp; self::MODE_NORMAL):
+            default:
+                require $resourceAbsolutePath;
+                break;
+        }
+ 
+        if ($this-&amp;gt;mode &amp;amp; self::MODE_DEBUG &amp;amp;&amp;amp; ! $this-&amp;gt;isResourceDeclared($resourceName)) {
+            throw new \RuntimeException(
+                sprintf(&#39;Autoloader expected resource &amp;quot;%s&amp;quot; to be declared in file &amp;quot;%s&amp;quot;.&#39;, $resourceName, $resourceAbsolutePath)
+            );
+        }
+    }
+ 
+    /**
+     * Transform resource name into its absolute resource path representation.
+     *
+     * @params string $resourceName
+     *
+     * @return string Resource absolute path.
+     */
+    private function getResourceAbsolutePath($resourceName)
+    {
+        $resourceRelativePath = $this-&amp;gt;getResourceRelativePath($resourceName);
+ 
+        foreach ($this-&amp;gt;resources as $resource =&amp;gt; $resourcesPath) {
+            if (strpos($resourceName, $resource) !== 0) {
+                continue;
+            }
+ 
+            foreach ($resourcesPath as $resourcePath) {
+                $resourceAbsolutePath = $resourcePath . DIRECTORY_SEPARATOR . $resourceRelativePath;
+ 
+                if (is_file($resourceAbsolutePath)) {
+                    return $resourceAbsolutePath;
+                }
+            }
+        }
+ 
+        if ($this-&amp;gt;includePathLookup &amp;amp;&amp;amp; ($resourceAbsolutePath = stream_resolve_include_path($resourceRelativePath)) !== false) {
+            return $resourceAbsolutePath;
+        }
+ 
+        return false;
+    }
+ 
+    /**
+     * Transform resource name into its relative resource path representation.
+     *
+     * @params string $resourceName
+     *
+     * @return string Resource relative path.
+     */
+    private function getResourceRelativePath($resourceName)
+    {
+        // We always work with FQCN in this context
+        $resourceName = ltrim($resourceName, &#39;\\&#39;);
+        $resourcePath = &#39;&#39;;
+ 
+        if (($lastNamespacePosition = strrpos($resourceName, &#39;\\&#39;)) !== false) {
+            // Namespaced resource name
+            $resourceNamespace = substr($resourceName, 0, $lastNamespacePosition);
+            $resourceName      = substr($resourceName, $lastNamespacePosition + 1);
+            $resourcePath      =  str_replace(&#39;\\&#39;, DIRECTORY_SEPARATOR, $resourceNamespace) . DIRECTORY_SEPARATOR;
+        }
+ 
+        return $resourcePath . str_replace(&#39;_&#39;, DIRECTORY_SEPARATOR, $resourceName) . $this-&amp;gt;fileExtension;
+    }
+ 
+    /**
+     * Check if resource is declared in user space.
+     *
+     * @params string $resourceName
+     *
+     * @return boolean
+     */
+    private function isResourceDeclared($resourceName)
+    {
+        return class_exists($resourceName, false)
+            || interface_exists($resourceName, false)
+            || (function_exists(&#39;trait_exists&#39;) &amp;amp;&amp;amp; trait_exists($resourceName, false));
+    }
+}
+
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;
+&amp;lt;?php
+/**
+ * Adds a directory to the php include path
+ */
+
+/**
+ * @category   RoboTamer
+ * @package    Functions
+ * @subpackage File
+ * @author     Dennis T Kaplan
+ * @copyright  Copyright (c) 2008 - 2012 Dennis T Kaplan
+ * @license    http://www.opensource.org/licenses/MIT
+ * @link       http://blog.robotamer.com
+ *
+ * @param string  $dir The directory to add to the path
+ * @param boolean $at_end If true, place this directory at the end of the include path. Otherwise, place it at the beginning.
+ */
+function addInclude($dir, $at_end = TRUE)
+{
+    $exist = file_exists($dir);
+    if ( ! $exist || ($exist &amp;amp;&amp;amp; filetype($dir) != &#39;dir&#39;))
+    {
+        trigger_error(&amp;quot;Include path &#39;{$dir}&#39; does not exist&amp;quot;, E_USER_WARNING);
+        echo &#39;&amp;lt;pre&amp;gt;&#39;; print_r(debug_backtrace()); echo &#39;&amp;lt;/pre&amp;gt;&#39;;
+        exit;
+    }
+    $dir   = rtrim($dir, &amp;quot;/&amp;quot;);
+    $paths = ltrim(get_include_path(), &amp;quot;.&amp;quot;.PATH_SEPARATOR);
+    $paths = explode(PATH_SEPARATOR, $paths);
+    $ds    = &#39;.&#39;.PATH_SEPARATOR;
+    if (strlen($paths[0]) &amp;amp;&amp;amp; array_search($dir, $paths) === false) {
+        $at_end ? array_push($paths, $dir) : array_unshift($paths, $dir);
+        $paths = implode(PATH_SEPARATOR, $paths);
+        set_include_path($ds.$paths);
+    } else {
+        set_include_path($ds.$dir);
+    }
+}
+/* #Test it
+echo get_include_path();
+echo &#39;&amp;lt;br /&amp;gt;&#39;;
+addInclude(&#39;/var/www/library/&#39;);
+echo get_include_path();
+echo &#39;&amp;lt;br /&amp;gt;&#39;;
+*/
+?&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;&amp;lt;?php
+
+function autoload($className)
+{
+    $className = ltrim($className, &#39;\\&#39;);
+    $fileName  = &#39;&#39;;
+    $namespace = &#39;&#39;;
+ 
+    if ($lastNsPos = strripos($className, &#39;\\&#39;)) {
+        $namespace = substr($className, 0, $lastNsPos);
+        $className = substr($className, $lastNsPos + 1);
+        $fileName  = str_replace(&#39;\\&#39;, DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+    }
+ 
+    $fileName .= str_replace(&#39;_&#39;, DIRECTORY_SEPARATOR, $className) . &#39;.php&#39;;
+ 
+    require $fileName;
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Multiple PHP installations</title>
+      <link>http://www.robotamer.com/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html</link>
+      <pubDate>Mon, 20 Jun 2011 11:58:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html</guid>
+      <description>&lt;p&gt;How to install &lt;strong&gt;PHP 5.3.X&lt;/strong&gt; as secondary php version from source&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PHPV=5.3.6
+cd /usr/local/src
+wget http://us.php.net/get/php-$PHPV.tar.gz/from/this/mirror
+mv mirror php-$PHPV.tar.gz
+tar xzvf php-$PHPV.tar.gz
+chown -R $USER:$USER php-$PHPV/
+cd php-$PHPV/
+
+apt-get install libxml2-dev libssl-dev libcurl4-gnutls-dev libjpeg62-dev libpng12-dev libfreetype6-dev unixodbc-dev
+
+./configure 
+  --prefix=/usr/local/php5.3 
+  --with-config-file-path=/usr/local/etc/php5.3 
+  --with-config-file-scan-dir=/usr/local/etc/php5.3/$SAPIconf.d 
+  --with-libdir=/lib 
+  --disable-cgi 
+  --with-libxml-dir=/usr/ 
+  --with-mysql=/usr/ 
+  --enable-pdo 
+  --with-pdo-mysql 
+  --with-mysqli 
+  --with-zlib-dir=/usr 
+  --with-curl 
+  --with-gd 
+  --with-jpeg-dir=/usr/lib 
+  --with-png-dir=/usr/lib 
+  --with-freetype-dir=/usr/lib 
+  --with-gettext 
+  --enable-mbstring 
+  --enable-soap 
+  --enable-ftp 
+  --enable-fpm 
+  --with-openssl
+
+make
+make test
+make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More help in case you have errors:
+&lt;a href=&#34;http://www.robo47.net/text/6-PHP-Configure-und-Compile-Fehler&#34;&gt;PHP-Configure-und-Compile-Fehler&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

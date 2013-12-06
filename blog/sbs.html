@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+  <head>
+  <title>Saving structs in a leveldb</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="RoboTamer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link href="http://localhost:1313/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="http://localhost:1313/static/css/styles.css" rel="stylesheet"/>
+    <link href="http://localhost:1313/static/css/hugoicon.css" rel="stylesheet"/>
+
+
+  </head>
+  <body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="http://localhost:1313/"><img src="http://localhost:1313/static/img/robotamer82-100.png" alt="Logo" width="20" height="25">&nbsp; RoboTamer</a>
+  </div>
+
+  
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+    
+      <li><a href="http://localhost:1313/blog.html">&nbsp; Blog &nbsp;</a></li>
+      
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/blog/network-safety-restart/html"><a href="http://localhost:1313/blog/network-safety-restart/html"> Network Safety Restart </a> </li>
+            
+            <li hugo-nav="/blog/search-linux-bash-history-2/html"><a href="http://localhost:1313/blog/search-linux-bash-history-2/html"> Search linux bash history </a> </li>
+            
+            <li hugo-nav="/blog/search-linux-bash-history/html"><a href="http://localhost:1313/blog/search-linux-bash-history/html"> Search linux bash history </a> </li>
+            
+            <li hugo-nav="/blog/2010-03-07-9.html"><a href="http://localhost:1313/blog/2010-03-07-9.html"> Netbeans error </a> </li>
+            
+            <li hugo-nav="/linux/index.html"><a href="http://localhost:1313/linux/index.html"> Linux Index </a> </li>
+            
+            <li hugo-nav="/linux/snippets.html"><a href="http://localhost:1313/linux/snippets.html"> Linux Snippets </a> </li>
+            
+            <li hugo-nav="/linux/nsr.html"><a href="http://localhost:1313/linux/nsr.html"> Network Safety Restart Bash Script </a> </li>
+            
+            <li hugo-nav="/linux/ssh.html"><a href="http://localhost:1313/linux/ssh.html"> ssh </a> </li>
+            
+            <li hugo-nav="/linux/lxc.html"><a href="http://localhost:1313/linux/lxc.html"> Linux Containers </a> </li>
+            
+            <li hugo-nav="/linux/git.html"><a href="http://localhost:1313/linux/git.html"> Git Howto </a> </li>
+            
+            <li hugo-nav="/linux/mail-server-fingerprint.html"><a href="http://localhost:1313/linux/mail-server-fingerprint.html"> Mail Server Fingerprint </a> </li>
+            
+            <li hugo-nav="/linux/bridge-utils.html"><a href="http://localhost:1313/linux/bridge-utils.html"> Bridge-Utils for LXC </a> </li>
+            
+            <li hugo-nav="/linux/msmtp.html"><a href="http://localhost:1313/linux/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://localhost:1313/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+            <li hugo-nav="/linux/sendmail.html"><a href="http://localhost:1313/linux/sendmail.html"> Send mail with sendmail </a> </li>
+            
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/blog/sbs/html"><a href="http://localhost:1313/blog/sbs/html"> Saving structs in a leveldb </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/gowatch.html"><a href="http://localhost:1313/code/go/gotamer/gowatch.html"> GoWatch </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/index.html"><a href="http://localhost:1313/code/go/gotamer/index.html"> Gophy </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/jgdb.html"><a href="http://localhost:1313/code/go/gotamer/jgdb.html"> jgdb </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/mail.html"><a href="http://localhost:1313/code/go/gotamer/mail.html"> Smtp </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/ping.html"><a href="http://localhost:1313/code/go/gotamer/ping.html"> Ping </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/sbs.html"><a href="http://localhost:1313/code/go/gotamer/sbs.html"> sbs </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/tools.html"><a href="http://localhost:1313/code/go/gotamer/tools.html"> Tools </a> </li>
+            
+            <li hugo-nav="/code/go/index.html"><a href="http://localhost:1313/code/go/index.html"> ﻿Snippets </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/session.html"><a href="http://localhost:1313/code/go/gotamer/session.html"> Session </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/crypt.html"><a href="http://localhost:1313/code/go/gotamer/crypt.html"> Crypt </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cases.html"><a href="http://localhost:1313/code/go/gotamer/cases.html"> Cases </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cfg.html"><a href="http://localhost:1313/code/go/gotamer/cfg.html"> Cfg </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://localhost:1313/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">PHP <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/blog/get-php-files-in-dir-with-recursive-lambda-callback-function/html"><a href="http://localhost:1313/blog/get-php-files-in-dir-with-recursive-lambda-callback-function/html"> Get php files in dir with recursive lambda callback function </a> </li>
+            
+            <li hugo-nav="/blog/splclassloader-implementation/html"><a href="http://localhost:1313/blog/splclassloader-implementation/html"> SplClassLoader Implementation </a> </li>
+            
+            <li hugo-nav="/blog/messenger-laravel-framework/html"><a href="http://localhost:1313/blog/messenger-laravel-framework/html"> Messenger Laravel Framework </a> </li>
+            
+            <li hugo-nav="/blog/2010-03-18-7.html"><a href="http://localhost:1313/blog/2010-03-18-7.html"> Creating models for the Zend Framework from command line via phpcli. </a> </li>
+            
+            <li hugo-nav="/blog/2008-04-27-21.html"><a href="http://localhost:1313/blog/2008-04-27-21.html"> Tamer ACL </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/index.html"><a href="http://localhost:1313/code/php/phptamer/index.html"> PHPTamer </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtsingleton.html"><a href="http://localhost:1313/code/php/phptamer/rtsingleton.html"> Singleton </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtcrypter.html"><a href="http://localhost:1313/code/php/phptamer/rtcrypter.html"> Crypter </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/facade.html"><a href="http://localhost:1313/code/php/phptamer/facade.html"> Facade </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://localhost:1313/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+      </li>
+
+      <li><a href="http://localhost:1313/feeds.html">&nbsp; Feeds &nbsp;</a></li>
+
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meta <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/about.html"><a href="http://localhost:1313/about.html"> My little space on the net </a> </li>
+            
+            <li hugo-nav="/license.html"><a href="http://localhost:1313/license.html"> Copyright </a> </li>
+            
+        </ul>
+      </li>
+      <li><a href="http://bitbucket.org/robotamer"><i class="icon-octocat icon-2x"> </i></a></li>
+    </ul>
+  </div>
+</nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+  	<h2>Saving structs in a leveldb</h2>
+	<h4></h4>
+  </div>
+  <div class="panel-body">
+  <p>I been playing with Googles LevelDB, which was ported to the Go programming language recently, and called <a href="http://github.com/syndtr/goleveldb/leveldb">GoLevelDB</a></p>
+
+<p>LevelDB is a key/value database. Keys as well as values are saved as byte slices.</p>
+
+<p>To make this a bit easier I have created a little tool that can convert a Go struct to a byte slice and back.
+The tools is called <a href="https://bitbucket.org/gotamer/sbs">/gotamer/sbs</a> and is available at bitbucket.</p>
+
+<p>The tool has two function one for encoding and another for decoding.
+A populated struct is being encoded via <code>sbs.Enc()</code>, in the backround SBS uses the Go Gob and returns the struct as a byte slice.</p>
+
+<p>The <code>sbs.Dec()</code> function takes the encoded byte slice and an empty struct of the same type. When done it returns a populated struct.</p>
+
+  </div>
+  <div class="panel-footer">
+    <div class="btn-group">
+      
+      <a href="http://localhost:1313/tags/code.html"><button type="button" class="btn btn-info btn-xs">code</button></a>	
+      
+      <a href="http://localhost:1313/tags/go.html"><button type="button" class="btn btn-info btn-xs">go</button></a>	
+      
+      <a href="http://localhost:1313/tags/golang.html"><button type="button" class="btn btn-info btn-xs">golang</button></a>	
+      
+      <a href="http://localhost:1313/tags/programming.html"><button type="button" class="btn btn-info btn-xs">programming</button></a>	
+      
+    </div>  
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <hr>
+      <footer id="footer">Copyright &copy; 1998 - 2013 RoboTamer</footer>
+    </div>
+      <script src="http://localhost:1313/static/js/jquery.js"></script>
+      <script src="http://localhost:1313/static/js/bootstrap.min.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-33624274-1', 'robotamer.com');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+
+</html>

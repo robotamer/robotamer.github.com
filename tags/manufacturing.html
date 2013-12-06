@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Manufacturing</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="RoboTamer">
+  <meta name="generator" content="Hugo">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta http-equiv="cache-control" content="public">
+  <meta http-equiv="content-language" content="en">
+  <meta charset="UTF-8">
+  <link rel="icon" href="http://www.robotamer.com/static/ico/favicon.ico" type="image/x-icon">
+    <link href="http://www.robotamer.com/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="http://www.robotamer.com/static/css/styles.css" rel="stylesheet"/>
+    <link href="http://www.robotamer.com/static/css/hugoicon.css" rel="stylesheet"/>
+
+
+  </head>
+  <body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="http://www.robotamer.com/"><img src="/static/img/robotamer.gif" alt="Logo" width="20" height="25">&nbsp; ℝobo𝕋amer</a>
+  </div>
+
+  
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+    
+      <li><a href="http://www.robotamer.com/blog.html">&nbsp; Blog &nbsp;</a></li>
+      
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/linux/bash/history.html"><a href="http://www.robotamer.com/linux/bash/history.html"> History </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-nohub.html"><a href="http://www.robotamer.com/blog/2011-06-01-nohub.html"> nohub </a> </li>
+            
+            <li hugo-nav="/linux/index.html"><a href="http://www.robotamer.com/linux/index.html"> Linux Index </a> </li>
+            
+            <li hugo-nav="/linux/snippets.html"><a href="http://www.robotamer.com/linux/snippets.html"> Linux Snippets </a> </li>
+            
+            <li hugo-nav="/linux/nsr.html"><a href="http://www.robotamer.com/linux/nsr.html"> Network Safety Restart Bash Script </a> </li>
+            
+            <li hugo-nav="/code/md-syntax.html"><a href="http://www.robotamer.com/code/md-syntax.html"> Markdown Syntax </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ssh.html"><a href="http://www.robotamer.com/linux/openssl/ssh.html"> ssh authorization </a> </li>
+            
+            <li hugo-nav="/linux/lxc.html"><a href="http://www.robotamer.com/linux/lxc.html"> Linux Containers </a> </li>
+            
+            <li hugo-nav="/linux/git.html"><a href="http://www.robotamer.com/linux/git.html"> Git Howto </a> </li>
+            
+            <li hugo-nav="/linux/bridge-utils.html"><a href="http://www.robotamer.com/linux/bridge-utils.html"> Bridge-Utils for LXC </a> </li>
+            
+            <li hugo-nav="/linux/openssl/mail-server-fingerprint.html"><a href="http://www.robotamer.com/linux/openssl/mail-server-fingerprint.html"> Mail Server Fingerprint </a> </li>
+            
+            <li hugo-nav="/linux/logrotate.html"><a href="http://www.robotamer.com/linux/logrotate.html"> Log Rotate </a> </li>
+            
+            <li hugo-nav="/linux/mail/msmtp.html"><a href="http://www.robotamer.com/linux/mail/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ca-cert.html"><a href="http://www.robotamer.com/linux/openssl/ca-cert.html"> Self-Signed SSL Certificate </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ca-cert-cfg.html"><a href="http://www.robotamer.com/linux/openssl/ca-cert-cfg.html"> Self-Signed SSL Certificate with Config File </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+            <li hugo-nav="/linux/mail/sendmail.html"><a href="http://www.robotamer.com/linux/mail/sendmail.html"> Send mail with sendmail </a> </li>
+            
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/code/go/gotamer/mail.html"><a href="http://www.robotamer.com/code/go/gotamer/mail.html"> Smtp </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/ping.html"><a href="http://www.robotamer.com/code/go/gotamer/ping.html"> Ping </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/sbs.html"><a href="http://www.robotamer.com/code/go/gotamer/sbs.html"> sbs </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/session.html"><a href="http://www.robotamer.com/code/go/gotamer/session.html"> Session </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/tools.html"><a href="http://www.robotamer.com/code/go/gotamer/tools.html"> Tools </a> </li>
+            
+            <li hugo-nav="/code/go/index.html"><a href="http://www.robotamer.com/code/go/index.html"> ﻿Snippets </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/jgdb.html"><a href="http://www.robotamer.com/code/go/gotamer/jgdb.html"> jgdb </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/crypt.html"><a href="http://www.robotamer.com/code/go/gotamer/crypt.html"> Crypt </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cfg.html"><a href="http://www.robotamer.com/code/go/gotamer/cfg.html"> Cfg </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cases.html"><a href="http://www.robotamer.com/code/go/gotamer/cases.html"> Cases </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/gowatch.html"><a href="http://www.robotamer.com/code/go/gotamer/gowatch.html"> GoWatch </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/index.html"><a href="http://www.robotamer.com/code/go/gotamer/index.html"> Gophy </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">PHP <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/code/php/read-folder.html"><a href="http://www.robotamer.com/code/php/read-folder.html"> Read Folder </a> </li>
+            
+            <li hugo-nav="/code/php/autoload.html"><a href="http://www.robotamer.com/code/php/autoload.html"> Autoload </a> </li>
+            
+            <li hugo-nav="/blog/2012-06-27-messenger-laravel-framework.html"><a href="http://www.robotamer.com/blog/2012-06-27-messenger-laravel-framework.html"> Messenger </a> </li>
+            
+            <li hugo-nav="/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"><a href="http://www.robotamer.com/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"> Multiple PHP installations </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-echo.html"><a href="http://www.robotamer.com/blog/2011-06-01-echo.html"> e() for echo </a> </li>
+            
+            <li hugo-nav="/blog/2008-04-27-21.html"><a href="http://www.robotamer.com/blog/2008-04-27-21.html"> Zend ACL </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/index.html"><a href="http://www.robotamer.com/code/php/phptamer/index.html"> PHPTamer </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtsingleton.html"><a href="http://www.robotamer.com/code/php/phptamer/rtsingleton.html"> Singleton </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtcrypter.html"><a href="http://www.robotamer.com/code/php/phptamer/rtcrypter.html"> Crypter </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/facade.html"><a href="http://www.robotamer.com/code/php/phptamer/facade.html"> Facade </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+      </li>
+
+      <li><a href="http://www.robotamer.com/feeds.html">&nbsp; Feeds &nbsp;</a></li>
+
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meta <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/about.html"><a href="http://www.robotamer.com/about.html"> About </a> </li>
+            
+            <li hugo-nav="/license.html"><a href="http://www.robotamer.com/license.html"> Copyright </a> </li>
+            
+        </ul>
+      </li>
+      <li><a href="http://bitbucket.org/robotamer"><i class="icon-octocat icon-2x"> </i></a></li>
+
+    </ul>
+  </div>
+</nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+<section id="main">
+
+    <ul>
+        
+        <li> 0 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/openssl/ca-cert-cfg.html"><a href="http://www.robotamer.com/linux/openssl/ca-cert-cfg.html"> Self-Signed SSL Certificate with Config File </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ca-cert.html"><a href="http://www.robotamer.com/linux/openssl/ca-cert.html"> Self-Signed SSL Certificate </a> </li>
+            
+            <li hugo-nav="/linux/logrotate.html"><a href="http://www.robotamer.com/linux/logrotate.html"> Log Rotate </a> </li>
+            
+            <li hugo-nav="/linux/nsr.html"><a href="http://www.robotamer.com/linux/nsr.html"> Network Safety Restart Bash Script </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-nohub.html"><a href="http://www.robotamer.com/blog/2011-06-01-nohub.html"> nohub </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-linux-find-replace-howto.html"><a href="http://www.robotamer.com/blog/2011-06-01-linux-find-replace-howto.html"> Linux find &amp; replace HowTo </a> </li>
+            
+            <li hugo-nav="/blog/2010-03-07-9.html"><a href="http://www.robotamer.com/blog/2010-03-07-9.html"> Netbeans error </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ssh.html"><a href="http://www.robotamer.com/linux/openssl/ssh.html"> ssh authorization </a> </li>
+            
+            <li hugo-nav="/linux/snippets.html"><a href="http://www.robotamer.com/linux/snippets.html"> Linux Snippets </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+            <li hugo-nav="/linux/git.html"><a href="http://www.robotamer.com/linux/git.html"> Git Howto </a> </li>
+            
+            <li hugo-nav="/linux/bridge-utils.html"><a href="http://www.robotamer.com/linux/bridge-utils.html"> Bridge-Utils for LXC </a> </li>
+            
+            <li hugo-nav="/linux/index.html"><a href="http://www.robotamer.com/linux/index.html"> Linux Index </a> </li>
+            
+            <li hugo-nav="/linux/lxc.html"><a href="http://www.robotamer.com/linux/lxc.html"> Linux Containers </a> </li>
+            
+            <li hugo-nav="/linux/mail/msmtp.html"><a href="http://www.robotamer.com/linux/mail/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/mail/sendmail.html"><a href="http://www.robotamer.com/linux/mail/sendmail.html"> Send mail with sendmail </a> </li>
+            
+            <li hugo-nav="/linux/openssl/mail-server-fingerprint.html"><a href="http://www.robotamer.com/linux/openssl/mail-server-fingerprint.html"> Mail Server Fingerprint </a> </li>
+            
+        </ul>
+        
+        <li> 1 </li>
+        <ul>
+            
+            <li hugo-nav="/code/php/autoload.html"><a href="http://www.robotamer.com/code/php/autoload.html"> Autoload </a> </li>
+            
+            <li hugo-nav="/linux/nsr.html"><a href="http://www.robotamer.com/linux/nsr.html"> Network Safety Restart Bash Script </a> </li>
+            
+            <li hugo-nav="/linux/bash/history.html"><a href="http://www.robotamer.com/linux/bash/history.html"> History </a> </li>
+            
+            <li hugo-nav="/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"><a href="http://www.robotamer.com/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"> Multiple PHP installations </a> </li>
+            
+            <li hugo-nav="/linux/mail/msmtp.html"><a href="http://www.robotamer.com/linux/mail/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/mail/sendmail.html"><a href="http://www.robotamer.com/linux/mail/sendmail.html"> Send mail with sendmail </a> </li>
+            
+            <li hugo-nav="/linux/openssl/mail-server-fingerprint.html"><a href="http://www.robotamer.com/linux/openssl/mail-server-fingerprint.html"> Mail Server Fingerprint </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ssh.html"><a href="http://www.robotamer.com/linux/openssl/ssh.html"> ssh authorization </a> </li>
+            
+            <li hugo-nav="/linux/snippets.html"><a href="http://www.robotamer.com/linux/snippets.html"> Linux Snippets </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+            <li hugo-nav="/linux/lxc.html"><a href="http://www.robotamer.com/linux/lxc.html"> Linux Containers </a> </li>
+            
+            <li hugo-nav="/code/md-syntax.html"><a href="http://www.robotamer.com/code/md-syntax.html"> Markdown Syntax </a> </li>
+            
+            <li hugo-nav="/linux/bridge-utils.html"><a href="http://www.robotamer.com/linux/bridge-utils.html"> Bridge-Utils for LXC </a> </li>
+            
+            <li hugo-nav="/linux/git.html"><a href="http://www.robotamer.com/linux/git.html"> Git Howto </a> </li>
+            
+        </ul>
+        
+        <li> 2 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/hugo.html"><a href="http://www.robotamer.com/blog/hugo.html"> Huge </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-27-need-hosting-recommendations-who-hosts-yours.html"><a href="http://www.robotamer.com/blog/2011-06-27-need-hosting-recommendations-who-hosts-yours.html"> Need PHP 5.3 Hosting Recommendations – Who Hosts Yours? </a> </li>
+            
+            <li hugo-nav="/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"><a href="http://www.robotamer.com/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"> Multiple PHP installations </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-17-fixing-phps-gettype-function.html"><a href="http://www.robotamer.com/blog/2011-06-17-fixing-phps-gettype-function.html"> fixing php&#39;s gettype function </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-10-num_row-with-pdo.html"><a href="http://www.robotamer.com/blog/2011-06-10-num_row-with-pdo.html"> num_row with PDO </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-03-load-functions-and-arrays.html"><a href="http://www.robotamer.com/blog/2011-06-03-load-functions-and-arrays.html"> Load functions and array&#39;s </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-echo.html"><a href="http://www.robotamer.com/blog/2011-06-01-echo.html"> e() for echo </a> </li>
+            
+            <li hugo-nav="/blog/2010-03-18-7.html"><a href="http://www.robotamer.com/blog/2010-03-18-7.html"> Creating models for the Zend Framework from command line via phpcli. </a> </li>
+            
+            <li hugo-nav="/blog/2008-04-27-21.html"><a href="http://www.robotamer.com/blog/2008-04-27-21.html"> Zend ACL </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/jgdb.html"><a href="http://www.robotamer.com/code/go/gotamer/jgdb.html"> jgdb </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cfg.html"><a href="http://www.robotamer.com/code/go/gotamer/cfg.html"> Cfg </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/index.html"><a href="http://www.robotamer.com/code/go/gotamer/index.html"> Gophy </a> </li>
+            
+        </ul>
+        
+        <li> 3 </li>
+        <ul>
+            
+            <li hugo-nav="/code/php/read-folder.html"><a href="http://www.robotamer.com/code/php/read-folder.html"> Read Folder </a> </li>
+            
+            <li hugo-nav="/code/php/autoload.html"><a href="http://www.robotamer.com/code/php/autoload.html"> Autoload </a> </li>
+            
+            <li hugo-nav="/blog/2012-06-27-messenger-laravel-framework.html"><a href="http://www.robotamer.com/blog/2012-06-27-messenger-laravel-framework.html"> Messenger </a> </li>
+            
+            <li hugo-nav="/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"><a href="http://www.robotamer.com/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"> Multiple PHP installations </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-17-fixing-phps-gettype-function.html"><a href="http://www.robotamer.com/blog/2011-06-17-fixing-phps-gettype-function.html"> fixing php&#39;s gettype function </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-10-num_row-with-pdo.html"><a href="http://www.robotamer.com/blog/2011-06-10-num_row-with-pdo.html"> num_row with PDO </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-echo.html"><a href="http://www.robotamer.com/blog/2011-06-01-echo.html"> e() for echo </a> </li>
+            
+            <li hugo-nav="/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html"><a href="http://www.robotamer.com/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html"> Creating models for the Zend Framework from command line via phpcli </a> </li>
+            
+            <li hugo-nav="/blog/2010-03-18-7.html"><a href="http://www.robotamer.com/blog/2010-03-18-7.html"> Creating models for the Zend Framework from command line via phpcli. </a> </li>
+            
+            <li hugo-nav="/blog/php-goto.html"><a href="http://www.robotamer.com/blog/php-goto.html"> PHP goto statement </a> </li>
+            
+            <li hugo-nav="/blog/2008-04-27-21.html"><a href="http://www.robotamer.com/blog/2008-04-27-21.html"> Zend ACL </a> </li>
+            
+        </ul>
+        
+        <li> 4 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/nsr.html"><a href="http://www.robotamer.com/linux/nsr.html"> Network Safety Restart Bash Script </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-27-need-hosting-recommendations-who-hosts-yours.html"><a href="http://www.robotamer.com/blog/2011-06-27-need-hosting-recommendations-who-hosts-yours.html"> Need PHP 5.3 Hosting Recommendations – Who Hosts Yours? </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-26-msmtp-install-config-and-test.html"><a href="http://www.robotamer.com/blog/2011-06-26-msmtp-install-config-and-test.html"> msmtp install, config and test </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-21-git-branch-on-bash-line.html"><a href="http://www.robotamer.com/blog/2011-06-21-git-branch-on-bash-line.html"> git branch on bash line </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-linux-find-replace-howto.html"><a href="http://www.robotamer.com/blog/2011-06-01-linux-find-replace-howto.html"> Linux find &amp; replace HowTo </a> </li>
+            
+            <li hugo-nav="/linux/mail/msmtp.html"><a href="http://www.robotamer.com/linux/mail/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/mail/sendmail.html"><a href="http://www.robotamer.com/linux/mail/sendmail.html"> Send mail with sendmail </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ssh.html"><a href="http://www.robotamer.com/linux/openssl/ssh.html"> ssh authorization </a> </li>
+            
+            <li hugo-nav="/linux/snippets.html"><a href="http://www.robotamer.com/linux/snippets.html"> Linux Snippets </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+        
+        <li> 5 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/logrotate.html"><a href="http://www.robotamer.com/linux/logrotate.html"> Log Rotate </a> </li>
+            
+            <li hugo-nav="/linux/nsr.html"><a href="http://www.robotamer.com/linux/nsr.html"> Network Safety Restart Bash Script </a> </li>
+            
+            <li hugo-nav="/linux/bash/history.html"><a href="http://www.robotamer.com/linux/bash/history.html"> History </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-21-git-branch-on-bash-line.html"><a href="http://www.robotamer.com/blog/2011-06-21-git-branch-on-bash-line.html"> git branch on bash line </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-nohub.html"><a href="http://www.robotamer.com/blog/2011-06-01-nohub.html"> nohub </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-linux-find-replace-howto.html"><a href="http://www.robotamer.com/blog/2011-06-01-linux-find-replace-howto.html"> Linux find &amp; replace HowTo </a> </li>
+            
+            <li hugo-nav="/linux/mail/sendmail.html"><a href="http://www.robotamer.com/linux/mail/sendmail.html"> Send mail with sendmail </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ssh.html"><a href="http://www.robotamer.com/linux/openssl/ssh.html"> ssh authorization </a> </li>
+            
+            <li hugo-nav="/linux/snippets.html"><a href="http://www.robotamer.com/linux/snippets.html"> Linux Snippets </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+        
+        <li> 6 </li>
+        <ul>
+            
+            <li hugo-nav="/code/go/gotamer/mail.html"><a href="http://www.robotamer.com/code/go/gotamer/mail.html"> Smtp </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/ping.html"><a href="http://www.robotamer.com/code/go/gotamer/ping.html"> Ping </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/sbs.html"><a href="http://www.robotamer.com/code/go/gotamer/sbs.html"> sbs </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/session.html"><a href="http://www.robotamer.com/code/go/gotamer/session.html"> Session </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/tools.html"><a href="http://www.robotamer.com/code/go/gotamer/tools.html"> Tools </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/crypt.html"><a href="http://www.robotamer.com/code/go/gotamer/crypt.html"> Crypt </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/gowatch.html"><a href="http://www.robotamer.com/code/go/gotamer/gowatch.html"> GoWatch </a> </li>
+            
+        </ul>
+        
+        <li> 7 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/nsr.html"><a href="http://www.robotamer.com/linux/nsr.html"> Network Safety Restart Bash Script </a> </li>
+            
+            <li hugo-nav="/linux/mail/msmtp.html"><a href="http://www.robotamer.com/linux/mail/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/mail/sendmail.html"><a href="http://www.robotamer.com/linux/mail/sendmail.html"> Send mail with sendmail </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ssh.html"><a href="http://www.robotamer.com/linux/openssl/ssh.html"> ssh authorization </a> </li>
+            
+            <li hugo-nav="/linux/snippets.html"><a href="http://www.robotamer.com/linux/snippets.html"> Linux Snippets </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+        
+        <li> 8 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/mail/msmtp.html"><a href="http://www.robotamer.com/linux/mail/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/mail/sendmail.html"><a href="http://www.robotamer.com/linux/mail/sendmail.html"> Send mail with sendmail </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ssh.html"><a href="http://www.robotamer.com/linux/openssl/ssh.html"> ssh authorization </a> </li>
+            
+            <li hugo-nav="/linux/snippets.html"><a href="http://www.robotamer.com/linux/snippets.html"> Linux Snippets </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+        
+        <li> 9 </li>
+        <ul>
+            
+            <li hugo-nav="/code/php/phptamer/facade.html"><a href="http://www.robotamer.com/code/php/phptamer/facade.html"> Facade </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/index.html"><a href="http://www.robotamer.com/code/php/phptamer/index.html"> PHPTamer </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtcrypter.html"><a href="http://www.robotamer.com/code/php/phptamer/rtcrypter.html"> Crypter </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtsingleton.html"><a href="http://www.robotamer.com/code/php/phptamer/rtsingleton.html"> Singleton </a> </li>
+            
+        </ul>
+        
+        <li> 10 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/hugo.html"><a href="http://www.robotamer.com/blog/hugo.html"> Huge </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/jgdb.html"><a href="http://www.robotamer.com/code/go/gotamer/jgdb.html"> jgdb </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cfg.html"><a href="http://www.robotamer.com/code/go/gotamer/cfg.html"> Cfg </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/index.html"><a href="http://www.robotamer.com/code/go/gotamer/index.html"> Gophy </a> </li>
+            
+        </ul>
+        
+        <li> 11 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/bash/history.html"><a href="http://www.robotamer.com/linux/bash/history.html"> History </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-nohub.html"><a href="http://www.robotamer.com/blog/2011-06-01-nohub.html"> nohub </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-linux-find-replace-howto.html"><a href="http://www.robotamer.com/blog/2011-06-01-linux-find-replace-howto.html"> Linux find &amp; replace HowTo </a> </li>
+            
+        </ul>
+        
+        <li> 12 </li>
+        <ul>
+            
+            <li hugo-nav="/code/php/autoload.html"><a href="http://www.robotamer.com/code/php/autoload.html"> Autoload </a> </li>
+            
+            <li hugo-nav="/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html"><a href="http://www.robotamer.com/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html"> Creating models for the Zend Framework from command line via phpcli </a> </li>
+            
+            <li hugo-nav="/blog/2010-03-18-7.html"><a href="http://www.robotamer.com/blog/2010-03-18-7.html"> Creating models for the Zend Framework from command line via phpcli. </a> </li>
+            
+        </ul>
+        
+        <li> 13 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/nsr.html"><a href="http://www.robotamer.com/linux/nsr.html"> Network Safety Restart Bash Script </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/session.html"><a href="http://www.robotamer.com/code/go/gotamer/session.html"> Session </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/tools.html"><a href="http://www.robotamer.com/code/go/gotamer/tools.html"> Tools </a> </li>
+            
+        </ul>
+        
+        <li> 14 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/mail/msmtp.html"><a href="http://www.robotamer.com/linux/mail/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/mail/sendmail.html"><a href="http://www.robotamer.com/linux/mail/sendmail.html"> Send mail with sendmail </a> </li>
+            
+            <li hugo-nav="/linux/openssl/mail-server-fingerprint.html"><a href="http://www.robotamer.com/linux/openssl/mail-server-fingerprint.html"> Mail Server Fingerprint </a> </li>
+            
+        </ul>
+        
+        <li> 15 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/mail/msmtp.html"><a href="http://www.robotamer.com/linux/mail/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/mail/sendmail.html"><a href="http://www.robotamer.com/linux/mail/sendmail.html"> Send mail with sendmail </a> </li>
+            
+            <li hugo-nav="/linux/openssl/mail-server-fingerprint.html"><a href="http://www.robotamer.com/linux/openssl/mail-server-fingerprint.html"> Mail Server Fingerprint </a> </li>
+            
+        </ul>
+        
+        <li> 16 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/openssl/ca-cert-cfg.html"><a href="http://www.robotamer.com/linux/openssl/ca-cert-cfg.html"> Self-Signed SSL Certificate with Config File </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ca-cert.html"><a href="http://www.robotamer.com/linux/openssl/ca-cert.html"> Self-Signed SSL Certificate </a> </li>
+            
+        </ul>
+        
+        <li> 17 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html"><a href="http://www.robotamer.com/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html"> Creating models for the Zend Framework from command line via phpcli </a> </li>
+            
+            <li hugo-nav="/blog/2010-03-18-7.html"><a href="http://www.robotamer.com/blog/2010-03-18-7.html"> Creating models for the Zend Framework from command line via phpcli. </a> </li>
+            
+        </ul>
+        
+        <li> 18 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/openssl/ssh.html"><a href="http://www.robotamer.com/linux/openssl/ssh.html"> ssh authorization </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+        
+        <li> 19 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2011-06-21-git-branch-on-bash-line.html"><a href="http://www.robotamer.com/blog/2011-06-21-git-branch-on-bash-line.html"> git branch on bash line </a> </li>
+            
+            <li hugo-nav="/linux/git.html"><a href="http://www.robotamer.com/linux/git.html"> Git Howto </a> </li>
+            
+        </ul>
+        
+        <li> 20 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2011-06-29-live-without-pretending.html"><a href="http://www.robotamer.com/blog/2011-06-29-live-without-pretending.html"> Live without pretending ... </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-18-it-is-not-the-critic-who-counts-by-theodore-roosevelt.html"><a href="http://www.robotamer.com/blog/2011-06-18-it-is-not-the-critic-who-counts-by-theodore-roosevelt.html"> It is not the critic who counts </a> </li>
+            
+        </ul>
+        
+        <li> 21 </li>
+        <ul>
+            
+            <li hugo-nav="/linux/bridge-utils.html"><a href="http://www.robotamer.com/linux/bridge-utils.html"> Bridge-Utils for LXC </a> </li>
+            
+            <li hugo-nav="/linux/lxc.html"><a href="http://www.robotamer.com/linux/lxc.html"> Linux Containers </a> </li>
+            
+        </ul>
+        
+        <li> 22 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2012-06-27-messenger-laravel-framework.html"><a href="http://www.robotamer.com/blog/2012-06-27-messenger-laravel-framework.html"> Messenger </a> </li>
+            
+        </ul>
+        
+        <li> 23 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2011-07-08-google-the-most-dangerous-monopoly-ever.html"><a href="http://www.robotamer.com/blog/2011-07-08-google-the-most-dangerous-monopoly-ever.html"> Google, the most dangerous monopoly ever </a> </li>
+            
+        </ul>
+        
+        <li> 24 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2011-06-10-num_row-with-pdo.html"><a href="http://www.robotamer.com/blog/2011-06-10-num_row-with-pdo.html"> num_row with PDO </a> </li>
+            
+        </ul>
+        
+        <li> 25 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/php-goto.html"><a href="http://www.robotamer.com/blog/php-goto.html"> PHP goto statement </a> </li>
+            
+        </ul>
+        
+        <li> 26 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2011-05-14-sliding-headstock-machines.html"><a href="http://www.robotamer.com/blog/2011-05-14-sliding-headstock-machines.html"> Sliding-Headstock Machines </a> </li>
+            
+        </ul>
+        
+        <li> 27 </li>
+        <ul>
+            
+            <li hugo-nav="/code/go/gotamer/sbs.html"><a href="http://www.robotamer.com/code/go/gotamer/sbs.html"> sbs </a> </li>
+            
+        </ul>
+        
+        <li> 28 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2010-03-07-9.html"><a href="http://www.robotamer.com/blog/2010-03-07-9.html"> Netbeans error </a> </li>
+            
+        </ul>
+        
+        <li> 29 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2011-05-14-sliding-headstock-machines.html"><a href="http://www.robotamer.com/blog/2011-05-14-sliding-headstock-machines.html"> Sliding-Headstock Machines </a> </li>
+            
+        </ul>
+        
+        <li> 30 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2012-06-27-messenger-laravel-framework.html"><a href="http://www.robotamer.com/blog/2012-06-27-messenger-laravel-framework.html"> Messenger </a> </li>
+            
+        </ul>
+        
+        <li> 31 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2011-06-10-num_row-with-pdo.html"><a href="http://www.robotamer.com/blog/2011-06-10-num_row-with-pdo.html"> num_row with PDO </a> </li>
+            
+        </ul>
+        
+        <li> 32 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2011-06-15-kaiser-rom.html"><a href="http://www.robotamer.com/blog/2011-06-15-kaiser-rom.html"> HTC Kaiser / TyTN II Android Froyo Rom </a> </li>
+            
+        </ul>
+        
+        <li> 33 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2011-06-01-linux-find-replace-howto.html"><a href="http://www.robotamer.com/blog/2011-06-01-linux-find-replace-howto.html"> Linux find &amp; replace HowTo </a> </li>
+            
+        </ul>
+        
+        <li> 34 </li>
+        <ul>
+            
+            <li hugo-nav="/code/go/gotamer/sbs.html"><a href="http://www.robotamer.com/code/go/gotamer/sbs.html"> sbs </a> </li>
+            
+        </ul>
+        
+        <li> 35 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2010-06-03-justice-isnt-justifiable.html"><a href="http://www.robotamer.com/blog/2010-06-03-justice-isnt-justifiable.html"> Justice isn&#39;t justifiable </a> </li>
+            
+        </ul>
+        
+        <li> 36 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2011-05-14-sliding-headstock-machines.html"><a href="http://www.robotamer.com/blog/2011-05-14-sliding-headstock-machines.html"> Sliding-Headstock Machines </a> </li>
+            
+        </ul>
+        
+        <li> 37 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/2011-06-01-nohub.html"><a href="http://www.robotamer.com/blog/2011-06-01-nohub.html"> nohub </a> </li>
+            
+        </ul>
+        
+        <li> 38 </li>
+        <ul>
+            
+            <li hugo-nav="/blog/hugo.html"><a href="http://www.robotamer.com/blog/hugo.html"> Huge </a> </li>
+            
+        </ul>
+        
+    </ul>
+
+</section>
+ 
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <hr>
+      <footer id="footer">
+        Copyright &copy; 1998 - 2013 RoboTamer
+        <span class="right">
+
+
+          <a href="http://www.robotamer.com/blog.xml" rel="alternate" type="application/rss+xml">
+            <img src="/static/ico/feed16x16.png" alt="" style="vertical-align:middle;border:0"/>
+          </a>&nbsp;
+
+          <a href="http://feedburner.google.com" target="_blank">
+            <img src="//feedburner.google.com/fb/images/pub/powered_by_fb.gif" alt="Powered by FeedBurner" style="border:0"/>
+          </a>
+
+        </span>
+
+      </footer>
+    </div>
+      <script src="/static/js/jquery.js"></script>
+      <script src="/static/js/bootstrap.min.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-33624274-1', 'robotamer.com');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Quotes on RoboTamer </title>
+    <link>http://localhost:1313/groups/quotes.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2011-06-29 07:52:39 &#43;0000 &#43;0000</updated>
+    
+    <item>
+      <title>Live without pretending ...</title>
+      <link>http://localhost:1313/blog/live-without-pretending/html</link>
+      <pubDate>Wed, 29 Jun 2011 07:52:39 &#43;0000</pubDate>
+      <author>Steve Francia</author>
+      <guid>http://localhost:1313/blog/live-without-pretending/html</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Live without pretending&amp;hellip;&amp;hellip;&amp;hellip;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Love without depending&amp;hellip;&amp;hellip;&amp;hellip;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Listen without defending&amp;hellip;&amp;hellip;..&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Speak without offending &amp;hellip;&amp;hellip;..&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;by &lt;a href=&#34;http://twitter.com/#!/drakkardnoir&#34;&gt;Drake&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

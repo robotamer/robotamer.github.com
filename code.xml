@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Codes on RoboTamer </title>
+    <link>http://www.robotamer.com/code.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2008-01-01 00:00:00 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Markdown Syntax</title>
+      <link>http://www.robotamer.com/code/md-syntax.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/md-syntax.html</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#block&#34;&gt;Block Elements&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#p&#34;&gt;Paragraphs and Line Breaks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#header&#34;&gt;Headers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#blockquote&#34;&gt;Blockquotes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#list&#34;&gt;Lists&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#precode&#34;&gt;Code Blocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hr&#34;&gt;Horizontal Rules&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#span&#34;&gt;Span Elements&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#link&#34;&gt;Links&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#em&#34;&gt;Emphasis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#code&#34;&gt;Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#img&#34;&gt;Images&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#misc&#34;&gt;Miscellaneous&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#backslash&#34;&gt;Backslash Escapes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#autolink&#34;&gt;Automatic Links&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;block&#34;&gt;Block Elements&lt;/h2&gt;
+
+&lt;h3 id=&#34;p&#34;&gt;Paragraphs and Line Breaks&lt;/h3&gt;
+
+&lt;p&gt;Two spaces on the end of a line&lt;br /&gt;
+    &lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Blank line&lt;br /&gt;
+    &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;header&#34;&gt;Headers&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;This is an H1
+=============
+
+This is an H2
+-------------
+
+# This is an H1
+
+## This is an H2
+
+###### This is an H6
+
+# This is an H1 #
+
+## This is an H2 ##
+
+### This is an H3 ######
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;blockquote&#34;&gt;Blockquotes&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+&amp;gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&amp;gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&amp;gt; 
+&amp;gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+&amp;gt; id sem consectetuer libero luctus adipiscing.
+
+
+&amp;gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Blockquotes can be nested (i.e. a blockquote-in-a-blockquote) by
+adding additional levels of &lt;code&gt;&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; This is the first level of quoting.
+&amp;gt;
+&amp;gt; &amp;gt; This is nested blockquote.
+&amp;gt;
+&amp;gt; Back to the first level.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Blockquotes can contain other Markdown elements, including headers, lists,
+and code blocks:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; ## This is a header.
+&amp;gt; 
+&amp;gt; 1.   This is the first list item.
+&amp;gt; 2.   This is the second list item.
+&amp;gt; 
+&amp;gt; Here&#39;s some example code:
+&amp;gt; 
+&amp;gt;     return shell_exec(&amp;quot;echo $input | $markdown_script&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;list&#34;&gt;Lists&lt;/h3&gt;
+
+&lt;p&gt;&amp;ndash; as list markers:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;*   Red
+*   Green
+*   Blue
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;is equivalent to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+   Red
++   Green
++   Blue
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-   Red
+-   Green
+-   Blue
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ordered lists use numbers followed by periods:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1.  Bird
+2.  McHale
+3.  Parish
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;is okay:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1.  Bird
+1.  McHale
+1.  Parish
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or even:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;3. Bird
+1. McHale
+8. Parish
+
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+    viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+    Suspendisse id sem consectetuer libero luctus adipiscing.
+
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;precode&#34;&gt;Code Blocks&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;This is a normal paragraph:
+
+    This is a code block.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Markdown will generate:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;This is a normal paragraph:&amp;lt;/p&amp;gt;
+
+&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;This is a code block.
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;hr&#34;&gt;Horizontal Rules&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;* * *
+
+***
+
+*****
+
+- - -
+
+---------------------------------------
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;span&#34;&gt;Span Elements&lt;/h2&gt;
+
+&lt;h3 id=&#34;link&#34;&gt;Links&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;This is [an example](http://example.com/ &amp;quot;Title&amp;quot;) inline link.
+
+
+This is [an example][id] reference-style link.
+[id]: http://example.com/  &amp;quot;Optional Title Here&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;em&#34;&gt;Emphasis&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;will produce:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;em&amp;gt;single asterisks&amp;lt;/em&amp;gt;
+
+&amp;lt;em&amp;gt;single underscores&amp;lt;/em&amp;gt;
+
+&amp;lt;strong&amp;gt;double asterisks&amp;lt;/strong&amp;gt;
+
+&amp;lt;strong&amp;gt;double underscores&amp;lt;/strong&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;code&#34;&gt;Code&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;Use the `printf()` function.
+
+&amp;lt;p&amp;gt;Use the &amp;lt;code&amp;gt;printf()&amp;lt;/code&amp;gt; function.&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;img&#34;&gt;Images&lt;/h3&gt;
+
+&lt;p&gt;Inline image syntax looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;![Alt text](/path/to/img.jpg)
+![Alt text](/path/to/img.jpg &amp;quot;Optional title&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reference-style image syntax looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;![Alt text][id]
+
+[id]: url/to/image  &amp;quot;Optional title attribute&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;misc&#34;&gt;Miscellaneous&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;address@example.com&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;into something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;&amp;amp;#x6D;&amp;amp;#x61;i&amp;amp;#x6C;&amp;amp;#x74;&amp;amp;#x6F;:&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;
+&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;&amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;
+&amp;amp;#109;&amp;quot;&amp;gt;&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;
+&amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;&amp;amp;#109;&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

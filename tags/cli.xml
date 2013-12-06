@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Cli on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/cli.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2010-03-18 22:07:15 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Creating models for the Zend Framework from command line via phpcli</title>
+      <link>http://www.robotamer.com/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html</link>
+      <pubDate>Thu, 18 Mar 2010 22:07:15 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html</guid>
+      <description>&lt;p&gt;This is a php cli script that will create a database model from the database provided&lt;/p&gt;
+
+&lt;p&gt;Download via git from &lt;a href=&#34;http://github.com/pzzazz/phpcli&#34;&gt;github -&amp;gt; phpcli&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;php zend/model.php -h
+
+This is a command line PHP script.
+
+Set table
+
+Options:
+-path=[ ]
+-table=[ ]
+
+Usage:
+php zend/model.php -arg=value
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Database Structure:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE TABLE users (
+      Alias TEXT UNIQUE,
+      Password TEXT,
+      eMail TEXT,
+      Avatar TEXT,
+      Timezone TEXT,
+      IP TEXT,
+      count INTEGER,
+      cookie TEXT,
+      vars TEXT,
+      status INTEGER DEFAULT 1,
+      added date,
+      updated datetime,
+      PRIMARY KEY(Alias)
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Sample Output:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ php zend/model.php -path=/var/www/TaMeR/data/tmp.db3 -table=users
+
+
+
+
+
+
+class _Model_users
+{
+    protected $_Alias;
+    protected $_Password;
+    protected $_eMail;
+    protected $_Avatar;
+    protected $_Timezone;
+    protected $_IP;
+    protected $_count;
+    protected $_cookie;
+    protected $_vars;
+    protected $_status;
+    protected $_added;
+    protected $_updated;
+
+
+    public function setAlias($Alias){
+        $this-&amp;gt;_Alias = (string) $Alias;
+        return $this;
+    }
+
+    public function getAlias($Alias){
+        return $this-&amp;gt;_Alias;
+    }
+
+    public function setPassword($Password){
+        $this-&amp;gt;_Password = (string) $Password;
+        return $this;
+    }
+
+    public function getPassword($Password){
+        return $this-&amp;gt;_Password;
+    }
+
+    public function seteMail($eMail){
+        $this-&amp;gt;_eMail = (string) $eMail;
+        return $this;
+    }
+
+    public function geteMail($eMail){
+        return $this-&amp;gt;_eMail;
+    }
+
+    public function setAvatar($Avatar){
+        $this-&amp;gt;_Avatar = (string) $Avatar;
+        return $this;
+    }
+
+    public function getAvatar($Avatar){
+        return $this-&amp;gt;_Avatar;
+    }
+
+    public function setTimezone($Timezone){
+        $this-&amp;gt;_Timezone = (string) $Timezone;
+        return $this;
+    }
+
+    public function getTimezone($Timezone){
+        return $this-&amp;gt;_Timezone;
+    }
+
+    public function setIP($IP){
+        $this-&amp;gt;_IP = (string) $IP;
+        return $this;
+    }
+
+    public function getIP($IP){
+        return $this-&amp;gt;_IP;
+    }
+
+    public function setcount($count){
+        $this-&amp;gt;_count = (int) $count;
+        return $this;
+    }
+
+    public function getcount($count){
+        return $this-&amp;gt;_count;
+    }
+
+    public function setcookie($cookie){
+        $this-&amp;gt;_cookie = (string) $cookie;
+        return $this;
+    }
+
+    public function getcookie($cookie){
+        return $this-&amp;gt;_cookie;
+    }
+
+    public function setvars($vars){
+        $this-&amp;gt;_vars = (string) $vars;
+        return $this;
+    }
+
+    public function getvars($vars){
+        return $this-&amp;gt;_vars;
+    }
+
+    public function setstatus($status){
+        $this-&amp;gt;_status = (int) $status;
+        return $this;
+    }
+
+    public function getstatus($status){
+        return $this-&amp;gt;_status;
+    }
+
+    public function setadded($added){
+        $this-&amp;gt;_added = (string) $added;
+        return $this;
+    }
+
+    public function getadded($added){
+        return $this-&amp;gt;_added;
+    }
+
+    public function setupdated($updated){
+        $this-&amp;gt;_updated = (string) $updated;
+        return $this;
+    }
+
+    public function getupdated($updated){
+        return $this-&amp;gt;_updated;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating models for the Zend Framework from command line via phpcli.</title>
+      <link>http://www.robotamer.com/blog/2010-03-18-7.html</link>
+      <pubDate>Thu, 18 Mar 2010 20:20:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2010-03-18-7.html</guid>
+      <description>&lt;p&gt;Creating models for the Zend Framework from command line via phpcli.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;php zend/model.php -h&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a command line PHP script.&lt;/p&gt;
+
+&lt;p&gt;Set table&lt;/p&gt;
+
+&lt;p&gt;Options:
+    -path=[ ]
+    -table=[ ]&lt;/p&gt;
+
+&lt;p&gt;Usage:
+php zend/model.php -arg=value&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;~/phpcli$ php zend/model.php -path=/var/www/TaMeR/data/tmp.db3 -table=users&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Sample Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Database Structure:
+    CREATE TABLE users (
+    Alias TEXT UNIQUE,
+    Password TEXT,
+    eMail TEXT,
+    Avatar TEXT,
+    Timezone TEXT,
+    IP TEXT,
+    count INTEGER,
+    cookie TEXT,
+    vars TEXT,
+    status INTEGER DEFAULT 1,
+    added date,
+    updated datetime,
+    PRIMARY KEY(Alias)
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;~/phpcli$ php zend/model.php -path=/var/www/TaMeR/data/tmp.db3 -table=user
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;-
+    class _Model_users
+    {
+    protected $_Alias;
+    protected $_Password;
+    protected $_eMail;
+    protected $_Avatar;
+    protected $_Timezone;
+    protected $_IP;
+    protected $_count;
+    protected $_cookie;
+    protected $_vars;
+    protected $_status;
+    protected $_added;
+    protected $_updated;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public function setAlias($Alias){
+    $this-&amp;gt;_Alias = (string) $Alias;
+    return $this;
+}
+
+public function getAlias($Alias){
+    return $this-&amp;gt;_Alias;
+}
+
+public function setPassword($Password){
+    $this-&amp;gt;_Password = (string) $Password;
+    return $this;
+}
+
+public function getPassword($Password){
+    return $this-&amp;gt;_Password;
+}
+
+public function seteMail($eMail){
+    $this-&amp;gt;_eMail = (string) $eMail;
+    return $this;
+}
+
+public function geteMail($eMail){
+    return $this-&amp;gt;_eMail;
+}
+
+public function setAvatar($Avatar){
+    $this-&amp;gt;_Avatar = (string) $Avatar;
+    return $this;
+}
+
+public function getAvatar($Avatar){
+    return $this-&amp;gt;_Avatar;
+}
+
+public function setTimezone($Timezone){
+    $this-&amp;gt;_Timezone = (string) $Timezone;
+    return $this;
+}
+
+public function getTimezone($Timezone){
+    return $this-&amp;gt;_Timezone;
+}
+
+public function setIP($IP){
+    $this-&amp;gt;_IP = (string) $IP;
+    return $this;
+}
+
+public function getIP($IP){
+    return $this-&amp;gt;_IP;
+}
+
+public function setcount($count){
+    $this-&amp;gt;_count = (int) $count;
+    return $this;
+}
+
+public function getcount($count){
+    return $this-&amp;gt;_count;
+}
+
+public function setcookie($cookie){
+    $this-&amp;gt;_cookie = (string) $cookie;
+    return $this;
+}
+
+public function getcookie($cookie){
+    return $this-&amp;gt;_cookie;
+}
+
+public function setvars($vars){
+    $this-&amp;gt;_vars = (string) $vars;
+    return $this;
+}
+
+public function getvars($vars){
+    return $this-&amp;gt;_vars;
+}
+
+public function setstatus($status){
+    $this-&amp;gt;_status = (int) $status;
+    return $this;
+}
+
+public function getstatus($status){
+    return $this-&amp;gt;_status;
+}
+
+public function setadded($added){
+    $this-&amp;gt;_added = (string) $added;
+    return $this;
+}
+
+public function getadded($added){
+    return $this-&amp;gt;_added;
+}
+
+public function setupdated($updated){
+    $this-&amp;gt;_updated = (string) $updated;
+    return $this;
+}
+
+public function getupdated($updated){
+    return $this-&amp;gt;_updated;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

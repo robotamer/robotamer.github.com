@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Copyright</title>
+  <title>Load functions and array&#39;s</title>
   <meta name="description" content="">
   <meta name="keywords" content=", , , , , , , , , , RoboTamer">
   <meta name="generator" content="Hugo">
@@ -16,6 +16,7 @@
     <link href="http://www.robotamer.com/static/css/hugoicon.css" rel="stylesheet"/>
 
 
+  <link rel="alternate" type="application/rss+xml" title="RoboTamer (RSS 2.0)" href="http://www.robotamer.com/blog.xml">
   </head>
   <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -163,44 +164,219 @@
       <div class="row">
         <div class="col-md-12">
 
+
+
+
 <div class="panel panel-default">
   <div class="panel-heading">
-  	<h2>Copyright</h2>
+  	<h2>Load functions and array&#39;s</h2>
 	<h4></h4>
+	<h5>Fri, Jun 3, 2011</h5>
   </div>
   <div class="panel-body">
-  <h2>Copyright &copy; 2012 The GoTamer Authors. All rights reserved.</h2>
+	<p>This class is used to load functions and array&rsquo;s. It also can copy functions and array&rsquo;s to the linux memory drive and load them from there to speed thinks up.</p>
 
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:</p>
+<pre><code>&lt;?php if(!defined('DROOT')) trigger_error(&quot;Please define data location (DROOT)&quot;);
 
-<ul>
-<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of GoTamer nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
-</ul>
+/**
+ *
+ * This class loads stuff
+ *
+ * 1) Functions
+ * 2) Array's
+ *
+ * @todo        Load array's
+ * @category    Data
+ * @package     TaMeR
+ * @copyright   Copyright (c) 2010 - 2011 Dennis T Kaplan
+ * @license     http://www.gnu.org/licenses/gpl.txt
+ * @author      Dennis T Kaplan
+ **/
+class Load
+{
+    protected $type;
+    protected $path;
 
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-&ldquo;AS IS&rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+    public function __construct(){}
+    public function __destruct(){}
+
+    public static function a($array_name) {
+        if( ! is_string($array_name)){
+            trigger_error(&quot;Array name must be a string!&quot;.BR, E_USER_WARNING);
+            exit;
+        }
+        if(isset($$array_name) &amp;&amp; is_array($$array_name))
+            return $$array_name;
+
+        $dfile = DROOT.'array/'.$array_name.'.php';
+        $mfile = FALSE;
+        if( defined('MROOT') &amp;&amp; MROOT != FALSE)
+            $mfile = MROOT.'array/'.$array_name.'.php';
+        return self::inc($dfile,$mfile,$array_name);
+    }
+
+    public function aSave($var)
+    {
+        $array_name = array_search($var, $GLOBALS);
+
+        $dfile = DROOT.'array/'.$array_name.'.php';
+
+        $string = var_export($var,true);
+        file_put_contents($dfile,
+            '');
+
+        $mfile = FALSE;
+        if( defined('MROOT') &amp;&amp; MROOT !== FALSE){
+            $mfile = MROOT.'array/'.$array_name.'.php';
+            file_put_contents($mfile, self::stripComments($dfile));
+        }
+
+    }//end save()
+
+    public static function f($str) {
+        if( ! is_string($str))
+            trigger_error(&quot;Argument for load must be string!&quot;, E_USER_WARNING);
+
+        $array = self::prepArgs($str);
+        $mfile = FALSE;
+        foreach($array as $func_name){
+            if ( function_exists($func_name)) continue;
+            $dfile = FROOT.$func_name.'.php';
+            if( defined('MROOT') &amp;&amp; MROOT != FALSE)
+                $mfile = MROOT.'func/'.$func_name.'.php';
+            self::inc($dfile,$mfile);
+        }
+    }
+
+    /**
+     * Description load function
+     * if availabe load from memory folder; else
+     *  if a memory folder is availabe, copy to memory then load; else
+     *   load from file
+     *
+     * @package     TaMeR
+     * @category    File
+     * @author      Dennis T Kaplan
+     * @copyright  (C) 2009-2011 Dennis T Kaplan
+     *
+     * @param  string $dfile Disk File
+     * @param  string $mfile Memory File
+     * @param  string $array
+     * @return mixed
+     */
+    protected static function inc($dfile,$mfile = FALSE,$array = FALSE)
+    {
+        if($mfile !== FALSE){
+            if(file_exists($mfile)){
+                 include $mfile;
+            }elseif(self::hasMRoot()){
+                file_put_contents($mfile, self::stripComments($dfile));
+                chmod($mfile, 00644);
+                include $mfile;
+            }else{
+                // Fail Safe
+                include $dfile;
+            }
+        }else{
+            include $dfile;
+        }
+        if($array !== FALSE) return $$array;
+    }
+
+    /**
+     * Name stripComments
+     *
+     * Description Strip php comments from php file
+     *
+     * @package     TaMeR
+     * @category    File
+     * @type        Function
+     * @author      Ionuț G. Stan
+     *
+     * @param  string $file
+     * @param  mixed  $file_desc '/var/www/somefile.php'
+     * @return string
+     */
+    public static function stripComments($file) {
+        $fileStr = file_get_contents($file);
+        $newStr  = '';
+
+        $commentTokens = array(T_COMMENT);
+
+        if (defined('T_DOC_COMMENT'))
+            $commentTokens[] = T_DOC_COMMENT; // PHP 5
+        if (defined('T_ML_COMMENT'))
+            $commentTokens[] = T_ML_COMMENT;  // PHP 4
+
+        $tokens = token_get_all($fileStr);
+
+        foreach ($tokens as $token) {
+            if (is_array($token)) {
+                if (in_array($token[0], $commentTokens))
+                        continue;
+
+                $token = $token[1];
+            }
+
+            $newStr .= $token;
+        }
+        /**
+         * Replace all s t n with one space and trim
+         * @todo replave with preg_replace()
+         */ 
+        $newStr = trim(preg_replace('/s+/', ' ', $newStr));
+        $newStr = str_replace(', ',',',$newStr);
+        $newStr = str_replace(' =&gt; ','=&gt;',$newStr);
+        $newStr = str_replace(' (','(',$newStr);
+        $newStr = str_replace('( ','(',$newStr);
+        $newStr = str_replace(') ',')',$newStr);
+        $newStr = str_replace(' )',')',$newStr);
+        $newStr = str_replace(' = ','=',$newStr);
+        $newStr = str_replace(' }','}',$newStr);
+        $newStr = str_replace('{ ','{',$newStr);
+        return $newStr;
+    }
+
+    public static function prepArgs($args) {
+        $args = preg_replace('/ss+/', ' ', trim($args));
+        return explode(' ',$args);
+    }
+
+    protected static function hasMRoot() {
+    /**
+     * Checks if the memory directory is available on the file system
+     * and creates the directory structure if the memory folder is
+     * available but the directory structure has not been created.
+     */
+        if( defined('MROOT') &amp;&amp; MROOT != FALSE){
+            if(file_exists(MROOT)){
+                return TRUE;
+            }else{
+                mkdir(MROOT, 0777);
+                mkdir(MROOT.'class',  0777);
+                mkdir(MROOT.'func' ,  0777);
+                mkdir(MROOT.'array',  0777);
+                return TRUE;
+            }
+        }else{
+            return FALSE;
+        }
+    }
+}
+?&gt;
+</code></pre>
 
   </div>
   <div class="panel-footer">
     <div class="btn-group">
       
+      <a href="http://www.robotamer.com/tags/code.html"><button type="button" class="btn btn-info btn-xs">code</button></a>	
+      
     </div>  
   </div>
 </div>
- 
+
+
         </div>
       </div>
     </div>
@@ -239,3 +415,4 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
   </body>
 
 </html>
+

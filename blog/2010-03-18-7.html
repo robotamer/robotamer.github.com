@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Copyright</title>
+  <title>Creating models for the Zend Framework from command line via phpcli.</title>
   <meta name="description" content="">
-  <meta name="keywords" content=", , , , , , , , , , RoboTamer">
+  <meta name="keywords" content="RoboTamer">
   <meta name="generator" content="Hugo">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -16,6 +16,7 @@
     <link href="http://www.robotamer.com/static/css/hugoicon.css" rel="stylesheet"/>
 
 
+  <link rel="alternate" type="application/rss+xml" title="RoboTamer (RSS 2.0)" href="http://www.robotamer.com/blog.xml">
   </head>
   <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -163,44 +164,200 @@
       <div class="row">
         <div class="col-md-12">
 
+
+
+
 <div class="panel panel-default">
   <div class="panel-heading">
-  	<h2>Copyright</h2>
+  	<h2>Creating models for the Zend Framework from command line via phpcli.</h2>
 	<h4></h4>
+	<h5>Thu, Mar 18, 2010</h5>
   </div>
   <div class="panel-body">
-  <h2>Copyright &copy; 2012 The GoTamer Authors. All rights reserved.</h2>
+	<p>Creating models for the Zend Framework from command line via phpcli.</p>
 
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:</p>
+<p><code>php zend/model.php -h</code></p>
 
-<ul>
-<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of GoTamer nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
-</ul>
+<p>This is a command line PHP script.</p>
 
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-&ldquo;AS IS&rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<p>Set table</p>
+
+<p>Options:
+    -path=[ ]
+    -table=[ ]</p>
+
+<p>Usage:
+php zend/model.php -arg=value</p>
+
+<p><code>~/phpcli$ php zend/model.php -path=/var/www/TaMeR/data/tmp.db3 -table=users</code></p>
+
+<p>Sample Output:</p>
+
+<pre><code>Database Structure:
+    CREATE TABLE users (
+    Alias TEXT UNIQUE,
+    Password TEXT,
+    eMail TEXT,
+    Avatar TEXT,
+    Timezone TEXT,
+    IP TEXT,
+    count INTEGER,
+    cookie TEXT,
+    vars TEXT,
+    status INTEGER DEFAULT 1,
+    added date,
+    updated datetime,
+    PRIMARY KEY(Alias)
+);
+</code></pre>
+
+<p>-</p>
+
+<pre><code>~/phpcli$ php zend/model.php -path=/var/www/TaMeR/data/tmp.db3 -table=user
+</code></pre>
+
+<p>-
+    class _Model_users
+    {
+    protected $_Alias;
+    protected $_Password;
+    protected $_eMail;
+    protected $_Avatar;
+    protected $_Timezone;
+    protected $_IP;
+    protected $_count;
+    protected $_cookie;
+    protected $_vars;
+    protected $_status;
+    protected $_added;
+    protected $_updated;</p>
+
+<pre><code>public function setAlias($Alias){
+    $this-&gt;_Alias = (string) $Alias;
+    return $this;
+}
+
+public function getAlias($Alias){
+    return $this-&gt;_Alias;
+}
+
+public function setPassword($Password){
+    $this-&gt;_Password = (string) $Password;
+    return $this;
+}
+
+public function getPassword($Password){
+    return $this-&gt;_Password;
+}
+
+public function seteMail($eMail){
+    $this-&gt;_eMail = (string) $eMail;
+    return $this;
+}
+
+public function geteMail($eMail){
+    return $this-&gt;_eMail;
+}
+
+public function setAvatar($Avatar){
+    $this-&gt;_Avatar = (string) $Avatar;
+    return $this;
+}
+
+public function getAvatar($Avatar){
+    return $this-&gt;_Avatar;
+}
+
+public function setTimezone($Timezone){
+    $this-&gt;_Timezone = (string) $Timezone;
+    return $this;
+}
+
+public function getTimezone($Timezone){
+    return $this-&gt;_Timezone;
+}
+
+public function setIP($IP){
+    $this-&gt;_IP = (string) $IP;
+    return $this;
+}
+
+public function getIP($IP){
+    return $this-&gt;_IP;
+}
+
+public function setcount($count){
+    $this-&gt;_count = (int) $count;
+    return $this;
+}
+
+public function getcount($count){
+    return $this-&gt;_count;
+}
+
+public function setcookie($cookie){
+    $this-&gt;_cookie = (string) $cookie;
+    return $this;
+}
+
+public function getcookie($cookie){
+    return $this-&gt;_cookie;
+}
+
+public function setvars($vars){
+    $this-&gt;_vars = (string) $vars;
+    return $this;
+}
+
+public function getvars($vars){
+    return $this-&gt;_vars;
+}
+
+public function setstatus($status){
+    $this-&gt;_status = (int) $status;
+    return $this;
+}
+
+public function getstatus($status){
+    return $this-&gt;_status;
+}
+
+public function setadded($added){
+    $this-&gt;_added = (string) $added;
+    return $this;
+}
+
+public function getadded($added){
+    return $this-&gt;_added;
+}
+
+public function setupdated($updated){
+    $this-&gt;_updated = (string) $updated;
+    return $this;
+}
+
+public function getupdated($updated){
+    return $this-&gt;_updated;
+}
+</code></pre>
 
   </div>
   <div class="panel-footer">
     <div class="btn-group">
       
+      <a href="http://www.robotamer.com/tags/code.html"><button type="button" class="btn btn-info btn-xs">code</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/php.html"><button type="button" class="btn btn-info btn-xs">php</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/cli.html"><button type="button" class="btn btn-info btn-xs">cli</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/zend.html"><button type="button" class="btn btn-info btn-xs">zend</button></a>	
+      
     </div>  
   </div>
 </div>
- 
+
+
         </div>
       </div>
     </div>
@@ -239,3 +396,4 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
   </body>
 
 </html>
+

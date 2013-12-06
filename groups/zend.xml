@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Zend on RoboTamer </title>
+    <link>http://localhost:1313/groups/zend.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2012-07-01 07:37:41 &#43;0000 &#43;0000</updated>
+    
+    <item>
+      <title>SplClassLoader Implementation</title>
+      <link>http://localhost:1313/blog/splclassloader-implementation/html</link>
+      <pubDate>Sun, 01 Jul 2012 07:37:41 &#43;0000</pubDate>
+      <author>Steve Francia</author>
+      <guid>http://localhost:1313/blog/splclassloader-implementation/html</guid>
+      <description>&lt;p&gt;I have been looking around for some good examples to use the new PHP autoloader interoperability standard according to the PHP Standards Recommendation #0 (PSR-0).&lt;/p&gt;
+
+&lt;p&gt;And since I could find anything good, I had to figure it out by my self, here is the result.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;[gist id=3027247 bump=1]&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

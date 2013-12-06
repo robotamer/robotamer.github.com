@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Server on RoboTamer </title>
+    <link>http://localhost:1313/groups/server.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2012-06-27 22:57:08 &#43;0000 &#43;0000</updated>
+    
+    <item>
+      <title>Network Safety Restart</title>
+      <link>http://localhost:1313/blog/network-safety-restart/html</link>
+      <pubDate>Wed, 27 Jun 2012 22:57:08 &#43;0000</pubDate>
+      <author>Steve Francia</author>
+      <guid>http://localhost:1313/blog/network-safety-restart/html</guid>
+      <description>&lt;p&gt;if you are working on your remote servers networking setup, then this can be a life saver.
+You start the following script just before you make a change.
+Then without a worry you can make changes to your network setting.
+If the settings are wrong although you maybe disconnected this script will re-install a working backup for you and restart your server.
+All you have to do is wait a few minutes.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;This command&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;# network_Safety_Restart.sh start&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Will wait for 1200 second and then do following&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h1&gt;cp /etc/network/interfaces.org /etc/network/interfaces&lt;/h1&gt;
+
+&lt;h1&gt;restart&lt;/h1&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;if during the time you find that your changes are working and you don&amp;rsquo;t need a restart
+you can simply stop it with&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;# network_Safety_Restart.sh stop&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;[gist id=1479769]&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Search linux bash history</title>
+      <link>http://localhost:1313/blog/search-linux-bash-history-2/html</link>
+      <pubDate>Tue, 26 Jun 2012 02:49:12 &#43;0000</pubDate>
+      <author>Steve Francia</author>
+      <guid>http://localhost:1313/blog/search-linux-bash-history-2/html</guid>
+      <description>&lt;p&gt;Have you ever executed something on the linux shell and didn&amp;rsquo;t remember later how it was done? Well if you remember just part of it you can search for it: &lt;code&gt;history | grep -i &amp;quot;_&amp;lt;search string&amp;gt;_&amp;quot;&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Need PHP 5.3 Hosting Recommendations – Who Hosts Yours?</title>
+      <link>http://localhost:1313/blog/need-hosting-recommendations-who-hosts-yours/html</link>
+      <pubDate>Mon, 27 Jun 2011 23:38:12 &#43;0000</pubDate>
+      <author>Steve Francia</author>
+      <guid>http://localhost:1313/blog/need-hosting-recommendations-who-hosts-yours/html</guid>
+      <description>&lt;p&gt;I have been looking for a host that offers php 5.3 hosting, however all those hosting compare sites don&amp;rsquo;t seam to be quite as honest as one would expect. I would also need ssh access, so if you have a recommendation you could share with me, I would appreciate it.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>msmtp install, config and test</title>
+      <link>http://localhost:1313/blog/msmtp-install-config-and-test/html</link>
+      <pubDate>Sun, 26 Jun 2011 10:24:08 &#43;0000</pubDate>
+      <author>Steve Francia</author>
+      <guid>http://localhost:1313/blog/msmtp-install-config-and-test/html</guid>
+      <description>&lt;p&gt;Why have more then one mail server? Or why even have a mail server at all, if you can use gmail?
+Well there are many reasons to have at leased one mail server, but having one on each server doesn&amp;rsquo;t make sense at all.
+I tried both ssmtp and msmtp, and decided on msmtp.
+&amp;lt;!&amp;ndash; more &amp;ndash;&amp;gt;&lt;/p&gt;
+
+&lt;h3&gt;msmtp is an SMTP client.&lt;/h3&gt;
+
+&lt;p&gt;In the default mode, it transmits a mail to an SMTP server, which takes care of further delivery.
+To use this program with your mail user agent (MUA), create a configuration  file with your mail account(s) and tell your MUA to call msmtp instead of  /usr/sbin/sendmail.
+&lt;strong&gt;Features include:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Sendmail compatible interface (command line options and exit codes).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;TLS/SSL support, including client certificates.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Authentication methods PLAIN, LOGIN, CRAM-MD5, EXTERNAL, GSSAPI, SCRAM-SHA-1, DIGEST-MD5, and NTLM.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;PIPELINING support for increased transmission speed.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;DSN (Delivery Status Notification) support.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;RMQS (Remote Message Queue Starting) support (ETRN keyword).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;IPv6 support.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;LMTP support.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Support for multiple accounts.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;msmtp is &lt;a href=&#34;http://www.gnu.org/philosophy/free-sw.html&#34;&gt;free software&lt;/a&gt;; you can redistribute it and/or modify it under the terms of the  &lt;a href=&#34;http://www.gnu.org/licenses/gpl.html&#34;&gt;GNU General Public License&lt;/a&gt; as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3&gt;Requirements&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Platforms&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;msmtp runs on a wide variety of platforms. It needs little more than an ANSI C  compiler and Berkeley-style sockets.
+&lt;strong&gt;Libraries&lt;/strong&gt;
+msmtp does not need any additional libraries, but it can use the following to enhance its feature set:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.gnu.org/software/gnutls/&#34;&gt;GnuTLS&lt;/a&gt; (&amp;gt;=1.2.0)
+The GnuTLS library provides TLS/SSL support. It is highly recommended.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.openssl.org/&#34;&gt;OpenSSL&lt;/a&gt; (&amp;gt;=0.9.6)
+OpenSSL is supported as an alternative to GnuTLS.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://josefsson.org/libgsasl/&#34;&gt;GNU SASL&lt;/a&gt; (&amp;gt;=0.2.4)
+Using the GNU SASL library adds support for the GSSAPI, DIGEST-MD5, SCRAM-SHA-1, and NTLM  authentication methods. (The methods PLAIN, LOGIN, and CRAM-MD5  are always supported).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.gnu.org/software/libidn/&#34;&gt;GNU Libidn&lt;/a&gt;
+Support for Internationalized Domain Names (IDN) is available if you have GNU  Libidn installed.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;install&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install msmtp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;configure&lt;/h3&gt;
+
+&lt;p&gt;Below you will see that I commented out tls_trust_file and went with tls_fingerprint.
+You can not use both at the same time, and I figure that tls_fingerprint is faster, however the gmail finger print may change over the years so going with tls_trust_file is probably safer.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# /etc/msmtprc
+defaults
+logfile         ~/.msmtp.log
+#tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+account         default
+host            smtp.gmail.com
+port            587
+from            xxxxx@gmail.com
+auth            on
+user            xxxxx@gmail.com
+password        *******
+tls             on
+tls_starttls    on
+tls_fingerprint DB:A0:2A:07:00:F9:E3:23:7D:07:E7:52:3C:95:9D:E6:7E:12:54:3F
+logfile         /var/log/msmtp.log
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Test&lt;/h3&gt;
+
+&lt;p&gt;Send out a test mail:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo -e &amp;quot;Subject: msmtp test mailnThis is a test mail from msmtp&amp;quot; | msmtp --debug --from=default -t xxxxx@gmail.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://msmtp.sourceforge.net/&#34;&gt;Link to developer site&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>git branch on bash line</title>
+      <link>http://localhost:1313/blog/git-branch-on-bash-line/html</link>
+      <pubDate>Tue, 21 Jun 2011 04:52:48 &#43;0000</pubDate>
+      <author>Steve Francia</author>
+      <guid>http://localhost:1313/blog/git-branch-on-bash-line/html</guid>
+      <description>&lt;p&gt;This little code, if placed in to your ~/.bash_profile file will reveal what git branch you are working on.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;parse_git_branch() {
+        git branch 2&amp;gt; /dev/null | sed -e &#39;/^[^*]/d&#39; -e &#39;s/* (.*)/(1)/&#39;
+}
+if [[ $EUID -ne 0 ]]; then
+        PS1=&amp;quot;w$(parse_git_branch) $ &amp;quot;
+fi
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

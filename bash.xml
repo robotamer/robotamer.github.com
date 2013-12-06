@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Bashes on RoboTamer </title>
+    <link>http://www.robotamer.com/bash.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2011-11-22 03:54:53 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Linux bash history</title>
+      <link>http://www.robotamer.com/linux/bash/history.html</link>
+      <pubDate>Tue, 22 Nov 2011 03:54:53 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/bash/history.html</guid>
+      <description>&lt;p&gt;Have you ever executed something on the linux shell and didn&amp;rsquo;t remember later how it was done?&lt;/p&gt;
+
+&lt;p&gt;Well if you remember just part of it you can search for it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;history | grep -i &amp;quot;[search string]&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

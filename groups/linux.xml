@@ -1,0 +1,1589 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Linux on RoboTamer </title>
+    <link>http://www.robotamer.com/groups/linux.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2011-11-22 03:54:53 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Linux bash history</title>
+      <link>http://www.robotamer.com/linux/bash/history.html</link>
+      <pubDate>Tue, 22 Nov 2011 03:54:53 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/bash/history.html</guid>
+      <description>&lt;p&gt;Have you ever executed something on the linux shell and didn&amp;rsquo;t remember later how it was done?&lt;/p&gt;
+
+&lt;p&gt;Well if you remember just part of it you can search for it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;history | grep -i &amp;quot;[search string]&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux backround process</title>
+      <link>http://www.robotamer.com/blog/2011-06-01-nohub.html</link>
+      <pubDate>Wed, 01 Jun 2011 09:24:12 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-01-nohub.html</guid>
+      <description>&lt;p&gt;Running as background process with &lt;em&gt;nohub&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nohup scp  &amp;amp; &amp;gt; nohup.out 2 &amp;gt; &amp;amp;1
+
+nohup scp -r -p root@www.example.com:/var/www/ /var/www/ &amp;amp; &amp;gt;nohup.out 2&amp;gt;&amp;amp;1
+
+nohup scp -r -p root@www.example.com:/var/www/logs /var/www/ &amp;amp; &amp;gt;nohup.out 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux Index</title>
+      <link>http://www.robotamer.com/linux/index.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/index.html</guid>
+      <description>&lt;p&gt;Here you will find Linux specific HowTo&amp;rsquo;s and tutorials, which I mostly keep as reminders for my self.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux Snippets</title>
+      <link>http://www.robotamer.com/linux/snippets.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/snippets.html</guid>
+      <description>&lt;h4&gt;Find and chmod files or folders&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Find a directory and display on screen&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;find . -type d -name &#39;linux&#39; 2&amp;gt;/dev/null
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Find/Grep for a string across multiple files with different extensions&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;find . -name &amp;quot;*.php&amp;quot; | xargs grep -niP &#39;thingy&#39;
+find \( -name &amp;quot;*js&amp;quot; -o -name &amp;quot;*jsp&amp;quot; -o -name &amp;quot;*jspf&amp;quot; \) | xargs grep -niP &#39;thingy&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Find and replace&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;find . -type f -name &amp;quot;*.php&amp;quot; -exec sed -i &#39;s/numRows/rowCount/g&#39; {} \;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;running as background process&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;nohup scp &amp;lt;params&amp;gt; &amp;amp; &amp;gt; nohup.out 2 &amp;gt; &amp;amp;1
+nohup scp -r -p root@www.example.com:/var/www/ /var/www/ &amp;amp; &amp;gt;nohup.out 2&amp;gt;&amp;amp;1
+nohup scp -r -p root@www.example.com:/var/www/logs /var/www/ &amp;amp; &amp;gt;nohup.out 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Copying an image file to USB&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;cat file.iso &amp;gt; /dev/sdb
+sync
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Killing&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;killall -9 nginx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Mounting an imge file&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;mount -o loop file.img /mnt/image
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Creating a file stsyem&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;mkfs.ext2 /dev/sdb2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Labeling a file system&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;e2label /dev/sdb2 RoboTamer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Searing bash history&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;history | grep -i &amp;quot;search term&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Debian Specific&lt;/h2&gt;
+
+&lt;h4&gt;See what is installed&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;dpkg -l | grep php5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Start a program&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;service program_name start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Stop a program&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;service program_name stop
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Start a programs at boot time&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;insserv -d program_name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Remove program from boot time&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;insserv -r program_name
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Network Safety Restart Bash Script</title>
+      <link>http://www.robotamer.com/linux/nsr.html</link>
+      <pubDate>Wed, 27 Jun 2012 22:57:08 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/nsr.html</guid>
+      <description>&lt;p&gt;If you ever work on a remote servers network settings then this script may safe you from having to call support, and waiting on them.&lt;/p&gt;
+
+&lt;p&gt;When started/executed it&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sleeps first for 1 hour&lt;/li&gt;
+&lt;li&gt;Then it renames the ”/etc/network/interfaces” file by adding the current time stamp to the end of the file&lt;/li&gt;
+&lt;li&gt;It renames a file called ”/etc/network/interfaces.org” to ”/etc/network/interfaces”&lt;/li&gt;
+&lt;li&gt;And finally it restarts the server.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It also warns you a couple minutes before it does all that so you can terminate the program. Of course if you have been locked out you can&amp;rsquo;t terminate it, and it will execute. &lt;em&gt;Giving you a fresh start!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;To start&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;network_Safety_Restart.sh start &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To Stop&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;network_Safety_Restart.sh stop
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is the linkto the &lt;a href=&#34;https://gist.github.com/robotamer/1479769&#34;&gt;Gist&lt;/a&gt; or you can just copy and paste from below.&lt;/p&gt;
+
+&lt;p&gt;network_Safety_Restart.sh&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#! /bin/sh
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+
+. /lib/lsb/init-functions
+
+export PIDFILESTART=/tmp/network-safty-restart-start.pid
+export PIDFILESTOP=/tmp/network-safty-restart-stop.pid
+export FILE=/etc/network/interfaces
+
+case &amp;quot;$1&amp;quot; in
+  start)  
+    if [ -f ${PIDFILESTART} ]; then
+            rm ${PIDFILESTART}
+    fi
+    if [ -f ${PIDFILESTOP} ]; then
+            rm ${PIDFILESTOP}
+    fi  
+    ps -fe | grep ${1} | head -n1 | cut -d&amp;quot; &amp;quot; -f 6 &amp;gt; ${PIDFILESTART}
+
+        sleep 3600 
+
+        log_action_msg &amp;quot;WARNING: Will in 120 sec rename ${FILE} and then restart&amp;quot;
+        sleep 60
+        log_action_msg &amp;quot;WARNING: Will in 60 sec rename ${FILE} and then restart&amp;quot;
+        sleep 60
+
+    if ! [ -f ${PIDFILESTOP} ]; then
+        log_action_msg &amp;quot;Restarting NOW&amp;quot;
+            SUFFIX=$(date +%s)
+            cp ${FILE} ${FILE}.${SUFFIX}
+            sleep 1
+            cp ${FILE}.org ${FILE}
+            sleep 1
+            reboot -d -f -i
+    else
+        rm ${PIDFILESTOP}
+        log_action_msg &amp;quot;NOT Restaring as you wish&amp;quot;
+        fi
+        ;;
+  stop)
+    if [ -f ${PIDFILESTART} ]; then
+            rm ${PIDFILESTART}
+        touch ${PIDFILESTOP}
+        log_action_msg &amp;quot;Terminating restart script&amp;quot;
+
+    fi
+    log_action_msg &amp;quot;Terminated restart script&amp;quot;
+
+    exit 0
+        ;;
+  *)
+        echo &amp;quot;Usage: $0 start|stop&amp;quot; &amp;gt;&amp;amp;2
+        exit 3
+        ;;
+esac
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Markdown Syntax</title>
+      <link>http://www.robotamer.com/code/md-syntax.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/md-syntax.html</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#block&#34;&gt;Block Elements&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#p&#34;&gt;Paragraphs and Line Breaks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#header&#34;&gt;Headers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#blockquote&#34;&gt;Blockquotes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#list&#34;&gt;Lists&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#precode&#34;&gt;Code Blocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hr&#34;&gt;Horizontal Rules&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#span&#34;&gt;Span Elements&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#link&#34;&gt;Links&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#em&#34;&gt;Emphasis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#code&#34;&gt;Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#img&#34;&gt;Images&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#misc&#34;&gt;Miscellaneous&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#backslash&#34;&gt;Backslash Escapes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#autolink&#34;&gt;Automatic Links&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;block&#34;&gt;Block Elements&lt;/h2&gt;
+
+&lt;h3 id=&#34;p&#34;&gt;Paragraphs and Line Breaks&lt;/h3&gt;
+
+&lt;p&gt;Two spaces on the end of a line&lt;br /&gt;
+    &lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Blank line&lt;br /&gt;
+    &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;header&#34;&gt;Headers&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;This is an H1
+=============
+
+This is an H2
+-------------
+
+# This is an H1
+
+## This is an H2
+
+###### This is an H6
+
+# This is an H1 #
+
+## This is an H2 ##
+
+### This is an H3 ######
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;blockquote&#34;&gt;Blockquotes&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+&amp;gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&amp;gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&amp;gt; 
+&amp;gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+&amp;gt; id sem consectetuer libero luctus adipiscing.
+
+
+&amp;gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Blockquotes can be nested (i.e. a blockquote-in-a-blockquote) by
+adding additional levels of &lt;code&gt;&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; This is the first level of quoting.
+&amp;gt;
+&amp;gt; &amp;gt; This is nested blockquote.
+&amp;gt;
+&amp;gt; Back to the first level.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Blockquotes can contain other Markdown elements, including headers, lists,
+and code blocks:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; ## This is a header.
+&amp;gt; 
+&amp;gt; 1.   This is the first list item.
+&amp;gt; 2.   This is the second list item.
+&amp;gt; 
+&amp;gt; Here&#39;s some example code:
+&amp;gt; 
+&amp;gt;     return shell_exec(&amp;quot;echo $input | $markdown_script&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;list&#34;&gt;Lists&lt;/h3&gt;
+
+&lt;p&gt;&amp;ndash; as list markers:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;*   Red
+*   Green
+*   Blue
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;is equivalent to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+   Red
++   Green
++   Blue
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-   Red
+-   Green
+-   Blue
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ordered lists use numbers followed by periods:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1.  Bird
+2.  McHale
+3.  Parish
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;is okay:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1.  Bird
+1.  McHale
+1.  Parish
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or even:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;3. Bird
+1. McHale
+8. Parish
+
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+    viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+    Suspendisse id sem consectetuer libero luctus adipiscing.
+
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;precode&#34;&gt;Code Blocks&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;This is a normal paragraph:
+
+    This is a code block.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Markdown will generate:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;This is a normal paragraph:&amp;lt;/p&amp;gt;
+
+&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;This is a code block.
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;hr&#34;&gt;Horizontal Rules&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;* * *
+
+***
+
+*****
+
+- - -
+
+---------------------------------------
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;span&#34;&gt;Span Elements&lt;/h2&gt;
+
+&lt;h3 id=&#34;link&#34;&gt;Links&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;This is [an example](http://example.com/ &amp;quot;Title&amp;quot;) inline link.
+
+
+This is [an example][id] reference-style link.
+[id]: http://example.com/  &amp;quot;Optional Title Here&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;em&#34;&gt;Emphasis&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;will produce:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;em&amp;gt;single asterisks&amp;lt;/em&amp;gt;
+
+&amp;lt;em&amp;gt;single underscores&amp;lt;/em&amp;gt;
+
+&amp;lt;strong&amp;gt;double asterisks&amp;lt;/strong&amp;gt;
+
+&amp;lt;strong&amp;gt;double underscores&amp;lt;/strong&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;code&#34;&gt;Code&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;Use the `printf()` function.
+
+&amp;lt;p&amp;gt;Use the &amp;lt;code&amp;gt;printf()&amp;lt;/code&amp;gt; function.&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;img&#34;&gt;Images&lt;/h3&gt;
+
+&lt;p&gt;Inline image syntax looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;![Alt text](/path/to/img.jpg)
+![Alt text](/path/to/img.jpg &amp;quot;Optional title&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reference-style image syntax looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;![Alt text][id]
+
+[id]: url/to/image  &amp;quot;Optional title attribute&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;misc&#34;&gt;Miscellaneous&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;address@example.com&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;into something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;&amp;amp;#x6D;&amp;amp;#x61;i&amp;amp;#x6C;&amp;amp;#x74;&amp;amp;#x6F;:&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;
+&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;&amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;
+&amp;amp;#109;&amp;quot;&amp;gt;&amp;amp;#x61;&amp;amp;#x64;&amp;amp;#x64;&amp;amp;#x72;&amp;amp;#x65;&amp;amp;#115;&amp;amp;#115;&amp;amp;#64;&amp;amp;#101;&amp;amp;#120;&amp;amp;#x61;
+&amp;amp;#109;&amp;amp;#x70;&amp;amp;#x6C;e&amp;amp;#x2E;&amp;amp;#99;&amp;amp;#111;&amp;amp;#109;&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ssh authorization</title>
+      <link>http://www.robotamer.com/linux/openssl/ssh.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/openssl/ssh.html</guid>
+      <description>&lt;p&gt;Create a public ssh key, if you haven’t one already. Look at ~/.ssh. If you see a file named id_dsa.pub then you obviously already have a public key. If not, simply create one.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh-keygen -t dsa
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ItemMake sure your .ssh dir is 700:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chmod 700 ~/.ssh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Get your public ssh key on the server you want to login automatically.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;scp ~/.ssh/id_dsa.pub remoteuser@remoteserver.com:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Append the contents of your public key to the ~/.ssh/authorized_keys and remove it. Simply issue something like&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat id_dsa.pub &amp;gt;&amp;gt; .ssh/authorized_keys
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Remove your public key from the home directory on the server.&lt;br /&gt;
+Done!&lt;/p&gt;
+
+&lt;p&gt;You can now login without getting asked for a password.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh -l remoteuser remoteserver.com or ssh remoteuser@remoteserver.com
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux Containers</title>
+      <link>http://www.robotamer.com/linux/lxc.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/lxc.html</guid>
+      <description>&lt;p&gt;Linux Containers provide a Free Software virtualization system for computers running GNU/Linux. This is accomplished through kernel level isolation. It allows one to run multiple virtual units simultaneously. Those units, similar to chroots, are sufficiently isolated to guarantee the required security, but utilize available resources efficiently, as they run on the same kernel.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install lxc bridge-utils debootstrap
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;First we will setup our Bridge: &lt;a href=&#34;Bridge-Utils.html&#34;&gt;Linux:bridge-utils&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;/etc/fstab&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cgroup          /sys/fs/cgroup         cgroup  defaults        0       0
+
+mount -a
+
+
+LXCDIR=/var/lib/lxc
+cd $LXCDIR
+nano vm0.cfg
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Following is a template config file. If you are also looking at other howto&amp;rsquo;s, don&amp;rsquo;t get coughed up at the fstab mount option. The debian script takes care of that. You will at leased have to change the IP address.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;vm0.cfg&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lxc.utsname = vm0
+lxc.rootfs = /var/lib/lxc/vm0/rootfs
+
+lxc.tty = 4
+lxc.network.type = veth
+lxc.network.flags = up
+lxc.network.link = br0
+lxc.network.name = eth0
+lxc.network.mtu = 1500
+
+# security parameter
+lxc.cgroup.devices.deny = a # Deny all access to devices
+lxc.cgroup.devices.allow = c 1:3 rwm   # dev/null
+lxc.cgroup.devices.allow = c 1:5 rwm   # dev/zero
+lxc.cgroup.devices.allow = c 5:1 rwm   # dev/console
+lxc.cgroup.devices.allow = c 5:0 rwm   # dev/tty
+lxc.cgroup.devices.allow = c 4:0 rwm   # dev/tty0
+lxc.cgroup.devices.allow = c 4:1 rwm   # dev/tty1
+lxc.cgroup.devices.allow = c 4:2 rwm   # dev/tty2
+lxc.cgroup.devices.allow = c 1:9 rwm   # dev/urandon
+lxc.cgroup.devices.allow = c 1:8 rwm   # dev/random
+lxc.cgroup.devices.allow = c 136:* rwm # dev/pts/*
+lxc.cgroup.devices.allow = c 5:2 rwm   # dev/pts/ptmx
+lxc.cgroup.devices.allow = c 254:0 rwm # dev/rtc
+
+# mounts point
+lxc.mount.entry=proc   /var/lib/lxc/vm0/rootfs/proc proc nodev,noexec,nosuid 0 0
+lxc.mount.entry=devpts /var/lib/lxc/vm0/rootfs/dev/pts devpts defaults 0 0
+lxc.mount.entry=sysfs  /var/lib/lxc/vm0/rootfs/sys sysfs defaults  0 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lxc-create -f $LXCDIR/vm0.cfg -n vm0
+cp /usr/lib/lxc/templates/lxc-debian $LXCDIR
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At this point you might wont to make lxc-debian your own. At leased change the release from Lenny to Squeeze&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./lxc-debian -p vm0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The vm0 should have been created now. Your root password is root.
+Before we start it up we will make some config changes.&lt;/p&gt;
+
+&lt;p&gt;First edit your network config&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nano $LXCDIR/vm0/rootfs/etc/network/interfaces
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;File needs to look like this: // Note change the IP addresses to yours, if you don&amp;rsquo;t know how, you know you shouldn&amp;rsquo;t be here //&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# The loopback network interface
+auto lo
+iface lo inet loopback
+up route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+down route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+
+auto eth0
+iface eth0 inet static
+address 70.22.189.59
+netmask 255.255.255.248
+gateway 70.22.189.57
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we will try to boot the system.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd $LXCDIR
+lxc-start -n vm0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;default password:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;user: root&lt;/li&gt;
+&lt;li&gt;password: root&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tip: copy your ~/.ssh folder to each server for passwordless login&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nano /etc/default/locale
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;LANG=en_US.UTF-8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Configure locales&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dpkg-reconfigure locales
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open  /etc/inittab and make sure you comment out like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1:2345:respawn:/sbin/getty 38400 console
+#c1:12345:respawn:/sbin/getty 38400 tty1 linux
+#c2:12345:respawn:/sbin/getty 38400 tty2 linux
+#c3:12345:respawn:/sbin/getty 38400 tty3 linux
+#c4:12345:respawn:/sbin/getty 38400 tty4 linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you should be at the vm0 login, try user root with pass root&lt;br /&gt;
+Try to ping a domain you know works, and it should give you a response otherwise your network setup failed.&lt;/p&gt;
+
+&lt;p&gt;Assuming it worked, let&amp;rsquo;s make it permanent.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ln -s $LXCDIR/vm0/config /etc/lxc/vm0.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Turn this on and add vm0 to the container variable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /etc/default/
+nano lxc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we will setup the server:&lt;/p&gt;
+
+&lt;h2&gt;LXC Debian Server Setup&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Useful Resources:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://lxc.teegra.net&#34;&gt;teegra.net&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.linuxfoundation.org/collaborate/workgroups/networking&#34;&gt;linuxfoundation.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://wiki.debian.org/HighPerformanceComputing&#34;&gt;wiki.debian.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://qemu-buch.de&#34;&gt;qemu-buch.de&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://nigel.mcnie.name/blog/a-five-minute-guide-to-linux-containers-for-debian&#34;&gt;nigel.mcnie.name&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Found another approach which looks interesting&lt;br /&gt;
+&lt;a href=&#34;http://wiki.pcprobleemloos.nl/using_lxc_linux_containers_on_debian_squeeze/creating_a_lxc_virtual_machine_template&#34;&gt;wiki.pcprobleemloos.nl&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Git Howto</title>
+      <link>http://www.robotamer.com/linux/git.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/git.html</guid>
+      <description>&lt;h4&gt;Stop tracking a file but keep the file:&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git rm --cached filename
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;Git Setup&lt;/h1&gt;
+
+&lt;h4&gt;Remote Server&lt;/h4&gt;
+
+&lt;p&gt;Go to your web root directory&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /var/www/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;identify your self to git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;quot;Dennis T Kaplan&amp;quot;
+
+git config --global user.email &amp;quot;alias@example.com&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create a live branch&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git branch live
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Make the live branch active&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout live
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Local&lt;/h4&gt;
+
+&lt;p&gt;Go to your working directory&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /var/www/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;identify your self to git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;quot;Dennis T Kaplan&amp;quot;
+
+git config --global user.email &amp;quot;alias@example.com&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;create the ignore file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nano .gitignore
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Place this in to your .gitignore file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Packages #
+############
+# it&#39;s better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sqlite
+*.db3
+*/temp/*
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Backup files #
+######################
+*~
+*.orig
+*.bak
+test*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add your files to git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Commit them&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git commit -m &#39;init&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add your remote git server&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote add ssh://username@example.com/var/www/.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;send your data to the remote server&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Remote Server&lt;/h4&gt;
+
+&lt;p&gt;Checkout master branch so we can test the changes&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;see if it works and if it does go back to the live branch&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout live
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;pull in master to live&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git merge master
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bridge-Utils for LXC</title>
+      <link>http://www.robotamer.com/linux/bridge-utils.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/bridge-utils.html</guid>
+      <description>&lt;h2&gt;Bridging Network Connections&lt;/h2&gt;
+
+&lt;p&gt;Install&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install bridge-utils
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Start the bridge:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;brctl addbr br0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Edit: /etc/network/interfaces&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Bridge between eth0 and eth1
+auto br0
+
+# DHCP would look like this but we will use static
+# iface br0 inet dhcp
+
+iface br0 inet static
+address 192.168.1.100
+network 192.168.1.0
+gateway 192.168.1.1
+broadcast 192.168.1.255
+netmask 255.255.255.0
+dns-nameservers 192.168.1.1
+#dns-search example.com 
+
+  pre-up ip link set eth0 down
+  pre-up ip link set eth1 down
+  pre-up brctl addbr br0
+  pre-up brctl addif br0 eth0 eth1
+  pre-up ip addr flush dev eth0
+  pre-up ip addr flush dev eth1
+  post-down ip link set eth0 down
+  post-down ip link set eth1 down
+  post-down ip link set br0 down
+  post-down brctl delif br0 eth0 eth1
+  post-down brctl delbr br0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Restart network:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/etc/init.d/networking stop
+/etc/init.d/networking start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Turn on the bridge:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ip link set br0 up
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s check:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ifconfig
+brctl show
+ip addr show
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bridge Notes:
+How to remove a bridge {bring down first then delete}&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ip link set br0 down
+brctl delbr br0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;LXC Setup&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#cat /etc/network/interfaces
+auto lo
+iface lo inet loopback
+up route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+down route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+
+# device: eth0
+auto eth0
+iface eth0 inet manual
+
+auto br0
+iface br0 inet static
+       address 70.22.189.58
+       netmask 255.255.255.248
+       gateway 70.22.189.57
+       broadcast 70.22.189.63
+       bridge_ports eth0
+       bridge_fd 0
+       bridge_maxwait 0
+       bridge_stp off
+        post-up ip route add 70.22.189.59 dev br0
+        post-up ip route add 70.22.189.60 dev br0
+        post-up ip route add 70.22.189.61 dev br0
+        post-up ip route add 70.22.189.62 dev br0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More info at:
+&lt;a href=&#34;http://www.shorewall.net/LXC.html&#34;&gt;shorewall.net&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mail Server Fingerprint</title>
+      <link>http://www.robotamer.com/linux/openssl/mail-server-fingerprint.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/openssl/mail-server-fingerprint.html</guid>
+      <description>&lt;p&gt;This is useful for let&amp;rsquo;s say when you need the fingerprint to identify via TLS&lt;/p&gt;
+
+&lt;p&gt;Get the raw certificate:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo Q | openssl s_client -connect mail.example.com:443
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Copy and paste the scribble from &amp;mdash;&amp;ndash;BEGIN CERTIFICATE&amp;mdash;&amp;ndash; to &amp;mdash;&amp;ndash;END CERTIFICATE&amp;mdash;&amp;ndash; to a file called cert.pem. Including &amp;mdash;&amp;ndash;BEGIN CERTIFICATE&amp;mdash;&amp;ndash; as first and &amp;mdash;&amp;ndash;END CERTIFICATE&amp;mdash;&amp;ndash; as last line.&lt;/p&gt;
+
+&lt;p&gt;Generate the SHA1 fingerprint by issuing following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl x509 -in cert.pem -sha1 -noout -fingerprint
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Log Rotate</title>
+      <link>http://www.robotamer.com/linux/logrotate.html</link>
+      <pubDate>Mon, 02 Dec 2013 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/logrotate.html</guid>
+      <description>&lt;p&gt;Simple:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Change the MAXSIZE &amp;amp; LOGDIR&lt;/li&gt;
+&lt;li&gt;Add a cron job&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cron job weekly at 5am&lt;br /&gt;
+crontab: &lt;code&gt;0 5 * * 1 /var/www/log/logrotate.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;
+#!/bin/bash
+
+MAXSIZE=1024
+LOGDIR=/var/www/log/
+
+if [[ $EUID -ne 0 ]]; then
+   echo &amp;quot;This script must be run as root&amp;quot; 1&amp;gt;&amp;amp;2
+   exit 1
+fi
+
+cd $LOGDIR
+
+for FILENAME in *.log; do
+        SIZE=$(du -b $FILENAME | cut -f 1)
+        if(($SIZE&amp;gt;$MAXSIZE)); then
+                TIMESTAMP=`date +%Y%m%d`
+                NEWFILENAME=$FILENAME.$TIMESTAMP
+                mv $FILENAME $NEWFILENAME
+                touch $FILENAME
+                chown www-data.tamer $FILENAME
+                gzip -f -9 $NEWFILENAME
+                chown tamer.www-data $NEWFILENAME.gz
+        fi
+done
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>msmtp</title>
+      <link>http://www.robotamer.com/linux/mail/msmtp.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/mail/msmtp.html</guid>
+      <description>&lt;h1&gt;/etc/msmtprc&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;defaults
+maildomain      example.net
+syslog          LOG_MAIL
+aliases         /etc/aliases
+
+
+account         default
+host            mail.example.net
+port            587
+from            srv7@example.net
+auth            on
+user            user@example.net
+password        ********
+tls             on
+tls_starttls    on
+#tls_certcheck   off
+tls_fingerprint DB:A0:2A:07:00:F9:E3:23:7D:07:E7:52:3C:95:9D:E6:7E:12:54:3F
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Your alias file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# /etc/aliases 
+default: me@example.net
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A php script to send mail&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/php
+&amp;lt;?php
+
+define(&#39;TAB&#39;,&amp;quot;\t&amp;quot;);
+
+$user = $_SERVER[&#39;LOGNAME&#39;];
+$host = exec(&amp;quot;hostname -f&amp;quot;);
+$from = $user.&#39;@&#39;.$host;
+
+$to      = &#39;sweety@example.net&#39;;
+$subject = &#39;Testing msmtp&#39;;
+$message = &#39;hello from &#39;. $host;
+$headers = &#39;From: &#39;.$from.PHP_EOL;
+$headers .= &#39;X-Mailer: msmtp + PHP &#39;.phpversion();
+
+if(mail($to, $subject, $message, $headers))
+{
+     echo PHP_EOL.TAB.&#39;Your message was successfully accepted for delivery&#39;.PHP_EOL.PHP_EOL;
+}else{
+     echo PHP_EOL.TAB.&#39;Your message was not accepted for delivery!&#39;.PHP_EOL.PHP_EOL;
+}
+
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Self-Signed SSL Certificate</title>
+      <link>http://www.robotamer.com/linux/openssl/ca-cert.html</link>
+      <pubDate>Wed, 04 Dec 2013 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/openssl/ca-cert.html</guid>
+      <description>&lt;p&gt;&lt;em&gt;Note: This is a slighltly modified reprint from &lt;a href=&#34;http://www.akadia.com&#34;&gt;http://www.akadia.com&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3&gt;Overview&lt;/h3&gt;
+
+&lt;p&gt;The following is an extremely simplified view of how SSL is implemented and what part the certificate plays in the entire process.&lt;/p&gt;
+
+&lt;p&gt;Normal web traffic is sent unencrypted over the Internet. That is, anyone with access to the right tools can snoop all of that traffic. Obviously, this can lead to problems, especially where security and privacy is necessary, such as in credit card data and bank transactions. The Secure Socket Layer is used to encrypt the data stream between the web server and the web client (the browser).&lt;/p&gt;
+
+&lt;p&gt;SSL makes use of what is known as asymmetric cryptography, commonly referred to as public key cryptography (PKI). With public key cryptography, two keys are created, one public, one private. Anything encrypted with either key can only be decrypted with its corresponding key. Thus if a message or data stream were encrypted with the server&amp;rsquo;s private key, it can be decrypted only using its corresponding public key, ensuring that the data only could have come from the server.&lt;/p&gt;
+
+&lt;p&gt;If SSL utilizes public key cryptography to encrypt the data stream traveling over the Internet, why is a certificate necessary? The technical answer to that question is that a certificate is not really necessary - the data is secure and cannot easily be decrypted by a third party. However, certificates do serve a crucial role in the communication process. The certificate, signed by a trusted Certificate Authority (CA), ensures that the certificate holder is really who he claims to be. Without a trusted signed certificate, your data may be encrypted, however, the party you are communicating with may not be whom you think. Without certificates, impersonation attacks would be much more common.&lt;/p&gt;
+
+&lt;h4&gt;Step 1: Generate a Private Key&lt;/h4&gt;
+
+&lt;p&gt;The openssl toolkit is used to generate an RSA Private Key and CSR (Certificate Signing Request). It can also be used to generate self-signed certificates which can be used for testing purposes or internal usage.&lt;/p&gt;
+
+&lt;p&gt;The first step is to create your RSA Private Key. This key is a 1024 bit RSA key which is encrypted
+using Triple-DES and stored in a PEM format so that it is readable as ASCII text.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -des3 -out server.key 1024
+
+Generating RSA private key, 1024 bit long modulus
+.........................................................++++++
+........++++++
+e is 65537 (0x10001)
+Enter PEM pass phrase:
+Verifying password - Enter PEM pass phrase:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 2: Generate a CSR (Certificate Signing Request)&lt;/h4&gt;
+
+&lt;p&gt;Once the private key is generated a Certificate Signing Request can be generated. The CSR is then used in one of two ways. Ideally, the CSR will be sent to a Certificate Authority, such as Thawte or Verisign who will verify the identity of the requestor and issue a signed certificate. The second option is to self-sign the CSR, which will be demonstrated in the next section.&lt;/p&gt;
+
+&lt;p&gt;During the generation of the CSR, you will be prompted for several pieces of information. These are the X.509 attributes of the certificate. One of the prompts will be for &amp;ldquo;Common Name (e.g., YOUR name)&amp;rdquo;. It is important that this field be filled in with the fully qualified domain name of the server to be protected by SSL. If the website to be protected will be &lt;a href=&#34;https://public.akadia.com&#34;&gt;https://public.akadia.com&lt;/a&gt;, then enter public.akadia.com at this prompt. The command to generate the CSR is as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -new -key server.key -out server.csr
+
+Country Name (2 letter code) [GB]:CH
+State or Province Name (full name) [Berkshire]:Bern
+Locality Name (eg, city) [Newbury]:Oberdiessbach
+Organization Name (eg, company) [My Company Ltd]:Akadia AG
+Organizational Unit Name (eg, section) []:Information Technology
+Common Name (eg, your name or your server&#39;s hostname) []:public.akadia.com
+Email Address []:martin dot zahn at akadia dot ch
+Please enter the following &#39;extra&#39; attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 3: Remove Passphrase from Key&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;One unfortunate side-effect of the pass-phrased private key is that Apache will ask for the pass-phrase each time the web server is started. Obviously this is not necessarily convenient as someone will not always be around to type in the pass-phrase, such as after a reboot or crash. mod_ssl includes the ability to use an external program in place of the built-in pass-phrase dialog, however, this is not necessarily the most secure option either. It is possible to remove the Triple-DES encryption from the key, thereby no longer needing to type in a pass-phrase. If the private key is no longer encrypted, it is critical that this file only be readable by the root user! If your system is ever compromised and a third party obtains your unencrypted private key, the corresponding certificate will need to be revoked. With that being said, use the following command to remove the pass-phrase from the key:
+
+cp server.key server.key.org
+openssl rsa -in server.key.org -out server.key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The newly created server.key file has no more passphrase in it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-rw-r--r-- 1 root root 745 Jun 29 12:19 server.csr
+-rw-r--r-- 1 root root 891 Jun 29 13:22 server.key
+-rw-r--r-- 1 root root 963 Jun 29 13:22 server.key.org
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 4: Generating a Self-Signed Certificate&lt;/h4&gt;
+
+&lt;p&gt;At this point you will need to generate a self-signed certificate because you either don&amp;rsquo;t plan on having your certificate signed by a CA, or you wish to test your new SSL implementation while the CA is signing your certificate. This temporary certificate will generate an error in the client browser to the effect that the signing certificate authority is unknown and not trusted.&lt;/p&gt;
+
+&lt;h5&gt;To generate a temporary certificate which is good for 365 days, issue the following command:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+
+Signature ok
+subject=/C=CH/ST=Bern/L=Oberdiessbach/O=Akadia AG/OU=Information
+Technology/CN=public.akadia.com/Email=martin dot zahn at akadia dot ch
+Getting Private key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 5: Secure the Private Key&lt;/h4&gt;
+
+&lt;p&gt;This will insure that only the current user/you can read, and write to this file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chmod 600 server.key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 6: Installing the Private Key and Certificate&lt;/h4&gt;
+
+&lt;p&gt;When Apache with mod_ssl is installed, it creates several directories in the Apache config directory. The location of this directory will differ depending on how Apache was compiled.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cp server.crt /usr/local/apache/conf/ssl.crt
+cp server.key /usr/local/apache/conf/ssl.key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 7: Configuring SSL Enabled Virtual Hosts&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;SSLEngine on
+SSLCertificateFile /usr/local/apache/conf/ssl.crt/server.crt
+SSLCertificateKeyFile /usr/local/apache/conf/ssl.key/server.key
+SetEnvIf User-Agent &amp;quot;.*MSIE.*&amp;quot; nokeepalive ssl-unclean-shutdown
+CustomLog logs/ssl_request_log \
+   &amp;quot;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&amp;quot;%r\&amp;quot; %b&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 8: Restart Apache and Test&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;/etc/init.d/httpd stop
+/etc/init.d/httpd stop
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Self-Signed SSL Certificate with Config File</title>
+      <link>http://www.robotamer.com/linux/openssl/ca-cert-cfg.html</link>
+      <pubDate>Thu, 05 Dec 2013 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/openssl/ca-cert-cfg.html</guid>
+      <description>&lt;p&gt;I automated this as much as I could.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Edit DOMAIN name in the ca.cfg&lt;/li&gt;
+&lt;li&gt;Run the openssl command&lt;/li&gt;
+&lt;li&gt;chmod the key file&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;Code to execute:&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;DOMAIN=robotamer.com  
+openssl req -new -x509 -nodes -out $DOMAIN_.crt -config ca.cfg
+chmod 600 DOMAIN_.key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;TODO:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Still have to figure out how to get the global &lt;code&gt;DOMAIN&lt;/code&gt; var in to the config file.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Sample Config File:&lt;/h4&gt;
+
+&lt;p&gt;Save as &lt;code&gt;ca.cfg&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;
+# Specify the domain
+DOMAIN = robotamer.com
+
+#####################################################
+
+[ ca ]
+default_ca              = CA_default
+
+
+[ CA_default ]
+DIR                     = .
+serial                  = ${DIR}/serial
+database                = ${DIR}/index.txt
+new_certs_dir           = ${DIR}/newcerts
+certs                   = ${DIR}/certs
+certificate             = $certs/cacert.pem
+private_key             = ${DIR}/private/cakey.pem
+default_days            = 3650
+default_md              = sha1
+preserve                = no
+email_in_dn             = no
+nameopt                 = default_ca
+certopt                 = default_ca
+policy                  = policy_match
+copy_extensions         = copy
+
+
+[ policy_match ]
+countryName             = match
+stateOrProvinceName     = match
+organizationName        = match
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+
+[ req ]
+default_bits            = 2048                  # Size of keys
+default_keyfile         = ${DOMAIN}_.key        # name of generated keys
+default_md              = sha1                  # message digest algorithm
+string_mask             = nombstr               # permitted characters
+distinguished_name      = req_distinguished_name
+req_extensions          = v3_req
+x509_extensions         = v3_req
+
+
+[ req_distinguished_name ]
+# Variable name           Prompt string
+#----------------------   ----------------------------------
+0.organizationName      = Organization Name (company)
+organizationalUnitName  = Organizational Unit Name (department, division)
+emailAddress            = Email Address
+emailAddress_max        = 40
+localityName            = Locality Name (city, district)
+stateOrProvinceName     = State or Province Name (full name)
+countryName             = Country Name (2 letter code)
+countryName_min         = 2
+countryName_max         = 2
+commonName              = Common Name (hostname, IP, or your name)
+commonName_max          = 64
+
+# Default values.
+#------------------------------   ------------------------------
+commonName_default              = *.${DOMAIN}
+0.organizationName_default      = ${DOMAIN}
+organizationalUnitName_default  = IT
+localityName_default            = Los Angeles
+stateOrProvinceName_default     = California
+countryName_default             = US
+emailAddress_default            = webmaster@${DOMAIN}
+
+[alt_names]
+DNS.1     = www.${DOMAIN}
+DNS.2     = ${DOMAIN}
+# DNS.3   = www.example.com
+# DNS.4   = example.com
+
+
+[ v3_ca ]
+basicConstraints        = CA:TRUE
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer:always
+
+
+[ v3_req ]
+# Extensions to add to a certificate request
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+
+
+# Some CAs do not yet support subjectAltName in CSRs.
+# Instead the additional names are form entries on web
+# pages where one requests the certificate...
+subjectAltName          = @alt_names
+
+
+[ server ]
+# Make a cert with nsCertType set to &amp;quot;server&amp;quot;
+basicConstraints=CA:FALSE
+nsCertType                      = server
+nsComment                       = &amp;quot;OpenSSL Generated Server Certificate&amp;quot;
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid,issuer:always
+
+
+[ client ]
+# Make a cert with nsCertType set to &amp;quot;client&amp;quot;
+basicConstraints=CA:FALSE
+nsCertType                      = client
+nsComment                       = &amp;quot;OpenSSL Generated Client Certificate&amp;quot;
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid,issuer:always
+
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>UTF-8 Character List</title>
+      <link>http://www.robotamer.com/linux/utf-8.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/utf-8.html</guid>
+      <description>&lt;p&gt;Common: “ ” ‘ ’ – — … ‐ ‒ ° © ® ™ • ½ ¼ ¾ ⅓ ⅔ † ‡ µ ¢ £ € « » ♠ ♣ ♥ ♦ ¿ �&lt;br /&gt;
+Math: - × ÷ ± ∞ π ∅ ≤ ≥ ≠ ≈ ∧ ∨ ∩ ∪ ∈ ∀ ∃ ∄ ∑ ∏ ← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙ ↺ ↻ ⇒ ⇔&lt;br /&gt;
+SuperSub: ⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁺ ⁻ ⁽ ⁾ ⁿ ⁱ ₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;u00A0: &amp;#x00A0; ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬ ­ ® ¯ ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿&lt;br /&gt;
+u00C0: À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß&lt;br /&gt;
+u00E0: à á â ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ&lt;/p&gt;
+
+&lt;p&gt;u0100: Ā ā Ă ă Ą ą Ć ć Ĉ ĉ Ċ ċ Č č Ď ď Đ đ Ē ē Ĕ ĕ Ė ė Ę ę Ě ě Ĝ ĝ Ğ ğ&lt;br /&gt;
+u0120: Ġ ġ Ģ ģ Ĥ ĥ Ħ ħ Ĩ ĩ Ī ī Ĭ ĭ Į į İ ı Ĳ ĳ Ĵ ĵ Ķ ķ ĸ Ĺ ĺ Ļ ļ Ľ ľ Ŀ&lt;br /&gt;
+u0140: ŀ Ł ł Ń ń Ņ ņ Ň ň ŉ Ŋ ŋ Ō ō Ŏ ŏ Ő ő Œ œ Ŕ ŕ Ŗ ŗ Ř ř Ś ś Ŝ ŝ Ş ş&lt;br /&gt;
+u0160: Š š Ţ ţ Ť ť Ŧ ŧ Ũ ũ Ū ū Ŭ ŭ Ů ů Ű ű Ų ų Ŵ ŵ Ŷ ŷ Ÿ Ź ź Ż ż Ž ž ſ&lt;br /&gt;
+u0180: ƀ Ɓ Ƃ ƃ Ƅ ƅ Ɔ Ƈ ƈ Ɖ Ɗ Ƌ ƌ ƍ Ǝ Ə Ɛ Ƒ ƒ Ɠ Ɣ ƕ Ɩ Ɨ Ƙ ƙ ƚ ƛ Ɯ Ɲ ƞ Ɵ&lt;br /&gt;
+u01A0: Ơ ơ Ƣ ƣ Ƥ ƥ Ʀ Ƨ ƨ Ʃ ƪ ƫ Ƭ ƭ Ʈ Ư ư Ʊ Ʋ Ƴ ƴ Ƶ ƶ Ʒ Ƹ ƹ ƺ ƻ Ƽ ƽ ƾ ƿ&lt;br /&gt;
+u01C0: ǀ ǁ ǂ ǃ Ǆ ǅ ǆ Ǉ ǈ ǉ Ǌ ǋ ǌ Ǎ ǎ Ǐ ǐ Ǒ ǒ Ǔ ǔ Ǖ ǖ Ǘ ǘ Ǚ ǚ Ǜ ǜ ǝ Ǟ ǟ&lt;br /&gt;
+u01E0: Ǡ ǡ Ǣ ǣ Ǥ ǥ Ǧ ǧ Ǩ ǩ Ǫ ǫ Ǭ ǭ Ǯ ǯ ǰ Ǳ ǲ ǳ Ǵ ǵ Ƕ Ƿ Ǹ ǹ Ǻ ǻ Ǽ ǽ Ǿ ǿ&lt;br /&gt;
+u0200: Ȁ ȁ Ȃ ȃ Ȅ ȅ Ȇ ȇ Ȉ ȉ Ȋ ȋ Ȍ ȍ Ȏ ȏ Ȑ ȑ Ȓ ȓ Ȕ ȕ Ȗ ȗ Ș ș Ț ț Ȝ ȝ Ȟ ȟ&lt;br /&gt;
+u0220: Ƞ ȡ Ȣ ȣ Ȥ ȥ Ȧ ȧ Ȩ ȩ Ȫ ȫ Ȭ ȭ Ȯ ȯ Ȱ ȱ Ȳ ȳ ȴ ȵ ȶ ȷ ȸ ȹ Ⱥ Ȼ ȼ Ƚ Ⱦ ȿ&lt;br /&gt;
+u0240: ɀ Ɂ ɂ Ƀ Ʉ Ʌ Ɇ ɇ Ɉ ɉ Ɋ ɋ Ɍ ɍ Ɏ ɏ ɐ ɑ ɒ ɓ ɔ ɕ ɖ ɗ ɘ ə ɚ ɛ ɜ ɝ ɞ ɟ&lt;br /&gt;
+u0260: ɠ ɡ ɢ ɣ ɤ ɥ ɦ ɧ ɨ ɩ ɪ ɫ ɬ ɭ ɮ ɯ ɰ ɱ ɲ ɳ ɴ ɵ ɶ ɷ ɸ ɹ ɺ ɻ ɼ ɽ ɾ ɿ&lt;br /&gt;
+u0280: ʀ ʁ ʂ ʃ ʄ ʅ ʆ ʇ ʈ ʉ ʊ ʋ ʌ ʍ ʎ ʏ ʐ ʑ ʒ ʓ ʔ ʕ ʖ ʗ ʘ ʙ ʚ ʛ ʜ ʝ ʞ ʟ&lt;br /&gt;
+u02A0: ʠ ʡ ʢ ʣ ʤ ʥ ʦ ʧ ʨ ʩ ʪ ʫ ʬ ʭ ʮ ʯ ʰ ʱ ʲ ʳ ʴ ʵ ʶ ʷ ʸ ʹ ʺ ʻ ʼ ʽ ʾ ʿ&lt;br /&gt;
+u02C0: ˀ ˁ ˂ ˃ ˄ ˅ ˆ ˇ ˈ ˉ ˊ ˋ ˌ ˍ ˎ ˏ ː ˑ ˒ ˓ ˔ ˕ ˖ ˗ ˘ ˙ ˚ ˛ ˜ ˝ ˞ ˟&lt;br /&gt;
+u02E0: ˠ ˡ ˢ ˣ ˤ ˥ ˦ ˧ ˨ ˩ ˪ ˫ ˬ ˭ ˮ ˯ ˰ ˱ ˲ ˳ ˴ ˵ ˶ ˷ ˸ ˹ ˺ ˻ ˼ ˽ ˾ ˿&lt;br /&gt;
+u0300: ̀ ́ ̂ ̃ ̄ ̅ ̆ ̇ ̈ ̉ ̊ ̋ ̌ ̍ ̎ ̏ ̐ ̑ ̒ ̓ ̔ ̕ ̖ ̗ ̘ ̙ ̚ ̛ ̜ ̝ ̞ ̟&lt;br /&gt;
+u0320: ̠ ̡ ̢ ̣ ̤ ̥ ̦ ̧ ̨ ̩ ̪ ̫ ̬ ̭ ̮ ̯ ̰ ̱ ̲ ̳ ̴ ̵ ̶ ̷ ̸ ̹ ̺ ̻ ̼ ̽ ̾ ̿&lt;br /&gt;
+u0340: ̀ ́ ͂ ̓ ̈́ ͅ ͆ ͇ ͈ ͉ ͊ ͋ ͌ ͍ ͎ ͏ ͐ ͑ ͒ ͓ ͔ ͕ ͖ ͗ ͘ ͙ ͚ ͛ ͜ ͝ ͞ ͟&lt;br /&gt;
+u0360: ͠ ͡ ͢ ͣ ͤ ͥ ͦ ͧ ͨ ͩ ͪ ͫ ͬ ͭ ͮ ͯ Ͱ ͱ Ͳ ͳ ʹ ͵ Ͷ ͷ ͸ ͹ ͺ ͻ ͼ ͽ ; Ϳ&lt;br /&gt;
+u0380: ΀ ΁ ΂ ΃ ΄ ΅ Ά · Έ Ή Ί ΋ Ό ΍ Ύ Ώ ΐ Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο&lt;br /&gt;
+u03A0: Π Ρ ΢ Σ Τ Υ Φ Χ Ψ Ω Ϊ Ϋ ά έ ή ί ΰ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο&lt;br /&gt;
+u03C0: π ρ ς σ τ υ φ χ ψ ω ϊ ϋ ό ύ ώ Ϗ ϐ ϑ ϒ ϓ ϔ ϕ ϖ ϗ Ϙ ϙ Ϛ ϛ Ϝ ϝ Ϟ ϟ&lt;br /&gt;
+u03E0: Ϡ ϡ Ϣ ϣ Ϥ ϥ Ϧ ϧ Ϩ ϩ Ϫ ϫ Ϭ ϭ Ϯ ϯ ϰ ϱ ϲ ϳ ϴ ϵ ϶ Ϸ ϸ Ϲ Ϻ ϻ ϼ Ͻ Ͼ Ͽ&lt;br /&gt;
+u0400: Ѐ Ё Ђ Ѓ Є Ѕ І Ї Ј Љ Њ Ћ Ќ Ѝ Ў Џ А Б В Г Д Е Ж З И Й К Л М Н О П&lt;br /&gt;
+u0420: Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я а б в г д е ж з и й к л м н о п&lt;br /&gt;
+u0440: р с т у ф х ц ч ш щ ъ ы ь э ю я ѐ ё ђ ѓ є ѕ і ї ј љ њ ћ ќ ѝ ў џ&lt;br /&gt;
+u0460: Ѡ ѡ Ѣ ѣ Ѥ ѥ Ѧ ѧ Ѩ ѩ Ѫ ѫ Ѭ ѭ Ѯ ѯ Ѱ ѱ Ѳ ѳ Ѵ ѵ Ѷ ѷ Ѹ ѹ Ѻ ѻ Ѽ ѽ Ѿ ѿ&lt;br /&gt;
+u0480: Ҁ ҁ ҂ ҃ ҄ ҅ ҆ ҇ ҈ ҉ Ҋ ҋ Ҍ ҍ Ҏ ҏ Ґ ґ Ғ ғ Ҕ ҕ Җ җ Ҙ ҙ Қ қ Ҝ ҝ Ҟ ҟ&lt;br /&gt;
+u04A0: Ҡ ҡ Ң ң Ҥ ҥ Ҧ ҧ Ҩ ҩ Ҫ ҫ Ҭ ҭ Ү ү Ұ ұ Ҳ ҳ Ҵ ҵ Ҷ ҷ Ҹ ҹ Һ һ Ҽ ҽ Ҿ ҿ&lt;br /&gt;
+u04C0: Ӏ Ӂ ӂ Ӄ ӄ Ӆ ӆ Ӈ ӈ Ӊ ӊ Ӌ ӌ Ӎ ӎ ӏ Ӑ ӑ Ӓ ӓ Ӕ ӕ Ӗ ӗ Ә ә Ӛ ӛ Ӝ ӝ Ӟ ӟ&lt;br /&gt;
+u04E0: Ӡ ӡ Ӣ ӣ Ӥ ӥ Ӧ ӧ Ө ө Ӫ ӫ Ӭ ӭ Ӯ ӯ Ӱ ӱ Ӳ ӳ Ӵ ӵ Ӷ ӷ Ӹ ӹ Ӻ ӻ Ӽ ӽ Ӿ ӿ&lt;br /&gt;
+u0500: Ԁ ԁ Ԃ ԃ Ԅ ԅ Ԇ ԇ Ԉ ԉ Ԋ ԋ Ԍ ԍ Ԏ ԏ Ԑ ԑ Ԓ ԓ Ԕ ԕ Ԗ ԗ Ԙ ԙ Ԛ ԛ Ԝ ԝ Ԟ ԟ&lt;br /&gt;
+u0520: Ԡ ԡ Ԣ ԣ Ԥ ԥ Ԧ ԧ Ԩ ԩ Ԫ ԫ Ԭ ԭ Ԯ ԯ ԰ Ա Բ Գ Դ Ե Զ Է Ը Թ Ժ Ի Լ Խ Ծ Կ&lt;br /&gt;
+u0620: ؠ ء آ أ ؤ إ ئ ا ب ة ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ػ ؼ ؽ ؾ ؿ&lt;br /&gt;
+u0640: ـ ف ق ك ل م ن ه و ى ي ً ٌ ٍ َ ُ ِ ّ ْ ٓ ٔ ٕ ٖ ٗ ٘ ٙ ٚ ٛ ٜ ٝ ٞ ٟ&lt;br /&gt;
+u0660: ٠ ١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩ ٪ ٫ ٬ ٭ ٮ ٯ ٰ ٱ ٲ ٳ ٴ ٵ ٶ ٷ ٸ ٹ ٺ ٻ ټ ٽ پ ٿ&lt;br /&gt;
+u0680: ڀ ځ ڂ ڃ ڄ څ چ ڇ ڈ ډ ڊ ڋ ڌ ڍ ڎ ڏ ڐ ڑ ڒ ړ ڔ ڕ ږ ڗ ژ ڙ ښ ڛ ڜ ڝ ڞ ڟ&lt;br /&gt;
+u0900: ऀ ँ ं ः ऄ अ आ इ ई उ ऊ ऋ ऌ ऍ ऎ ए ऐ ऑ ऒ ओ औ क ख ग घ ङ च छ ज झ ञ ट&lt;br /&gt;
+u0920: ठ ड ढ ण त थ द ध न ऩ प फ ब भ म य र ऱ ल ळ ऴ व श ष स ह ऺ ऻ ़ ऽ ा ि&lt;br /&gt;
+u0940: ी ु ू ृ ॄ ॅ ॆ े ै ॉ ॊ ो ौ ् ॎ ॏ ॐ ॑ ॒ ॓ ॔ ॕ ॖ ॗ क़ ख़ ग़ ज़ ड़ ढ़ फ़ य़&lt;br /&gt;
+u0FC0: ࿀ ࿁ ࿂ ࿃ ࿄ ࿅ ࿆ ࿇ ࿈ ࿉ ࿊ ࿋ ࿌ ࿍ ࿎ ࿏ ࿐ ࿑ ࿒ ࿓ ࿔ ࿕ ࿖ ࿗ ࿘ ࿙ ࿚ ࿛ ࿜ ࿝ ࿞ ࿟&lt;br /&gt;
+u10A0: Ⴀ Ⴁ Ⴂ Ⴃ Ⴄ Ⴅ Ⴆ Ⴇ Ⴈ Ⴉ Ⴊ Ⴋ Ⴌ Ⴍ Ⴎ Ⴏ Ⴐ Ⴑ Ⴒ Ⴓ Ⴔ Ⴕ Ⴖ Ⴗ Ⴘ Ⴙ Ⴚ Ⴛ Ⴜ Ⴝ Ⴞ Ⴟ&lt;br /&gt;
+u13A0: Ꭰ Ꭱ Ꭲ Ꭳ Ꭴ Ꭵ Ꭶ Ꭷ Ꭸ Ꭹ Ꭺ Ꭻ Ꭼ Ꭽ Ꭾ Ꭿ Ꮀ Ꮁ Ꮂ Ꮃ Ꮄ Ꮅ Ꮆ Ꮇ Ꮈ Ꮉ Ꮊ Ꮋ Ꮌ Ꮍ Ꮎ Ꮏ&lt;br /&gt;
+u1400: ᐀ ᐁ ᐂ ᐃ ᐄ ᐅ ᐆ ᐇ ᐈ ᐉ ᐊ ᐋ ᐌ ᐍ ᐎ ᐏ ᐐ ᐑ ᐒ ᐓ ᐔ ᐕ ᐖ ᐗ ᐘ ᐙ ᐚ ᐛ ᐜ ᐝ ᐞ ᐟ&lt;br /&gt;
+u1580: ᖀ ᖁ ᖂ ᖃ ᖄ ᖅ ᖆ ᖇ ᖈ ᖉ ᖊ ᖋ ᖌ ᖍ ᖎ ᖏ ᖐ ᖑ ᖒ ᖓ ᖔ ᖕ ᖖ ᖗ ᖘ ᖙ ᖚ ᖛ ᖜ ᖝ ᖞ ᖟ&lt;br /&gt;
+u1680:   ᚁ ᚂ ᚃ ᚄ ᚅ ᚆ ᚇ ᚈ ᚉ ᚊ ᚋ ᚌ ᚍ ᚎ ᚏ ᚐ ᚑ ᚒ ᚓ ᚔ ᚕ ᚖ ᚗ ᚘ ᚙ ᚚ ᚛ ᚜ ᚝ ᚞ ᚟&lt;br /&gt;
+u16A0: ᚠ ᚡ ᚢ ᚣ ᚤ ᚥ ᚦ ᚧ ᚨ ᚩ ᚪ ᚫ ᚬ ᚭ ᚮ ᚯ ᚰ ᚱ ᚲ ᚳ ᚴ ᚵ ᚶ ᚷ ᚸ ᚹ ᚺ ᚻ ᚼ ᚽ ᚾ ᚿ&lt;br /&gt;
+u16C0: ᛀ ᛁ ᛂ ᛃ ᛄ ᛅ ᛆ ᛇ ᛈ ᛉ ᛊ ᛋ ᛌ ᛍ ᛎ ᛏ ᛐ ᛑ ᛒ ᛓ ᛔ ᛕ ᛖ ᛗ ᛘ ᛙ ᛚ ᛛ ᛜ ᛝ ᛞ ᛟ&lt;br /&gt;
+u16E0: ᛠ ᛡ ᛢ ᛣ ᛤ ᛥ ᛦ ᛧ ᛨ ᛩ ᛪ ᛫ ᛬ ᛭ ᛮ ᛯ ᛰ ᛱ ᛲ ᛳ ᛴ ᛵ ᛶ ᛷ ᛸ ᛹ ᛺ ᛻ ᛼ ᛽ ᛾ ᛿&lt;br /&gt;
+u1D00: ᴀ ᴁ ᴂ ᴃ ᴄ ᴅ ᴆ ᴇ ᴈ ᴉ ᴊ ᴋ ᴌ ᴍ ᴎ ᴏ ᴐ ᴑ ᴒ ᴓ ᴔ ᴕ ᴖ ᴗ ᴘ ᴙ ᴚ ᴛ ᴜ ᴝ ᴞ ᴟ&lt;br /&gt;
+u1D20: ᴠ ᴡ ᴢ ᴣ ᴤ ᴥ ᴦ ᴧ ᴨ ᴩ ᴪ ᴫ ᴬ ᴭ ᴮ ᴯ ᴰ ᴱ ᴲ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴻ ᴼ ᴽ ᴾ ᴿ&lt;br /&gt;
+u1D40: ᵀ ᵁ ᵂ ᵃ ᵄ ᵅ ᵆ ᵇ ᵈ ᵉ ᵊ ᵋ ᵌ ᵍ ᵎ ᵏ ᵐ ᵑ ᵒ ᵓ ᵔ ᵕ ᵖ ᵗ ᵘ ᵙ ᵚ ᵛ ᵜ ᵝ ᵞ ᵟ&lt;br /&gt;
+u1E00: Ḁ ḁ Ḃ ḃ Ḅ ḅ Ḇ ḇ Ḉ ḉ Ḋ ḋ Ḍ ḍ Ḏ ḏ Ḑ ḑ Ḓ ḓ Ḕ ḕ Ḗ ḗ Ḙ ḙ Ḛ ḛ Ḝ ḝ Ḟ ḟ&lt;br /&gt;
+u1E20: Ḡ ḡ Ḣ ḣ Ḥ ḥ Ḧ ḧ Ḩ ḩ Ḫ ḫ Ḭ ḭ Ḯ ḯ Ḱ ḱ Ḳ ḳ Ḵ ḵ Ḷ ḷ Ḹ ḹ Ḻ ḻ Ḽ ḽ Ḿ ḿ&lt;br /&gt;
+u1E40: Ṁ ṁ Ṃ ṃ Ṅ ṅ Ṇ ṇ Ṉ ṉ Ṋ ṋ Ṍ ṍ Ṏ ṏ Ṑ ṑ Ṓ ṓ Ṕ ṕ Ṗ ṗ Ṙ ṙ Ṛ ṛ Ṝ ṝ Ṟ ṟ&lt;br /&gt;
+u1E60: Ṡ ṡ Ṣ ṣ Ṥ ṥ Ṧ ṧ Ṩ ṩ Ṫ ṫ Ṭ ṭ Ṯ ṯ Ṱ ṱ Ṳ ṳ Ṵ ṵ Ṷ ṷ Ṹ ṹ Ṻ ṻ Ṽ ṽ Ṿ ṿ&lt;br /&gt;
+u1E80: Ẁ ẁ Ẃ ẃ Ẅ ẅ Ẇ ẇ Ẉ ẉ Ẋ ẋ Ẍ ẍ Ẏ ẏ Ẑ ẑ Ẓ ẓ Ẕ ẕ ẖ ẗ ẘ ẙ ẚ ẛ ẜ ẝ ẞ ẟ&lt;br /&gt;
+u1EA0: Ạ ạ Ả ả Ấ ấ Ầ ầ Ẩ ẩ Ẫ ẫ Ậ ậ Ắ ắ Ằ ằ Ẳ ẳ Ẵ ẵ Ặ ặ Ẹ ẹ Ẻ ẻ Ẽ ẽ Ế ế&lt;br /&gt;
+u1EC0: Ề ề Ể ể Ễ ễ Ệ ệ Ỉ ỉ Ị ị Ọ ọ Ỏ ỏ Ố ố Ồ ồ Ổ ổ Ỗ ỗ Ộ ộ Ớ ớ Ờ ờ Ở ở&lt;br /&gt;
+u1EE0: Ỡ ỡ Ợ ợ Ụ ụ Ủ ủ Ứ ứ Ừ ừ Ử ử Ữ ữ Ự ự Ỳ ỳ Ỵ ỵ Ỷ ỷ Ỹ ỹ Ỻ ỻ Ỽ ỽ Ỿ ỿ&lt;br /&gt;
+u1F00: ἀ ἁ ἂ ἃ ἄ ἅ ἆ ἇ Ἀ Ἁ Ἂ Ἃ Ἄ Ἅ Ἆ Ἇ ἐ ἑ ἒ ἓ ἔ ἕ ἖ ἗ Ἐ Ἑ Ἒ Ἓ Ἔ Ἕ ἞ ἟&lt;br /&gt;
+u1F20: ἠ ἡ ἢ ἣ ἤ ἥ ἦ ἧ Ἠ Ἡ Ἢ Ἣ Ἤ Ἥ Ἦ Ἧ ἰ ἱ ἲ ἳ ἴ ἵ ἶ ἷ Ἰ Ἱ Ἲ Ἳ Ἴ Ἵ Ἶ Ἷ&lt;br /&gt;
+u1F40: ὀ ὁ ὂ ὃ ὄ ὅ ὆ ὇ Ὀ Ὁ Ὂ Ὃ Ὄ Ὅ ὎ ὏ ὐ ὑ ὒ ὓ ὔ ὕ ὖ ὗ ὘ Ὑ ὚ Ὓ ὜ Ὕ ὞ Ὗ&lt;br /&gt;
+u1F60: ὠ ὡ ὢ ὣ ὤ ὥ ὦ ὧ Ὠ Ὡ Ὢ Ὣ Ὤ Ὥ Ὦ Ὧ ὰ ά ὲ έ ὴ ή ὶ ί ὸ ό ὺ ύ ὼ ώ ὾ ὿&lt;br /&gt;
+u1F80: ᾀ ᾁ ᾂ ᾃ ᾄ ᾅ ᾆ ᾇ ᾈ ᾉ ᾊ ᾋ ᾌ ᾍ ᾎ ᾏ ᾐ ᾑ ᾒ ᾓ ᾔ ᾕ ᾖ ᾗ ᾘ ᾙ ᾚ ᾛ ᾜ ᾝ ᾞ ᾟ&lt;br /&gt;
+u1FA0: ᾠ ᾡ ᾢ ᾣ ᾤ ᾥ ᾦ ᾧ ᾨ ᾩ ᾪ ᾫ ᾬ ᾭ ᾮ ᾯ ᾰ ᾱ ᾲ ᾳ ᾴ ᾵ ᾶ ᾷ Ᾰ Ᾱ Ὰ Ά ᾼ ᾽ ι ᾿&lt;br /&gt;
+u1FC0: ῀ ῁ ῂ ῃ ῄ ῅ ῆ ῇ Ὲ Έ Ὴ Ή ῌ ῍ ῎ ῏ ῐ ῑ ῒ ΐ ῔ ῕ ῖ ῗ Ῐ Ῑ Ὶ Ί ῜ ῝ ῞ ῟&lt;br /&gt;
+u1FE0: ῠ ῡ ῢ ΰ ῤ ῥ ῦ ῧ Ῠ Ῡ Ὺ Ύ Ῥ ῭ ΅ ` ῰ ῱ ῲ ῳ ῴ ῵ ῶ ῷ Ὸ Ό Ὼ Ώ ῼ ´ ῾ ῿&lt;br /&gt;
+u2000:                       ​ ‌ ‍ ‎ ‏ ‐ ‑ ‒ – — ― ‖ ‗ ‘ ’ ‚ ‛ “ ” „ ‟&lt;br /&gt;
+u2020: † ‡ • ‣ ․ ‥ … ‧     ‪ ‫ ‬ ‭ ‮   ‰ ‱ ′ ″ ‴ ‵ ‶ ‷ ‸ ‹ › ※ ‼ ‽ ‾ ‿&lt;br /&gt;
+u2040: ⁀ ⁁ ⁂ ⁃ ⁄ ⁅ ⁆ ⁇ ⁈ ⁉ ⁊ ⁋ ⁌ ⁍ ⁎ ⁏ ⁐ ⁑ ⁒ ⁓ ⁔ ⁕ ⁖ ⁗ ⁘ ⁙ ⁚ ⁛ ⁜ ⁝ ⁞  &lt;br /&gt;
+u2060: ⁠ ⁡ ⁢ ⁣ ⁤ ⁥ ⁦ ⁧ ⁨ ⁩ ⁪ ⁫ ⁬ ⁭ ⁮ ⁯ ⁰ ⁱ ⁲ ⁳ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁺ ⁻ ⁼ ⁽ ⁾ ⁿ&lt;br /&gt;
+u2080: ₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₏ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ ₝ ₞ ₟&lt;br /&gt;
+u20A0: ₠ ₡ ₢ ₣ ₤ ₥ ₦ ₧ ₨ ₩ ₪ ₫ € ₭ ₮ ₯ ₰ ₱ ₲ ₳ ₴ ₵ ₶ ₷ ₸ ₹ ₺ ₻ ₼ ₽ ₾ ₿&lt;br /&gt;
+u20C0: ⃀ ⃁ ⃂ ⃃ ⃄ ⃅ ⃆ ⃇ ⃈ ⃉ ⃊ ⃋ ⃌ ⃍ ⃎ ⃏ ⃐ ⃑ ⃒ ⃓ ⃔ ⃕ ⃖ ⃗ ⃘ ⃙ ⃚ ⃛ ⃜ ⃝ ⃞ ⃟&lt;br /&gt;
+u20E0: ⃠ ⃡ ⃢ ⃣ ⃤ ⃥ ⃦ ⃧ ⃨ ⃩ ⃪ ⃫ ⃬ ⃭ ⃮ ⃯ ⃰ ⃱ ⃲ ⃳ ⃴ ⃵ ⃶ ⃷ ⃸ ⃹ ⃺ ⃻ ⃼ ⃽ ⃾ ⃿&lt;br /&gt;
+u2100: ℀ ℁ ℂ ℃ ℄ ℅ ℆ ℇ ℈ ℉ ℊ ℋ ℌ ℍ ℎ ℏ ℐ ℑ ℒ ℓ ℔ ℕ № ℗ ℘ ℙ ℚ ℛ ℜ ℝ ℞ ℟&lt;br /&gt;
+u2120: ℠ ℡ ™ ℣ ℤ ℥ Ω ℧ ℨ ℩ K Å ℬ ℭ ℮ ℯ ℰ ℱ Ⅎ ℳ ℴ ℵ ℶ ℷ ℸ ℹ ℺ ℻ ℼ ℽ ℾ ℿ&lt;br /&gt;
+u2140: ⅀ ⅁ ⅂ ⅃ ⅄ ⅅ ⅆ ⅇ ⅈ ⅉ ⅊ ⅋ ⅌ ⅍ ⅎ ⅏ ⅐ ⅑ ⅒ ⅓ ⅔ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅛ ⅜ ⅝ ⅞ ⅟&lt;br /&gt;
+u2160: Ⅰ Ⅱ Ⅲ Ⅳ Ⅴ Ⅵ Ⅶ Ⅷ Ⅸ Ⅹ Ⅺ Ⅻ Ⅼ Ⅽ Ⅾ Ⅿ ⅰ ⅱ ⅲ ⅳ ⅴ ⅵ ⅶ ⅷ ⅸ ⅹ ⅺ ⅻ ⅼ ⅽ ⅾ ⅿ&lt;br /&gt;
+u2180: ↀ ↁ ↂ Ↄ ↄ ↅ ↆ ↇ ↈ ↉ ↊ ↋ ↌ ↍ ↎ ↏ ← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙ ↚ ↛ ↜ ↝ ↞ ↟&lt;br /&gt;
+u21A0: ↠ ↡ ↢ ↣ ↤ ↥ ↦ ↧ ↨ ↩ ↪ ↫ ↬ ↭ ↮ ↯ ↰ ↱ ↲ ↳ ↴ ↵ ↶ ↷ ↸ ↹ ↺ ↻ ↼ ↽ ↾ ↿&lt;br /&gt;
+u21C0: ⇀ ⇁ ⇂ ⇃ ⇄ ⇅ ⇆ ⇇ ⇈ ⇉ ⇊ ⇋ ⇌ ⇍ ⇎ ⇏ ⇐ ⇑ ⇒ ⇓ ⇔ ⇕ ⇖ ⇗ ⇘ ⇙ ⇚ ⇛ ⇜ ⇝ ⇞ ⇟&lt;br /&gt;
+u21E0: ⇠ ⇡ ⇢ ⇣ ⇤ ⇥ ⇦ ⇧ ⇨ ⇩ ⇪ ⇫ ⇬ ⇭ ⇮ ⇯ ⇰ ⇱ ⇲ ⇳ ⇴ ⇵ ⇶ ⇷ ⇸ ⇹ ⇺ ⇻ ⇼ ⇽ ⇾ ⇿&lt;br /&gt;
+u2200: ∀ ∁ ∂ ∃ ∄ ∅ ∆ ∇ ∈ ∉ ∊ ∋ ∌ ∍ ∎ ∏ ∐ ∑ − ∓ ∔ ∕ ∖ ∗ ∘ ∙ √ ∛ ∜ ∝ ∞ ∟&lt;br /&gt;
+u2220: ∠ ∡ ∢ ∣ ∤ ∥ ∦ ∧ ∨ ∩ ∪ ∫ ∬ ∭ ∮ ∯ ∰ ∱ ∲ ∳ ∴ ∵ ∶ ∷ ∸ ∹ ∺ ∻ ∼ ∽ ∾ ∿&lt;br /&gt;
+u2240: ≀ ≁ ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋ ≌ ≍ ≎ ≏ ≐ ≑ ≒ ≓ ≔ ≕ ≖ ≗ ≘ ≙ ≚ ≛ ≜ ≝ ≞ ≟&lt;br /&gt;
+u2260: ≠ ≡ ≢ ≣ ≤ ≥ ≦ ≧ ≨ ≩ ≪ ≫ ≬ ≭ ≮ ≯ ≰ ≱ ≲ ≳ ≴ ≵ ≶ ≷ ≸ ≹ ≺ ≻ ≼ ≽ ≾ ≿&lt;br /&gt;
+u2280: ⊀ ⊁ ⊂ ⊃ ⊄ ⊅ ⊆ ⊇ ⊈ ⊉ ⊊ ⊋ ⊌ ⊍ ⊎ ⊏ ⊐ ⊑ ⊒ ⊓ ⊔ ⊕ ⊖ ⊗ ⊘ ⊙ ⊚ ⊛ ⊜ ⊝ ⊞ ⊟&lt;br /&gt;
+u22A0: ⊠ ⊡ ⊢ ⊣ ⊤ ⊥ ⊦ ⊧ ⊨ ⊩ ⊪ ⊫ ⊬ ⊭ ⊮ ⊯ ⊰ ⊱ ⊲ ⊳ ⊴ ⊵ ⊶ ⊷ ⊸ ⊹ ⊺ ⊻ ⊼ ⊽ ⊾ ⊿&lt;br /&gt;
+u22C0: ⋀ ⋁ ⋂ ⋃ ⋄ ⋅ ⋆ ⋇ ⋈ ⋉ ⋊ ⋋ ⋌ ⋍ ⋎ ⋏ ⋐ ⋑ ⋒ ⋓ ⋔ ⋕ ⋖ ⋗ ⋘ ⋙ ⋚ ⋛ ⋜ ⋝ ⋞ ⋟&lt;br /&gt;
+u22E0: ⋠ ⋡ ⋢ ⋣ ⋤ ⋥ ⋦ ⋧ ⋨ ⋩ ⋪ ⋫ ⋬ ⋭ ⋮ ⋯ ⋰ ⋱ ⋲ ⋳ ⋴ ⋵ ⋶ ⋷ ⋸ ⋹ ⋺ ⋻ ⋼ ⋽ ⋾ ⋿&lt;br /&gt;
+u2300: ⌀ ⌁ ⌂ ⌃ ⌄ ⌅ ⌆ ⌇ ⌈ ⌉ ⌊ ⌋ ⌌ ⌍ ⌎ ⌏ ⌐ ⌑ ⌒ ⌓ ⌔ ⌕ ⌖ ⌗ ⌘ ⌙ ⌚ ⌛ ⌜ ⌝ ⌞ ⌟&lt;br /&gt;
+u2320: ⌠ ⌡ ⌢ ⌣ ⌤ ⌥ ⌦ ⌧ ⌨ 〈 〉 ⌫ ⌬ ⌭ ⌮ ⌯ ⌰ ⌱ ⌲ ⌳ ⌴ ⌵ ⌶ ⌷ ⌸ ⌹ ⌺ ⌻ ⌼ ⌽ ⌾ ⌿&lt;br /&gt;
+u2340: ⍀ ⍁ ⍂ ⍃ ⍄ ⍅ ⍆ ⍇ ⍈ ⍉ ⍊ ⍋ ⍌ ⍍ ⍎ ⍏ ⍐ ⍑ ⍒ ⍓ ⍔ ⍕ ⍖ ⍗ ⍘ ⍙ ⍚ ⍛ ⍜ ⍝ ⍞ ⍟&lt;br /&gt;
+u2360: ⍠ ⍡ ⍢ ⍣ ⍤ ⍥ ⍦ ⍧ ⍨ ⍩ ⍪ ⍫ ⍬ ⍭ ⍮ ⍯ ⍰ ⍱ ⍲ ⍳ ⍴ ⍵ ⍶ ⍷ ⍸ ⍹ ⍺ ⍻ ⍼ ⍽ ⍾ ⍿&lt;br /&gt;
+u2380: ⎀ ⎁ ⎂ ⎃ ⎄ ⎅ ⎆ ⎇ ⎈ ⎉ ⎊ ⎋ ⎌ ⎍ ⎎ ⎏ ⎐ ⎑ ⎒ ⎓ ⎔ ⎕ ⎖ ⎗ ⎘ ⎙ ⎚ ⎛ ⎜ ⎝ ⎞ ⎟&lt;br /&gt;
+u23A0: ⎠ ⎡ ⎢ ⎣ ⎤ ⎥ ⎦ ⎧ ⎨ ⎩ ⎪ ⎫ ⎬ ⎭ ⎮ ⎯ ⎰ ⎱ ⎲ ⎳ ⎴ ⎵ ⎶ ⎷ ⎸ ⎹ ⎺ ⎻ ⎼ ⎽ ⎾ ⎿&lt;br /&gt;
+u23C0: ⏀ ⏁ ⏂ ⏃ ⏄ ⏅ ⏆ ⏇ ⏈ ⏉ ⏊ ⏋ ⏌ ⏍ ⏎ ⏏ ⏐ ⏑ ⏒ ⏓ ⏔ ⏕ ⏖ ⏗ ⏘ ⏙ ⏚ ⏛ ⏜ ⏝ ⏞ ⏟&lt;br /&gt;
+u23E0: ⏠ ⏡ ⏢ ⏣ ⏤ ⏥ ⏦ ⏧ ⏨ ⏩ ⏪ ⏫ ⏬ ⏭ ⏮ ⏯ ⏰ ⏱ ⏲ ⏳ ⏴ ⏵ ⏶ ⏷ ⏸ ⏹ ⏺ ⏻ ⏼ ⏽ ⏾ ⏿&lt;br /&gt;
+u2400: ␀ ␁ ␂ ␃ ␄ ␅ ␆ ␇ ␈ ␉ ␊ ␋ ␌ ␍ ␎ ␏ ␐ ␑ ␒ ␓ ␔ ␕ ␖ ␗ ␘ ␙ ␚ ␛ ␜ ␝ ␞ ␟&lt;br /&gt;
+u2420: ␠ ␡ ␢ ␣ ␤ ␥ ␦ ␧ ␨ ␩ ␪ ␫ ␬ ␭ ␮ ␯ ␰ ␱ ␲ ␳ ␴ ␵ ␶ ␷ ␸ ␹ ␺ ␻ ␼ ␽ ␾ ␿&lt;br /&gt;
+u2440: ⑀ ⑁ ⑂ ⑃ ⑄ ⑅ ⑆ ⑇ ⑈ ⑉ ⑊ ⑋ ⑌ ⑍ ⑎ ⑏ ⑐ ⑑ ⑒ ⑓ ⑔ ⑕ ⑖ ⑗ ⑘ ⑙ ⑚ ⑛ ⑜ ⑝ ⑞ ⑟&lt;br /&gt;
+u2460: ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ ⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿&lt;br /&gt;
+u2480: ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇ ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛ ⒜ ⒝ ⒞ ⒟&lt;br /&gt;
+u24A0: ⒠ ⒡ ⒢ ⒣ ⒤ ⒥ ⒦ ⒧ ⒨ ⒩ ⒪ ⒫ ⒬ ⒭ ⒮ ⒯ ⒰ ⒱ ⒲ ⒳ ⒴ ⒵ Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ&lt;br /&gt;
+u24C0: Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ&lt;br /&gt;
+u24E0: ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ ⓪ ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴ ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ ⓿&lt;br /&gt;
+u2500: ─ ━ │ ┃ ┄ ┅ ┆ ┇ ┈ ┉ ┊ ┋ ┌ ┍ ┎ ┏ ┐ ┑ ┒ ┓ └ ┕ ┖ ┗ ┘ ┙ ┚ ┛ ├ ┝ ┞ ┟&lt;br /&gt;
+u2520: ┠ ┡ ┢ ┣ ┤ ┥ ┦ ┧ ┨ ┩ ┪ ┫ ┬ ┭ ┮ ┯ ┰ ┱ ┲ ┳ ┴ ┵ ┶ ┷ ┸ ┹ ┺ ┻ ┼ ┽ ┾ ┿&lt;br /&gt;
+u2540: ╀ ╁ ╂ ╃ ╄ ╅ ╆ ╇ ╈ ╉ ╊ ╋ ╌ ╍ ╎ ╏ ═ ║ ╒ ╓ ╔ ╕ ╖ ╗ ╘ ╙ ╚ ╛ ╜ ╝ ╞ ╟&lt;br /&gt;
+u2560: ╠ ╡ ╢ ╣ ╤ ╥ ╦ ╧ ╨ ╩ ╪ ╫ ╬ ╭ ╮ ╯ ╰ ╱ ╲ ╳ ╴ ╵ ╶ ╷ ╸ ╹ ╺ ╻ ╼ ╽ ╾ ╿&lt;br /&gt;
+u2580: ▀ ▁ ▂ ▃ ▄ ▅ ▆ ▇ █ ▉ ▊ ▋ ▌ ▍ ▎ ▏ ▐ ░ ▒ ▓ ▔ ▕ ▖ ▗ ▘ ▙ ▚ ▛ ▜ ▝ ▞ ▟&lt;br /&gt;
+u25A0: ■ □ ▢ ▣ ▤ ▥ ▦ ▧ ▨ ▩ ▪ ▫ ▬ ▭ ▮ ▯ ▰ ▱ ▲ △ ▴ ▵ ▶ ▷ ▸ ▹ ► ▻ ▼ ▽ ▾ ▿&lt;br /&gt;
+u25C0: ◀ ◁ ◂ ◃ ◄ ◅ ◆ ◇ ◈ ◉ ◊ ○ ◌ ◍ ◎ ● ◐ ◑ ◒ ◓ ◔ ◕ ◖ ◗ ◘ ◙ ◚ ◛ ◜ ◝ ◞ ◟&lt;br /&gt;
+u25E0: ◠ ◡ ◢ ◣ ◤ ◥ ◦ ◧ ◨ ◩ ◪ ◫ ◬ ◭ ◮ ◯ ◰ ◱ ◲ ◳ ◴ ◵ ◶ ◷ ◸ ◹ ◺ ◻ ◼ ◽ ◾ ◿&lt;br /&gt;
+u2600: ☀ ☁ ☂ ☃ ☄ ★ ☆ ☇ ☈ ☉ ☊ ☋ ☌ ☍ ☎ ☏ ☐ ☑ ☒ ☓ ☔ ☕ ☖ ☗ ☘ ☙ ☚ ☛ ☜ ☝ ☞ ☟&lt;br /&gt;
+u2620: ☠ ☡ ☢ ☣ ☤ ☥ ☦ ☧ ☨ ☩ ☪ ☫ ☬ ☭ ☮ ☯ ☰ ☱ ☲ ☳ ☴ ☵ ☶ ☷ ☸ ☹ ☺ ☻ ☼ ☽ ☾ ☿&lt;br /&gt;
+u2640: ♀ ♁ ♂ ♃ ♄ ♅ ♆ ♇ ♈ ♉ ♊ ♋ ♌ ♍ ♎ ♏ ♐ ♑ ♒ ♓ ♔ ♕ ♖ ♗ ♘ ♙ ♚ ♛ ♜ ♝ ♞ ♟&lt;br /&gt;
+u2660: ♠ ♡ ♢ ♣ ♤ ♥ ♦ ♧ ♨ ♩ ♪ ♫ ♬ ♭ ♮ ♯ ♰ ♱ ♲ ♳ ♴ ♵ ♶ ♷ ♸ ♹ ♺ ♻ ♼ ♽ ♾ ♿&lt;br /&gt;
+u2680: ⚀ ⚁ ⚂ ⚃ ⚄ ⚅ ⚆ ⚇ ⚈ ⚉ ⚊ ⚋ ⚌ ⚍ ⚎ ⚏ ⚐ ⚑ ⚒ ⚓ ⚔ ⚕ ⚖ ⚗ ⚘ ⚙ ⚚ ⚛ ⚜ ⚝ ⚞ ⚟&lt;br /&gt;
+u26A0: ⚠ ⚡ ⚢ ⚣ ⚤ ⚥ ⚦ ⚧ ⚨ ⚩ ⚪ ⚫ ⚬ ⚭ ⚮ ⚯ ⚰ ⚱ ⚲ ⚳ ⚴ ⚵ ⚶ ⚷ ⚸ ⚹ ⚺ ⚻ ⚼ ⚽ ⚾ ⚿&lt;br /&gt;
+u2700: ✀ ✁ ✂ ✃ ✄ ✅ ✆ ✇ ✈ ✉ ✊ ✋ ✌ ✍ ✎ ✏ ✐ ✑ ✒ ✓ ✔ ✕ ✖ ✗ ✘ ✙ ✚ ✛ ✜ ✝ ✞ ✟&lt;br /&gt;
+u2720: ✠ ✡ ✢ ✣ ✤ ✥ ✦ ✧ ✨ ✩ ✪ ✫ ✬ ✭ ✮ ✯ ✰ ✱ ✲ ✳ ✴ ✵ ✶ ✷ ✸ ✹ ✺ ✻ ✼ ✽ ✾ ✿&lt;br /&gt;
+u2740: ❀ ❁ ❂ ❃ ❄ ❅ ❆ ❇ ❈ ❉ ❊ ❋ ❌ ❍ ❎ ❏ ❐ ❑ ❒ ❓ ❔ ❕ ❖ ❗ ❘ ❙ ❚ ❛ ❜ ❝ ❞ ❟&lt;br /&gt;
+u2760: ❠ ❡ ❢ ❣ ❤ ❥ ❦ ❧ ❨ ❩ ❪ ❫ ❬ ❭ ❮ ❯ ❰ ❱ ❲ ❳ ❴ ❵ ❶ ❷ ❸ ❹ ❺ ❻ ❼ ❽ ❾ ❿&lt;br /&gt;
+u2780: ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ ➓ ➔ ➕ ➖ ➗ ➘ ➙ ➚ ➛ ➜ ➝ ➞ ➟&lt;br /&gt;
+u27A0: ➠ ➡ ➢ ➣ ➤ ➥ ➦ ➧ ➨ ➩ ➪ ➫ ➬ ➭ ➮ ➯ ➰ ➱ ➲ ➳ ➴ ➵ ➶ ➷ ➸ ➹ ➺ ➻ ➼ ➽ ➾ ➿&lt;br /&gt;
+u27C0: ⟀ ⟁ ⟂ ⟃ ⟄ ⟅ ⟆ ⟇ ⟈ ⟉ ⟊ ⟋ ⟌ ⟍ ⟎ ⟏ ⟐ ⟑ ⟒ ⟓ ⟔ ⟕ ⟖ ⟗ ⟘ ⟙ ⟚ ⟛ ⟜ ⟝ ⟞ ⟟&lt;br /&gt;
+u27E0: ⟠ ⟡ ⟢ ⟣ ⟤ ⟥ ⟦ ⟧ ⟨ ⟩ ⟪ ⟫ ⟬ ⟭ ⟮ ⟯ ⟰ ⟱ ⟲ ⟳ ⟴ ⟵ ⟶ ⟷ ⟸ ⟹ ⟺ ⟻ ⟼ ⟽ ⟾ ⟿&lt;br /&gt;
+u2800: ⠀ ⠁ ⠂ ⠃ ⠄ ⠅ ⠆ ⠇ ⠈ ⠉ ⠊ ⠋ ⠌ ⠍ ⠎ ⠏ ⠐ ⠑ ⠒ ⠓ ⠔ ⠕ ⠖ ⠗ ⠘ ⠙ ⠚ ⠛ ⠜ ⠝ ⠞ ⠟&lt;br /&gt;
+u2820: ⠠ ⠡ ⠢ ⠣ ⠤ ⠥ ⠦ ⠧ ⠨ ⠩ ⠪ ⠫ ⠬ ⠭ ⠮ ⠯ ⠰ ⠱ ⠲ ⠳ ⠴ ⠵ ⠶ ⠷ ⠸ ⠹ ⠺ ⠻ ⠼ ⠽ ⠾ ⠿&lt;br /&gt;
+u2840: ⡀ ⡁ ⡂ ⡃ ⡄ ⡅ ⡆ ⡇ ⡈ ⡉ ⡊ ⡋ ⡌ ⡍ ⡎ ⡏ ⡐ ⡑ ⡒ ⡓ ⡔ ⡕ ⡖ ⡗ ⡘ ⡙ ⡚ ⡛ ⡜ ⡝ ⡞ ⡟&lt;br /&gt;
+u2860: ⡠ ⡡ ⡢ ⡣ ⡤ ⡥ ⡦ ⡧ ⡨ ⡩ ⡪ ⡫ ⡬ ⡭ ⡮ ⡯ ⡰ ⡱ ⡲ ⡳ ⡴ ⡵ ⡶ ⡷ ⡸ ⡹ ⡺ ⡻ ⡼ ⡽ ⡾ ⡿&lt;br /&gt;
+u2880: ⢀ ⢁ ⢂ ⢃ ⢄ ⢅ ⢆ ⢇ ⢈ ⢉ ⢊ ⢋ ⢌ ⢍ ⢎ ⢏ ⢐ ⢑ ⢒ ⢓ ⢔ ⢕ ⢖ ⢗ ⢘ ⢙ ⢚ ⢛ ⢜ ⢝ ⢞ ⢟&lt;br /&gt;
+u28A0: ⢠ ⢡ ⢢ ⢣ ⢤ ⢥ ⢦ ⢧ ⢨ ⢩ ⢪ ⢫ ⢬ ⢭ ⢮ ⢯ ⢰ ⢱ ⢲ ⢳ ⢴ ⢵ ⢶ ⢷ ⢸ ⢹ ⢺ ⢻ ⢼ ⢽ ⢾ ⢿&lt;br /&gt;
+u28C0: ⣀ ⣁ ⣂ ⣃ ⣄ ⣅ ⣆ ⣇ ⣈ ⣉ ⣊ ⣋ ⣌ ⣍ ⣎ ⣏ ⣐ ⣑ ⣒ ⣓ ⣔ ⣕ ⣖ ⣗ ⣘ ⣙ ⣚ ⣛ ⣜ ⣝ ⣞ ⣟&lt;br /&gt;
+u28E0: ⣠ ⣡ ⣢ ⣣ ⣤ ⣥ ⣦ ⣧ ⣨ ⣩ ⣪ ⣫ ⣬ ⣭ ⣮ ⣯ ⣰ ⣱ ⣲ ⣳ ⣴ ⣵ ⣶ ⣷ ⣸ ⣹ ⣺ ⣻ ⣼ ⣽ ⣾ ⣿&lt;br /&gt;
+u2900: ⤀ ⤁ ⤂ ⤃ ⤄ ⤅ ⤆ ⤇ ⤈ ⤉ ⤊ ⤋ ⤌ ⤍ ⤎ ⤏ ⤐ ⤑ ⤒ ⤓ ⤔ ⤕ ⤖ ⤗ ⤘ ⤙ ⤚ ⤛ ⤜ ⤝ ⤞ ⤟&lt;br /&gt;
+u2920: ⤠ ⤡ ⤢ ⤣ ⤤ ⤥ ⤦ ⤧ ⤨ ⤩ ⤪ ⤫ ⤬ ⤭ ⤮ ⤯ ⤰ ⤱ ⤲ ⤳ ⤴ ⤵ ⤶ ⤷ ⤸ ⤹ ⤺ ⤻ ⤼ ⤽ ⤾ ⤿&lt;br /&gt;
+u2940: ⥀ ⥁ ⥂ ⥃ ⥄ ⥅ ⥆ ⥇ ⥈ ⥉ ⥊ ⥋ ⥌ ⥍ ⥎ ⥏ ⥐ ⥑ ⥒ ⥓ ⥔ ⥕ ⥖ ⥗ ⥘ ⥙ ⥚ ⥛ ⥜ ⥝ ⥞ ⥟&lt;br /&gt;
+u2960: ⥠ ⥡ ⥢ ⥣ ⥤ ⥥ ⥦ ⥧ ⥨ ⥩ ⥪ ⥫ ⥬ ⥭ ⥮ ⥯ ⥰ ⥱ ⥲ ⥳ ⥴ ⥵ ⥶ ⥷ ⥸ ⥹ ⥺ ⥻ ⥼ ⥽ ⥾ ⥿&lt;br /&gt;
+u2980: ⦀ ⦁ ⦂ ⦃ ⦄ ⦅ ⦆ ⦇ ⦈ ⦉ ⦊ ⦋ ⦌ ⦍ ⦎ ⦏ ⦐ ⦑ ⦒ ⦓ ⦔ ⦕ ⦖ ⦗ ⦘ ⦙ ⦚ ⦛ ⦜ ⦝ ⦞ ⦟&lt;br /&gt;
+u29A0: ⦠ ⦡ ⦢ ⦣ ⦤ ⦥ ⦦ ⦧ ⦨ ⦩ ⦪ ⦫ ⦬ ⦭ ⦮ ⦯ ⦰ ⦱ ⦲ ⦳ ⦴ ⦵ ⦶ ⦷ ⦸ ⦹ ⦺ ⦻ ⦼ ⦽ ⦾ ⦿&lt;br /&gt;
+u29C0: ⧀ ⧁ ⧂ ⧃ ⧄ ⧅ ⧆ ⧇ ⧈ ⧉ ⧊ ⧋ ⧌ ⧍ ⧎ ⧏ ⧐ ⧑ ⧒ ⧓ ⧔ ⧕ ⧖ ⧗ ⧘ ⧙ ⧚ ⧛ ⧜ ⧝ ⧞ ⧟&lt;br /&gt;
+u29E0: ⧠ ⧡ ⧢ ⧣ ⧤ ⧥ ⧦ ⧧ ⧨ ⧩ ⧪ ⧫ ⧬ ⧭ ⧮ ⧯ ⧰ ⧱ ⧲ ⧳ ⧴ ⧵ ⧶ ⧷ ⧸ ⧹ ⧺ ⧻ ⧼ ⧽ ⧾ ⧿&lt;br /&gt;
+u2A00: ⨀ ⨁ ⨂ ⨃ ⨄ ⨅ ⨆ ⨇ ⨈ ⨉ ⨊ ⨋ ⨌ ⨍ ⨎ ⨏ ⨐ ⨑ ⨒ ⨓ ⨔ ⨕ ⨖ ⨗ ⨘ ⨙ ⨚ ⨛ ⨜ ⨝ ⨞ ⨟&lt;br /&gt;
+u2A20: ⨠ ⨡ ⨢ ⨣ ⨤ ⨥ ⨦ ⨧ ⨨ ⨩ ⨪ ⨫ ⨬ ⨭ ⨮ ⨯ ⨰ ⨱ ⨲ ⨳ ⨴ ⨵ ⨶ ⨷ ⨸ ⨹ ⨺ ⨻ ⨼ ⨽ ⨾ ⨿&lt;br /&gt;
+u2A40: ⩀ ⩁ ⩂ ⩃ ⩄ ⩅ ⩆ ⩇ ⩈ ⩉ ⩊ ⩋ ⩌ ⩍ ⩎ ⩏ ⩐ ⩑ ⩒ ⩓ ⩔ ⩕ ⩖ ⩗ ⩘ ⩙ ⩚ ⩛ ⩜ ⩝ ⩞ ⩟&lt;br /&gt;
+u2A60: ⩠ ⩡ ⩢ ⩣ ⩤ ⩥ ⩦ ⩧ ⩨ ⩩ ⩪ ⩫ ⩬ ⩭ ⩮ ⩯ ⩰ ⩱ ⩲ ⩳ ⩴ ⩵ ⩶ ⩷ ⩸ ⩹ ⩺ ⩻ ⩼ ⩽ ⩾ ⩿&lt;br /&gt;
+u2A80: ⪀ ⪁ ⪂ ⪃ ⪄ ⪅ ⪆ ⪇ ⪈ ⪉ ⪊ ⪋ ⪌ ⪍ ⪎ ⪏ ⪐ ⪑ ⪒ ⪓ ⪔ ⪕ ⪖ ⪗ ⪘ ⪙ ⪚ ⪛ ⪜ ⪝ ⪞ ⪟&lt;br /&gt;
+u2AA0: ⪠ ⪡ ⪢ ⪣ ⪤ ⪥ ⪦ ⪧ ⪨ ⪩ ⪪ ⪫ ⪬ ⪭ ⪮ ⪯ ⪰ ⪱ ⪲ ⪳ ⪴ ⪵ ⪶ ⪷ ⪸ ⪹ ⪺ ⪻ ⪼ ⪽ ⪾ ⪿&lt;br /&gt;
+u2AC0: ⫀ ⫁ ⫂ ⫃ ⫄ ⫅ ⫆ ⫇ ⫈ ⫉ ⫊ ⫋ ⫌ ⫍ ⫎ ⫏ ⫐ ⫑ ⫒ ⫓ ⫔ ⫕ ⫖ ⫗ ⫘ ⫙ ⫚ ⫛ ⫝̸ ⫝ ⫞ ⫟&lt;br /&gt;
+u2AE0: ⫠ ⫡ ⫢ ⫣ ⫤ ⫥ ⫦ ⫧ ⫨ ⫩ ⫪ ⫫ ⫬ ⫭ ⫮ ⫯ ⫰ ⫱ ⫲ ⫳ ⫴ ⫵ ⫶ ⫷ ⫸ ⫹ ⫺ ⫻ ⫼ ⫽ ⫾ ⫿&lt;br /&gt;
+u2B00: ⬀ ⬁ ⬂ ⬃ ⬄ ⬅ ⬆ ⬇ ⬈ ⬉ ⬊ ⬋ ⬌ ⬍ ⬎ ⬏ ⬐ ⬑ ⬒ ⬓ ⬔ ⬕ ⬖ ⬗ ⬘ ⬙ ⬚ ⬛ ⬜ ⬝ ⬞ ⬟&lt;br /&gt;
+u2B20: ⬠ ⬡ ⬢ ⬣ ⬤ ⬥ ⬦ ⬧ ⬨ ⬩ ⬪ ⬫ ⬬ ⬭ ⬮ ⬯ ⬰ ⬱ ⬲ ⬳ ⬴ ⬵ ⬶ ⬷ ⬸ ⬹ ⬺ ⬻ ⬼ ⬽ ⬾ ⬿&lt;br /&gt;
+u2C60: Ⱡ ⱡ Ɫ Ᵽ Ɽ ⱥ ⱦ Ⱨ ⱨ Ⱪ ⱪ Ⱬ ⱬ Ɑ Ɱ Ɐ Ɒ ⱱ Ⱳ ⱳ ⱴ Ⱶ ⱶ ⱷ ⱸ ⱹ ⱺ ⱻ ⱼ ⱽ Ȿ Ɀ&lt;br /&gt;
+u2E80: ⺀ ⺁ ⺂ ⺃ ⺄ ⺅ ⺆ ⺇ ⺈ ⺉ ⺊ ⺋ ⺌ ⺍ ⺎ ⺏ ⺐ ⺑ ⺒ ⺓ ⺔ ⺕ ⺖ ⺗ ⺘ ⺙ ⺚ ⺛ ⺜ ⺝ ⺞ ⺟&lt;br /&gt;
+u2EA0: ⺠ ⺡ ⺢ ⺣ ⺤ ⺥ ⺦ ⺧ ⺨ ⺩ ⺪ ⺫ ⺬ ⺭ ⺮ ⺯ ⺰ ⺱ ⺲ ⺳ ⺴ ⺵ ⺶ ⺷ ⺸ ⺹ ⺺ ⺻ ⺼ ⺽ ⺾ ⺿&lt;br /&gt;
+u2EC0: ⻀ ⻁ ⻂ ⻃ ⻄ ⻅ ⻆ ⻇ ⻈ ⻉ ⻊ ⻋ ⻌ ⻍ ⻎ ⻏ ⻐ ⻑ ⻒ ⻓ ⻔ ⻕ ⻖ ⻗ ⻘ ⻙ ⻚ ⻛ ⻜ ⻝ ⻞ ⻟&lt;br /&gt;
+u2EE0: ⻠ ⻡ ⻢ ⻣ ⻤ ⻥ ⻦ ⻧ ⻨ ⻩ ⻪ ⻫ ⻬ ⻭ ⻮ ⻯ ⻰ ⻱ ⻲ ⻳ ⻴ ⻵ ⻶ ⻷ ⻸ ⻹ ⻺ ⻻ ⻼ ⻽ ⻾ ⻿&lt;br /&gt;
+u2F00: ⼀ ⼁ ⼂ ⼃ ⼄ ⼅ ⼆ ⼇ ⼈ ⼉ ⼊ ⼋ ⼌ ⼍ ⼎ ⼏ ⼐ ⼑ ⼒ ⼓ ⼔ ⼕ ⼖ ⼗ ⼘ ⼙ ⼚ ⼛ ⼜ ⼝ ⼞ ⼟&lt;br /&gt;
+u2F20: ⼠ ⼡ ⼢ ⼣ ⼤ ⼥ ⼦ ⼧ ⼨ ⼩ ⼪ ⼫ ⼬ ⼭ ⼮ ⼯ ⼰ ⼱ ⼲ ⼳ ⼴ ⼵ ⼶ ⼷ ⼸ ⼹ ⼺ ⼻ ⼼ ⼽ ⼾ ⼿&lt;br /&gt;
+u2F40: ⽀ ⽁ ⽂ ⽃ ⽄ ⽅ ⽆ ⽇ ⽈ ⽉ ⽊ ⽋ ⽌ ⽍ ⽎ ⽏ ⽐ ⽑ ⽒ ⽓ ⽔ ⽕ ⽖ ⽗ ⽘ ⽙ ⽚ ⽛ ⽜ ⽝ ⽞ ⽟&lt;br /&gt;
+u3040: ぀ ぁ あ ぃ い ぅ う ぇ え ぉ お か が き ぎ く ぐ け げ こ ご さ ざ し じ す ず せ ぜ そ ぞ た&lt;br /&gt;
+u3060: だ ち ぢ っ つ づ て で と ど な に ぬ ね の は ば ぱ ひ び ぴ ふ ぶ ぷ へ べ ぺ ほ ぼ ぽ ま み&lt;br /&gt;
+u3360: ㍠ ㍡ ㍢ ㍣ ㍤ ㍥ ㍦ ㍧ ㍨ ㍩ ㍪ ㍫ ㍬ ㍭ ㍮ ㍯ ㍰ ㍱ ㍲ ㍳ ㍴ ㍵ ㍶ ㍷ ㍸ ㍹ ㍺ ㍻ ㍼ ㍽ ㍾ ㍿&lt;br /&gt;
+u3380: ㎀ ㎁ ㎂ ㎃ ㎄ ㎅ ㎆ ㎇ ㎈ ㎉ ㎊ ㎋ ㎌ ㎍ ㎎ ㎏ ㎐ ㎑ ㎒ ㎓ ㎔ ㎕ ㎖ ㎗ ㎘ ㎙ ㎚ ㎛ ㎜ ㎝ ㎞ ㎟&lt;br /&gt;
+u33A0: ㎠ ㎡ ㎢ ㎣ ㎤ ㎥ ㎦ ㎧ ㎨ ㎩ ㎪ ㎫ ㎬ ㎭ ㎮ ㎯ ㎰ ㎱ ㎲ ㎳ ㎴ ㎵ ㎶ ㎷ ㎸ ㎹ ㎺ ㎻ ㎼ ㎽ ㎾ ㎿&lt;br /&gt;
+u33C0: ㏀ ㏁ ㏂ ㏃ ㏄ ㏅ ㏆ ㏇ ㏈ ㏉ ㏊ ㏋ ㏌ ㏍ ㏎ ㏏ ㏐ ㏑ ㏒ ㏓ ㏔ ㏕ ㏖ ㏗ ㏘ ㏙ ㏚ ㏛ ㏜ ㏝ ㏞ ㏟&lt;br /&gt;
+u50C0: 僀 僁 僂 僃 僄 僅 僆 僇 僈 僉 僊 僋 僌 働 僎 像 僐 僑 僒 僓 僔 僕 僖 僗 僘 僙 僚 僛 僜 僝 僞 僟&lt;br /&gt;
+u50E0: 僠 僡 僢 僣 僤 僥 僦 僧 僨 僩 僪 僫 僬 僭 僮 僯 僰 僱 僲 僳 僴 僵 僶 僷 僸 價 僺 僻 僼 僽 僾 僿&lt;br /&gt;
+uA9E0: ꧠ ꧡ ꧢ ꧣ ꧤ ꧥ ꧦ ꧧ ꧨ ꧩ ꧪ ꧫ ꧬ ꧭ ꧮ ꧯ ꧰ ꧱ ꧲ ꧳ ꧴ ꧵ ꧶ ꧷ ꧸ ꧹ ꧺ ꧻ ꧼ ꧽ ꧾ ꧿&lt;br /&gt;
+uAC00: 가 각 갂 갃 간 갅 갆 갇 갈 갉 갊 갋 갌 갍 갎 갏 감 갑 값 갓 갔 강 갖 갗 갘 같 갚 갛 개 객 갞 갟&lt;br /&gt;
+uAC20: 갠 갡 갢 갣 갤 갥 갦 갧 갨 갩 갪 갫 갬 갭 갮 갯 갰 갱 갲 갳 갴 갵 갶 갷 갸 갹 갺 갻 갼 갽 갾 갿&lt;br /&gt;
+uE220:                                &lt;br /&gt;
+uE240:                                &lt;br /&gt;
+uEA00:                                &lt;br /&gt;
+uEA20:                                &lt;br /&gt;
+uEDA0:                                &lt;br /&gt;
+uEE20:                                &lt;br /&gt;
+uEE60:                                &lt;br /&gt;
+uFB00: ﬀ ﬁ ﬂ ﬃ ﬄ ﬅ ﬆ ﬇ ﬈ ﬉ ﬊ ﬋ ﬌ ﬍ ﬎ ﬏ ﬐ ﬑ ﬒ ﬓ ﬔ ﬕ ﬖ ﬗ ﬘ ﬙ ﬚ ﬛ ﬜ יִ ﬞ ײַ&lt;br /&gt;
+uFB20: ﬠ ﬡ ﬢ ﬣ ﬤ ﬥ ﬦ ﬧ ﬨ ﬩ שׁ שׂ שּׁ שּׂ אַ אָ אּ בּ גּ דּ הּ וּ זּ ﬷ טּ יּ ךּ כּ לּ ﬽ מּ ﬿&lt;br /&gt;
+uFFE0: ￠ ￡ ￢ ￣ ￤ ￥ ￦ ￧ ￨ ￩ ￪ ￫ ￬ ￭ ￮ ￯ ￰ ￱ ￲ ￳ ￴ ￵ ￶ ￷ ￸ ￹ ￺ ￻ ￼ � ￾ ￿&lt;br /&gt;
+u1D300: 𝌀 𝌁 𝌂 𝌃 𝌄 𝌅 𝌆 𝌇 𝌈 𝌉 𝌊 𝌋 𝌌 𝌍 𝌎 𝌏 𝌐 𝌑 𝌒 𝌓 𝌔 𝌕 𝌖 𝌗 𝌘 𝌙 𝌚 𝌛 𝌜 𝌝 𝌞 𝌟&lt;br /&gt;
+u1D520: 𝔠 𝔡 𝔢 𝔣 𝔤 𝔥 𝔦 𝔧 𝔨 𝔩 𝔪 𝔫 𝔬 𝔭 𝔮 𝔯 𝔰 𝔱 𝔲 𝔳 𝔴 𝔵 𝔶 𝔷 𝔸 𝔹 𝔺 𝔻 𝔼 𝔽 𝔾 𝔿&lt;br /&gt;
+u1D540: 𝕀 𝕁 𝕂 𝕃 𝕄 𝕅 𝕆 𝕇 𝕈 𝕉 𝕊 𝕋 𝕌 𝕍 𝕎 𝕏 𝕐 𝕑 𝕒 𝕓 𝕔 𝕕 𝕖 𝕗 𝕘 𝕙 𝕚 𝕛 𝕜 𝕝 𝕞 𝕟&lt;br /&gt;
+u1D560: 𝕠 𝕡 𝕢 𝕣 𝕤 𝕥 𝕦 𝕧 𝕨 𝕩 𝕪 𝕫 𝕬 𝕭 𝕮 𝕯 𝕰 𝕱 𝕲 𝕳 𝕴 𝕵 𝕶 𝕷 𝕸 𝕹 𝕺 𝕻 𝕼 𝕽 𝕾 𝕿&lt;br /&gt;
+u26900: 𦤀 𦤁 𦤂 𦤃 𦤄 𦤅 𦤆 𦤇 𦤈 𦤉 𦤊 𦤋 𦤌 𦤍 𦤎 𦤏 𦤐 𦤑 𦤒 𦤓 𦤔 𦤕 𦤖 𦤗 𦤘 𦤙 𦤚 𦤛 𦤜 𦤝 𦤞 𦤟&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Send mail with sendmail</title>
+      <link>http://www.robotamer.com/linux/mail/sendmail.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/mail/sendmail.html</guid>
+      <description>&lt;p&gt;#!/bin/bash&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SENDMAIL=/usr/sbin/sendmail
+RECIPIENT=tosomeone@example.com
+FROM=me@example.com
+
+cat &amp;lt;&amp;lt;EOF | $SENDMAIL -t ${RECIPIENT}
+From: ${FROM} 
+To: ${RECIPIENT}
+Subject: testmail
+
+some test text as body of the email.
+EOF
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

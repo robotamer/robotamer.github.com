@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Go on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/go.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2013-12-01 00:00:00 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>﻿Hugo, a static website generator</title>
+      <link>http://www.robotamer.com/blog/hugo.html</link>
+      <pubDate>Sun, 01 Dec 2013 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/hugo.html</guid>
+      <description>&lt;p&gt;Just a couple of days ago I posted about jkl, a static website generator written in Go, and based on Jekyll.&lt;/p&gt;
+
+&lt;p&gt;While setting up jkl, I stumbled over Hugo! I was impressed at first site with Hugo.
+Since then I have reconfigured my site to work with Hugo.
+I didn&amp;rsquo;t have to fiddle with the Hugo code, everything just works, and it really does most everything that comes to mind.
+This whole website thing has been bothering me for a long time; and finally I am a happy camper.&lt;/p&gt;
+
+&lt;p&gt;There are a few thinks I still have to setup, like the indexes are done but the links don&amp;rsquo;t seam to work as expected, or I am doing something wrong. However this is minor considering that I am glad that Hugo even has a link and menu generating system.&lt;/p&gt;
+
+&lt;p&gt;Also the rss feeds needs some work, but again Hugo has that build in, I just have to set it up right.&lt;/p&gt;
+
+&lt;p&gt;Hugo&amp;rsquo;s front matter can be defined with YAML, TOML, or JSON. Which one you like is up to you, you can even use a
+different one on each page.
+Here is the TOML for this page:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+++
+linktitle = &amp;quot;Huge&amp;quot;
+title = &amp;quot;﻿Hugo, a static website generator&amp;quot;
+description = &amp;quot;Hugo is a static website generator written in the Go programing language&amp;quot;
+keywords = [&amp;quot;code&amp;quot;,&amp;quot;go&amp;quot;, &amp;quot;golang&amp;quot;, &amp;quot;website&amp;quot;,&amp;quot;static&amp;quot;,&amp;quot;generator&amp;quot;]
+tags = [&amp;quot;code&amp;quot;,&amp;quot;go&amp;quot;,&amp;quot;website&amp;quot;]
+groups = [&amp;quot;blog&amp;quot;]
+language = &amp;quot;en&amp;quot;
+date = &amp;quot;2013-12-01&amp;quot;
++++
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;In short, I can highlly recommend &lt;a href=&#34;http://github.com/spf13/hugo&#34;&gt;Hugo&lt;/a&gt; to any coder!&lt;/h4&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>jgdb</title>
+      <link>http://www.robotamer.com/code/go/gotamer/jgdb.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/jgdb.html</guid>
+      <description>&lt;h2&gt;About the implementation:&lt;/h2&gt;
+
+&lt;p&gt;This project is in alha state!&lt;/p&gt;
+
+&lt;h3&gt;Object Types&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tuple (In Memory Database) &lt;em&gt;Beta&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;List (Single file persistent database) &lt;em&gt;Beta&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Object (Multi file persistent database) &lt;em&gt;Alpha&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Cache (Cache for Tuple) &lt;em&gt;Not yet implemented&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Backends&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Json&lt;/li&gt;
+&lt;li&gt;Glob &lt;em&gt;Not yet implemented&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The major distinction between &lt;em&gt;List&lt;/em&gt; and &lt;em&gt;Object&lt;/em&gt; is that one, the &lt;em&gt;List type&lt;/em&gt; uses a single file as backend with each record placed in one line.&lt;br /&gt;
+Where as the &lt;em&gt;Object&lt;/em&gt; type keeps each record in a separate file. The object type will keep track of these records with an index file, and also optionally with a strtree for fast in memory access.&lt;/p&gt;
+
+&lt;h4&gt;How the List type works:&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The user creates a struct to his/her needs&lt;/li&gt;
+&lt;li&gt;The database inherits that struct via an &lt;em&gt;Interface&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;The database converts that struct to include the map id using &lt;em&gt;jsonListStruct&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;jsonListStruct struct is used to Marshal the data in to a json file&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;What is planed so far:&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a cache system with a user defined limit that keeps the most asked for items in a Tuple, as of now all data is being imported in to a Tuple.&lt;/li&gt;
+&lt;li&gt;Create the vcs (git) backup store for the json backend&lt;/li&gt;
+&lt;li&gt;Distribute with git push and pull&lt;/li&gt;
+&lt;li&gt;Keep an open line of communication with glob between nodes&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;Disadvantage:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;git is not the fastest distribution system&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Advantage:&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;All data is kept in plain text/json&lt;/li&gt;
+&lt;li&gt;Backups are incremental, distributed and under version control.&lt;/li&gt;
+&lt;li&gt;Distributed system. without the need for the master and slave concept.&lt;/li&gt;
+&lt;li&gt;Every node is independent of the overall system, and can function even if all others fail.&lt;/li&gt;
+&lt;li&gt;Database can get very big, bigger then what the memory can hold, and we will read less active data with io.Reader and bufio&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;FAQ&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;To get a proper distributed system you need a merge strategy for your git repositories. How would you solve conflicts?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As with everything I am open to suggestions, meanwhile I am planing following:&lt;br /&gt;
+The strategy will differ by List or Object type database.&lt;br /&gt;
+For example the List type database will not have any update only insert and delete.
+The insert operation will easily be resolved by git, when nodes do their pull, save, add, commit and push cycle.&lt;/p&gt;
+
+&lt;p&gt;When it comes to the delete operation, every node will before deleting a record, add lock on the file it plans to modify. Each node will be able to lock a file at pull time.
+This means other nodes can still modify and commit all other files, just not the one locked by a node.
+The lock will have a time limit as it does only takes a short time to perform a full cycle of pull, save, add, commit and push with git.&lt;/p&gt;
+
+&lt;h3&gt;Links&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.robotamer.com/code/go/gotamer/jgdb.html&#34; title=&#34;Website&#34;&gt;Website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://go.pkgdoc.org/bitbucket.org/gotamer/jgdb&#34; title=&#34;GoTamer Pkg Documentation&#34;&gt;Pkg Documantation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bitbucket.org/gotamer/jgdb&#34; title=&#34;GoTamer Repository&#34;&gt;Repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bitbucket.org/gotamer/jgdb/issues&#34; title=&#34;Bug Tracking&#34;&gt;Bug Tracking&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cfg</title>
+      <link>http://www.robotamer.com/code/go/gotamer/cfg.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/cfg.html</guid>
+      <description>&lt;h3&gt;Features:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You can define your config items in your application as a struct.&lt;/li&gt;
+&lt;li&gt;You can save a json template of your struct&lt;/li&gt;
+&lt;li&gt;You can save runtime modifications to the config&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Docs:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;import &amp;quot;bitbucket.org/gotamer/cfg&amp;quot;
+
+func Load(filename string, o interface{}) (err error)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Load gets your config from the json file, and fills your struct with the option&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func Save(filename string, o interface{}) (err error)   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save will save your struct to the given filename, this is a good way to create a json template&lt;/p&gt;
+
+&lt;h3&gt;Example:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;go&#34;&gt;    package main
+
+    import (
+        &amp;quot;fmt&amp;quot;
+        &amp;quot;bitbucket.org/gotamer/cfg&amp;quot;
+        &amp;quot;os&amp;quot;
+    )
+
+    var Cfg *MainCfg
+
+    type MainCfg struct {
+        Name  string
+    }
+
+    func main() {
+        Cfg = &amp;amp;MainCfg{&amp;quot;defaultAlias&amp;quot;}
+        cfgpath := os.Getenv(&amp;quot;GOPATH&amp;quot;) + &amp;quot;/etc/myappname.json&amp;quot;
+        err := cfg.Load(cfgpath, Cfg)
+        if err != nil {
+            cfg.Save(cfgpath, Cfg)
+            fmt.Println(&amp;quot;\n\tPlease edit your configuration at: &amp;quot;, cfgpath, &amp;quot;\n&amp;quot;)
+            os.Exit(0)
+        }
+        fmt.Printf(&amp;quot;%s&amp;quot;, Cfg)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Links&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://bitbucket.org/gotamer/cfg&#34; title=&#34;Repository&#34;&gt;Repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Gopher named Gophy</title>
+      <link>http://www.robotamer.com/code/go/gotamer/index.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/index.html</guid>
+      <description>&lt;p&gt;If you are just starting out with Go, head over to the &lt;a href=&#34;http://play.golang.org/p/fjK_EoQDtR&#34; title=&#34;Go Playground&#34;&gt;Go Playground&lt;/a&gt; and concentrate on
+figuring out how my little &lt;a href=&#34;http://play.golang.org/p/fjK_EoQDtR&#34; title=&#34;Go Playground&#34;&gt;Go Story&lt;/a&gt; works.
+It&amp;rsquo;s about a Gopher, named Gophy who joint the Gophers but lost his identity in the process.&lt;br /&gt;
+Once you get how he gets his identity back you&amp;rsquo;ll be golden.&lt;/p&gt;
+
+&lt;p&gt;Here is the code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+type I interface{}
+
+var gophers map[uint]I = make(map[uint]I)
+
+type gopher struct {
+    Name string
+}
+
+func main() {
+
+    g := AddToGophers(&amp;quot;Goghy&amp;quot;)
+
+    fmt.Printf(&amp;quot;Hello, %s\n&amp;quot;, g.Name)
+    fmt.Printf(&amp;quot;Now %s is a %T, %s\n&amp;quot;, g.Name, gophers[1], gophers[1])
+
+    gg := GetGopher(1)
+    fmt.Printf(&amp;quot;Bye, %s\n&amp;quot;, gg.Name)
+}
+
+func GetGopher(i uint) *gopher {
+    g := gophers[i]
+    // I wont my gopher identity back
+    return g.(*gopher)
+}
+
+func AddToGophers(n string) gopher {
+    g := new(gopher)
+    g.Name = n
+    gophers[1] = g
+    return *g
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

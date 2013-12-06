@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Git on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/git.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2011-06-21 04:52:48 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>git branch on bash line</title>
+      <link>http://www.robotamer.com/blog/2011-06-21-git-branch-on-bash-line.html</link>
+      <pubDate>Tue, 21 Jun 2011 04:52:48 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-21-git-branch-on-bash-line.html</guid>
+      <description>&lt;p&gt;This little code, if placed in to your ~/.bash_profile file will reveal what git branch you are working on.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;parse_git_branch() {
+        git branch 2&amp;gt; /dev/null | sed -e &#39;/^[^*]/d&#39; -e &#39;s/* (.*)/(1)/&#39;
+}
+if [[ $EUID -ne 0 ]]; then
+        PS1=&amp;quot;w$(parse_git_branch) $ &amp;quot;
+fi
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Git Howto</title>
+      <link>http://www.robotamer.com/linux/git.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/git.html</guid>
+      <description>&lt;h4&gt;Stop tracking a file but keep the file:&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git rm --cached filename
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;Git Setup&lt;/h1&gt;
+
+&lt;h4&gt;Remote Server&lt;/h4&gt;
+
+&lt;p&gt;Go to your web root directory&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /var/www/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;identify your self to git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;quot;Dennis T Kaplan&amp;quot;
+
+git config --global user.email &amp;quot;alias@example.com&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create a live branch&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git branch live
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Make the live branch active&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout live
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Local&lt;/h4&gt;
+
+&lt;p&gt;Go to your working directory&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /var/www/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;identify your self to git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;quot;Dennis T Kaplan&amp;quot;
+
+git config --global user.email &amp;quot;alias@example.com&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;create the ignore file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nano .gitignore
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Place this in to your .gitignore file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Packages #
+############
+# it&#39;s better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sqlite
+*.db3
+*/temp/*
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Backup files #
+######################
+*~
+*.orig
+*.bak
+test*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add your files to git&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git add .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Commit them&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git commit -m &#39;init&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add your remote git server&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote add ssh://username@example.com/var/www/.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;send your data to the remote server&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Remote Server&lt;/h4&gt;
+
+&lt;p&gt;Checkout master branch so we can test the changes&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;see if it works and if it does go back to the live branch&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout live
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;pull in master to live&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git merge master
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

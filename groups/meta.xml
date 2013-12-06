@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Meta on RoboTamer </title>
+    <link>http://www.robotamer.com/groups/meta.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2008-01-01 00:00:00 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>My little space on the net</title>
+      <link>http://www.robotamer.com/about.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/about.html</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;right&#34;&gt;
+&lt;img src=&#34;/static/img/robotamer.gif&#34; alt=&#34;Logo&#34; /&gt;
+
+&lt;/div&gt;
+Here you will find mostly documentation for some of the things I have coded.&lt;br /&gt;
+Improvements and/or bug reports are encouraged.&lt;br /&gt;
+Go ahead feel right at home, at the top is the main menu pointing to each project.&lt;/p&gt;
+
+&lt;p&gt;Unless otherwise specified within the code, most everything you can find here is MIT licensed.
+The link to the generic license is in the Meta menu.&lt;/p&gt;
+
+&lt;p&gt;This website has been created with &lt;a href=&#34;http://github.com/spf13/hugo&#34;&gt;hugo&lt;/a&gt; a Go program that converts
+markdown files to a complete website.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Copyright</title>
+      <link>http://www.robotamer.com/license.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/license.html</guid>
+      <description>&lt;h2&gt;Copyright &amp;copy; 2012 The GoTamer Authors. All rights reserved.&lt;/h2&gt;
+
+&lt;p&gt;Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.&lt;/li&gt;
+&lt;li&gt;Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.&lt;/li&gt;
+&lt;li&gt;Neither the name of GoTamer nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+&amp;ldquo;AS IS&amp;rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

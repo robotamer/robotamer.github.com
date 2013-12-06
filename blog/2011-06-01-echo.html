@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Copyright</title>
-  <meta name="description" content="">
-  <meta name="keywords" content=", , , , , , , , , , RoboTamer">
+  <title>e() for echo</title>
+  <meta name="description" content="echo, print, print_r(), and var_export() replacement">
+  <meta name="keywords" content="php, echo, print, print_r, var_export, RoboTamer">
   <meta name="generator" content="Hugo">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -16,6 +16,7 @@
     <link href="http://www.robotamer.com/static/css/hugoicon.css" rel="stylesheet"/>
 
 
+  <link rel="alternate" type="application/rss+xml" title="RoboTamer (RSS 2.0)" href="http://www.robotamer.com/blog.xml">
   </head>
   <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -163,44 +164,108 @@
       <div class="row">
         <div class="col-md-12">
 
+
+
+
 <div class="panel panel-default">
   <div class="panel-heading">
-  	<h2>Copyright</h2>
-	<h4></h4>
+  	<h2>e() for echo</h2>
+	<h4>echo, print, print_r(), and var_export() replacement</h4>
+	<h5>Wed, Jun 1, 2011</h5>
   </div>
   <div class="panel-body">
-  <h2>Copyright &copy; 2012 The GoTamer Authors. All rights reserved.</h2>
+	<p>It&rsquo;s really annoying having to thing of html stuff like pre &amp; br everytime you need to display something.</p>
 
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:</p>
+<p>And it&rsquo;s even worst if you like me test your code in cli and cgi.</p>
 
-<ul>
-<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of GoTamer nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
-</ul>
+<p>So I wrote this little method to take care of it all. It&rsquo;s nothing complicated but sure useful.</p>
 
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-&ldquo;AS IS&rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<p>It detects cgi and cli, and formats everything accordingly.</p>
+
+<pre><code class="php">    
+&lt;?php
+/**
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see http://www.gnu.org/licenses/
+**/
+
+/**
+ * e() --- Prints human-readable information about a variable
+ *
+ * string e ( mixed $expression[, string $name [, bool $return = false ]] )
+ *
+ * Replacement for php echo, print, print_r(), var_export() etc
+ */
+
+/**
+ * @category    TaMeR
+ * @copyright   Copyright (c) 2008 - 2011 Dennis T Kaplan
+ * @license     http://www.gnu.org/licenses/gpl.txt
+ * @link        http://github.com/pzzazz/TaMeR
+ * @author      Dennis T Kaplan
+ * @date        May 1, 2011
+ * @version     1.0
+ * @access      public
+ * @param       mixed   $var
+ * @param       string  $name
+ * @param       boolean $return
+ * @return      string
+ **/
+function e($var, $name = FALSE, $return = FALSE) {
+    $preO = $preC = ''; $br = PHP_EOL;
+    if( ! isset($_SERVER['argv'])){
+        $preO = '
+
+'; $preC = '';
+        $h1O = '&lt;h1&gt;';   $h1C = '&lt;/h1&gt;';
+        $br = '&lt;br&gt;&lt;/br&gt;'.PHP_EOL;
+    }
+    if(!is_array($var) &amp;&amp; !is_object($var))
+    {
+        if ($name !== FALSE) echo $br.$name.': ';
+        echo (isset($_SERVER['argv']))
+                  ? $var.$br
+                  : htmlspecialchars($var).$br;
+    }else{
+        if($return === FALSE) {
+            if ($name !== FALSE) echo $br.$h1O.$name.': '.$h1C;
+            echo $preO.print_r($var, TRUE).$preC.$br;
+        }else{
+            if ($name !== FALSE){
+                return '';
+            }else{
+                return $br.$preO.var_export($var, TRUE).$preC.$br;
+            }
+        }
+    }
+}
+?&gt;
+    
+</code></pre>
 
   </div>
   <div class="panel-footer">
     <div class="btn-group">
       
+      <a href="http://www.robotamer.com/tags/code.html"><button type="button" class="btn btn-info btn-xs">code</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/php.html"><button type="button" class="btn btn-info btn-xs">php</button></a>	
+      
     </div>  
   </div>
 </div>
- 
+
+
         </div>
       </div>
     </div>
@@ -239,3 +304,4 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
   </body>
 
 </html>
+

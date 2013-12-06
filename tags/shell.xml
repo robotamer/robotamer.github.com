@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Shell on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/shell.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2011-11-22 03:54:53 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Linux bash history</title>
+      <link>http://www.robotamer.com/linux/bash/history.html</link>
+      <pubDate>Tue, 22 Nov 2011 03:54:53 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/bash/history.html</guid>
+      <description>&lt;p&gt;Have you ever executed something on the linux shell and didn&amp;rsquo;t remember later how it was done?&lt;/p&gt;
+
+&lt;p&gt;Well if you remember just part of it you can search for it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;history | grep -i &amp;quot;[search string]&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux backround process</title>
+      <link>http://www.robotamer.com/blog/2011-06-01-nohub.html</link>
+      <pubDate>Wed, 01 Jun 2011 09:24:12 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-01-nohub.html</guid>
+      <description>&lt;p&gt;Running as background process with &lt;em&gt;nohub&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nohup scp  &amp;amp; &amp;gt; nohup.out 2 &amp;gt; &amp;amp;1
+
+nohup scp -r -p root@www.example.com:/var/www/ /var/www/ &amp;amp; &amp;gt;nohup.out 2&amp;gt;&amp;amp;1
+
+nohup scp -r -p root@www.example.com:/var/www/logs /var/www/ &amp;amp; &amp;gt;nohup.out 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux find &amp; replace HowTo</title>
+      <link>http://www.robotamer.com/blog/2011-06-01-linux-find-replace-howto.html</link>
+      <pubDate>Wed, 01 Jun 2011 09:20:26 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2011-06-01-linux-find-replace-howto.html</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Find and chmod files or folders&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;find . -type d -exec chmod 755 {} ;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;find . -name &amp;quot;*.php&amp;quot; | xargs grep -niP &#39;thingy&#39;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Find a directory and display on screen&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;find . -type d -name &#39;linux&#39; 2&amp;gt;/dev/null&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Find/Grep for a string across multiple files with different extensions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;find ( -name &amp;quot;*js&amp;quot; -o -name &amp;quot;*jsp&amp;quot; -o -name &amp;quot;*jspf&amp;quot; ) | xargs grep -niP &#39;thingy&#39;&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

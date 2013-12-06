@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Lxc on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/lxc.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2008-01-01 00:00:00 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Bridge-Utils for LXC</title>
+      <link>http://www.robotamer.com/linux/bridge-utils.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/bridge-utils.html</guid>
+      <description>&lt;h2&gt;Bridging Network Connections&lt;/h2&gt;
+
+&lt;p&gt;Install&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install bridge-utils
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Start the bridge:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;brctl addbr br0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Edit: /etc/network/interfaces&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Bridge between eth0 and eth1
+auto br0
+
+# DHCP would look like this but we will use static
+# iface br0 inet dhcp
+
+iface br0 inet static
+address 192.168.1.100
+network 192.168.1.0
+gateway 192.168.1.1
+broadcast 192.168.1.255
+netmask 255.255.255.0
+dns-nameservers 192.168.1.1
+#dns-search example.com 
+
+  pre-up ip link set eth0 down
+  pre-up ip link set eth1 down
+  pre-up brctl addbr br0
+  pre-up brctl addif br0 eth0 eth1
+  pre-up ip addr flush dev eth0
+  pre-up ip addr flush dev eth1
+  post-down ip link set eth0 down
+  post-down ip link set eth1 down
+  post-down ip link set br0 down
+  post-down brctl delif br0 eth0 eth1
+  post-down brctl delbr br0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Restart network:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/etc/init.d/networking stop
+/etc/init.d/networking start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Turn on the bridge:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ip link set br0 up
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s check:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ifconfig
+brctl show
+ip addr show
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bridge Notes:
+How to remove a bridge {bring down first then delete}&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ip link set br0 down
+brctl delbr br0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1&gt;LXC Setup&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;#cat /etc/network/interfaces
+auto lo
+iface lo inet loopback
+up route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+down route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+
+# device: eth0
+auto eth0
+iface eth0 inet manual
+
+auto br0
+iface br0 inet static
+       address 70.22.189.58
+       netmask 255.255.255.248
+       gateway 70.22.189.57
+       broadcast 70.22.189.63
+       bridge_ports eth0
+       bridge_fd 0
+       bridge_maxwait 0
+       bridge_stp off
+        post-up ip route add 70.22.189.59 dev br0
+        post-up ip route add 70.22.189.60 dev br0
+        post-up ip route add 70.22.189.61 dev br0
+        post-up ip route add 70.22.189.62 dev br0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More info at:
+&lt;a href=&#34;http://www.shorewall.net/LXC.html&#34;&gt;shorewall.net&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux Containers</title>
+      <link>http://www.robotamer.com/linux/lxc.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/lxc.html</guid>
+      <description>&lt;p&gt;Linux Containers provide a Free Software virtualization system for computers running GNU/Linux. This is accomplished through kernel level isolation. It allows one to run multiple virtual units simultaneously. Those units, similar to chroots, are sufficiently isolated to guarantee the required security, but utilize available resources efficiently, as they run on the same kernel.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install lxc bridge-utils debootstrap
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;First we will setup our Bridge: &lt;a href=&#34;Bridge-Utils.html&#34;&gt;Linux:bridge-utils&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;/etc/fstab&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cgroup          /sys/fs/cgroup         cgroup  defaults        0       0
+
+mount -a
+
+
+LXCDIR=/var/lib/lxc
+cd $LXCDIR
+nano vm0.cfg
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Following is a template config file. If you are also looking at other howto&amp;rsquo;s, don&amp;rsquo;t get coughed up at the fstab mount option. The debian script takes care of that. You will at leased have to change the IP address.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;vm0.cfg&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lxc.utsname = vm0
+lxc.rootfs = /var/lib/lxc/vm0/rootfs
+
+lxc.tty = 4
+lxc.network.type = veth
+lxc.network.flags = up
+lxc.network.link = br0
+lxc.network.name = eth0
+lxc.network.mtu = 1500
+
+# security parameter
+lxc.cgroup.devices.deny = a # Deny all access to devices
+lxc.cgroup.devices.allow = c 1:3 rwm   # dev/null
+lxc.cgroup.devices.allow = c 1:5 rwm   # dev/zero
+lxc.cgroup.devices.allow = c 5:1 rwm   # dev/console
+lxc.cgroup.devices.allow = c 5:0 rwm   # dev/tty
+lxc.cgroup.devices.allow = c 4:0 rwm   # dev/tty0
+lxc.cgroup.devices.allow = c 4:1 rwm   # dev/tty1
+lxc.cgroup.devices.allow = c 4:2 rwm   # dev/tty2
+lxc.cgroup.devices.allow = c 1:9 rwm   # dev/urandon
+lxc.cgroup.devices.allow = c 1:8 rwm   # dev/random
+lxc.cgroup.devices.allow = c 136:* rwm # dev/pts/*
+lxc.cgroup.devices.allow = c 5:2 rwm   # dev/pts/ptmx
+lxc.cgroup.devices.allow = c 254:0 rwm # dev/rtc
+
+# mounts point
+lxc.mount.entry=proc   /var/lib/lxc/vm0/rootfs/proc proc nodev,noexec,nosuid 0 0
+lxc.mount.entry=devpts /var/lib/lxc/vm0/rootfs/dev/pts devpts defaults 0 0
+lxc.mount.entry=sysfs  /var/lib/lxc/vm0/rootfs/sys sysfs defaults  0 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lxc-create -f $LXCDIR/vm0.cfg -n vm0
+cp /usr/lib/lxc/templates/lxc-debian $LXCDIR
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At this point you might wont to make lxc-debian your own. At leased change the release from Lenny to Squeeze&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./lxc-debian -p vm0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The vm0 should have been created now. Your root password is root.
+Before we start it up we will make some config changes.&lt;/p&gt;
+
+&lt;p&gt;First edit your network config&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nano $LXCDIR/vm0/rootfs/etc/network/interfaces
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;File needs to look like this: // Note change the IP addresses to yours, if you don&amp;rsquo;t know how, you know you shouldn&amp;rsquo;t be here //&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# The loopback network interface
+auto lo
+iface lo inet loopback
+up route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+down route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+
+auto eth0
+iface eth0 inet static
+address 70.22.189.59
+netmask 255.255.255.248
+gateway 70.22.189.57
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we will try to boot the system.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd $LXCDIR
+lxc-start -n vm0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;default password:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;user: root&lt;/li&gt;
+&lt;li&gt;password: root&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tip: copy your ~/.ssh folder to each server for passwordless login&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nano /etc/default/locale
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And add:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;LANG=en_US.UTF-8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Configure locales&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dpkg-reconfigure locales
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open  /etc/inittab and make sure you comment out like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1:2345:respawn:/sbin/getty 38400 console
+#c1:12345:respawn:/sbin/getty 38400 tty1 linux
+#c2:12345:respawn:/sbin/getty 38400 tty2 linux
+#c3:12345:respawn:/sbin/getty 38400 tty3 linux
+#c4:12345:respawn:/sbin/getty 38400 tty4 linux
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you should be at the vm0 login, try user root with pass root&lt;br /&gt;
+Try to ping a domain you know works, and it should give you a response otherwise your network setup failed.&lt;/p&gt;
+
+&lt;p&gt;Assuming it worked, let&amp;rsquo;s make it permanent.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ln -s $LXCDIR/vm0/config /etc/lxc/vm0.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Turn this on and add vm0 to the container variable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /etc/default/
+nano lxc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we will setup the server:&lt;/p&gt;
+
+&lt;h2&gt;LXC Debian Server Setup&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Useful Resources:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://lxc.teegra.net&#34;&gt;teegra.net&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.linuxfoundation.org/collaborate/workgroups/networking&#34;&gt;linuxfoundation.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://wiki.debian.org/HighPerformanceComputing&#34;&gt;wiki.debian.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://qemu-buch.de&#34;&gt;qemu-buch.de&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://nigel.mcnie.name/blog/a-five-minute-guide-to-linux-containers-for-debian&#34;&gt;nigel.mcnie.name&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Found another approach which looks interesting&lt;br /&gt;
+&lt;a href=&#34;http://wiki.pcprobleemloos.nl/using_lxc_linux_containers_on_debian_squeeze/creating_a_lxc_virtual_machine_template&#34;&gt;wiki.pcprobleemloos.nl&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

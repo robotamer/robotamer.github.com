@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Programming on RoboTamer </title>
+    <link>http://localhost:1313/tags/programming.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2013-07-19 12:59:52 &#43;0000 &#43;0000</updated>
+    
+    <item>
+      <title>Saving structs in a leveldb</title>
+      <link>http://localhost:1313/blog/sbs/html</link>
+      <pubDate>Fri, 19 Jul 2013 12:59:52 &#43;0000</pubDate>
+      <author>Steve Francia</author>
+      <guid>http://localhost:1313/blog/sbs/html</guid>
+      <description>&lt;p&gt;I been playing with Googles LevelDB, which was ported to the Go programming language recently, and called &lt;a href=&#34;http://github.com/syndtr/goleveldb/leveldb&#34;&gt;GoLevelDB&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;LevelDB is a key/value database. Keys as well as values are saved as byte slices.&lt;/p&gt;
+
+&lt;p&gt;To make this a bit easier I have created a little tool that can convert a Go struct to a byte slice and back.
+The tools is called &lt;a href=&#34;https://bitbucket.org/gotamer/sbs&#34;&gt;/gotamer/sbs&lt;/a&gt; and is available at bitbucket.&lt;/p&gt;
+
+&lt;p&gt;The tool has two function one for encoding and another for decoding.
+A populated struct is being encoded via &lt;code&gt;sbs.Enc()&lt;/code&gt;, in the backround SBS uses the Go Gob and returns the struct as a byte slice.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;sbs.Dec()&lt;/code&gt; function takes the encoded byte slice and an empty struct of the same type. When done it returns a populated struct.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

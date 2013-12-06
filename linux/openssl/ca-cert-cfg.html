@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Copyright</title>
-  <meta name="description" content="">
-  <meta name="keywords" content=", , , , , , , , , , RoboTamer">
+  <title>Self-Signed SSL Certificate with Config File</title>
+  <meta name="description" content="Creating Self-Signed SSL Certificate for Multiple Domains">
+  <meta name="keywords" content="linux, ssl, cert, RoboTamer">
   <meta name="generator" content="Hugo">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -165,37 +165,159 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-  	<h2>Copyright</h2>
-	<h4></h4>
+  	<h2>Self-Signed SSL Certificate with Config File</h2>
+	<h4>Creating Self-Signed SSL Certificate for Multiple Domains</h4>
   </div>
   <div class="panel-body">
-  <h2>Copyright &copy; 2012 The GoTamer Authors. All rights reserved.</h2>
+  <p>I automated this as much as I could.</p>
 
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:</p>
+<ol>
+<li>Edit DOMAIN name in the ca.cfg</li>
+<li>Run the openssl command</li>
+<li>chmod the key file</li>
+</ol>
+
+<h4>Code to execute:</h4>
+
+<pre><code>DOMAIN=robotamer.com  
+openssl req -new -x509 -nodes -out $DOMAIN_.crt -config ca.cfg
+chmod 600 DOMAIN_.key
+</code></pre>
+
+<h4>TODO:</h4>
 
 <ul>
-<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of GoTamer nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
+<li>Still have to figure out how to get the global <code>DOMAIN</code> var in to the config file.<br /></li>
 </ul>
 
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-&ldquo;AS IS&rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<h4>Sample Config File:</h4>
+
+<p>Save as <code>ca.cfg</code></p>
+
+<pre><code class="bash">
+# Specify the domain
+DOMAIN = robotamer.com
+
+#####################################################
+
+[ ca ]
+default_ca              = CA_default
+
+
+[ CA_default ]
+DIR                     = .
+serial                  = ${DIR}/serial
+database                = ${DIR}/index.txt
+new_certs_dir           = ${DIR}/newcerts
+certs                   = ${DIR}/certs
+certificate             = $certs/cacert.pem
+private_key             = ${DIR}/private/cakey.pem
+default_days            = 3650
+default_md              = sha1
+preserve                = no
+email_in_dn             = no
+nameopt                 = default_ca
+certopt                 = default_ca
+policy                  = policy_match
+copy_extensions         = copy
+
+
+[ policy_match ]
+countryName             = match
+stateOrProvinceName     = match
+organizationName        = match
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+
+[ req ]
+default_bits            = 2048                  # Size of keys
+default_keyfile         = ${DOMAIN}_.key        # name of generated keys
+default_md              = sha1                  # message digest algorithm
+string_mask             = nombstr               # permitted characters
+distinguished_name      = req_distinguished_name
+req_extensions          = v3_req
+x509_extensions         = v3_req
+
+
+[ req_distinguished_name ]
+# Variable name           Prompt string
+#----------------------   ----------------------------------
+0.organizationName      = Organization Name (company)
+organizationalUnitName  = Organizational Unit Name (department, division)
+emailAddress            = Email Address
+emailAddress_max        = 40
+localityName            = Locality Name (city, district)
+stateOrProvinceName     = State or Province Name (full name)
+countryName             = Country Name (2 letter code)
+countryName_min         = 2
+countryName_max         = 2
+commonName              = Common Name (hostname, IP, or your name)
+commonName_max          = 64
+
+# Default values.
+#------------------------------   ------------------------------
+commonName_default              = *.${DOMAIN}
+0.organizationName_default      = ${DOMAIN}
+organizationalUnitName_default  = IT
+localityName_default            = Los Angeles
+stateOrProvinceName_default     = California
+countryName_default             = US
+emailAddress_default            = webmaster@${DOMAIN}
+
+[alt_names]
+DNS.1     = www.${DOMAIN}
+DNS.2     = ${DOMAIN}
+# DNS.3   = www.example.com
+# DNS.4   = example.com
+
+
+[ v3_ca ]
+basicConstraints        = CA:TRUE
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer:always
+
+
+[ v3_req ]
+# Extensions to add to a certificate request
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+
+
+# Some CAs do not yet support subjectAltName in CSRs.
+# Instead the additional names are form entries on web
+# pages where one requests the certificate...
+subjectAltName          = @alt_names
+
+
+[ server ]
+# Make a cert with nsCertType set to &quot;server&quot;
+basicConstraints=CA:FALSE
+nsCertType                      = server
+nsComment                       = &quot;OpenSSL Generated Server Certificate&quot;
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid,issuer:always
+
+
+[ client ]
+# Make a cert with nsCertType set to &quot;client&quot;
+basicConstraints=CA:FALSE
+nsCertType                      = client
+nsComment                       = &quot;OpenSSL Generated Client Certificate&quot;
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid,issuer:always
+
+
+</code></pre>
 
   </div>
   <div class="panel-footer">
     <div class="btn-group">
+      
+      <a href="http://www.robotamer.com/tags/linux.html"><button type="button" class="btn btn-info btn-xs">linux</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/ssl.html"><button type="button" class="btn btn-info btn-xs">ssl</button></a>	
       
     </div>  
   </div>

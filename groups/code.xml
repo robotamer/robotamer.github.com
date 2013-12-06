@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Code on RoboTamer </title>
+    <link>http://www.robotamer.com/groups/code.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2008-01-01 00:00:00 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>GoWatch</title>
+      <link>http://www.robotamer.com/code/go/gotamer/gowatch.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/gowatch.html</guid>
+      <description>&lt;h1&gt;GoTamer gowatch is a fork of bitbucket.org/jzs/buildwatch with some enhancements.&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;gowatch -test&lt;/code&gt; will run &lt;code&gt;go test&lt;/code&gt; on the folder&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gowatch -build&lt;/code&gt; will run &lt;code&gt;go build&lt;/code&gt; on the folder&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gowatch -run [program_name]&lt;/code&gt; will run &lt;code&gt;go build&lt;/code&gt; and then it will execute &lt;code&gt;[program_name]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If a file changes while running lets say &lt;code&gt;gowatch -run [program_name]&lt;/code&gt; it will
+kill &lt;code&gt;[program_name]&lt;/code&gt;, run &lt;code&gt;gowatch -build&lt;/code&gt; on the folder, and then restart &lt;code&gt;[program_name]&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3&gt;Links&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.robotamer.com/code/go/gotamer&#34; title=&#34;GoTamer Website&#34;&gt;Website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://go.pkgdoc.org/bitbucket.org/gotamer/gowatch&#34; title=&#34;Pkg Documentation&#34;&gt;Pkg Documentationn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bitbucket.org/gotamer/gowatch&#34; title=&#34;Repository&#34;&gt;Repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ping</title>
+      <link>http://www.robotamer.com/code/go/gotamer/ping.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/ping.html</guid>
+      <description>&lt;p&gt;There are two ways to ping
+ * go internal ping
+ * sys ping&lt;/p&gt;
+
+&lt;p&gt;The go internal ping works only as root, therefor a sys ping is also provided until I can figure out how to fix this problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.robotamer.com&#34; title=&#34;Documentation&#34;&gt;Website&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Code is available at &lt;a href=&#34;https://bitbucket.org/gotamer&#34;&gt;https://bitbucket.org/gotamer&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Encode/Decode between struct and byte slice</title>
+      <link>http://www.robotamer.com/code/go/gotamer/sbs.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/sbs.html</guid>
+      <description>&lt;p&gt;&lt;em&gt;sbs&lt;/em&gt; stands for Struct to Byte Slice and back to Struct&lt;/p&gt;
+
+&lt;h2&gt;Internals:&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;sbs&lt;/em&gt; encodes your struct first to a Gob, then it convers it to a byte slice; it reverses the process for decoding.&lt;/p&gt;
+
+&lt;h4&gt;Example&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;go&#34;&gt;
+    type Foo struct {
+        A int
+        B string
+    }
+
+    p := &amp;amp;Foo{111,&amp;quot;A string&amp;quot;}
+
+    byteslice, err := sbs.Enc(p)
+    ...
+
+    foo := new(Foo)
+    structobject, err := sbs.Dec(foo, byteslice)
+    ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Code is available at &lt;a href=&#34;https://bitbucket.org/gotamer/sbs&#34;&gt;https://bitbucket.org/gotamer/sbs&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Session</title>
+      <link>http://www.robotamer.com/code/go/gotamer/session.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/session.html</guid>
+      <description>&lt;p&gt;Feutures:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Custom backends to store session data locally.&lt;/li&gt;
+&lt;li&gt;Flash messages: session values that last until read.&lt;/li&gt;
+&lt;li&gt;Low dependency and therefore versitile, for example, it does not depened on the go http pkg&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Built-in backends to store sessions locally:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;storeMap ⬄ A in memory map[string]sessions store&lt;/li&gt;
+&lt;li&gt;storeLeveldb ⬄ Stores session data in a leveldb&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Simple Sample code the uses the default storeMap backend:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;go&#34;&gt;package main
+
+import(
+    &amp;quot;bitbucket.org/gotamer/net/session&amp;quot;
+    &amp;quot;fmt&amp;quot;
+)
+
+func main(){
+    id := save()
+    load(id)
+}
+
+func save() string {
+    sess := session.New()
+    sess.Set(&amp;quot;Alias&amp;quot;,&amp;quot;GoTamer&amp;quot;)
+    err := sess.Save()
+    Check(err)
+    fmt.Println(&amp;quot;Session Saved&amp;quot;, sess)
+    sid, err := sess.Id()
+    Check(err)
+    return sid
+}
+
+func load(sid string){
+    sess, err := session.Load(sid)
+    Check(err)
+    fmt.Println(&amp;quot;Session Load: &amp;quot;, sess)
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sample code the uses the leveldb backend:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;go&#34;&gt;package main
+
+import(
+    &amp;quot;bitbucket.org/gotamer/net/session&amp;quot;
+    &amp;quot;fmt&amp;quot;
+)
+
+var path = &amp;quot;/tmp/sessions&amp;quot;
+
+func init(){
+    session.StoreLeveldb(path)  
+}
+
+func main(){
+    id := save()
+    load(id)
+}
+
+func save() string {
+    sess := session.New()
+    sess.Set(&amp;quot;Alias&amp;quot;,&amp;quot;GoTamer&amp;quot;)
+    err := sess.Save()
+    Check(err)
+    fmt.Println(&amp;quot;Session Saved&amp;quot;, sess)
+    sid, err := sess.Id()
+    Check(err)
+    return sid
+}
+
+func load(sid string){
+    sess, err := session.Load(sid)
+    Check(err)
+    fmt.Println(&amp;quot;Session Load: &amp;quot;, sess)
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Additional backends can be created by simply implementing following interfaces:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;go&#34;&gt;type Store interface {
+    Save(session *sessionObject) (err error)
+    Load(sid string) (session *sessionObject, err error)
+    Delete(sid string) (err error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Some code has been borrowed from &lt;a href=&#34;http://www.stathat.com/src/bingo&#34;&gt;http://www.stathat.com/src/bingo&lt;/a&gt; witch is licensed also under MIT.&lt;/p&gt;
+
+&lt;p&gt;Code is available at &lt;a href=&#34;https://bitbucket.org/gotamer&#34;&gt;https://bitbucket.org/gotamer&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Your Everyday Go Tools</title>
+      <link>http://www.robotamer.com/code/go/gotamer/tools.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/tools.html</guid>
+      <description>&lt;p&gt;Generates a random number between min and max&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func IRand(min, max int) int
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Generates a random strings between min and max&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func SRand(min, max int, readable bool) string
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reverses the string&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func Reverse(s string) strings
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Shuffles the string&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func Shuffle(s string) string
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Links&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://go.pkgdoc.org/bitbucket.org/gotamer/tools&#34; title=&#34;Documentation&#34;&gt;Pkg Documantation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bitbucket.org/gotamer/tools&#34; title=&#34;Repository&#34;&gt;Repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>jgdb</title>
+      <link>http://www.robotamer.com/code/go/gotamer/jgdb.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/jgdb.html</guid>
+      <description>&lt;h2&gt;About the implementation:&lt;/h2&gt;
+
+&lt;p&gt;This project is in alha state!&lt;/p&gt;
+
+&lt;h3&gt;Object Types&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tuple (In Memory Database) &lt;em&gt;Beta&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;List (Single file persistent database) &lt;em&gt;Beta&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Object (Multi file persistent database) &lt;em&gt;Alpha&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Cache (Cache for Tuple) &lt;em&gt;Not yet implemented&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Backends&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Json&lt;/li&gt;
+&lt;li&gt;Glob &lt;em&gt;Not yet implemented&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The major distinction between &lt;em&gt;List&lt;/em&gt; and &lt;em&gt;Object&lt;/em&gt; is that one, the &lt;em&gt;List type&lt;/em&gt; uses a single file as backend with each record placed in one line.&lt;br /&gt;
+Where as the &lt;em&gt;Object&lt;/em&gt; type keeps each record in a separate file. The object type will keep track of these records with an index file, and also optionally with a strtree for fast in memory access.&lt;/p&gt;
+
+&lt;h4&gt;How the List type works:&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The user creates a struct to his/her needs&lt;/li&gt;
+&lt;li&gt;The database inherits that struct via an &lt;em&gt;Interface&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;The database converts that struct to include the map id using &lt;em&gt;jsonListStruct&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;jsonListStruct struct is used to Marshal the data in to a json file&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;What is planed so far:&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a cache system with a user defined limit that keeps the most asked for items in a Tuple, as of now all data is being imported in to a Tuple.&lt;/li&gt;
+&lt;li&gt;Create the vcs (git) backup store for the json backend&lt;/li&gt;
+&lt;li&gt;Distribute with git push and pull&lt;/li&gt;
+&lt;li&gt;Keep an open line of communication with glob between nodes&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;Disadvantage:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;git is not the fastest distribution system&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Advantage:&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;All data is kept in plain text/json&lt;/li&gt;
+&lt;li&gt;Backups are incremental, distributed and under version control.&lt;/li&gt;
+&lt;li&gt;Distributed system. without the need for the master and slave concept.&lt;/li&gt;
+&lt;li&gt;Every node is independent of the overall system, and can function even if all others fail.&lt;/li&gt;
+&lt;li&gt;Database can get very big, bigger then what the memory can hold, and we will read less active data with io.Reader and bufio&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;FAQ&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;To get a proper distributed system you need a merge strategy for your git repositories. How would you solve conflicts?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As with everything I am open to suggestions, meanwhile I am planing following:&lt;br /&gt;
+The strategy will differ by List or Object type database.&lt;br /&gt;
+For example the List type database will not have any update only insert and delete.
+The insert operation will easily be resolved by git, when nodes do their pull, save, add, commit and push cycle.&lt;/p&gt;
+
+&lt;p&gt;When it comes to the delete operation, every node will before deleting a record, add lock on the file it plans to modify. Each node will be able to lock a file at pull time.
+This means other nodes can still modify and commit all other files, just not the one locked by a node.
+The lock will have a time limit as it does only takes a short time to perform a full cycle of pull, save, add, commit and push with git.&lt;/p&gt;
+
+&lt;h3&gt;Links&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.robotamer.com/code/go/gotamer/jgdb.html&#34; title=&#34;Website&#34;&gt;Website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://go.pkgdoc.org/bitbucket.org/gotamer/jgdb&#34; title=&#34;GoTamer Pkg Documentation&#34;&gt;Pkg Documantation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bitbucket.org/gotamer/jgdb&#34; title=&#34;GoTamer Repository&#34;&gt;Repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bitbucket.org/gotamer/jgdb/issues&#34; title=&#34;Bug Tracking&#34;&gt;Bug Tracking&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Crypt</title>
+      <link>http://www.robotamer.com/code/go/gotamer/crypt.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/crypt.html</guid>
+      <description>&lt;p&gt;This will not pass Bank or Spy cryptographic requirements in todays world.&lt;br /&gt;
+I do not make claims about its security, please see the license file for details.&lt;br /&gt;
+&lt;em&gt;Advise: Please evaluate your needs and take additional measures to fit your needs. For example in my case I use multiple keys for each instance, and my application selects the keys randomly.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;It is rune aware, it supports the full line of Go UTF-8 characters&lt;/p&gt;
+
+&lt;p&gt;A list of UTF-8 characters can be found &lt;a href=&#34;http://www.robotamer.com/utf-8.html&#34; title=&#34;UTF-8 Character list&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Links&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://go.pkgdoc.org/bitbucket.org/gotamer/crypt&#34; title=&#34;GoTamer Pkg Documentation&#34;&gt;Pkg Documantation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bitbucket.org/gotamer/crypt&#34; title=&#34;GoTamer Repository&#34;&gt;Repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Smtp</title>
+      <link>http://www.robotamer.com/code/go/gotamer/mail.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/mail.html</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;go&#34;&gt;    package main
+    
+    import &amp;quot;gotamer/mail&amp;quot; // bitbucket.org/gotamer/mail if you install with go get
+    
+    func main() {
+
+        // use defer when you send with mail.Send(), not needed for mail.Write()
+        defer mail.final() 
+
+        s := new(Smtp)
+        s.SetHostname(&amp;quot;smtp.gmail.com&amp;quot;)
+        s.SetHostport(587)
+        s.SetFromName(&amp;quot;GoTamer&amp;quot;)
+        s.SetFromAddr(&amp;quot;xxxx@gmail.com&amp;quot;)
+        s.SetPassword(&amp;quot;********&amp;quot;)
+        s.AddToAddr(&amp;quot;xxxx@yahoo.com&amp;quot;)
+        s.SetSubject(&amp;quot;GoTamer test mail&amp;quot;)
+        s.SetBody(&amp;quot;Let&#39;s see if we get this&amp;quot;)
+        if err := s.Write(); err != nil {
+            // Handle your errors here
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As an alternative to &lt;code&gt;AddToAddr()&lt;/code&gt; there is &lt;code&gt;SetToAddrs()&lt;/code&gt;. With &lt;code&gt;SetToAddrs()&lt;/code&gt; you can set one or more recipients as a comma separated list.&lt;/p&gt;
+
+&lt;h4&gt;A note on the host.&lt;/h4&gt;
+
+&lt;p&gt;Go SMTP does not allow to connect to SMPT servers with a self signed certs.&lt;/p&gt;
+
+&lt;p&gt;You will get an error like following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;x509: certificate signed by unknown authority
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The way I got around that is by using &lt;a href=&#34;http://www.cacert.org&#34; title=&#34;CA Cert&#34;&gt;CAcert&lt;/a&gt;. &lt;a href=&#34;http://www.cacert.org&#34; title=&#34;CA Cert&#34;&gt;CAcert&lt;/a&gt; provides FREE digital certificates.&lt;/p&gt;
+
+&lt;h3&gt;Links&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://go.pkgdoc.org/bitbucket.org/gotamer/mail&#34; title=&#34;GoTamer Mail Pkg Documentation&#34;&gt;Pkg Documantation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bitbucket.org/gotamer/mail&#34; title=&#34;GoTamer Mail Repository&#34;&gt;Repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cfg</title>
+      <link>http://www.robotamer.com/code/go/gotamer/cfg.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/cfg.html</guid>
+      <description>&lt;h3&gt;Features:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You can define your config items in your application as a struct.&lt;/li&gt;
+&lt;li&gt;You can save a json template of your struct&lt;/li&gt;
+&lt;li&gt;You can save runtime modifications to the config&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Docs:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;import &amp;quot;bitbucket.org/gotamer/cfg&amp;quot;
+
+func Load(filename string, o interface{}) (err error)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Load gets your config from the json file, and fills your struct with the option&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func Save(filename string, o interface{}) (err error)   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Save will save your struct to the given filename, this is a good way to create a json template&lt;/p&gt;
+
+&lt;h3&gt;Example:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;go&#34;&gt;    package main
+
+    import (
+        &amp;quot;fmt&amp;quot;
+        &amp;quot;bitbucket.org/gotamer/cfg&amp;quot;
+        &amp;quot;os&amp;quot;
+    )
+
+    var Cfg *MainCfg
+
+    type MainCfg struct {
+        Name  string
+    }
+
+    func main() {
+        Cfg = &amp;amp;MainCfg{&amp;quot;defaultAlias&amp;quot;}
+        cfgpath := os.Getenv(&amp;quot;GOPATH&amp;quot;) + &amp;quot;/etc/myappname.json&amp;quot;
+        err := cfg.Load(cfgpath, Cfg)
+        if err != nil {
+            cfg.Save(cfgpath, Cfg)
+            fmt.Println(&amp;quot;\n\tPlease edit your configuration at: &amp;quot;, cfgpath, &amp;quot;\n&amp;quot;)
+            os.Exit(0)
+        }
+        fmt.Printf(&amp;quot;%s&amp;quot;, Cfg)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Links&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://bitbucket.org/gotamer/cfg&#34; title=&#34;Repository&#34;&gt;Repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Gopher named Gophy</title>
+      <link>http://www.robotamer.com/code/go/gotamer/index.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/go/gotamer/index.html</guid>
+      <description>&lt;p&gt;If you are just starting out with Go, head over to the &lt;a href=&#34;http://play.golang.org/p/fjK_EoQDtR&#34; title=&#34;Go Playground&#34;&gt;Go Playground&lt;/a&gt; and concentrate on
+figuring out how my little &lt;a href=&#34;http://play.golang.org/p/fjK_EoQDtR&#34; title=&#34;Go Playground&#34;&gt;Go Story&lt;/a&gt; works.
+It&amp;rsquo;s about a Gopher, named Gophy who joint the Gophers but lost his identity in the process.&lt;br /&gt;
+Once you get how he gets his identity back you&amp;rsquo;ll be golden.&lt;/p&gt;
+
+&lt;p&gt;Here is the code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+type I interface{}
+
+var gophers map[uint]I = make(map[uint]I)
+
+type gopher struct {
+    Name string
+}
+
+func main() {
+
+    g := AddToGophers(&amp;quot;Goghy&amp;quot;)
+
+    fmt.Printf(&amp;quot;Hello, %s\n&amp;quot;, g.Name)
+    fmt.Printf(&amp;quot;Now %s is a %T, %s\n&amp;quot;, g.Name, gophers[1], gophers[1])
+
+    gg := GetGopher(1)
+    fmt.Printf(&amp;quot;Bye, %s\n&amp;quot;, gg.Name)
+}
+
+func GetGopher(i uint) *gopher {
+    g := gophers[i]
+    // I wont my gopher identity back
+    return g.(*gopher)
+}
+
+func AddToGophers(n string) gopher {
+    g := new(gopher)
+    g.Name = n
+    gophers[1] = g
+    return *g
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PHPTamer</title>
+      <link>http://www.robotamer.com/code/php/phptamer/index.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/phptamer/index.html</guid>
+      <description>&lt;p&gt;A system called PHPTamer Facade is in the works, Facade is a component dependency substitution system to achieve component interdependency via the facade programming pattern.&lt;/p&gt;
+
+&lt;h2&gt;Predefined Variables&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;BR = &lt;br /&gt; or \n when in cli mode&lt;/li&gt;
+&lt;li&gt;HR = Horizontal Rules&lt;/li&gt;
+&lt;li&gt;DS = DIRECTORY_SEPARATOR&lt;/li&gt;
+&lt;li&gt;HOSTNAME&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Master Singleton Class</title>
+      <link>http://www.robotamer.com/code/php/phptamer/rtsingleton.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/phptamer/rtsingleton.html</guid>
+      <description>&lt;h4&gt;Via the factory&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$l = RTSingleton::factory(&#39;Translate&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Directs call&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$view = RTSingleton::Template();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Class Alias&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;RTSingleton::alias(string $className, string $alias);
+
+RTSingleton::alias(&#39;Template&#39;, &#39;V&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Aliased call &lt;em&gt;RTSingleton has an S alias by default&lt;/em&gt;&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$view = S::V();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Set Object  &lt;em&gt;Not available in version 0.0.1&lt;/em&gt;&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;RTSingleton::set(object $class [, string $alias = NULL ] );
+
+RTSingleton::set(new Aura\View\Template(), &#39;View&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Actually:&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt; RTSingleton::set(require __dir__ . &#39;/../libs/composer/vendor/Aura/View/scripts/instance.php&#39;,&#39;V&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;No need for global variables&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;S::V()-&amp;gt;var = &#39;Master RTSingleton Class&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Use original class or alias or switch back and forth&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;echo RTSingleton::Template()-&amp;gt;fetch(__dir__ .&#39;/gui/layout.php&#39;);
+echo S::V()-&amp;gt;fetch(__dir__ .&#39;/gui/otherlayout.php&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;See all the registered classes&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;print_r(S::getClasses());
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RTCrypter</title>
+      <link>http://www.robotamer.com/code/php/phptamer/rtcrypter.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/phptamer/rtcrypter.html</guid>
+      <description>&lt;p&gt;RTCrypter does not require mcrypt, mhash or any other PHP extension, it uses only PHP.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$crypt = new RTCrypter();
+$crypt-&amp;gt;setCharacters(&#39;#@|*-+.,!~`$%^&amp;amp;&amp;lt;&amp;gt;{}[]()0/\123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#39;);
+$secretKey = $crypt-&amp;gt;genKey();
+
+
+$crypt = new RTCrypter();
+$crypt-&amp;gt;useBase64(FALSE); // TRUE is default
+$crypt-&amp;gt;setCharacters(&#39;#@|*-+.,!~`$%^&amp;amp;&amp;lt;&amp;gt;{}[]()0/\123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#39;);
+$crypt-&amp;gt;setScramble($secretKey);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Facade</title>
+      <link>http://www.robotamer.com/code/php/phptamer/facade.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/phptamer/facade.html</guid>
+      <description>&lt;p&gt;Facade&amp;rsquo;s main focus is a to be a component dependency substitution system,
+and will achieve component interdependency via the facade programming pattern.&lt;/p&gt;
+
+&lt;p&gt;With Facade you can build a cli or web framework by mixing components from
+&lt;a href=&#34;http://pear.php.net&#34;&gt;Pear&lt;/a&gt;,
+&lt;a href=&#34;http://zendframework.com/&#34;&gt;Zend&lt;/a&gt;,
+&lt;a href=&#34;http://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;
+or just standalone classes from let&amp;rsquo;s say
+&lt;a href=&#34;http://www.phpclasses.org&#34;&gt;PHPClasses&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Facade is a sub component of PHPTamer, which includes a collection of libraries,
+and recommends tested components to help you get started.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>UTF-8 Character List</title>
+      <link>http://www.robotamer.com/linux/utf-8.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/utf-8.html</guid>
+      <description>&lt;p&gt;Common: “ ” ‘ ’ – — … ‐ ‒ ° © ® ™ • ½ ¼ ¾ ⅓ ⅔ † ‡ µ ¢ £ € « » ♠ ♣ ♥ ♦ ¿ �&lt;br /&gt;
+Math: - × ÷ ± ∞ π ∅ ≤ ≥ ≠ ≈ ∧ ∨ ∩ ∪ ∈ ∀ ∃ ∄ ∑ ∏ ← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙ ↺ ↻ ⇒ ⇔&lt;br /&gt;
+SuperSub: ⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁺ ⁻ ⁽ ⁾ ⁿ ⁱ ₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;u00A0: &amp;#x00A0; ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬ ­ ® ¯ ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿&lt;br /&gt;
+u00C0: À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß&lt;br /&gt;
+u00E0: à á â ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ&lt;/p&gt;
+
+&lt;p&gt;u0100: Ā ā Ă ă Ą ą Ć ć Ĉ ĉ Ċ ċ Č č Ď ď Đ đ Ē ē Ĕ ĕ Ė ė Ę ę Ě ě Ĝ ĝ Ğ ğ&lt;br /&gt;
+u0120: Ġ ġ Ģ ģ Ĥ ĥ Ħ ħ Ĩ ĩ Ī ī Ĭ ĭ Į į İ ı Ĳ ĳ Ĵ ĵ Ķ ķ ĸ Ĺ ĺ Ļ ļ Ľ ľ Ŀ&lt;br /&gt;
+u0140: ŀ Ł ł Ń ń Ņ ņ Ň ň ŉ Ŋ ŋ Ō ō Ŏ ŏ Ő ő Œ œ Ŕ ŕ Ŗ ŗ Ř ř Ś ś Ŝ ŝ Ş ş&lt;br /&gt;
+u0160: Š š Ţ ţ Ť ť Ŧ ŧ Ũ ũ Ū ū Ŭ ŭ Ů ů Ű ű Ų ų Ŵ ŵ Ŷ ŷ Ÿ Ź ź Ż ż Ž ž ſ&lt;br /&gt;
+u0180: ƀ Ɓ Ƃ ƃ Ƅ ƅ Ɔ Ƈ ƈ Ɖ Ɗ Ƌ ƌ ƍ Ǝ Ə Ɛ Ƒ ƒ Ɠ Ɣ ƕ Ɩ Ɨ Ƙ ƙ ƚ ƛ Ɯ Ɲ ƞ Ɵ&lt;br /&gt;
+u01A0: Ơ ơ Ƣ ƣ Ƥ ƥ Ʀ Ƨ ƨ Ʃ ƪ ƫ Ƭ ƭ Ʈ Ư ư Ʊ Ʋ Ƴ ƴ Ƶ ƶ Ʒ Ƹ ƹ ƺ ƻ Ƽ ƽ ƾ ƿ&lt;br /&gt;
+u01C0: ǀ ǁ ǂ ǃ Ǆ ǅ ǆ Ǉ ǈ ǉ Ǌ ǋ ǌ Ǎ ǎ Ǐ ǐ Ǒ ǒ Ǔ ǔ Ǖ ǖ Ǘ ǘ Ǚ ǚ Ǜ ǜ ǝ Ǟ ǟ&lt;br /&gt;
+u01E0: Ǡ ǡ Ǣ ǣ Ǥ ǥ Ǧ ǧ Ǩ ǩ Ǫ ǫ Ǭ ǭ Ǯ ǯ ǰ Ǳ ǲ ǳ Ǵ ǵ Ƕ Ƿ Ǹ ǹ Ǻ ǻ Ǽ ǽ Ǿ ǿ&lt;br /&gt;
+u0200: Ȁ ȁ Ȃ ȃ Ȅ ȅ Ȇ ȇ Ȉ ȉ Ȋ ȋ Ȍ ȍ Ȏ ȏ Ȑ ȑ Ȓ ȓ Ȕ ȕ Ȗ ȗ Ș ș Ț ț Ȝ ȝ Ȟ ȟ&lt;br /&gt;
+u0220: Ƞ ȡ Ȣ ȣ Ȥ ȥ Ȧ ȧ Ȩ ȩ Ȫ ȫ Ȭ ȭ Ȯ ȯ Ȱ ȱ Ȳ ȳ ȴ ȵ ȶ ȷ ȸ ȹ Ⱥ Ȼ ȼ Ƚ Ⱦ ȿ&lt;br /&gt;
+u0240: ɀ Ɂ ɂ Ƀ Ʉ Ʌ Ɇ ɇ Ɉ ɉ Ɋ ɋ Ɍ ɍ Ɏ ɏ ɐ ɑ ɒ ɓ ɔ ɕ ɖ ɗ ɘ ə ɚ ɛ ɜ ɝ ɞ ɟ&lt;br /&gt;
+u0260: ɠ ɡ ɢ ɣ ɤ ɥ ɦ ɧ ɨ ɩ ɪ ɫ ɬ ɭ ɮ ɯ ɰ ɱ ɲ ɳ ɴ ɵ ɶ ɷ ɸ ɹ ɺ ɻ ɼ ɽ ɾ ɿ&lt;br /&gt;
+u0280: ʀ ʁ ʂ ʃ ʄ ʅ ʆ ʇ ʈ ʉ ʊ ʋ ʌ ʍ ʎ ʏ ʐ ʑ ʒ ʓ ʔ ʕ ʖ ʗ ʘ ʙ ʚ ʛ ʜ ʝ ʞ ʟ&lt;br /&gt;
+u02A0: ʠ ʡ ʢ ʣ ʤ ʥ ʦ ʧ ʨ ʩ ʪ ʫ ʬ ʭ ʮ ʯ ʰ ʱ ʲ ʳ ʴ ʵ ʶ ʷ ʸ ʹ ʺ ʻ ʼ ʽ ʾ ʿ&lt;br /&gt;
+u02C0: ˀ ˁ ˂ ˃ ˄ ˅ ˆ ˇ ˈ ˉ ˊ ˋ ˌ ˍ ˎ ˏ ː ˑ ˒ ˓ ˔ ˕ ˖ ˗ ˘ ˙ ˚ ˛ ˜ ˝ ˞ ˟&lt;br /&gt;
+u02E0: ˠ ˡ ˢ ˣ ˤ ˥ ˦ ˧ ˨ ˩ ˪ ˫ ˬ ˭ ˮ ˯ ˰ ˱ ˲ ˳ ˴ ˵ ˶ ˷ ˸ ˹ ˺ ˻ ˼ ˽ ˾ ˿&lt;br /&gt;
+u0300: ̀ ́ ̂ ̃ ̄ ̅ ̆ ̇ ̈ ̉ ̊ ̋ ̌ ̍ ̎ ̏ ̐ ̑ ̒ ̓ ̔ ̕ ̖ ̗ ̘ ̙ ̚ ̛ ̜ ̝ ̞ ̟&lt;br /&gt;
+u0320: ̠ ̡ ̢ ̣ ̤ ̥ ̦ ̧ ̨ ̩ ̪ ̫ ̬ ̭ ̮ ̯ ̰ ̱ ̲ ̳ ̴ ̵ ̶ ̷ ̸ ̹ ̺ ̻ ̼ ̽ ̾ ̿&lt;br /&gt;
+u0340: ̀ ́ ͂ ̓ ̈́ ͅ ͆ ͇ ͈ ͉ ͊ ͋ ͌ ͍ ͎ ͏ ͐ ͑ ͒ ͓ ͔ ͕ ͖ ͗ ͘ ͙ ͚ ͛ ͜ ͝ ͞ ͟&lt;br /&gt;
+u0360: ͠ ͡ ͢ ͣ ͤ ͥ ͦ ͧ ͨ ͩ ͪ ͫ ͬ ͭ ͮ ͯ Ͱ ͱ Ͳ ͳ ʹ ͵ Ͷ ͷ ͸ ͹ ͺ ͻ ͼ ͽ ; Ϳ&lt;br /&gt;
+u0380: ΀ ΁ ΂ ΃ ΄ ΅ Ά · Έ Ή Ί ΋ Ό ΍ Ύ Ώ ΐ Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο&lt;br /&gt;
+u03A0: Π Ρ ΢ Σ Τ Υ Φ Χ Ψ Ω Ϊ Ϋ ά έ ή ί ΰ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο&lt;br /&gt;
+u03C0: π ρ ς σ τ υ φ χ ψ ω ϊ ϋ ό ύ ώ Ϗ ϐ ϑ ϒ ϓ ϔ ϕ ϖ ϗ Ϙ ϙ Ϛ ϛ Ϝ ϝ Ϟ ϟ&lt;br /&gt;
+u03E0: Ϡ ϡ Ϣ ϣ Ϥ ϥ Ϧ ϧ Ϩ ϩ Ϫ ϫ Ϭ ϭ Ϯ ϯ ϰ ϱ ϲ ϳ ϴ ϵ ϶ Ϸ ϸ Ϲ Ϻ ϻ ϼ Ͻ Ͼ Ͽ&lt;br /&gt;
+u0400: Ѐ Ё Ђ Ѓ Є Ѕ І Ї Ј Љ Њ Ћ Ќ Ѝ Ў Џ А Б В Г Д Е Ж З И Й К Л М Н О П&lt;br /&gt;
+u0420: Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я а б в г д е ж з и й к л м н о п&lt;br /&gt;
+u0440: р с т у ф х ц ч ш щ ъ ы ь э ю я ѐ ё ђ ѓ є ѕ і ї ј љ њ ћ ќ ѝ ў џ&lt;br /&gt;
+u0460: Ѡ ѡ Ѣ ѣ Ѥ ѥ Ѧ ѧ Ѩ ѩ Ѫ ѫ Ѭ ѭ Ѯ ѯ Ѱ ѱ Ѳ ѳ Ѵ ѵ Ѷ ѷ Ѹ ѹ Ѻ ѻ Ѽ ѽ Ѿ ѿ&lt;br /&gt;
+u0480: Ҁ ҁ ҂ ҃ ҄ ҅ ҆ ҇ ҈ ҉ Ҋ ҋ Ҍ ҍ Ҏ ҏ Ґ ґ Ғ ғ Ҕ ҕ Җ җ Ҙ ҙ Қ қ Ҝ ҝ Ҟ ҟ&lt;br /&gt;
+u04A0: Ҡ ҡ Ң ң Ҥ ҥ Ҧ ҧ Ҩ ҩ Ҫ ҫ Ҭ ҭ Ү ү Ұ ұ Ҳ ҳ Ҵ ҵ Ҷ ҷ Ҹ ҹ Һ һ Ҽ ҽ Ҿ ҿ&lt;br /&gt;
+u04C0: Ӏ Ӂ ӂ Ӄ ӄ Ӆ ӆ Ӈ ӈ Ӊ ӊ Ӌ ӌ Ӎ ӎ ӏ Ӑ ӑ Ӓ ӓ Ӕ ӕ Ӗ ӗ Ә ә Ӛ ӛ Ӝ ӝ Ӟ ӟ&lt;br /&gt;
+u04E0: Ӡ ӡ Ӣ ӣ Ӥ ӥ Ӧ ӧ Ө ө Ӫ ӫ Ӭ ӭ Ӯ ӯ Ӱ ӱ Ӳ ӳ Ӵ ӵ Ӷ ӷ Ӹ ӹ Ӻ ӻ Ӽ ӽ Ӿ ӿ&lt;br /&gt;
+u0500: Ԁ ԁ Ԃ ԃ Ԅ ԅ Ԇ ԇ Ԉ ԉ Ԋ ԋ Ԍ ԍ Ԏ ԏ Ԑ ԑ Ԓ ԓ Ԕ ԕ Ԗ ԗ Ԙ ԙ Ԛ ԛ Ԝ ԝ Ԟ ԟ&lt;br /&gt;
+u0520: Ԡ ԡ Ԣ ԣ Ԥ ԥ Ԧ ԧ Ԩ ԩ Ԫ ԫ Ԭ ԭ Ԯ ԯ ԰ Ա Բ Գ Դ Ե Զ Է Ը Թ Ժ Ի Լ Խ Ծ Կ&lt;br /&gt;
+u0620: ؠ ء آ أ ؤ إ ئ ا ب ة ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ػ ؼ ؽ ؾ ؿ&lt;br /&gt;
+u0640: ـ ف ق ك ل م ن ه و ى ي ً ٌ ٍ َ ُ ِ ّ ْ ٓ ٔ ٕ ٖ ٗ ٘ ٙ ٚ ٛ ٜ ٝ ٞ ٟ&lt;br /&gt;
+u0660: ٠ ١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩ ٪ ٫ ٬ ٭ ٮ ٯ ٰ ٱ ٲ ٳ ٴ ٵ ٶ ٷ ٸ ٹ ٺ ٻ ټ ٽ پ ٿ&lt;br /&gt;
+u0680: ڀ ځ ڂ ڃ ڄ څ چ ڇ ڈ ډ ڊ ڋ ڌ ڍ ڎ ڏ ڐ ڑ ڒ ړ ڔ ڕ ږ ڗ ژ ڙ ښ ڛ ڜ ڝ ڞ ڟ&lt;br /&gt;
+u0900: ऀ ँ ं ः ऄ अ आ इ ई उ ऊ ऋ ऌ ऍ ऎ ए ऐ ऑ ऒ ओ औ क ख ग घ ङ च छ ज झ ञ ट&lt;br /&gt;
+u0920: ठ ड ढ ण त थ द ध न ऩ प फ ब भ म य र ऱ ल ळ ऴ व श ष स ह ऺ ऻ ़ ऽ ा ि&lt;br /&gt;
+u0940: ी ु ू ृ ॄ ॅ ॆ े ै ॉ ॊ ो ौ ् ॎ ॏ ॐ ॑ ॒ ॓ ॔ ॕ ॖ ॗ क़ ख़ ग़ ज़ ड़ ढ़ फ़ य़&lt;br /&gt;
+u0FC0: ࿀ ࿁ ࿂ ࿃ ࿄ ࿅ ࿆ ࿇ ࿈ ࿉ ࿊ ࿋ ࿌ ࿍ ࿎ ࿏ ࿐ ࿑ ࿒ ࿓ ࿔ ࿕ ࿖ ࿗ ࿘ ࿙ ࿚ ࿛ ࿜ ࿝ ࿞ ࿟&lt;br /&gt;
+u10A0: Ⴀ Ⴁ Ⴂ Ⴃ Ⴄ Ⴅ Ⴆ Ⴇ Ⴈ Ⴉ Ⴊ Ⴋ Ⴌ Ⴍ Ⴎ Ⴏ Ⴐ Ⴑ Ⴒ Ⴓ Ⴔ Ⴕ Ⴖ Ⴗ Ⴘ Ⴙ Ⴚ Ⴛ Ⴜ Ⴝ Ⴞ Ⴟ&lt;br /&gt;
+u13A0: Ꭰ Ꭱ Ꭲ Ꭳ Ꭴ Ꭵ Ꭶ Ꭷ Ꭸ Ꭹ Ꭺ Ꭻ Ꭼ Ꭽ Ꭾ Ꭿ Ꮀ Ꮁ Ꮂ Ꮃ Ꮄ Ꮅ Ꮆ Ꮇ Ꮈ Ꮉ Ꮊ Ꮋ Ꮌ Ꮍ Ꮎ Ꮏ&lt;br /&gt;
+u1400: ᐀ ᐁ ᐂ ᐃ ᐄ ᐅ ᐆ ᐇ ᐈ ᐉ ᐊ ᐋ ᐌ ᐍ ᐎ ᐏ ᐐ ᐑ ᐒ ᐓ ᐔ ᐕ ᐖ ᐗ ᐘ ᐙ ᐚ ᐛ ᐜ ᐝ ᐞ ᐟ&lt;br /&gt;
+u1580: ᖀ ᖁ ᖂ ᖃ ᖄ ᖅ ᖆ ᖇ ᖈ ᖉ ᖊ ᖋ ᖌ ᖍ ᖎ ᖏ ᖐ ᖑ ᖒ ᖓ ᖔ ᖕ ᖖ ᖗ ᖘ ᖙ ᖚ ᖛ ᖜ ᖝ ᖞ ᖟ&lt;br /&gt;
+u1680:   ᚁ ᚂ ᚃ ᚄ ᚅ ᚆ ᚇ ᚈ ᚉ ᚊ ᚋ ᚌ ᚍ ᚎ ᚏ ᚐ ᚑ ᚒ ᚓ ᚔ ᚕ ᚖ ᚗ ᚘ ᚙ ᚚ ᚛ ᚜ ᚝ ᚞ ᚟&lt;br /&gt;
+u16A0: ᚠ ᚡ ᚢ ᚣ ᚤ ᚥ ᚦ ᚧ ᚨ ᚩ ᚪ ᚫ ᚬ ᚭ ᚮ ᚯ ᚰ ᚱ ᚲ ᚳ ᚴ ᚵ ᚶ ᚷ ᚸ ᚹ ᚺ ᚻ ᚼ ᚽ ᚾ ᚿ&lt;br /&gt;
+u16C0: ᛀ ᛁ ᛂ ᛃ ᛄ ᛅ ᛆ ᛇ ᛈ ᛉ ᛊ ᛋ ᛌ ᛍ ᛎ ᛏ ᛐ ᛑ ᛒ ᛓ ᛔ ᛕ ᛖ ᛗ ᛘ ᛙ ᛚ ᛛ ᛜ ᛝ ᛞ ᛟ&lt;br /&gt;
+u16E0: ᛠ ᛡ ᛢ ᛣ ᛤ ᛥ ᛦ ᛧ ᛨ ᛩ ᛪ ᛫ ᛬ ᛭ ᛮ ᛯ ᛰ ᛱ ᛲ ᛳ ᛴ ᛵ ᛶ ᛷ ᛸ ᛹ ᛺ ᛻ ᛼ ᛽ ᛾ ᛿&lt;br /&gt;
+u1D00: ᴀ ᴁ ᴂ ᴃ ᴄ ᴅ ᴆ ᴇ ᴈ ᴉ ᴊ ᴋ ᴌ ᴍ ᴎ ᴏ ᴐ ᴑ ᴒ ᴓ ᴔ ᴕ ᴖ ᴗ ᴘ ᴙ ᴚ ᴛ ᴜ ᴝ ᴞ ᴟ&lt;br /&gt;
+u1D20: ᴠ ᴡ ᴢ ᴣ ᴤ ᴥ ᴦ ᴧ ᴨ ᴩ ᴪ ᴫ ᴬ ᴭ ᴮ ᴯ ᴰ ᴱ ᴲ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴻ ᴼ ᴽ ᴾ ᴿ&lt;br /&gt;
+u1D40: ᵀ ᵁ ᵂ ᵃ ᵄ ᵅ ᵆ ᵇ ᵈ ᵉ ᵊ ᵋ ᵌ ᵍ ᵎ ᵏ ᵐ ᵑ ᵒ ᵓ ᵔ ᵕ ᵖ ᵗ ᵘ ᵙ ᵚ ᵛ ᵜ ᵝ ᵞ ᵟ&lt;br /&gt;
+u1E00: Ḁ ḁ Ḃ ḃ Ḅ ḅ Ḇ ḇ Ḉ ḉ Ḋ ḋ Ḍ ḍ Ḏ ḏ Ḑ ḑ Ḓ ḓ Ḕ ḕ Ḗ ḗ Ḙ ḙ Ḛ ḛ Ḝ ḝ Ḟ ḟ&lt;br /&gt;
+u1E20: Ḡ ḡ Ḣ ḣ Ḥ ḥ Ḧ ḧ Ḩ ḩ Ḫ ḫ Ḭ ḭ Ḯ ḯ Ḱ ḱ Ḳ ḳ Ḵ ḵ Ḷ ḷ Ḹ ḹ Ḻ ḻ Ḽ ḽ Ḿ ḿ&lt;br /&gt;
+u1E40: Ṁ ṁ Ṃ ṃ Ṅ ṅ Ṇ ṇ Ṉ ṉ Ṋ ṋ Ṍ ṍ Ṏ ṏ Ṑ ṑ Ṓ ṓ Ṕ ṕ Ṗ ṗ Ṙ ṙ Ṛ ṛ Ṝ ṝ Ṟ ṟ&lt;br /&gt;
+u1E60: Ṡ ṡ Ṣ ṣ Ṥ ṥ Ṧ ṧ Ṩ ṩ Ṫ ṫ Ṭ ṭ Ṯ ṯ Ṱ ṱ Ṳ ṳ Ṵ ṵ Ṷ ṷ Ṹ ṹ Ṻ ṻ Ṽ ṽ Ṿ ṿ&lt;br /&gt;
+u1E80: Ẁ ẁ Ẃ ẃ Ẅ ẅ Ẇ ẇ Ẉ ẉ Ẋ ẋ Ẍ ẍ Ẏ ẏ Ẑ ẑ Ẓ ẓ Ẕ ẕ ẖ ẗ ẘ ẙ ẚ ẛ ẜ ẝ ẞ ẟ&lt;br /&gt;
+u1EA0: Ạ ạ Ả ả Ấ ấ Ầ ầ Ẩ ẩ Ẫ ẫ Ậ ậ Ắ ắ Ằ ằ Ẳ ẳ Ẵ ẵ Ặ ặ Ẹ ẹ Ẻ ẻ Ẽ ẽ Ế ế&lt;br /&gt;
+u1EC0: Ề ề Ể ể Ễ ễ Ệ ệ Ỉ ỉ Ị ị Ọ ọ Ỏ ỏ Ố ố Ồ ồ Ổ ổ Ỗ ỗ Ộ ộ Ớ ớ Ờ ờ Ở ở&lt;br /&gt;
+u1EE0: Ỡ ỡ Ợ ợ Ụ ụ Ủ ủ Ứ ứ Ừ ừ Ử ử Ữ ữ Ự ự Ỳ ỳ Ỵ ỵ Ỷ ỷ Ỹ ỹ Ỻ ỻ Ỽ ỽ Ỿ ỿ&lt;br /&gt;
+u1F00: ἀ ἁ ἂ ἃ ἄ ἅ ἆ ἇ Ἀ Ἁ Ἂ Ἃ Ἄ Ἅ Ἆ Ἇ ἐ ἑ ἒ ἓ ἔ ἕ ἖ ἗ Ἐ Ἑ Ἒ Ἓ Ἔ Ἕ ἞ ἟&lt;br /&gt;
+u1F20: ἠ ἡ ἢ ἣ ἤ ἥ ἦ ἧ Ἠ Ἡ Ἢ Ἣ Ἤ Ἥ Ἦ Ἧ ἰ ἱ ἲ ἳ ἴ ἵ ἶ ἷ Ἰ Ἱ Ἲ Ἳ Ἴ Ἵ Ἶ Ἷ&lt;br /&gt;
+u1F40: ὀ ὁ ὂ ὃ ὄ ὅ ὆ ὇ Ὀ Ὁ Ὂ Ὃ Ὄ Ὅ ὎ ὏ ὐ ὑ ὒ ὓ ὔ ὕ ὖ ὗ ὘ Ὑ ὚ Ὓ ὜ Ὕ ὞ Ὗ&lt;br /&gt;
+u1F60: ὠ ὡ ὢ ὣ ὤ ὥ ὦ ὧ Ὠ Ὡ Ὢ Ὣ Ὤ Ὥ Ὦ Ὧ ὰ ά ὲ έ ὴ ή ὶ ί ὸ ό ὺ ύ ὼ ώ ὾ ὿&lt;br /&gt;
+u1F80: ᾀ ᾁ ᾂ ᾃ ᾄ ᾅ ᾆ ᾇ ᾈ ᾉ ᾊ ᾋ ᾌ ᾍ ᾎ ᾏ ᾐ ᾑ ᾒ ᾓ ᾔ ᾕ ᾖ ᾗ ᾘ ᾙ ᾚ ᾛ ᾜ ᾝ ᾞ ᾟ&lt;br /&gt;
+u1FA0: ᾠ ᾡ ᾢ ᾣ ᾤ ᾥ ᾦ ᾧ ᾨ ᾩ ᾪ ᾫ ᾬ ᾭ ᾮ ᾯ ᾰ ᾱ ᾲ ᾳ ᾴ ᾵ ᾶ ᾷ Ᾰ Ᾱ Ὰ Ά ᾼ ᾽ ι ᾿&lt;br /&gt;
+u1FC0: ῀ ῁ ῂ ῃ ῄ ῅ ῆ ῇ Ὲ Έ Ὴ Ή ῌ ῍ ῎ ῏ ῐ ῑ ῒ ΐ ῔ ῕ ῖ ῗ Ῐ Ῑ Ὶ Ί ῜ ῝ ῞ ῟&lt;br /&gt;
+u1FE0: ῠ ῡ ῢ ΰ ῤ ῥ ῦ ῧ Ῠ Ῡ Ὺ Ύ Ῥ ῭ ΅ ` ῰ ῱ ῲ ῳ ῴ ῵ ῶ ῷ Ὸ Ό Ὼ Ώ ῼ ´ ῾ ῿&lt;br /&gt;
+u2000:                       ​ ‌ ‍ ‎ ‏ ‐ ‑ ‒ – — ― ‖ ‗ ‘ ’ ‚ ‛ “ ” „ ‟&lt;br /&gt;
+u2020: † ‡ • ‣ ․ ‥ … ‧     ‪ ‫ ‬ ‭ ‮   ‰ ‱ ′ ″ ‴ ‵ ‶ ‷ ‸ ‹ › ※ ‼ ‽ ‾ ‿&lt;br /&gt;
+u2040: ⁀ ⁁ ⁂ ⁃ ⁄ ⁅ ⁆ ⁇ ⁈ ⁉ ⁊ ⁋ ⁌ ⁍ ⁎ ⁏ ⁐ ⁑ ⁒ ⁓ ⁔ ⁕ ⁖ ⁗ ⁘ ⁙ ⁚ ⁛ ⁜ ⁝ ⁞  &lt;br /&gt;
+u2060: ⁠ ⁡ ⁢ ⁣ ⁤ ⁥ ⁦ ⁧ ⁨ ⁩ ⁪ ⁫ ⁬ ⁭ ⁮ ⁯ ⁰ ⁱ ⁲ ⁳ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁺ ⁻ ⁼ ⁽ ⁾ ⁿ&lt;br /&gt;
+u2080: ₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₏ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ ₝ ₞ ₟&lt;br /&gt;
+u20A0: ₠ ₡ ₢ ₣ ₤ ₥ ₦ ₧ ₨ ₩ ₪ ₫ € ₭ ₮ ₯ ₰ ₱ ₲ ₳ ₴ ₵ ₶ ₷ ₸ ₹ ₺ ₻ ₼ ₽ ₾ ₿&lt;br /&gt;
+u20C0: ⃀ ⃁ ⃂ ⃃ ⃄ ⃅ ⃆ ⃇ ⃈ ⃉ ⃊ ⃋ ⃌ ⃍ ⃎ ⃏ ⃐ ⃑ ⃒ ⃓ ⃔ ⃕ ⃖ ⃗ ⃘ ⃙ ⃚ ⃛ ⃜ ⃝ ⃞ ⃟&lt;br /&gt;
+u20E0: ⃠ ⃡ ⃢ ⃣ ⃤ ⃥ ⃦ ⃧ ⃨ ⃩ ⃪ ⃫ ⃬ ⃭ ⃮ ⃯ ⃰ ⃱ ⃲ ⃳ ⃴ ⃵ ⃶ ⃷ ⃸ ⃹ ⃺ ⃻ ⃼ ⃽ ⃾ ⃿&lt;br /&gt;
+u2100: ℀ ℁ ℂ ℃ ℄ ℅ ℆ ℇ ℈ ℉ ℊ ℋ ℌ ℍ ℎ ℏ ℐ ℑ ℒ ℓ ℔ ℕ № ℗ ℘ ℙ ℚ ℛ ℜ ℝ ℞ ℟&lt;br /&gt;
+u2120: ℠ ℡ ™ ℣ ℤ ℥ Ω ℧ ℨ ℩ K Å ℬ ℭ ℮ ℯ ℰ ℱ Ⅎ ℳ ℴ ℵ ℶ ℷ ℸ ℹ ℺ ℻ ℼ ℽ ℾ ℿ&lt;br /&gt;
+u2140: ⅀ ⅁ ⅂ ⅃ ⅄ ⅅ ⅆ ⅇ ⅈ ⅉ ⅊ ⅋ ⅌ ⅍ ⅎ ⅏ ⅐ ⅑ ⅒ ⅓ ⅔ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅛ ⅜ ⅝ ⅞ ⅟&lt;br /&gt;
+u2160: Ⅰ Ⅱ Ⅲ Ⅳ Ⅴ Ⅵ Ⅶ Ⅷ Ⅸ Ⅹ Ⅺ Ⅻ Ⅼ Ⅽ Ⅾ Ⅿ ⅰ ⅱ ⅲ ⅳ ⅴ ⅵ ⅶ ⅷ ⅸ ⅹ ⅺ ⅻ ⅼ ⅽ ⅾ ⅿ&lt;br /&gt;
+u2180: ↀ ↁ ↂ Ↄ ↄ ↅ ↆ ↇ ↈ ↉ ↊ ↋ ↌ ↍ ↎ ↏ ← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙ ↚ ↛ ↜ ↝ ↞ ↟&lt;br /&gt;
+u21A0: ↠ ↡ ↢ ↣ ↤ ↥ ↦ ↧ ↨ ↩ ↪ ↫ ↬ ↭ ↮ ↯ ↰ ↱ ↲ ↳ ↴ ↵ ↶ ↷ ↸ ↹ ↺ ↻ ↼ ↽ ↾ ↿&lt;br /&gt;
+u21C0: ⇀ ⇁ ⇂ ⇃ ⇄ ⇅ ⇆ ⇇ ⇈ ⇉ ⇊ ⇋ ⇌ ⇍ ⇎ ⇏ ⇐ ⇑ ⇒ ⇓ ⇔ ⇕ ⇖ ⇗ ⇘ ⇙ ⇚ ⇛ ⇜ ⇝ ⇞ ⇟&lt;br /&gt;
+u21E0: ⇠ ⇡ ⇢ ⇣ ⇤ ⇥ ⇦ ⇧ ⇨ ⇩ ⇪ ⇫ ⇬ ⇭ ⇮ ⇯ ⇰ ⇱ ⇲ ⇳ ⇴ ⇵ ⇶ ⇷ ⇸ ⇹ ⇺ ⇻ ⇼ ⇽ ⇾ ⇿&lt;br /&gt;
+u2200: ∀ ∁ ∂ ∃ ∄ ∅ ∆ ∇ ∈ ∉ ∊ ∋ ∌ ∍ ∎ ∏ ∐ ∑ − ∓ ∔ ∕ ∖ ∗ ∘ ∙ √ ∛ ∜ ∝ ∞ ∟&lt;br /&gt;
+u2220: ∠ ∡ ∢ ∣ ∤ ∥ ∦ ∧ ∨ ∩ ∪ ∫ ∬ ∭ ∮ ∯ ∰ ∱ ∲ ∳ ∴ ∵ ∶ ∷ ∸ ∹ ∺ ∻ ∼ ∽ ∾ ∿&lt;br /&gt;
+u2240: ≀ ≁ ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋ ≌ ≍ ≎ ≏ ≐ ≑ ≒ ≓ ≔ ≕ ≖ ≗ ≘ ≙ ≚ ≛ ≜ ≝ ≞ ≟&lt;br /&gt;
+u2260: ≠ ≡ ≢ ≣ ≤ ≥ ≦ ≧ ≨ ≩ ≪ ≫ ≬ ≭ ≮ ≯ ≰ ≱ ≲ ≳ ≴ ≵ ≶ ≷ ≸ ≹ ≺ ≻ ≼ ≽ ≾ ≿&lt;br /&gt;
+u2280: ⊀ ⊁ ⊂ ⊃ ⊄ ⊅ ⊆ ⊇ ⊈ ⊉ ⊊ ⊋ ⊌ ⊍ ⊎ ⊏ ⊐ ⊑ ⊒ ⊓ ⊔ ⊕ ⊖ ⊗ ⊘ ⊙ ⊚ ⊛ ⊜ ⊝ ⊞ ⊟&lt;br /&gt;
+u22A0: ⊠ ⊡ ⊢ ⊣ ⊤ ⊥ ⊦ ⊧ ⊨ ⊩ ⊪ ⊫ ⊬ ⊭ ⊮ ⊯ ⊰ ⊱ ⊲ ⊳ ⊴ ⊵ ⊶ ⊷ ⊸ ⊹ ⊺ ⊻ ⊼ ⊽ ⊾ ⊿&lt;br /&gt;
+u22C0: ⋀ ⋁ ⋂ ⋃ ⋄ ⋅ ⋆ ⋇ ⋈ ⋉ ⋊ ⋋ ⋌ ⋍ ⋎ ⋏ ⋐ ⋑ ⋒ ⋓ ⋔ ⋕ ⋖ ⋗ ⋘ ⋙ ⋚ ⋛ ⋜ ⋝ ⋞ ⋟&lt;br /&gt;
+u22E0: ⋠ ⋡ ⋢ ⋣ ⋤ ⋥ ⋦ ⋧ ⋨ ⋩ ⋪ ⋫ ⋬ ⋭ ⋮ ⋯ ⋰ ⋱ ⋲ ⋳ ⋴ ⋵ ⋶ ⋷ ⋸ ⋹ ⋺ ⋻ ⋼ ⋽ ⋾ ⋿&lt;br /&gt;
+u2300: ⌀ ⌁ ⌂ ⌃ ⌄ ⌅ ⌆ ⌇ ⌈ ⌉ ⌊ ⌋ ⌌ ⌍ ⌎ ⌏ ⌐ ⌑ ⌒ ⌓ ⌔ ⌕ ⌖ ⌗ ⌘ ⌙ ⌚ ⌛ ⌜ ⌝ ⌞ ⌟&lt;br /&gt;
+u2320: ⌠ ⌡ ⌢ ⌣ ⌤ ⌥ ⌦ ⌧ ⌨ 〈 〉 ⌫ ⌬ ⌭ ⌮ ⌯ ⌰ ⌱ ⌲ ⌳ ⌴ ⌵ ⌶ ⌷ ⌸ ⌹ ⌺ ⌻ ⌼ ⌽ ⌾ ⌿&lt;br /&gt;
+u2340: ⍀ ⍁ ⍂ ⍃ ⍄ ⍅ ⍆ ⍇ ⍈ ⍉ ⍊ ⍋ ⍌ ⍍ ⍎ ⍏ ⍐ ⍑ ⍒ ⍓ ⍔ ⍕ ⍖ ⍗ ⍘ ⍙ ⍚ ⍛ ⍜ ⍝ ⍞ ⍟&lt;br /&gt;
+u2360: ⍠ ⍡ ⍢ ⍣ ⍤ ⍥ ⍦ ⍧ ⍨ ⍩ ⍪ ⍫ ⍬ ⍭ ⍮ ⍯ ⍰ ⍱ ⍲ ⍳ ⍴ ⍵ ⍶ ⍷ ⍸ ⍹ ⍺ ⍻ ⍼ ⍽ ⍾ ⍿&lt;br /&gt;
+u2380: ⎀ ⎁ ⎂ ⎃ ⎄ ⎅ ⎆ ⎇ ⎈ ⎉ ⎊ ⎋ ⎌ ⎍ ⎎ ⎏ ⎐ ⎑ ⎒ ⎓ ⎔ ⎕ ⎖ ⎗ ⎘ ⎙ ⎚ ⎛ ⎜ ⎝ ⎞ ⎟&lt;br /&gt;
+u23A0: ⎠ ⎡ ⎢ ⎣ ⎤ ⎥ ⎦ ⎧ ⎨ ⎩ ⎪ ⎫ ⎬ ⎭ ⎮ ⎯ ⎰ ⎱ ⎲ ⎳ ⎴ ⎵ ⎶ ⎷ ⎸ ⎹ ⎺ ⎻ ⎼ ⎽ ⎾ ⎿&lt;br /&gt;
+u23C0: ⏀ ⏁ ⏂ ⏃ ⏄ ⏅ ⏆ ⏇ ⏈ ⏉ ⏊ ⏋ ⏌ ⏍ ⏎ ⏏ ⏐ ⏑ ⏒ ⏓ ⏔ ⏕ ⏖ ⏗ ⏘ ⏙ ⏚ ⏛ ⏜ ⏝ ⏞ ⏟&lt;br /&gt;
+u23E0: ⏠ ⏡ ⏢ ⏣ ⏤ ⏥ ⏦ ⏧ ⏨ ⏩ ⏪ ⏫ ⏬ ⏭ ⏮ ⏯ ⏰ ⏱ ⏲ ⏳ ⏴ ⏵ ⏶ ⏷ ⏸ ⏹ ⏺ ⏻ ⏼ ⏽ ⏾ ⏿&lt;br /&gt;
+u2400: ␀ ␁ ␂ ␃ ␄ ␅ ␆ ␇ ␈ ␉ ␊ ␋ ␌ ␍ ␎ ␏ ␐ ␑ ␒ ␓ ␔ ␕ ␖ ␗ ␘ ␙ ␚ ␛ ␜ ␝ ␞ ␟&lt;br /&gt;
+u2420: ␠ ␡ ␢ ␣ ␤ ␥ ␦ ␧ ␨ ␩ ␪ ␫ ␬ ␭ ␮ ␯ ␰ ␱ ␲ ␳ ␴ ␵ ␶ ␷ ␸ ␹ ␺ ␻ ␼ ␽ ␾ ␿&lt;br /&gt;
+u2440: ⑀ ⑁ ⑂ ⑃ ⑄ ⑅ ⑆ ⑇ ⑈ ⑉ ⑊ ⑋ ⑌ ⑍ ⑎ ⑏ ⑐ ⑑ ⑒ ⑓ ⑔ ⑕ ⑖ ⑗ ⑘ ⑙ ⑚ ⑛ ⑜ ⑝ ⑞ ⑟&lt;br /&gt;
+u2460: ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ ⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿&lt;br /&gt;
+u2480: ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇ ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛ ⒜ ⒝ ⒞ ⒟&lt;br /&gt;
+u24A0: ⒠ ⒡ ⒢ ⒣ ⒤ ⒥ ⒦ ⒧ ⒨ ⒩ ⒪ ⒫ ⒬ ⒭ ⒮ ⒯ ⒰ ⒱ ⒲ ⒳ ⒴ ⒵ Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ&lt;br /&gt;
+u24C0: Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ&lt;br /&gt;
+u24E0: ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ ⓪ ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴ ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ ⓿&lt;br /&gt;
+u2500: ─ ━ │ ┃ ┄ ┅ ┆ ┇ ┈ ┉ ┊ ┋ ┌ ┍ ┎ ┏ ┐ ┑ ┒ ┓ └ ┕ ┖ ┗ ┘ ┙ ┚ ┛ ├ ┝ ┞ ┟&lt;br /&gt;
+u2520: ┠ ┡ ┢ ┣ ┤ ┥ ┦ ┧ ┨ ┩ ┪ ┫ ┬ ┭ ┮ ┯ ┰ ┱ ┲ ┳ ┴ ┵ ┶ ┷ ┸ ┹ ┺ ┻ ┼ ┽ ┾ ┿&lt;br /&gt;
+u2540: ╀ ╁ ╂ ╃ ╄ ╅ ╆ ╇ ╈ ╉ ╊ ╋ ╌ ╍ ╎ ╏ ═ ║ ╒ ╓ ╔ ╕ ╖ ╗ ╘ ╙ ╚ ╛ ╜ ╝ ╞ ╟&lt;br /&gt;
+u2560: ╠ ╡ ╢ ╣ ╤ ╥ ╦ ╧ ╨ ╩ ╪ ╫ ╬ ╭ ╮ ╯ ╰ ╱ ╲ ╳ ╴ ╵ ╶ ╷ ╸ ╹ ╺ ╻ ╼ ╽ ╾ ╿&lt;br /&gt;
+u2580: ▀ ▁ ▂ ▃ ▄ ▅ ▆ ▇ █ ▉ ▊ ▋ ▌ ▍ ▎ ▏ ▐ ░ ▒ ▓ ▔ ▕ ▖ ▗ ▘ ▙ ▚ ▛ ▜ ▝ ▞ ▟&lt;br /&gt;
+u25A0: ■ □ ▢ ▣ ▤ ▥ ▦ ▧ ▨ ▩ ▪ ▫ ▬ ▭ ▮ ▯ ▰ ▱ ▲ △ ▴ ▵ ▶ ▷ ▸ ▹ ► ▻ ▼ ▽ ▾ ▿&lt;br /&gt;
+u25C0: ◀ ◁ ◂ ◃ ◄ ◅ ◆ ◇ ◈ ◉ ◊ ○ ◌ ◍ ◎ ● ◐ ◑ ◒ ◓ ◔ ◕ ◖ ◗ ◘ ◙ ◚ ◛ ◜ ◝ ◞ ◟&lt;br /&gt;
+u25E0: ◠ ◡ ◢ ◣ ◤ ◥ ◦ ◧ ◨ ◩ ◪ ◫ ◬ ◭ ◮ ◯ ◰ ◱ ◲ ◳ ◴ ◵ ◶ ◷ ◸ ◹ ◺ ◻ ◼ ◽ ◾ ◿&lt;br /&gt;
+u2600: ☀ ☁ ☂ ☃ ☄ ★ ☆ ☇ ☈ ☉ ☊ ☋ ☌ ☍ ☎ ☏ ☐ ☑ ☒ ☓ ☔ ☕ ☖ ☗ ☘ ☙ ☚ ☛ ☜ ☝ ☞ ☟&lt;br /&gt;
+u2620: ☠ ☡ ☢ ☣ ☤ ☥ ☦ ☧ ☨ ☩ ☪ ☫ ☬ ☭ ☮ ☯ ☰ ☱ ☲ ☳ ☴ ☵ ☶ ☷ ☸ ☹ ☺ ☻ ☼ ☽ ☾ ☿&lt;br /&gt;
+u2640: ♀ ♁ ♂ ♃ ♄ ♅ ♆ ♇ ♈ ♉ ♊ ♋ ♌ ♍ ♎ ♏ ♐ ♑ ♒ ♓ ♔ ♕ ♖ ♗ ♘ ♙ ♚ ♛ ♜ ♝ ♞ ♟&lt;br /&gt;
+u2660: ♠ ♡ ♢ ♣ ♤ ♥ ♦ ♧ ♨ ♩ ♪ ♫ ♬ ♭ ♮ ♯ ♰ ♱ ♲ ♳ ♴ ♵ ♶ ♷ ♸ ♹ ♺ ♻ ♼ ♽ ♾ ♿&lt;br /&gt;
+u2680: ⚀ ⚁ ⚂ ⚃ ⚄ ⚅ ⚆ ⚇ ⚈ ⚉ ⚊ ⚋ ⚌ ⚍ ⚎ ⚏ ⚐ ⚑ ⚒ ⚓ ⚔ ⚕ ⚖ ⚗ ⚘ ⚙ ⚚ ⚛ ⚜ ⚝ ⚞ ⚟&lt;br /&gt;
+u26A0: ⚠ ⚡ ⚢ ⚣ ⚤ ⚥ ⚦ ⚧ ⚨ ⚩ ⚪ ⚫ ⚬ ⚭ ⚮ ⚯ ⚰ ⚱ ⚲ ⚳ ⚴ ⚵ ⚶ ⚷ ⚸ ⚹ ⚺ ⚻ ⚼ ⚽ ⚾ ⚿&lt;br /&gt;
+u2700: ✀ ✁ ✂ ✃ ✄ ✅ ✆ ✇ ✈ ✉ ✊ ✋ ✌ ✍ ✎ ✏ ✐ ✑ ✒ ✓ ✔ ✕ ✖ ✗ ✘ ✙ ✚ ✛ ✜ ✝ ✞ ✟&lt;br /&gt;
+u2720: ✠ ✡ ✢ ✣ ✤ ✥ ✦ ✧ ✨ ✩ ✪ ✫ ✬ ✭ ✮ ✯ ✰ ✱ ✲ ✳ ✴ ✵ ✶ ✷ ✸ ✹ ✺ ✻ ✼ ✽ ✾ ✿&lt;br /&gt;
+u2740: ❀ ❁ ❂ ❃ ❄ ❅ ❆ ❇ ❈ ❉ ❊ ❋ ❌ ❍ ❎ ❏ ❐ ❑ ❒ ❓ ❔ ❕ ❖ ❗ ❘ ❙ ❚ ❛ ❜ ❝ ❞ ❟&lt;br /&gt;
+u2760: ❠ ❡ ❢ ❣ ❤ ❥ ❦ ❧ ❨ ❩ ❪ ❫ ❬ ❭ ❮ ❯ ❰ ❱ ❲ ❳ ❴ ❵ ❶ ❷ ❸ ❹ ❺ ❻ ❼ ❽ ❾ ❿&lt;br /&gt;
+u2780: ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ ➓ ➔ ➕ ➖ ➗ ➘ ➙ ➚ ➛ ➜ ➝ ➞ ➟&lt;br /&gt;
+u27A0: ➠ ➡ ➢ ➣ ➤ ➥ ➦ ➧ ➨ ➩ ➪ ➫ ➬ ➭ ➮ ➯ ➰ ➱ ➲ ➳ ➴ ➵ ➶ ➷ ➸ ➹ ➺ ➻ ➼ ➽ ➾ ➿&lt;br /&gt;
+u27C0: ⟀ ⟁ ⟂ ⟃ ⟄ ⟅ ⟆ ⟇ ⟈ ⟉ ⟊ ⟋ ⟌ ⟍ ⟎ ⟏ ⟐ ⟑ ⟒ ⟓ ⟔ ⟕ ⟖ ⟗ ⟘ ⟙ ⟚ ⟛ ⟜ ⟝ ⟞ ⟟&lt;br /&gt;
+u27E0: ⟠ ⟡ ⟢ ⟣ ⟤ ⟥ ⟦ ⟧ ⟨ ⟩ ⟪ ⟫ ⟬ ⟭ ⟮ ⟯ ⟰ ⟱ ⟲ ⟳ ⟴ ⟵ ⟶ ⟷ ⟸ ⟹ ⟺ ⟻ ⟼ ⟽ ⟾ ⟿&lt;br /&gt;
+u2800: ⠀ ⠁ ⠂ ⠃ ⠄ ⠅ ⠆ ⠇ ⠈ ⠉ ⠊ ⠋ ⠌ ⠍ ⠎ ⠏ ⠐ ⠑ ⠒ ⠓ ⠔ ⠕ ⠖ ⠗ ⠘ ⠙ ⠚ ⠛ ⠜ ⠝ ⠞ ⠟&lt;br /&gt;
+u2820: ⠠ ⠡ ⠢ ⠣ ⠤ ⠥ ⠦ ⠧ ⠨ ⠩ ⠪ ⠫ ⠬ ⠭ ⠮ ⠯ ⠰ ⠱ ⠲ ⠳ ⠴ ⠵ ⠶ ⠷ ⠸ ⠹ ⠺ ⠻ ⠼ ⠽ ⠾ ⠿&lt;br /&gt;
+u2840: ⡀ ⡁ ⡂ ⡃ ⡄ ⡅ ⡆ ⡇ ⡈ ⡉ ⡊ ⡋ ⡌ ⡍ ⡎ ⡏ ⡐ ⡑ ⡒ ⡓ ⡔ ⡕ ⡖ ⡗ ⡘ ⡙ ⡚ ⡛ ⡜ ⡝ ⡞ ⡟&lt;br /&gt;
+u2860: ⡠ ⡡ ⡢ ⡣ ⡤ ⡥ ⡦ ⡧ ⡨ ⡩ ⡪ ⡫ ⡬ ⡭ ⡮ ⡯ ⡰ ⡱ ⡲ ⡳ ⡴ ⡵ ⡶ ⡷ ⡸ ⡹ ⡺ ⡻ ⡼ ⡽ ⡾ ⡿&lt;br /&gt;
+u2880: ⢀ ⢁ ⢂ ⢃ ⢄ ⢅ ⢆ ⢇ ⢈ ⢉ ⢊ ⢋ ⢌ ⢍ ⢎ ⢏ ⢐ ⢑ ⢒ ⢓ ⢔ ⢕ ⢖ ⢗ ⢘ ⢙ ⢚ ⢛ ⢜ ⢝ ⢞ ⢟&lt;br /&gt;
+u28A0: ⢠ ⢡ ⢢ ⢣ ⢤ ⢥ ⢦ ⢧ ⢨ ⢩ ⢪ ⢫ ⢬ ⢭ ⢮ ⢯ ⢰ ⢱ ⢲ ⢳ ⢴ ⢵ ⢶ ⢷ ⢸ ⢹ ⢺ ⢻ ⢼ ⢽ ⢾ ⢿&lt;br /&gt;
+u28C0: ⣀ ⣁ ⣂ ⣃ ⣄ ⣅ ⣆ ⣇ ⣈ ⣉ ⣊ ⣋ ⣌ ⣍ ⣎ ⣏ ⣐ ⣑ ⣒ ⣓ ⣔ ⣕ ⣖ ⣗ ⣘ ⣙ ⣚ ⣛ ⣜ ⣝ ⣞ ⣟&lt;br /&gt;
+u28E0: ⣠ ⣡ ⣢ ⣣ ⣤ ⣥ ⣦ ⣧ ⣨ ⣩ ⣪ ⣫ ⣬ ⣭ ⣮ ⣯ ⣰ ⣱ ⣲ ⣳ ⣴ ⣵ ⣶ ⣷ ⣸ ⣹ ⣺ ⣻ ⣼ ⣽ ⣾ ⣿&lt;br /&gt;
+u2900: ⤀ ⤁ ⤂ ⤃ ⤄ ⤅ ⤆ ⤇ ⤈ ⤉ ⤊ ⤋ ⤌ ⤍ ⤎ ⤏ ⤐ ⤑ ⤒ ⤓ ⤔ ⤕ ⤖ ⤗ ⤘ ⤙ ⤚ ⤛ ⤜ ⤝ ⤞ ⤟&lt;br /&gt;
+u2920: ⤠ ⤡ ⤢ ⤣ ⤤ ⤥ ⤦ ⤧ ⤨ ⤩ ⤪ ⤫ ⤬ ⤭ ⤮ ⤯ ⤰ ⤱ ⤲ ⤳ ⤴ ⤵ ⤶ ⤷ ⤸ ⤹ ⤺ ⤻ ⤼ ⤽ ⤾ ⤿&lt;br /&gt;
+u2940: ⥀ ⥁ ⥂ ⥃ ⥄ ⥅ ⥆ ⥇ ⥈ ⥉ ⥊ ⥋ ⥌ ⥍ ⥎ ⥏ ⥐ ⥑ ⥒ ⥓ ⥔ ⥕ ⥖ ⥗ ⥘ ⥙ ⥚ ⥛ ⥜ ⥝ ⥞ ⥟&lt;br /&gt;
+u2960: ⥠ ⥡ ⥢ ⥣ ⥤ ⥥ ⥦ ⥧ ⥨ ⥩ ⥪ ⥫ ⥬ ⥭ ⥮ ⥯ ⥰ ⥱ ⥲ ⥳ ⥴ ⥵ ⥶ ⥷ ⥸ ⥹ ⥺ ⥻ ⥼ ⥽ ⥾ ⥿&lt;br /&gt;
+u2980: ⦀ ⦁ ⦂ ⦃ ⦄ ⦅ ⦆ ⦇ ⦈ ⦉ ⦊ ⦋ ⦌ ⦍ ⦎ ⦏ ⦐ ⦑ ⦒ ⦓ ⦔ ⦕ ⦖ ⦗ ⦘ ⦙ ⦚ ⦛ ⦜ ⦝ ⦞ ⦟&lt;br /&gt;
+u29A0: ⦠ ⦡ ⦢ ⦣ ⦤ ⦥ ⦦ ⦧ ⦨ ⦩ ⦪ ⦫ ⦬ ⦭ ⦮ ⦯ ⦰ ⦱ ⦲ ⦳ ⦴ ⦵ ⦶ ⦷ ⦸ ⦹ ⦺ ⦻ ⦼ ⦽ ⦾ ⦿&lt;br /&gt;
+u29C0: ⧀ ⧁ ⧂ ⧃ ⧄ ⧅ ⧆ ⧇ ⧈ ⧉ ⧊ ⧋ ⧌ ⧍ ⧎ ⧏ ⧐ ⧑ ⧒ ⧓ ⧔ ⧕ ⧖ ⧗ ⧘ ⧙ ⧚ ⧛ ⧜ ⧝ ⧞ ⧟&lt;br /&gt;
+u29E0: ⧠ ⧡ ⧢ ⧣ ⧤ ⧥ ⧦ ⧧ ⧨ ⧩ ⧪ ⧫ ⧬ ⧭ ⧮ ⧯ ⧰ ⧱ ⧲ ⧳ ⧴ ⧵ ⧶ ⧷ ⧸ ⧹ ⧺ ⧻ ⧼ ⧽ ⧾ ⧿&lt;br /&gt;
+u2A00: ⨀ ⨁ ⨂ ⨃ ⨄ ⨅ ⨆ ⨇ ⨈ ⨉ ⨊ ⨋ ⨌ ⨍ ⨎ ⨏ ⨐ ⨑ ⨒ ⨓ ⨔ ⨕ ⨖ ⨗ ⨘ ⨙ ⨚ ⨛ ⨜ ⨝ ⨞ ⨟&lt;br /&gt;
+u2A20: ⨠ ⨡ ⨢ ⨣ ⨤ ⨥ ⨦ ⨧ ⨨ ⨩ ⨪ ⨫ ⨬ ⨭ ⨮ ⨯ ⨰ ⨱ ⨲ ⨳ ⨴ ⨵ ⨶ ⨷ ⨸ ⨹ ⨺ ⨻ ⨼ ⨽ ⨾ ⨿&lt;br /&gt;
+u2A40: ⩀ ⩁ ⩂ ⩃ ⩄ ⩅ ⩆ ⩇ ⩈ ⩉ ⩊ ⩋ ⩌ ⩍ ⩎ ⩏ ⩐ ⩑ ⩒ ⩓ ⩔ ⩕ ⩖ ⩗ ⩘ ⩙ ⩚ ⩛ ⩜ ⩝ ⩞ ⩟&lt;br /&gt;
+u2A60: ⩠ ⩡ ⩢ ⩣ ⩤ ⩥ ⩦ ⩧ ⩨ ⩩ ⩪ ⩫ ⩬ ⩭ ⩮ ⩯ ⩰ ⩱ ⩲ ⩳ ⩴ ⩵ ⩶ ⩷ ⩸ ⩹ ⩺ ⩻ ⩼ ⩽ ⩾ ⩿&lt;br /&gt;
+u2A80: ⪀ ⪁ ⪂ ⪃ ⪄ ⪅ ⪆ ⪇ ⪈ ⪉ ⪊ ⪋ ⪌ ⪍ ⪎ ⪏ ⪐ ⪑ ⪒ ⪓ ⪔ ⪕ ⪖ ⪗ ⪘ ⪙ ⪚ ⪛ ⪜ ⪝ ⪞ ⪟&lt;br /&gt;
+u2AA0: ⪠ ⪡ ⪢ ⪣ ⪤ ⪥ ⪦ ⪧ ⪨ ⪩ ⪪ ⪫ ⪬ ⪭ ⪮ ⪯ ⪰ ⪱ ⪲ ⪳ ⪴ ⪵ ⪶ ⪷ ⪸ ⪹ ⪺ ⪻ ⪼ ⪽ ⪾ ⪿&lt;br /&gt;
+u2AC0: ⫀ ⫁ ⫂ ⫃ ⫄ ⫅ ⫆ ⫇ ⫈ ⫉ ⫊ ⫋ ⫌ ⫍ ⫎ ⫏ ⫐ ⫑ ⫒ ⫓ ⫔ ⫕ ⫖ ⫗ ⫘ ⫙ ⫚ ⫛ ⫝̸ ⫝ ⫞ ⫟&lt;br /&gt;
+u2AE0: ⫠ ⫡ ⫢ ⫣ ⫤ ⫥ ⫦ ⫧ ⫨ ⫩ ⫪ ⫫ ⫬ ⫭ ⫮ ⫯ ⫰ ⫱ ⫲ ⫳ ⫴ ⫵ ⫶ ⫷ ⫸ ⫹ ⫺ ⫻ ⫼ ⫽ ⫾ ⫿&lt;br /&gt;
+u2B00: ⬀ ⬁ ⬂ ⬃ ⬄ ⬅ ⬆ ⬇ ⬈ ⬉ ⬊ ⬋ ⬌ ⬍ ⬎ ⬏ ⬐ ⬑ ⬒ ⬓ ⬔ ⬕ ⬖ ⬗ ⬘ ⬙ ⬚ ⬛ ⬜ ⬝ ⬞ ⬟&lt;br /&gt;
+u2B20: ⬠ ⬡ ⬢ ⬣ ⬤ ⬥ ⬦ ⬧ ⬨ ⬩ ⬪ ⬫ ⬬ ⬭ ⬮ ⬯ ⬰ ⬱ ⬲ ⬳ ⬴ ⬵ ⬶ ⬷ ⬸ ⬹ ⬺ ⬻ ⬼ ⬽ ⬾ ⬿&lt;br /&gt;
+u2C60: Ⱡ ⱡ Ɫ Ᵽ Ɽ ⱥ ⱦ Ⱨ ⱨ Ⱪ ⱪ Ⱬ ⱬ Ɑ Ɱ Ɐ Ɒ ⱱ Ⱳ ⱳ ⱴ Ⱶ ⱶ ⱷ ⱸ ⱹ ⱺ ⱻ ⱼ ⱽ Ȿ Ɀ&lt;br /&gt;
+u2E80: ⺀ ⺁ ⺂ ⺃ ⺄ ⺅ ⺆ ⺇ ⺈ ⺉ ⺊ ⺋ ⺌ ⺍ ⺎ ⺏ ⺐ ⺑ ⺒ ⺓ ⺔ ⺕ ⺖ ⺗ ⺘ ⺙ ⺚ ⺛ ⺜ ⺝ ⺞ ⺟&lt;br /&gt;
+u2EA0: ⺠ ⺡ ⺢ ⺣ ⺤ ⺥ ⺦ ⺧ ⺨ ⺩ ⺪ ⺫ ⺬ ⺭ ⺮ ⺯ ⺰ ⺱ ⺲ ⺳ ⺴ ⺵ ⺶ ⺷ ⺸ ⺹ ⺺ ⺻ ⺼ ⺽ ⺾ ⺿&lt;br /&gt;
+u2EC0: ⻀ ⻁ ⻂ ⻃ ⻄ ⻅ ⻆ ⻇ ⻈ ⻉ ⻊ ⻋ ⻌ ⻍ ⻎ ⻏ ⻐ ⻑ ⻒ ⻓ ⻔ ⻕ ⻖ ⻗ ⻘ ⻙ ⻚ ⻛ ⻜ ⻝ ⻞ ⻟&lt;br /&gt;
+u2EE0: ⻠ ⻡ ⻢ ⻣ ⻤ ⻥ ⻦ ⻧ ⻨ ⻩ ⻪ ⻫ ⻬ ⻭ ⻮ ⻯ ⻰ ⻱ ⻲ ⻳ ⻴ ⻵ ⻶ ⻷ ⻸ ⻹ ⻺ ⻻ ⻼ ⻽ ⻾ ⻿&lt;br /&gt;
+u2F00: ⼀ ⼁ ⼂ ⼃ ⼄ ⼅ ⼆ ⼇ ⼈ ⼉ ⼊ ⼋ ⼌ ⼍ ⼎ ⼏ ⼐ ⼑ ⼒ ⼓ ⼔ ⼕ ⼖ ⼗ ⼘ ⼙ ⼚ ⼛ ⼜ ⼝ ⼞ ⼟&lt;br /&gt;
+u2F20: ⼠ ⼡ ⼢ ⼣ ⼤ ⼥ ⼦ ⼧ ⼨ ⼩ ⼪ ⼫ ⼬ ⼭ ⼮ ⼯ ⼰ ⼱ ⼲ ⼳ ⼴ ⼵ ⼶ ⼷ ⼸ ⼹ ⼺ ⼻ ⼼ ⼽ ⼾ ⼿&lt;br /&gt;
+u2F40: ⽀ ⽁ ⽂ ⽃ ⽄ ⽅ ⽆ ⽇ ⽈ ⽉ ⽊ ⽋ ⽌ ⽍ ⽎ ⽏ ⽐ ⽑ ⽒ ⽓ ⽔ ⽕ ⽖ ⽗ ⽘ ⽙ ⽚ ⽛ ⽜ ⽝ ⽞ ⽟&lt;br /&gt;
+u3040: ぀ ぁ あ ぃ い ぅ う ぇ え ぉ お か が き ぎ く ぐ け げ こ ご さ ざ し じ す ず せ ぜ そ ぞ た&lt;br /&gt;
+u3060: だ ち ぢ っ つ づ て で と ど な に ぬ ね の は ば ぱ ひ び ぴ ふ ぶ ぷ へ べ ぺ ほ ぼ ぽ ま み&lt;br /&gt;
+u3360: ㍠ ㍡ ㍢ ㍣ ㍤ ㍥ ㍦ ㍧ ㍨ ㍩ ㍪ ㍫ ㍬ ㍭ ㍮ ㍯ ㍰ ㍱ ㍲ ㍳ ㍴ ㍵ ㍶ ㍷ ㍸ ㍹ ㍺ ㍻ ㍼ ㍽ ㍾ ㍿&lt;br /&gt;
+u3380: ㎀ ㎁ ㎂ ㎃ ㎄ ㎅ ㎆ ㎇ ㎈ ㎉ ㎊ ㎋ ㎌ ㎍ ㎎ ㎏ ㎐ ㎑ ㎒ ㎓ ㎔ ㎕ ㎖ ㎗ ㎘ ㎙ ㎚ ㎛ ㎜ ㎝ ㎞ ㎟&lt;br /&gt;
+u33A0: ㎠ ㎡ ㎢ ㎣ ㎤ ㎥ ㎦ ㎧ ㎨ ㎩ ㎪ ㎫ ㎬ ㎭ ㎮ ㎯ ㎰ ㎱ ㎲ ㎳ ㎴ ㎵ ㎶ ㎷ ㎸ ㎹ ㎺ ㎻ ㎼ ㎽ ㎾ ㎿&lt;br /&gt;
+u33C0: ㏀ ㏁ ㏂ ㏃ ㏄ ㏅ ㏆ ㏇ ㏈ ㏉ ㏊ ㏋ ㏌ ㏍ ㏎ ㏏ ㏐ ㏑ ㏒ ㏓ ㏔ ㏕ ㏖ ㏗ ㏘ ㏙ ㏚ ㏛ ㏜ ㏝ ㏞ ㏟&lt;br /&gt;
+u50C0: 僀 僁 僂 僃 僄 僅 僆 僇 僈 僉 僊 僋 僌 働 僎 像 僐 僑 僒 僓 僔 僕 僖 僗 僘 僙 僚 僛 僜 僝 僞 僟&lt;br /&gt;
+u50E0: 僠 僡 僢 僣 僤 僥 僦 僧 僨 僩 僪 僫 僬 僭 僮 僯 僰 僱 僲 僳 僴 僵 僶 僷 僸 價 僺 僻 僼 僽 僾 僿&lt;br /&gt;
+uA9E0: ꧠ ꧡ ꧢ ꧣ ꧤ ꧥ ꧦ ꧧ ꧨ ꧩ ꧪ ꧫ ꧬ ꧭ ꧮ ꧯ ꧰ ꧱ ꧲ ꧳ ꧴ ꧵ ꧶ ꧷ ꧸ ꧹ ꧺ ꧻ ꧼ ꧽ ꧾ ꧿&lt;br /&gt;
+uAC00: 가 각 갂 갃 간 갅 갆 갇 갈 갉 갊 갋 갌 갍 갎 갏 감 갑 값 갓 갔 강 갖 갗 갘 같 갚 갛 개 객 갞 갟&lt;br /&gt;
+uAC20: 갠 갡 갢 갣 갤 갥 갦 갧 갨 갩 갪 갫 갬 갭 갮 갯 갰 갱 갲 갳 갴 갵 갶 갷 갸 갹 갺 갻 갼 갽 갾 갿&lt;br /&gt;
+uE220:                                &lt;br /&gt;
+uE240:                                &lt;br /&gt;
+uEA00:                                &lt;br /&gt;
+uEA20:                                &lt;br /&gt;
+uEDA0:                                &lt;br /&gt;
+uEE20:                                &lt;br /&gt;
+uEE60:                                &lt;br /&gt;
+uFB00: ﬀ ﬁ ﬂ ﬃ ﬄ ﬅ ﬆ ﬇ ﬈ ﬉ ﬊ ﬋ ﬌ ﬍ ﬎ ﬏ ﬐ ﬑ ﬒ ﬓ ﬔ ﬕ ﬖ ﬗ ﬘ ﬙ ﬚ ﬛ ﬜ יִ ﬞ ײַ&lt;br /&gt;
+uFB20: ﬠ ﬡ ﬢ ﬣ ﬤ ﬥ ﬦ ﬧ ﬨ ﬩ שׁ שׂ שּׁ שּׂ אַ אָ אּ בּ גּ דּ הּ וּ זּ ﬷ טּ יּ ךּ כּ לּ ﬽ מּ ﬿&lt;br /&gt;
+uFFE0: ￠ ￡ ￢ ￣ ￤ ￥ ￦ ￧ ￨ ￩ ￪ ￫ ￬ ￭ ￮ ￯ ￰ ￱ ￲ ￳ ￴ ￵ ￶ ￷ ￸ ￹ ￺ ￻ ￼ � ￾ ￿&lt;br /&gt;
+u1D300: 𝌀 𝌁 𝌂 𝌃 𝌄 𝌅 𝌆 𝌇 𝌈 𝌉 𝌊 𝌋 𝌌 𝌍 𝌎 𝌏 𝌐 𝌑 𝌒 𝌓 𝌔 𝌕 𝌖 𝌗 𝌘 𝌙 𝌚 𝌛 𝌜 𝌝 𝌞 𝌟&lt;br /&gt;
+u1D520: 𝔠 𝔡 𝔢 𝔣 𝔤 𝔥 𝔦 𝔧 𝔨 𝔩 𝔪 𝔫 𝔬 𝔭 𝔮 𝔯 𝔰 𝔱 𝔲 𝔳 𝔴 𝔵 𝔶 𝔷 𝔸 𝔹 𝔺 𝔻 𝔼 𝔽 𝔾 𝔿&lt;br /&gt;
+u1D540: 𝕀 𝕁 𝕂 𝕃 𝕄 𝕅 𝕆 𝕇 𝕈 𝕉 𝕊 𝕋 𝕌 𝕍 𝕎 𝕏 𝕐 𝕑 𝕒 𝕓 𝕔 𝕕 𝕖 𝕗 𝕘 𝕙 𝕚 𝕛 𝕜 𝕝 𝕞 𝕟&lt;br /&gt;
+u1D560: 𝕠 𝕡 𝕢 𝕣 𝕤 𝕥 𝕦 𝕧 𝕨 𝕩 𝕪 𝕫 𝕬 𝕭 𝕮 𝕯 𝕰 𝕱 𝕲 𝕳 𝕴 𝕵 𝕶 𝕷 𝕸 𝕹 𝕺 𝕻 𝕼 𝕽 𝕾 𝕿&lt;br /&gt;
+u26900: 𦤀 𦤁 𦤂 𦤃 𦤄 𦤅 𦤆 𦤇 𦤈 𦤉 𦤊 𦤋 𦤌 𦤍 𦤎 𦤏 𦤐 𦤑 𦤒 𦤓 𦤔 𦤕 𦤖 𦤗 𦤘 𦤙 𦤚 𦤛 𦤜 𦤝 𦤞 𦤟&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

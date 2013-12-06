@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Ssl on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/ssl.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2013-12-05 00:00:00 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Self-Signed SSL Certificate with Config File</title>
+      <link>http://www.robotamer.com/linux/openssl/ca-cert-cfg.html</link>
+      <pubDate>Thu, 05 Dec 2013 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/openssl/ca-cert-cfg.html</guid>
+      <description>&lt;p&gt;I automated this as much as I could.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Edit DOMAIN name in the ca.cfg&lt;/li&gt;
+&lt;li&gt;Run the openssl command&lt;/li&gt;
+&lt;li&gt;chmod the key file&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;Code to execute:&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;DOMAIN=robotamer.com  
+openssl req -new -x509 -nodes -out $DOMAIN_.crt -config ca.cfg
+chmod 600 DOMAIN_.key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;TODO:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Still have to figure out how to get the global &lt;code&gt;DOMAIN&lt;/code&gt; var in to the config file.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Sample Config File:&lt;/h4&gt;
+
+&lt;p&gt;Save as &lt;code&gt;ca.cfg&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;
+# Specify the domain
+DOMAIN = robotamer.com
+
+#####################################################
+
+[ ca ]
+default_ca              = CA_default
+
+
+[ CA_default ]
+DIR                     = .
+serial                  = ${DIR}/serial
+database                = ${DIR}/index.txt
+new_certs_dir           = ${DIR}/newcerts
+certs                   = ${DIR}/certs
+certificate             = $certs/cacert.pem
+private_key             = ${DIR}/private/cakey.pem
+default_days            = 3650
+default_md              = sha1
+preserve                = no
+email_in_dn             = no
+nameopt                 = default_ca
+certopt                 = default_ca
+policy                  = policy_match
+copy_extensions         = copy
+
+
+[ policy_match ]
+countryName             = match
+stateOrProvinceName     = match
+organizationName        = match
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+
+[ req ]
+default_bits            = 2048                  # Size of keys
+default_keyfile         = ${DOMAIN}_.key        # name of generated keys
+default_md              = sha1                  # message digest algorithm
+string_mask             = nombstr               # permitted characters
+distinguished_name      = req_distinguished_name
+req_extensions          = v3_req
+x509_extensions         = v3_req
+
+
+[ req_distinguished_name ]
+# Variable name           Prompt string
+#----------------------   ----------------------------------
+0.organizationName      = Organization Name (company)
+organizationalUnitName  = Organizational Unit Name (department, division)
+emailAddress            = Email Address
+emailAddress_max        = 40
+localityName            = Locality Name (city, district)
+stateOrProvinceName     = State or Province Name (full name)
+countryName             = Country Name (2 letter code)
+countryName_min         = 2
+countryName_max         = 2
+commonName              = Common Name (hostname, IP, or your name)
+commonName_max          = 64
+
+# Default values.
+#------------------------------   ------------------------------
+commonName_default              = *.${DOMAIN}
+0.organizationName_default      = ${DOMAIN}
+organizationalUnitName_default  = IT
+localityName_default            = Los Angeles
+stateOrProvinceName_default     = California
+countryName_default             = US
+emailAddress_default            = webmaster@${DOMAIN}
+
+[alt_names]
+DNS.1     = www.${DOMAIN}
+DNS.2     = ${DOMAIN}
+# DNS.3   = www.example.com
+# DNS.4   = example.com
+
+
+[ v3_ca ]
+basicConstraints        = CA:TRUE
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer:always
+
+
+[ v3_req ]
+# Extensions to add to a certificate request
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+
+
+# Some CAs do not yet support subjectAltName in CSRs.
+# Instead the additional names are form entries on web
+# pages where one requests the certificate...
+subjectAltName          = @alt_names
+
+
+[ server ]
+# Make a cert with nsCertType set to &amp;quot;server&amp;quot;
+basicConstraints=CA:FALSE
+nsCertType                      = server
+nsComment                       = &amp;quot;OpenSSL Generated Server Certificate&amp;quot;
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid,issuer:always
+
+
+[ client ]
+# Make a cert with nsCertType set to &amp;quot;client&amp;quot;
+basicConstraints=CA:FALSE
+nsCertType                      = client
+nsComment                       = &amp;quot;OpenSSL Generated Client Certificate&amp;quot;
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid,issuer:always
+
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Self-Signed SSL Certificate</title>
+      <link>http://www.robotamer.com/linux/openssl/ca-cert.html</link>
+      <pubDate>Wed, 04 Dec 2013 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/openssl/ca-cert.html</guid>
+      <description>&lt;p&gt;&lt;em&gt;Note: This is a slighltly modified reprint from &lt;a href=&#34;http://www.akadia.com&#34;&gt;http://www.akadia.com&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3&gt;Overview&lt;/h3&gt;
+
+&lt;p&gt;The following is an extremely simplified view of how SSL is implemented and what part the certificate plays in the entire process.&lt;/p&gt;
+
+&lt;p&gt;Normal web traffic is sent unencrypted over the Internet. That is, anyone with access to the right tools can snoop all of that traffic. Obviously, this can lead to problems, especially where security and privacy is necessary, such as in credit card data and bank transactions. The Secure Socket Layer is used to encrypt the data stream between the web server and the web client (the browser).&lt;/p&gt;
+
+&lt;p&gt;SSL makes use of what is known as asymmetric cryptography, commonly referred to as public key cryptography (PKI). With public key cryptography, two keys are created, one public, one private. Anything encrypted with either key can only be decrypted with its corresponding key. Thus if a message or data stream were encrypted with the server&amp;rsquo;s private key, it can be decrypted only using its corresponding public key, ensuring that the data only could have come from the server.&lt;/p&gt;
+
+&lt;p&gt;If SSL utilizes public key cryptography to encrypt the data stream traveling over the Internet, why is a certificate necessary? The technical answer to that question is that a certificate is not really necessary - the data is secure and cannot easily be decrypted by a third party. However, certificates do serve a crucial role in the communication process. The certificate, signed by a trusted Certificate Authority (CA), ensures that the certificate holder is really who he claims to be. Without a trusted signed certificate, your data may be encrypted, however, the party you are communicating with may not be whom you think. Without certificates, impersonation attacks would be much more common.&lt;/p&gt;
+
+&lt;h4&gt;Step 1: Generate a Private Key&lt;/h4&gt;
+
+&lt;p&gt;The openssl toolkit is used to generate an RSA Private Key and CSR (Certificate Signing Request). It can also be used to generate self-signed certificates which can be used for testing purposes or internal usage.&lt;/p&gt;
+
+&lt;p&gt;The first step is to create your RSA Private Key. This key is a 1024 bit RSA key which is encrypted
+using Triple-DES and stored in a PEM format so that it is readable as ASCII text.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl genrsa -des3 -out server.key 1024
+
+Generating RSA private key, 1024 bit long modulus
+.........................................................++++++
+........++++++
+e is 65537 (0x10001)
+Enter PEM pass phrase:
+Verifying password - Enter PEM pass phrase:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 2: Generate a CSR (Certificate Signing Request)&lt;/h4&gt;
+
+&lt;p&gt;Once the private key is generated a Certificate Signing Request can be generated. The CSR is then used in one of two ways. Ideally, the CSR will be sent to a Certificate Authority, such as Thawte or Verisign who will verify the identity of the requestor and issue a signed certificate. The second option is to self-sign the CSR, which will be demonstrated in the next section.&lt;/p&gt;
+
+&lt;p&gt;During the generation of the CSR, you will be prompted for several pieces of information. These are the X.509 attributes of the certificate. One of the prompts will be for &amp;ldquo;Common Name (e.g., YOUR name)&amp;rdquo;. It is important that this field be filled in with the fully qualified domain name of the server to be protected by SSL. If the website to be protected will be &lt;a href=&#34;https://public.akadia.com&#34;&gt;https://public.akadia.com&lt;/a&gt;, then enter public.akadia.com at this prompt. The command to generate the CSR is as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -new -key server.key -out server.csr
+
+Country Name (2 letter code) [GB]:CH
+State or Province Name (full name) [Berkshire]:Bern
+Locality Name (eg, city) [Newbury]:Oberdiessbach
+Organization Name (eg, company) [My Company Ltd]:Akadia AG
+Organizational Unit Name (eg, section) []:Information Technology
+Common Name (eg, your name or your server&#39;s hostname) []:public.akadia.com
+Email Address []:martin dot zahn at akadia dot ch
+Please enter the following &#39;extra&#39; attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 3: Remove Passphrase from Key&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;One unfortunate side-effect of the pass-phrased private key is that Apache will ask for the pass-phrase each time the web server is started. Obviously this is not necessarily convenient as someone will not always be around to type in the pass-phrase, such as after a reboot or crash. mod_ssl includes the ability to use an external program in place of the built-in pass-phrase dialog, however, this is not necessarily the most secure option either. It is possible to remove the Triple-DES encryption from the key, thereby no longer needing to type in a pass-phrase. If the private key is no longer encrypted, it is critical that this file only be readable by the root user! If your system is ever compromised and a third party obtains your unencrypted private key, the corresponding certificate will need to be revoked. With that being said, use the following command to remove the pass-phrase from the key:
+
+cp server.key server.key.org
+openssl rsa -in server.key.org -out server.key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The newly created server.key file has no more passphrase in it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-rw-r--r-- 1 root root 745 Jun 29 12:19 server.csr
+-rw-r--r-- 1 root root 891 Jun 29 13:22 server.key
+-rw-r--r-- 1 root root 963 Jun 29 13:22 server.key.org
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 4: Generating a Self-Signed Certificate&lt;/h4&gt;
+
+&lt;p&gt;At this point you will need to generate a self-signed certificate because you either don&amp;rsquo;t plan on having your certificate signed by a CA, or you wish to test your new SSL implementation while the CA is signing your certificate. This temporary certificate will generate an error in the client browser to the effect that the signing certificate authority is unknown and not trusted.&lt;/p&gt;
+
+&lt;h5&gt;To generate a temporary certificate which is good for 365 days, issue the following command:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+
+Signature ok
+subject=/C=CH/ST=Bern/L=Oberdiessbach/O=Akadia AG/OU=Information
+Technology/CN=public.akadia.com/Email=martin dot zahn at akadia dot ch
+Getting Private key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 5: Secure the Private Key&lt;/h4&gt;
+
+&lt;p&gt;This will insure that only the current user/you can read, and write to this file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chmod 600 server.key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 6: Installing the Private Key and Certificate&lt;/h4&gt;
+
+&lt;p&gt;When Apache with mod_ssl is installed, it creates several directories in the Apache config directory. The location of this directory will differ depending on how Apache was compiled.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cp server.crt /usr/local/apache/conf/ssl.crt
+cp server.key /usr/local/apache/conf/ssl.key
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 7: Configuring SSL Enabled Virtual Hosts&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;SSLEngine on
+SSLCertificateFile /usr/local/apache/conf/ssl.crt/server.crt
+SSLCertificateKeyFile /usr/local/apache/conf/ssl.key/server.key
+SetEnvIf User-Agent &amp;quot;.*MSIE.*&amp;quot; nokeepalive ssl-unclean-shutdown
+CustomLog logs/ssl_request_log \
+   &amp;quot;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&amp;quot;%r\&amp;quot; %b&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Step 8: Restart Apache and Test&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;/etc/init.d/httpd stop
+/etc/init.d/httpd stop
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

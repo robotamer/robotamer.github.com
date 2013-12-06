@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Network on RoboTamer </title>
+    <link>http://localhost:1313/groups/network.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2012-06-27 22:57:08 &#43;0000 &#43;0000</updated>
+    
+    <item>
+      <title>Network Safety Restart</title>
+      <link>http://localhost:1313/blog/network-safety-restart/html</link>
+      <pubDate>Wed, 27 Jun 2012 22:57:08 &#43;0000</pubDate>
+      <author>Steve Francia</author>
+      <guid>http://localhost:1313/blog/network-safety-restart/html</guid>
+      <description>&lt;p&gt;if you are working on your remote servers networking setup, then this can be a life saver.
+You start the following script just before you make a change.
+Then without a worry you can make changes to your network setting.
+If the settings are wrong although you maybe disconnected this script will re-install a working backup for you and restart your server.
+All you have to do is wait a few minutes.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;This command&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;# network_Safety_Restart.sh start&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Will wait for 1200 second and then do following&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h1&gt;cp /etc/network/interfaces.org /etc/network/interfaces&lt;/h1&gt;
+
+&lt;h1&gt;restart&lt;/h1&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;if during the time you find that your changes are working and you don&amp;rsquo;t need a restart
+you can simply stop it with&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;# network_Safety_Restart.sh stop&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;[gist id=1479769]&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

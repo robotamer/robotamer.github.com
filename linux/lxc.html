@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Copyright</title>
-  <meta name="description" content="">
-  <meta name="keywords" content=", , , , , , , , , , RoboTamer">
+  <title>Linux Containers</title>
+  <meta name="description" content="Setting up and using Linux Containers (LXC) on Debian">
+  <meta name="keywords" content="linux, howto, server, lxc, br, debian, Linux Containers, virtualization, RoboTamer">
   <meta name="generator" content="Hugo">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -165,37 +165,179 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-  	<h2>Copyright</h2>
-	<h4></h4>
+  	<h2>Linux Containers</h2>
+	<h4>Setting up and using Linux Containers (LXC) on Debian</h4>
   </div>
   <div class="panel-body">
-  <h2>Copyright &copy; 2012 The GoTamer Authors. All rights reserved.</h2>
+  <p>Linux Containers provide a Free Software virtualization system for computers running GNU/Linux. This is accomplished through kernel level isolation. It allows one to run multiple virtual units simultaneously. Those units, similar to chroots, are sufficiently isolated to guarantee the required security, but utilize available resources efficiently, as they run on the same kernel.</p>
 
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:</p>
+<pre><code>apt-get install lxc bridge-utils debootstrap
+</code></pre>
+
+<p>First we will setup our Bridge: <a href="Bridge-Utils.html">Linux:bridge-utils</a></p>
+
+<p>/etc/fstab</p>
+
+<pre><code>cgroup          /sys/fs/cgroup         cgroup  defaults        0       0
+
+mount -a
+
+
+LXCDIR=/var/lib/lxc
+cd $LXCDIR
+nano vm0.cfg
+</code></pre>
+
+<p>Following is a template config file. If you are also looking at other howto&rsquo;s, don&rsquo;t get coughed up at the fstab mount option. The debian script takes care of that. You will at leased have to change the IP address.</p>
+
+<p><strong>vm0.cfg</strong></p>
+
+<pre><code>lxc.utsname = vm0
+lxc.rootfs = /var/lib/lxc/vm0/rootfs
+
+lxc.tty = 4
+lxc.network.type = veth
+lxc.network.flags = up
+lxc.network.link = br0
+lxc.network.name = eth0
+lxc.network.mtu = 1500
+
+# security parameter
+lxc.cgroup.devices.deny = a # Deny all access to devices
+lxc.cgroup.devices.allow = c 1:3 rwm   # dev/null
+lxc.cgroup.devices.allow = c 1:5 rwm   # dev/zero
+lxc.cgroup.devices.allow = c 5:1 rwm   # dev/console
+lxc.cgroup.devices.allow = c 5:0 rwm   # dev/tty
+lxc.cgroup.devices.allow = c 4:0 rwm   # dev/tty0
+lxc.cgroup.devices.allow = c 4:1 rwm   # dev/tty1
+lxc.cgroup.devices.allow = c 4:2 rwm   # dev/tty2
+lxc.cgroup.devices.allow = c 1:9 rwm   # dev/urandon
+lxc.cgroup.devices.allow = c 1:8 rwm   # dev/random
+lxc.cgroup.devices.allow = c 136:* rwm # dev/pts/*
+lxc.cgroup.devices.allow = c 5:2 rwm   # dev/pts/ptmx
+lxc.cgroup.devices.allow = c 254:0 rwm # dev/rtc
+
+# mounts point
+lxc.mount.entry=proc   /var/lib/lxc/vm0/rootfs/proc proc nodev,noexec,nosuid 0 0
+lxc.mount.entry=devpts /var/lib/lxc/vm0/rootfs/dev/pts devpts defaults 0 0
+lxc.mount.entry=sysfs  /var/lib/lxc/vm0/rootfs/sys sysfs defaults  0 0
+</code></pre>
+
+<p>Command</p>
+
+<pre><code>lxc-create -f $LXCDIR/vm0.cfg -n vm0
+cp /usr/lib/lxc/templates/lxc-debian $LXCDIR
+</code></pre>
+
+<p>At this point you might wont to make lxc-debian your own. At leased change the release from Lenny to Squeeze</p>
+
+<pre><code>./lxc-debian -p vm0
+</code></pre>
+
+<p>The vm0 should have been created now. Your root password is root.
+Before we start it up we will make some config changes.</p>
+
+<p>First edit your network config</p>
+
+<pre><code>nano $LXCDIR/vm0/rootfs/etc/network/interfaces
+</code></pre>
+
+<p>File needs to look like this: // Note change the IP addresses to yours, if you don&rsquo;t know how, you know you shouldn&rsquo;t be here //</p>
+
+<pre><code># The loopback network interface
+auto lo
+iface lo inet loopback
+up route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+down route add -net 127.0.0.0 netmask 255.0.0.0 dev lo
+
+auto eth0
+iface eth0 inet static
+address 70.22.189.59
+netmask 255.255.255.248
+gateway 70.22.189.57
+</code></pre>
+
+<p>Now we will try to boot the system.</p>
+
+<pre><code>cd $LXCDIR
+lxc-start -n vm0
+</code></pre>
+
+<p>default password:</p>
 
 <ul>
-<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of GoTamer nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
+<li>user: root</li>
+<li>password: root</li>
 </ul>
 
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-&ldquo;AS IS&rdquo; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<p>Tip: copy your ~/.ssh folder to each server for passwordless login</p>
+
+<pre><code>nano /etc/default/locale
+</code></pre>
+
+<p>And add:</p>
+
+<pre><code>LANG=en_US.UTF-8
+</code></pre>
+
+<p>Configure locales</p>
+
+<pre><code>dpkg-reconfigure locales
+</code></pre>
+
+<p>Open  /etc/inittab and make sure you comment out like this:</p>
+
+<pre><code>1:2345:respawn:/sbin/getty 38400 console
+#c1:12345:respawn:/sbin/getty 38400 tty1 linux
+#c2:12345:respawn:/sbin/getty 38400 tty2 linux
+#c3:12345:respawn:/sbin/getty 38400 tty3 linux
+#c4:12345:respawn:/sbin/getty 38400 tty4 linux
+</code></pre>
+
+<p>Now you should be at the vm0 login, try user root with pass root<br />
+Try to ping a domain you know works, and it should give you a response otherwise your network setup failed.</p>
+
+<p>Assuming it worked, let&rsquo;s make it permanent.</p>
+
+<pre><code>ln -s $LXCDIR/vm0/config /etc/lxc/vm0.conf
+</code></pre>
+
+<p>Turn this on and add vm0 to the container variable.</p>
+
+<pre><code>cd /etc/default/
+nano lxc
+</code></pre>
+
+<p>Next we will setup the server:</p>
+
+<h2>LXC Debian Server Setup</h2>
+
+<hr />
+
+<p>Useful Resources:</p>
+
+<p><a href="http://lxc.teegra.net">teegra.net</a></p>
+
+<p><a href="http://www.linuxfoundation.org/collaborate/workgroups/networking">linuxfoundation.org</a></p>
+
+<p><a href="http://wiki.debian.org/HighPerformanceComputing">wiki.debian.org</a></p>
+
+<p><a href="http://qemu-buch.de">qemu-buch.de</a></p>
+
+<p><a href="http://nigel.mcnie.name/blog/a-five-minute-guide-to-linux-containers-for-debian">nigel.mcnie.name</a></p>
+
+<p>Found another approach which looks interesting<br />
+<a href="http://wiki.pcprobleemloos.nl/using_lxc_linux_containers_on_debian_squeeze/creating_a_lxc_virtual_machine_template">wiki.pcprobleemloos.nl</a></p>
 
   </div>
   <div class="panel-footer">
     <div class="btn-group">
+      
+      <a href="http://www.robotamer.com/tags/linux.html"><button type="button" class="btn btn-info btn-xs">linux</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/howto.html"><button type="button" class="btn btn-info btn-xs">howto</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/lxc.html"><button type="button" class="btn btn-info btn-xs">lxc</button></a>	
       
     </div>  
   </div>

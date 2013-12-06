@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Zend on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/zend.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2012-07-01 07:37:41 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>Autoload</title>
+      <link>http://www.robotamer.com/code/php/autoload.html</link>
+      <pubDate>Sun, 01 Jul 2012 07:37:41 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/code/php/autoload.html</guid>
+      <description>&lt;p&gt;I have been looking around for some good examples to use the new PHP autoloader interoperability standard according to the PHP Standards Recommendation #0 (PSR-0).&lt;/p&gt;
+
+&lt;p&gt;And since I could find anything good, I had to figure it out by my self, here is the result.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/robotamer/3027247&#34;&gt;gist id=3027247&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;HowTo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;    &amp;lt;?php
+    # Adds your library to the beginning of the php include path
+    addInclude(&#39;~/code/libs&#39;, FALSE);
+
+    $loader = new SplClassLoader();
+
+    # adds the php include path to the class
+    $loader-&amp;gt;setIncludePathLookup(true);
+
+    $loader-&amp;gt;add(&#39;Zend&#39;);
+    $loader-&amp;gt;add(&#39;PEAR&#39;);
+
+    # Give the path if it isn&#39;t in the php include path like this
+    $loader-&amp;gt;add(&#39;Symfony&#39;, &#39;/path/to/symfony&#39;);
+
+    $loader -&amp;gt; register();
+    ?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;&amp;lt;?php
+/**
+ * SplClassLoader implementation that implements the technical interoperability
+ * standards for PHP 5.3 namespaces and class names.
+ *
+ * https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+ *
+ * Example usage:
+ *
+ *     $classLoader = new \SplClassLoader();
+ *
+ *     // Configure the SplClassLoader to act normally or silently
+ *     $classLoader-&amp;gt;setMode(\SplClassLoader::MODE_NORMAL);
+ *
+ *     // Add a namespace of classes
+ *     $classLoader-&amp;gt;add(&#39;Doctrine&#39;, array(
+ *         &#39;/path/to/doctrine-common&#39;, &#39;/path/to/doctrine-dbal&#39;, &#39;/path/to/doctrine-orm&#39;
+ *     ));
+ *
+ *     // Add a prefix
+ *     $classLoader-&amp;gt;add(&#39;Swift&#39;, &#39;/path/to/swift&#39;);
+ *
+ *     // Add a prefix through PEAR1 convention, requiring include_path lookup
+ *     $classLoader-&amp;gt;add(&#39;PEAR&#39;);
+ *
+ *     // Allow to PHP use the include_path for file path lookup
+ *     $classLoader-&amp;gt;setIncludePathLookup(true);
+ *
+ *     // Possibility to change the default php file extension
+ *     $classLoader-&amp;gt;setFileExtension(&#39;.php&#39;);
+ *
+ *     // Register the autoloader, prepending it in the stack
+ *     $classLoader-&amp;gt;register(true);
+ *
+ * @author Guilherme Blanco &amp;lt;guilhermeblanco@php.net&amp;gt;
+ * @author Jonathan H. Wage &amp;lt;jonwage@gmail.com&amp;gt;
+ * @author Roman S. Borschel &amp;lt;roman@code-factory.org&amp;gt;
+ * @author Matthew Weier O&#39;Phinney &amp;lt;matthew@zend.com&amp;gt;
+ * @author Kris Wallsmith &amp;lt;kris.wallsmith@gmail.com&amp;gt;
+ * @author Fabien Potencier &amp;lt;fabien.potencier@symfony-project.org&amp;gt;
+ */
+ 
+include &#39;SplAutoloader.php&#39;;
+class SplClassLoader implements SplAutoloader
+{
+    /**
+     * @var string
+     */
+    private $fileExtension = &#39;.php&#39;;
+ 
+    /**
+     * @var boolean
+     */
+    private $includePathLookup = false;
+ 
+    /**
+     * @var array
+     */
+    private $resources = array();
+ 
+    /**
+     * @var integer
+     */
+    private $mode = self::MODE_NORMAL;
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function setMode($mode)
+    {
+        if ($mode &amp;amp; self::MODE_SILENT &amp;amp;&amp;amp; $mode &amp;amp; self::MODE_NORMAL) {
+            throw new \InvalidArgumentException(
+                sprintf(&#39;Cannot have %s working normally and silently at the same time!&#39;, __CLASS__)
+            );
+        }
+ 
+        $this-&amp;gt;mode = $mode;
+    }
+ 
+    /**
+     * Define the file extension of resource files in the path of this class loader.
+     *
+     * @param string $fileExtension
+     */
+    public function setFileExtension($fileExtension)
+    {
+        $this-&amp;gt;fileExtension = $fileExtension;
+    }
+ 
+    /**
+     * Retrieve the file extension of resource files in the path of this class loader.
+     *
+     * @return string
+     */
+    public function getFileExtension()
+    {
+        return $this-&amp;gt;fileExtension;
+    }
+ 
+    /**
+     * Turns on searching the include for class files. Allows easy loading installed PEAR packages.
+     *
+     * @param boolean $includePathLookup
+     */
+    public function setIncludePathLookup($includePathLookup)
+    {
+        $this-&amp;gt;includePathLookup = $includePathLookup;
+    }
+ 
+    /**
+     * Gets the base include path for all class files in the namespace of this class loader.
+     *
+     * @return boolean
+     */
+    public function getIncludePathLookup()
+    {
+        return $this-&amp;gt;includePathLookup;
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function register($prepend = false)
+    {
+        spl_autoload_register(array($this, &#39;load&#39;), true, $prepend);
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function unregister()
+    {
+        spl_autoload_unregister(array($this, &#39;load&#39;));
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function add($resource, $resourcePath = null)
+    {
+        $this-&amp;gt;resources[$resource] = (array) $resourcePath;
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function load($resourceName)
+    {
+        $resourceAbsolutePath = $this-&amp;gt;getResourceAbsolutePath($resourceName);
+ 
+        switch (true) {
+            case ($this-&amp;gt;mode &amp;amp; self::MODE_SILENT):
+                if ($resourceAbsolutePath !== false) {
+                    require $resourceAbsolutePath;
+                }
+                break;
+ 
+            case ($this-&amp;gt;mode &amp;amp; self::MODE_NORMAL):
+            default:
+                require $resourceAbsolutePath;
+                break;
+        }
+ 
+        if ($this-&amp;gt;mode &amp;amp; self::MODE_DEBUG &amp;amp;&amp;amp; ! $this-&amp;gt;isResourceDeclared($resourceName)) {
+            throw new \RuntimeException(
+                sprintf(&#39;Autoloader expected resource &amp;quot;%s&amp;quot; to be declared in file &amp;quot;%s&amp;quot;.&#39;, $resourceName, $resourceAbsolutePath)
+            );
+        }
+    }
+ 
+    /**
+     * Transform resource name into its absolute resource path representation.
+     *
+     * @params string $resourceName
+     *
+     * @return string Resource absolute path.
+     */
+    private function getResourceAbsolutePath($resourceName)
+    {
+        $resourceRelativePath = $this-&amp;gt;getResourceRelativePath($resourceName);
+ 
+        foreach ($this-&amp;gt;resources as $resource =&amp;gt; $resourcesPath) {
+            if (strpos($resourceName, $resource) !== 0) {
+                continue;
+            }
+ 
+            foreach ($resourcesPath as $resourcePath) {
+                $resourceAbsolutePath = $resourcePath . DIRECTORY_SEPARATOR . $resourceRelativePath;
+ 
+                if (is_file($resourceAbsolutePath)) {
+                    return $resourceAbsolutePath;
+                }
+            }
+        }
+ 
+        if ($this-&amp;gt;includePathLookup &amp;amp;&amp;amp; ($resourceAbsolutePath = stream_resolve_include_path($resourceRelativePath)) !== false) {
+            return $resourceAbsolutePath;
+        }
+ 
+        return false;
+    }
+ 
+    /**
+     * Transform resource name into its relative resource path representation.
+     *
+     * @params string $resourceName
+     *
+     * @return string Resource relative path.
+     */
+    private function getResourceRelativePath($resourceName)
+    {
+        // We always work with FQCN in this context
+        $resourceName = ltrim($resourceName, &#39;\\&#39;);
+        $resourcePath = &#39;&#39;;
+ 
+        if (($lastNamespacePosition = strrpos($resourceName, &#39;\\&#39;)) !== false) {
+            // Namespaced resource name
+            $resourceNamespace = substr($resourceName, 0, $lastNamespacePosition);
+            $resourceName      = substr($resourceName, $lastNamespacePosition + 1);
+            $resourcePath      =  str_replace(&#39;\\&#39;, DIRECTORY_SEPARATOR, $resourceNamespace) . DIRECTORY_SEPARATOR;
+        }
+ 
+        return $resourcePath . str_replace(&#39;_&#39;, DIRECTORY_SEPARATOR, $resourceName) . $this-&amp;gt;fileExtension;
+    }
+ 
+    /**
+     * Check if resource is declared in user space.
+     *
+     * @params string $resourceName
+     *
+     * @return boolean
+     */
+    private function isResourceDeclared($resourceName)
+    {
+        return class_exists($resourceName, false)
+            || interface_exists($resourceName, false)
+            || (function_exists(&#39;trait_exists&#39;) &amp;amp;&amp;amp; trait_exists($resourceName, false));
+    }
+}
+
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;
+&amp;lt;?php
+/**
+ * Adds a directory to the php include path
+ */
+
+/**
+ * @category   RoboTamer
+ * @package    Functions
+ * @subpackage File
+ * @author     Dennis T Kaplan
+ * @copyright  Copyright (c) 2008 - 2012 Dennis T Kaplan
+ * @license    http://www.opensource.org/licenses/MIT
+ * @link       http://blog.robotamer.com
+ *
+ * @param string  $dir The directory to add to the path
+ * @param boolean $at_end If true, place this directory at the end of the include path. Otherwise, place it at the beginning.
+ */
+function addInclude($dir, $at_end = TRUE)
+{
+    $exist = file_exists($dir);
+    if ( ! $exist || ($exist &amp;amp;&amp;amp; filetype($dir) != &#39;dir&#39;))
+    {
+        trigger_error(&amp;quot;Include path &#39;{$dir}&#39; does not exist&amp;quot;, E_USER_WARNING);
+        echo &#39;&amp;lt;pre&amp;gt;&#39;; print_r(debug_backtrace()); echo &#39;&amp;lt;/pre&amp;gt;&#39;;
+        exit;
+    }
+    $dir   = rtrim($dir, &amp;quot;/&amp;quot;);
+    $paths = ltrim(get_include_path(), &amp;quot;.&amp;quot;.PATH_SEPARATOR);
+    $paths = explode(PATH_SEPARATOR, $paths);
+    $ds    = &#39;.&#39;.PATH_SEPARATOR;
+    if (strlen($paths[0]) &amp;amp;&amp;amp; array_search($dir, $paths) === false) {
+        $at_end ? array_push($paths, $dir) : array_unshift($paths, $dir);
+        $paths = implode(PATH_SEPARATOR, $paths);
+        set_include_path($ds.$paths);
+    } else {
+        set_include_path($ds.$dir);
+    }
+}
+/* #Test it
+echo get_include_path();
+echo &#39;&amp;lt;br /&amp;gt;&#39;;
+addInclude(&#39;/var/www/library/&#39;);
+echo get_include_path();
+echo &#39;&amp;lt;br /&amp;gt;&#39;;
+*/
+?&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;php&#34;&gt;&amp;lt;?php
+
+function autoload($className)
+{
+    $className = ltrim($className, &#39;\\&#39;);
+    $fileName  = &#39;&#39;;
+    $namespace = &#39;&#39;;
+ 
+    if ($lastNsPos = strripos($className, &#39;\\&#39;)) {
+        $namespace = substr($className, 0, $lastNsPos);
+        $className = substr($className, $lastNsPos + 1);
+        $fileName  = str_replace(&#39;\\&#39;, DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+    }
+ 
+    $fileName .= str_replace(&#39;_&#39;, DIRECTORY_SEPARATOR, $className) . &#39;.php&#39;;
+ 
+    require $fileName;
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating models for the Zend Framework from command line via phpcli</title>
+      <link>http://www.robotamer.com/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html</link>
+      <pubDate>Thu, 18 Mar 2010 22:07:15 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2010-03-18-creating-models-for-the-zend-framework-from-command-line-via-phpcli.html</guid>
+      <description>&lt;p&gt;This is a php cli script that will create a database model from the database provided&lt;/p&gt;
+
+&lt;p&gt;Download via git from &lt;a href=&#34;http://github.com/pzzazz/phpcli&#34;&gt;github -&amp;gt; phpcli&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;php zend/model.php -h
+
+This is a command line PHP script.
+
+Set table
+
+Options:
+-path=[ ]
+-table=[ ]
+
+Usage:
+php zend/model.php -arg=value
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Database Structure:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CREATE TABLE users (
+      Alias TEXT UNIQUE,
+      Password TEXT,
+      eMail TEXT,
+      Avatar TEXT,
+      Timezone TEXT,
+      IP TEXT,
+      count INTEGER,
+      cookie TEXT,
+      vars TEXT,
+      status INTEGER DEFAULT 1,
+      added date,
+      updated datetime,
+      PRIMARY KEY(Alias)
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Sample Output:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ php zend/model.php -path=/var/www/TaMeR/data/tmp.db3 -table=users
+
+
+
+
+
+
+class _Model_users
+{
+    protected $_Alias;
+    protected $_Password;
+    protected $_eMail;
+    protected $_Avatar;
+    protected $_Timezone;
+    protected $_IP;
+    protected $_count;
+    protected $_cookie;
+    protected $_vars;
+    protected $_status;
+    protected $_added;
+    protected $_updated;
+
+
+    public function setAlias($Alias){
+        $this-&amp;gt;_Alias = (string) $Alias;
+        return $this;
+    }
+
+    public function getAlias($Alias){
+        return $this-&amp;gt;_Alias;
+    }
+
+    public function setPassword($Password){
+        $this-&amp;gt;_Password = (string) $Password;
+        return $this;
+    }
+
+    public function getPassword($Password){
+        return $this-&amp;gt;_Password;
+    }
+
+    public function seteMail($eMail){
+        $this-&amp;gt;_eMail = (string) $eMail;
+        return $this;
+    }
+
+    public function geteMail($eMail){
+        return $this-&amp;gt;_eMail;
+    }
+
+    public function setAvatar($Avatar){
+        $this-&amp;gt;_Avatar = (string) $Avatar;
+        return $this;
+    }
+
+    public function getAvatar($Avatar){
+        return $this-&amp;gt;_Avatar;
+    }
+
+    public function setTimezone($Timezone){
+        $this-&amp;gt;_Timezone = (string) $Timezone;
+        return $this;
+    }
+
+    public function getTimezone($Timezone){
+        return $this-&amp;gt;_Timezone;
+    }
+
+    public function setIP($IP){
+        $this-&amp;gt;_IP = (string) $IP;
+        return $this;
+    }
+
+    public function getIP($IP){
+        return $this-&amp;gt;_IP;
+    }
+
+    public function setcount($count){
+        $this-&amp;gt;_count = (int) $count;
+        return $this;
+    }
+
+    public function getcount($count){
+        return $this-&amp;gt;_count;
+    }
+
+    public function setcookie($cookie){
+        $this-&amp;gt;_cookie = (string) $cookie;
+        return $this;
+    }
+
+    public function getcookie($cookie){
+        return $this-&amp;gt;_cookie;
+    }
+
+    public function setvars($vars){
+        $this-&amp;gt;_vars = (string) $vars;
+        return $this;
+    }
+
+    public function getvars($vars){
+        return $this-&amp;gt;_vars;
+    }
+
+    public function setstatus($status){
+        $this-&amp;gt;_status = (int) $status;
+        return $this;
+    }
+
+    public function getstatus($status){
+        return $this-&amp;gt;_status;
+    }
+
+    public function setadded($added){
+        $this-&amp;gt;_added = (string) $added;
+        return $this;
+    }
+
+    public function getadded($added){
+        return $this-&amp;gt;_added;
+    }
+
+    public function setupdated($updated){
+        $this-&amp;gt;_updated = (string) $updated;
+        return $this;
+    }
+
+    public function getupdated($updated){
+        return $this-&amp;gt;_updated;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating models for the Zend Framework from command line via phpcli.</title>
+      <link>http://www.robotamer.com/blog/2010-03-18-7.html</link>
+      <pubDate>Thu, 18 Mar 2010 20:20:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/blog/2010-03-18-7.html</guid>
+      <description>&lt;p&gt;Creating models for the Zend Framework from command line via phpcli.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;php zend/model.php -h&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a command line PHP script.&lt;/p&gt;
+
+&lt;p&gt;Set table&lt;/p&gt;
+
+&lt;p&gt;Options:
+    -path=[ ]
+    -table=[ ]&lt;/p&gt;
+
+&lt;p&gt;Usage:
+php zend/model.php -arg=value&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;~/phpcli$ php zend/model.php -path=/var/www/TaMeR/data/tmp.db3 -table=users&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Sample Output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Database Structure:
+    CREATE TABLE users (
+    Alias TEXT UNIQUE,
+    Password TEXT,
+    eMail TEXT,
+    Avatar TEXT,
+    Timezone TEXT,
+    IP TEXT,
+    count INTEGER,
+    cookie TEXT,
+    vars TEXT,
+    status INTEGER DEFAULT 1,
+    added date,
+    updated datetime,
+    PRIMARY KEY(Alias)
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;~/phpcli$ php zend/model.php -path=/var/www/TaMeR/data/tmp.db3 -table=user
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;-
+    class _Model_users
+    {
+    protected $_Alias;
+    protected $_Password;
+    protected $_eMail;
+    protected $_Avatar;
+    protected $_Timezone;
+    protected $_IP;
+    protected $_count;
+    protected $_cookie;
+    protected $_vars;
+    protected $_status;
+    protected $_added;
+    protected $_updated;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public function setAlias($Alias){
+    $this-&amp;gt;_Alias = (string) $Alias;
+    return $this;
+}
+
+public function getAlias($Alias){
+    return $this-&amp;gt;_Alias;
+}
+
+public function setPassword($Password){
+    $this-&amp;gt;_Password = (string) $Password;
+    return $this;
+}
+
+public function getPassword($Password){
+    return $this-&amp;gt;_Password;
+}
+
+public function seteMail($eMail){
+    $this-&amp;gt;_eMail = (string) $eMail;
+    return $this;
+}
+
+public function geteMail($eMail){
+    return $this-&amp;gt;_eMail;
+}
+
+public function setAvatar($Avatar){
+    $this-&amp;gt;_Avatar = (string) $Avatar;
+    return $this;
+}
+
+public function getAvatar($Avatar){
+    return $this-&amp;gt;_Avatar;
+}
+
+public function setTimezone($Timezone){
+    $this-&amp;gt;_Timezone = (string) $Timezone;
+    return $this;
+}
+
+public function getTimezone($Timezone){
+    return $this-&amp;gt;_Timezone;
+}
+
+public function setIP($IP){
+    $this-&amp;gt;_IP = (string) $IP;
+    return $this;
+}
+
+public function getIP($IP){
+    return $this-&amp;gt;_IP;
+}
+
+public function setcount($count){
+    $this-&amp;gt;_count = (int) $count;
+    return $this;
+}
+
+public function getcount($count){
+    return $this-&amp;gt;_count;
+}
+
+public function setcookie($cookie){
+    $this-&amp;gt;_cookie = (string) $cookie;
+    return $this;
+}
+
+public function getcookie($cookie){
+    return $this-&amp;gt;_cookie;
+}
+
+public function setvars($vars){
+    $this-&amp;gt;_vars = (string) $vars;
+    return $this;
+}
+
+public function getvars($vars){
+    return $this-&amp;gt;_vars;
+}
+
+public function setstatus($status){
+    $this-&amp;gt;_status = (int) $status;
+    return $this;
+}
+
+public function getstatus($status){
+    return $this-&amp;gt;_status;
+}
+
+public function setadded($added){
+    $this-&amp;gt;_added = (string) $added;
+    return $this;
+}
+
+public function getadded($added){
+    return $this-&amp;gt;_added;
+}
+
+public function setupdated($updated){
+    $this-&amp;gt;_updated = (string) $updated;
+    return $this;
+}
+
+public function getupdated($updated){
+    return $this-&amp;gt;_updated;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

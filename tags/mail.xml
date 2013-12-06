@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Mail on RoboTamer </title>
+    <link>http://www.robotamer.com/tags/mail.xml</link>
+    <language>en-us</language>
+    <author>Dennis T Kaplan</author>
+    <rights>Copyright (c) 2008 - 2013, Dennis T Kaplan; all rights reserved.</rights>
+    <updated>2008-01-01 00:00:00 &#43;0000 UTC</updated>
+    
+    <item>
+      <title>msmtp</title>
+      <link>http://www.robotamer.com/linux/mail/msmtp.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/mail/msmtp.html</guid>
+      <description>&lt;h1&gt;/etc/msmtprc&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;defaults
+maildomain      example.net
+syslog          LOG_MAIL
+aliases         /etc/aliases
+
+
+account         default
+host            mail.example.net
+port            587
+from            srv7@example.net
+auth            on
+user            user@example.net
+password        ********
+tls             on
+tls_starttls    on
+#tls_certcheck   off
+tls_fingerprint DB:A0:2A:07:00:F9:E3:23:7D:07:E7:52:3C:95:9D:E6:7E:12:54:3F
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Your alias file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# /etc/aliases 
+default: me@example.net
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A php script to send mail&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/php
+&amp;lt;?php
+
+define(&#39;TAB&#39;,&amp;quot;\t&amp;quot;);
+
+$user = $_SERVER[&#39;LOGNAME&#39;];
+$host = exec(&amp;quot;hostname -f&amp;quot;);
+$from = $user.&#39;@&#39;.$host;
+
+$to      = &#39;sweety@example.net&#39;;
+$subject = &#39;Testing msmtp&#39;;
+$message = &#39;hello from &#39;. $host;
+$headers = &#39;From: &#39;.$from.PHP_EOL;
+$headers .= &#39;X-Mailer: msmtp + PHP &#39;.phpversion();
+
+if(mail($to, $subject, $message, $headers))
+{
+     echo PHP_EOL.TAB.&#39;Your message was successfully accepted for delivery&#39;.PHP_EOL.PHP_EOL;
+}else{
+     echo PHP_EOL.TAB.&#39;Your message was not accepted for delivery!&#39;.PHP_EOL.PHP_EOL;
+}
+
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Send mail with sendmail</title>
+      <link>http://www.robotamer.com/linux/mail/sendmail.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/mail/sendmail.html</guid>
+      <description>&lt;p&gt;#!/bin/bash&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SENDMAIL=/usr/sbin/sendmail
+RECIPIENT=tosomeone@example.com
+FROM=me@example.com
+
+cat &amp;lt;&amp;lt;EOF | $SENDMAIL -t ${RECIPIENT}
+From: ${FROM} 
+To: ${RECIPIENT}
+Subject: testmail
+
+some test text as body of the email.
+EOF
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mail Server Fingerprint</title>
+      <link>http://www.robotamer.com/linux/openssl/mail-server-fingerprint.html</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 UTC</pubDate>
+      <author>Dennis T Kaplan</author>
+      <guid>http://www.robotamer.com/linux/openssl/mail-server-fingerprint.html</guid>
+      <description>&lt;p&gt;This is useful for let&amp;rsquo;s say when you need the fingerprint to identify via TLS&lt;/p&gt;
+
+&lt;p&gt;Get the raw certificate:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo Q | openssl s_client -connect mail.example.com:443
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Copy and paste the scribble from &amp;mdash;&amp;ndash;BEGIN CERTIFICATE&amp;mdash;&amp;ndash; to &amp;mdash;&amp;ndash;END CERTIFICATE&amp;mdash;&amp;ndash; to a file called cert.pem. Including &amp;mdash;&amp;ndash;BEGIN CERTIFICATE&amp;mdash;&amp;ndash; as first and &amp;mdash;&amp;ndash;END CERTIFICATE&amp;mdash;&amp;ndash; as last line.&lt;/p&gt;
+
+&lt;p&gt;Generate the SHA1 fingerprint by issuing following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl x509 -in cert.pem -sha1 -noout -fingerprint
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

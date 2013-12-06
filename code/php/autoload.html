@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Autoload</title>
+  <meta name="description" content="SplClassLoader Implementation">
+  <meta name="keywords" content="RoboTamer">
+  <meta name="generator" content="Hugo">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta http-equiv="cache-control" content="public">
+  <meta http-equiv="content-language" content="en">
+  <meta charset="UTF-8">
+  <link rel="icon" href="http://www.robotamer.com/static/ico/favicon.ico" type="image/x-icon">
+    <link href="http://www.robotamer.com/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="http://www.robotamer.com/static/css/styles.css" rel="stylesheet"/>
+    <link href="http://www.robotamer.com/static/css/hugoicon.css" rel="stylesheet"/>
+
+
+  </head>
+  <body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="http://www.robotamer.com/"><img src="/static/img/robotamer.gif" alt="Logo" width="20" height="25">&nbsp; ℝobo𝕋amer</a>
+  </div>
+
+  
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+    
+      <li><a href="http://www.robotamer.com/blog.html">&nbsp; Blog &nbsp;</a></li>
+      
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/linux/bash/history.html"><a href="http://www.robotamer.com/linux/bash/history.html"> History </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-nohub.html"><a href="http://www.robotamer.com/blog/2011-06-01-nohub.html"> nohub </a> </li>
+            
+            <li hugo-nav="/linux/index.html"><a href="http://www.robotamer.com/linux/index.html"> Linux Index </a> </li>
+            
+            <li hugo-nav="/linux/snippets.html"><a href="http://www.robotamer.com/linux/snippets.html"> Linux Snippets </a> </li>
+            
+            <li hugo-nav="/linux/nsr.html"><a href="http://www.robotamer.com/linux/nsr.html"> Network Safety Restart Bash Script </a> </li>
+            
+            <li hugo-nav="/code/md-syntax.html"><a href="http://www.robotamer.com/code/md-syntax.html"> Markdown Syntax </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ssh.html"><a href="http://www.robotamer.com/linux/openssl/ssh.html"> ssh authorization </a> </li>
+            
+            <li hugo-nav="/linux/lxc.html"><a href="http://www.robotamer.com/linux/lxc.html"> Linux Containers </a> </li>
+            
+            <li hugo-nav="/linux/git.html"><a href="http://www.robotamer.com/linux/git.html"> Git Howto </a> </li>
+            
+            <li hugo-nav="/linux/bridge-utils.html"><a href="http://www.robotamer.com/linux/bridge-utils.html"> Bridge-Utils for LXC </a> </li>
+            
+            <li hugo-nav="/linux/openssl/mail-server-fingerprint.html"><a href="http://www.robotamer.com/linux/openssl/mail-server-fingerprint.html"> Mail Server Fingerprint </a> </li>
+            
+            <li hugo-nav="/linux/logrotate.html"><a href="http://www.robotamer.com/linux/logrotate.html"> Log Rotate </a> </li>
+            
+            <li hugo-nav="/linux/mail/msmtp.html"><a href="http://www.robotamer.com/linux/mail/msmtp.html"> msmtp </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ca-cert.html"><a href="http://www.robotamer.com/linux/openssl/ca-cert.html"> Self-Signed SSL Certificate </a> </li>
+            
+            <li hugo-nav="/linux/openssl/ca-cert-cfg.html"><a href="http://www.robotamer.com/linux/openssl/ca-cert-cfg.html"> Self-Signed SSL Certificate with Config File </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+            <li hugo-nav="/linux/mail/sendmail.html"><a href="http://www.robotamer.com/linux/mail/sendmail.html"> Send mail with sendmail </a> </li>
+            
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Go <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/code/go/gotamer/mail.html"><a href="http://www.robotamer.com/code/go/gotamer/mail.html"> Smtp </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/ping.html"><a href="http://www.robotamer.com/code/go/gotamer/ping.html"> Ping </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/sbs.html"><a href="http://www.robotamer.com/code/go/gotamer/sbs.html"> sbs </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/session.html"><a href="http://www.robotamer.com/code/go/gotamer/session.html"> Session </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/tools.html"><a href="http://www.robotamer.com/code/go/gotamer/tools.html"> Tools </a> </li>
+            
+            <li hugo-nav="/code/go/index.html"><a href="http://www.robotamer.com/code/go/index.html"> ﻿Snippets </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/jgdb.html"><a href="http://www.robotamer.com/code/go/gotamer/jgdb.html"> jgdb </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/crypt.html"><a href="http://www.robotamer.com/code/go/gotamer/crypt.html"> Crypt </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cfg.html"><a href="http://www.robotamer.com/code/go/gotamer/cfg.html"> Cfg </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/cases.html"><a href="http://www.robotamer.com/code/go/gotamer/cases.html"> Cases </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/gowatch.html"><a href="http://www.robotamer.com/code/go/gotamer/gowatch.html"> GoWatch </a> </li>
+            
+            <li hugo-nav="/code/go/gotamer/index.html"><a href="http://www.robotamer.com/code/go/gotamer/index.html"> Gophy </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">PHP <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/code/php/read-folder.html"><a href="http://www.robotamer.com/code/php/read-folder.html"> Read Folder </a> </li>
+            
+            <li hugo-nav="/code/php/autoload.html"><a href="http://www.robotamer.com/code/php/autoload.html"> Autoload </a> </li>
+            
+            <li hugo-nav="/blog/2012-06-27-messenger-laravel-framework.html"><a href="http://www.robotamer.com/blog/2012-06-27-messenger-laravel-framework.html"> Messenger </a> </li>
+            
+            <li hugo-nav="/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"><a href="http://www.robotamer.com/code/php/2011-06-20-multiple-php-installations-so-you-can-run-5-3-x-on-one-box.html"> Multiple PHP installations </a> </li>
+            
+            <li hugo-nav="/blog/2011-06-01-echo.html"><a href="http://www.robotamer.com/blog/2011-06-01-echo.html"> e() for echo </a> </li>
+            
+            <li hugo-nav="/blog/2008-04-27-21.html"><a href="http://www.robotamer.com/blog/2008-04-27-21.html"> Zend ACL </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/index.html"><a href="http://www.robotamer.com/code/php/phptamer/index.html"> PHPTamer </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtsingleton.html"><a href="http://www.robotamer.com/code/php/phptamer/rtsingleton.html"> Singleton </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/rtcrypter.html"><a href="http://www.robotamer.com/code/php/phptamer/rtcrypter.html"> Crypter </a> </li>
+            
+            <li hugo-nav="/code/php/phptamer/facade.html"><a href="http://www.robotamer.com/code/php/phptamer/facade.html"> Facade </a> </li>
+            
+            <li hugo-nav="/linux/utf-8.html"><a href="http://www.robotamer.com/linux/utf-8.html"> UTF-8 Character List </a> </li>
+            
+        </ul>
+      </li>
+
+      <li><a href="http://www.robotamer.com/feeds.html">&nbsp; Feeds &nbsp;</a></li>
+
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meta <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            
+            <li hugo-nav="/about.html"><a href="http://www.robotamer.com/about.html"> About </a> </li>
+            
+            <li hugo-nav="/license.html"><a href="http://www.robotamer.com/license.html"> Copyright </a> </li>
+            
+        </ul>
+      </li>
+      <li><a href="http://bitbucket.org/robotamer"><i class="icon-octocat icon-2x"> </i></a></li>
+
+    </ul>
+  </div>
+</nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+  	<h2>Autoload</h2>
+	<h4>SplClassLoader Implementation</h4>
+  </div>
+  <div class="panel-body">
+  <p>I have been looking around for some good examples to use the new PHP autoloader interoperability standard according to the PHP Standards Recommendation #0 (PSR-0).</p>
+
+<p>And since I could find anything good, I had to figure it out by my self, here is the result.</p>
+
+<p><a href="https://gist.github.com/robotamer/3027247">gist id=3027247</a></p>
+
+<p>HowTo:</p>
+
+<pre><code class="php">    &lt;?php
+    # Adds your library to the beginning of the php include path
+    addInclude('~/code/libs', FALSE);
+
+    $loader = new SplClassLoader();
+
+    # adds the php include path to the class
+    $loader-&gt;setIncludePathLookup(true);
+
+    $loader-&gt;add('Zend');
+    $loader-&gt;add('PEAR');
+
+    # Give the path if it isn't in the php include path like this
+    $loader-&gt;add('Symfony', '/path/to/symfony');
+
+    $loader -&gt; register();
+    ?&gt;
+</code></pre>
+
+<pre><code class="php">&lt;?php
+/**
+ * SplClassLoader implementation that implements the technical interoperability
+ * standards for PHP 5.3 namespaces and class names.
+ *
+ * https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+ *
+ * Example usage:
+ *
+ *     $classLoader = new \SplClassLoader();
+ *
+ *     // Configure the SplClassLoader to act normally or silently
+ *     $classLoader-&gt;setMode(\SplClassLoader::MODE_NORMAL);
+ *
+ *     // Add a namespace of classes
+ *     $classLoader-&gt;add('Doctrine', array(
+ *         '/path/to/doctrine-common', '/path/to/doctrine-dbal', '/path/to/doctrine-orm'
+ *     ));
+ *
+ *     // Add a prefix
+ *     $classLoader-&gt;add('Swift', '/path/to/swift');
+ *
+ *     // Add a prefix through PEAR1 convention, requiring include_path lookup
+ *     $classLoader-&gt;add('PEAR');
+ *
+ *     // Allow to PHP use the include_path for file path lookup
+ *     $classLoader-&gt;setIncludePathLookup(true);
+ *
+ *     // Possibility to change the default php file extension
+ *     $classLoader-&gt;setFileExtension('.php');
+ *
+ *     // Register the autoloader, prepending it in the stack
+ *     $classLoader-&gt;register(true);
+ *
+ * @author Guilherme Blanco &lt;guilhermeblanco@php.net&gt;
+ * @author Jonathan H. Wage &lt;jonwage@gmail.com&gt;
+ * @author Roman S. Borschel &lt;roman@code-factory.org&gt;
+ * @author Matthew Weier O'Phinney &lt;matthew@zend.com&gt;
+ * @author Kris Wallsmith &lt;kris.wallsmith@gmail.com&gt;
+ * @author Fabien Potencier &lt;fabien.potencier@symfony-project.org&gt;
+ */
+ 
+include 'SplAutoloader.php';
+class SplClassLoader implements SplAutoloader
+{
+    /**
+     * @var string
+     */
+    private $fileExtension = '.php';
+ 
+    /**
+     * @var boolean
+     */
+    private $includePathLookup = false;
+ 
+    /**
+     * @var array
+     */
+    private $resources = array();
+ 
+    /**
+     * @var integer
+     */
+    private $mode = self::MODE_NORMAL;
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function setMode($mode)
+    {
+        if ($mode &amp; self::MODE_SILENT &amp;&amp; $mode &amp; self::MODE_NORMAL) {
+            throw new \InvalidArgumentException(
+                sprintf('Cannot have %s working normally and silently at the same time!', __CLASS__)
+            );
+        }
+ 
+        $this-&gt;mode = $mode;
+    }
+ 
+    /**
+     * Define the file extension of resource files in the path of this class loader.
+     *
+     * @param string $fileExtension
+     */
+    public function setFileExtension($fileExtension)
+    {
+        $this-&gt;fileExtension = $fileExtension;
+    }
+ 
+    /**
+     * Retrieve the file extension of resource files in the path of this class loader.
+     *
+     * @return string
+     */
+    public function getFileExtension()
+    {
+        return $this-&gt;fileExtension;
+    }
+ 
+    /**
+     * Turns on searching the include for class files. Allows easy loading installed PEAR packages.
+     *
+     * @param boolean $includePathLookup
+     */
+    public function setIncludePathLookup($includePathLookup)
+    {
+        $this-&gt;includePathLookup = $includePathLookup;
+    }
+ 
+    /**
+     * Gets the base include path for all class files in the namespace of this class loader.
+     *
+     * @return boolean
+     */
+    public function getIncludePathLookup()
+    {
+        return $this-&gt;includePathLookup;
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function register($prepend = false)
+    {
+        spl_autoload_register(array($this, 'load'), true, $prepend);
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function unregister()
+    {
+        spl_autoload_unregister(array($this, 'load'));
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function add($resource, $resourcePath = null)
+    {
+        $this-&gt;resources[$resource] = (array) $resourcePath;
+    }
+ 
+    /**
+     * {@inheritdoc}
+     */
+    public function load($resourceName)
+    {
+        $resourceAbsolutePath = $this-&gt;getResourceAbsolutePath($resourceName);
+ 
+        switch (true) {
+            case ($this-&gt;mode &amp; self::MODE_SILENT):
+                if ($resourceAbsolutePath !== false) {
+                    require $resourceAbsolutePath;
+                }
+                break;
+ 
+            case ($this-&gt;mode &amp; self::MODE_NORMAL):
+            default:
+                require $resourceAbsolutePath;
+                break;
+        }
+ 
+        if ($this-&gt;mode &amp; self::MODE_DEBUG &amp;&amp; ! $this-&gt;isResourceDeclared($resourceName)) {
+            throw new \RuntimeException(
+                sprintf('Autoloader expected resource &quot;%s&quot; to be declared in file &quot;%s&quot;.', $resourceName, $resourceAbsolutePath)
+            );
+        }
+    }
+ 
+    /**
+     * Transform resource name into its absolute resource path representation.
+     *
+     * @params string $resourceName
+     *
+     * @return string Resource absolute path.
+     */
+    private function getResourceAbsolutePath($resourceName)
+    {
+        $resourceRelativePath = $this-&gt;getResourceRelativePath($resourceName);
+ 
+        foreach ($this-&gt;resources as $resource =&gt; $resourcesPath) {
+            if (strpos($resourceName, $resource) !== 0) {
+                continue;
+            }
+ 
+            foreach ($resourcesPath as $resourcePath) {
+                $resourceAbsolutePath = $resourcePath . DIRECTORY_SEPARATOR . $resourceRelativePath;
+ 
+                if (is_file($resourceAbsolutePath)) {
+                    return $resourceAbsolutePath;
+                }
+            }
+        }
+ 
+        if ($this-&gt;includePathLookup &amp;&amp; ($resourceAbsolutePath = stream_resolve_include_path($resourceRelativePath)) !== false) {
+            return $resourceAbsolutePath;
+        }
+ 
+        return false;
+    }
+ 
+    /**
+     * Transform resource name into its relative resource path representation.
+     *
+     * @params string $resourceName
+     *
+     * @return string Resource relative path.
+     */
+    private function getResourceRelativePath($resourceName)
+    {
+        // We always work with FQCN in this context
+        $resourceName = ltrim($resourceName, '\\');
+        $resourcePath = '';
+ 
+        if (($lastNamespacePosition = strrpos($resourceName, '\\')) !== false) {
+            // Namespaced resource name
+            $resourceNamespace = substr($resourceName, 0, $lastNamespacePosition);
+            $resourceName      = substr($resourceName, $lastNamespacePosition + 1);
+            $resourcePath      =  str_replace('\\', DIRECTORY_SEPARATOR, $resourceNamespace) . DIRECTORY_SEPARATOR;
+        }
+ 
+        return $resourcePath . str_replace('_', DIRECTORY_SEPARATOR, $resourceName) . $this-&gt;fileExtension;
+    }
+ 
+    /**
+     * Check if resource is declared in user space.
+     *
+     * @params string $resourceName
+     *
+     * @return boolean
+     */
+    private function isResourceDeclared($resourceName)
+    {
+        return class_exists($resourceName, false)
+            || interface_exists($resourceName, false)
+            || (function_exists('trait_exists') &amp;&amp; trait_exists($resourceName, false));
+    }
+}
+
+?&gt;
+</code></pre>
+
+<pre><code class="php">
+&lt;?php
+/**
+ * Adds a directory to the php include path
+ */
+
+/**
+ * @category   RoboTamer
+ * @package    Functions
+ * @subpackage File
+ * @author     Dennis T Kaplan
+ * @copyright  Copyright (c) 2008 - 2012 Dennis T Kaplan
+ * @license    http://www.opensource.org/licenses/MIT
+ * @link       http://blog.robotamer.com
+ *
+ * @param string  $dir The directory to add to the path
+ * @param boolean $at_end If true, place this directory at the end of the include path. Otherwise, place it at the beginning.
+ */
+function addInclude($dir, $at_end = TRUE)
+{
+    $exist = file_exists($dir);
+    if ( ! $exist || ($exist &amp;&amp; filetype($dir) != 'dir'))
+    {
+        trigger_error(&quot;Include path '{$dir}' does not exist&quot;, E_USER_WARNING);
+        echo '&lt;pre&gt;'; print_r(debug_backtrace()); echo '&lt;/pre&gt;';
+        exit;
+    }
+    $dir   = rtrim($dir, &quot;/&quot;);
+    $paths = ltrim(get_include_path(), &quot;.&quot;.PATH_SEPARATOR);
+    $paths = explode(PATH_SEPARATOR, $paths);
+    $ds    = '.'.PATH_SEPARATOR;
+    if (strlen($paths[0]) &amp;&amp; array_search($dir, $paths) === false) {
+        $at_end ? array_push($paths, $dir) : array_unshift($paths, $dir);
+        $paths = implode(PATH_SEPARATOR, $paths);
+        set_include_path($ds.$paths);
+    } else {
+        set_include_path($ds.$dir);
+    }
+}
+/* #Test it
+echo get_include_path();
+echo '&lt;br /&gt;';
+addInclude('/var/www/library/');
+echo get_include_path();
+echo '&lt;br /&gt;';
+*/
+?&gt;
+
+</code></pre>
+
+<pre><code class="php">&lt;?php
+
+function autoload($className)
+{
+    $className = ltrim($className, '\\');
+    $fileName  = '';
+    $namespace = '';
+ 
+    if ($lastNsPos = strripos($className, '\\')) {
+        $namespace = substr($className, 0, $lastNsPos);
+        $className = substr($className, $lastNsPos + 1);
+        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+    }
+ 
+    $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+ 
+    require $fileName;
+}
+?&gt;
+</code></pre>
+
+  </div>
+  <div class="panel-footer">
+    <div class="btn-group">
+      
+      <a href="http://www.robotamer.com/tags/php.html"><button type="button" class="btn btn-info btn-xs">php</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/zend.html"><button type="button" class="btn btn-info btn-xs">zend</button></a>	
+      
+      <a href="http://www.robotamer.com/tags/HowTo.html"><button type="button" class="btn btn-info btn-xs">HowTo</button></a>	
+      
+    </div>  
+  </div>
+</div>
+ 
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <hr>
+      <footer id="footer">
+        Copyright &copy; 1998 - 2013 RoboTamer
+        <span class="right">
+
+
+          <a href="http://www.robotamer.com/blog.xml" rel="alternate" type="application/rss+xml">
+            <img src="/static/ico/feed16x16.png" alt="" style="vertical-align:middle;border:0"/>
+          </a>&nbsp;
+
+          <a href="http://feedburner.google.com" target="_blank">
+            <img src="//feedburner.google.com/fb/images/pub/powered_by_fb.gif" alt="Powered by FeedBurner" style="border:0"/>
+          </a>
+
+        </span>
+
+      </footer>
+    </div>
+      <script src="/static/js/jquery.js"></script>
+      <script src="/static/js/bootstrap.min.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-33624274-1', 'robotamer.com');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+
+</html>
